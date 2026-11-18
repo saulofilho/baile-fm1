@@ -315,12 +315,14 @@ static const fxdesc_t TBD[TB_N] = {
     {{"PAN", "PAN", "PAN"}, ICO_MIRROR, -7, 7, -5},         /* the note's pan */
     {{"PUL", "HOP", "SAL"}, ICO_LOOP, 0, 15, 0},            /* to step n + 1 (after this one plays its time) */
 };
-static const uint8_t GROOVE_PRESET[6][17] = {   /* the groove's presets (GROOVE, KNOB 3): length, then the ticks */
-    {2, 6, 6}, {2, 7, 5}, {2, 8, 4}, {3, 4, 4, 4}, {4, 7, 5, 6, 6}, {4, 9, 3, 8, 4}};
-static const char *const GROOVE_NAMES[LANG_N][6] = {
-    {"RETO", "SWING 58", "SWING 67", "TERCINA", "ATRASADO", "SHUFFLE"},
-    {"STRAIGHT", "SWING 58", "SWING 67", "TRIPLET", "LAZY", "SHUFFLE"},
-    {"RECTO", "SWING 58", "SWING 67", "TRESILLO", "PEREZOSO", "SHUFFLE"}};
+static const uint8_t GROOVE_PRESET[6][17] = {   /* the groove's presets (GROOVE, KNOB 3): length, then the ticks
+                                                 * (6 a 16th, 24 a beat): the funk's feels */
+    {2, 6, 6}, {4, 6, 7, 5, 6}, {2, 7, 5}, {4, 6, 5, 7, 6}, {4, 7, 5, 6, 6}, {3, 4, 4, 4}};
+static const char *const GROOVE_NAMES[LANG_N][6] = {   /* straight; the tamborzao's drag on the 2nd 16th; the brega's
+                                                        * swing; the 150 pushing the 2nd; the mandelao lazy; triplets */
+    {"RETO", "TAMBOR", "BREGA", "150", "MANDELA", "TERCINA"},
+    {"STRAIGHT", "TAMBOR", "BREGA", "150", "MANDELA", "TRIPLET"},
+    {"RECTO", "TAMBOR", "BREGA", "150", "MANDELA", "TRESILLO"}};
 static const uint8_t ROLL_N[9] = {2, 3, 4, 6, 8, 12, 16, 24, 32};
 typedef struct {
     const char *name[LANG_N];
@@ -400,17 +402,17 @@ static const uint16_t LBANK_COL[4] = {RGB(255, 120, 200), RGB(255, 110, 70), RGB
 #define NLBANK 4u
 
 /* ---- the magic tools: tap LFO (MAGIE), then a white key; one undo each (SAVE held) */
-enum { MG_CHOP, MG_BEAT, MG_MELO, MG_BASS, MG_ARP, MG_EUCL, MG_VARY, MG_ROLLS, MG_NUANCE, MG_DOUBLE, MG_SHIFT,
+enum { MG_CHOP, MG_BEAT, MG_MELO, MG_BASS, MG_MONT, MG_EUCL, MG_VARY, MG_ROLLS, MG_NUANCE, MG_DOUBLE, MG_SHIFT,
        MG_CLONE, MG_TRANSP, MG_COPY, MG_PASTE, MG_CLEAR, MG_N };
 static const lfx_t MAGIC[MG_N] = {
     {{"PICADOR", "CHOPPER", "PICADOR"}, {"BREAK", "BREAK", "BREAK"}, ICO_KNIFE},
-    {{"BEAT", "BEAT", "RITMO"}, {"ACASO", "RANDOM", "AZAR"}, ICO_KIT},
+    {{"BEAT", "BEAT", "RITMO"}, {"FUNK", "FUNK", "FUNK"}, ICO_KIT},
     {{"MELODIA", "MELODY", "MELODIA"}, {"ESCALA", "SCALE", "ESCALA"}, ICO_NOTE},
-    {{"BAIXO", "BASS", "BAJO"}, {"ESCALA", "SCALE", "ESCALA"}, ICO_BASS},
-    {{"ARPEJO", "ARP", "ARPEGIO"}, {"ACORDES", "CHORDS", "ACORDES"}, ICO_ARP},
+    {{"GRAVE", "BASS", "BAJO"}, {"808", "808", "808"}, ICO_BASS},
+    {{"MONTAGE", "MONTAGE", "MONTAJE"}, {"FATIAS", "SLICES", "CORTES"}, ICO_KNIFE},
     {{"EUCLID", "EUCLID", "EUCLIDE"}, {"N BATID", "N HITS", "GOLPES"}, ICO_EUCL},
     {{"VARIAR", "VARY", "VARIAR"}, {"UM POUC", "A BIT", "UN POCO"}, ICO_DICE},
-    {{"RUFOS", "ROLLS", "REDOBLE"}, {"FINAL", "ENDS", "FINAL"}, ICO_ROLL},
+    {{"VIRADA", "FILL", "REDOBLE"}, {"FINAL", "ENDS", "FINAL"}, ICO_ROLL},
     {{"ACENTOS", "ACCENTS", "MATICES"}, {"VOLUMES", "VOLUMES", "VOLUMEN"}, ICO_VOL},
     {{"DOBRAR", "DOUBLE", "DUPLICA"}, {"X2", "X2", "X2"}, ICO_X2},
     {{"DESLOCA", "SHIFT", "MOVER"}, {"1 PASS", "1 STEP", "1 PASO"}, ICO_RIGHT},

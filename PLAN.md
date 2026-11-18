@@ -111,6 +111,14 @@ Opcional, depois da 1.0: vocais sintéticos por formantes; modo LIVE do KAWA (la
   O BPM dos breaks continua 160 (o do KAWA): fatiados, eles tocam a 130–150 sem problema. Presets de sample
   renomeados (TAMBORZAO, VOLT, FUNK 150, MANDELAO, BREGA FUNK, MONTAGEM…). `numpy` na `.venv` para o gerador.
   **Falta ouvir:** `source/build/breaks/*.wav`.
+- **2026-11-18, Fase 4 (grooves e MÁGICA):** modelos de GROOVE de funk: RETO, **TAMBOR** (6 7 5 6: o atraso da 2ª
+  semicolcheia), **BREGA** (7 5), **150** (6 5 7 6: empurra), **MANDELA** (7 5 6 6), TERCINA. Ferramentas MÁGICA
+  (`source/firmware/src/kawa_edit.c`): **BEAT FUNK** escreve o funk do kit da faixa (cada kit com o seu bumbo, caixa,
+  palmas, percussão e chimbal; a intensidade acrescenta camadas, ghosts e o rufo final); **GRAVE 808** (no lugar de
+  BAIXO) põe o baixo no 0 3 6 10 14, quase sempre a tônica, com glides; **MONTAGE** (no lugar de ARPEJO) picota 2 a 4
+  fragmentos de um break ou de um kit em grupos que se repetem, com avesso e tom; **VIRADA** (no lugar de RUFOS)
+  acrescenta, num kit, a virada de caixa que acelera no fim do compasso. Teste novo no `features_test` (10). As
+  escalas do KAWA já têm frígia e menor harmônica: ficam.
 
 ## Mood
 

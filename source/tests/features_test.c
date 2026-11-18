@@ -363,6 +363,28 @@ int main(void)
         CHECK(g_font == FN_8BIT, "9. the font chosen did not come back (%u)", g_font);
         printf("9. settings: 0.2's keep the language and the theme, font DOUCE; new: PT, DOUCE; a choice is kept\n");
     }
+    /* 10. BAILE: BEAT on a KIT track plays its kit's funk: TAMBOR's kick in 0 3 6 10, the snare on 2 and 4, the
+     * atabaques between; VIRADA ends the bar with a snare roll; GRAVE 808 puts the root on the 1 */
+    {
+        pat_t *p = &prj.pat[0];
+        uint32_t ok = 1, r, rolls = 0;
+        static const uint8_t KICK[16] = {1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0};
+        fresh();
+        sound_preset(4, preset_named(E_KIT, 1));     /* KIT TAMBORZAO */
+        magic_run(MG_BEAT, 0, 4, 0, 6, 1, 0);
+        for (r = 0; r < 16u; r++) {
+            uint32_t n = p->c[r][4].note;
+            if (KICK[r] != (n == 1u)) ok = 0;
+            if ((r == 4u || r == 12u) && n != 3u) ok = 0;
+        }
+        CHECK(ok, "10. BEAT on KIT TAMBOR: not the tamborzao's kick and snare");
+        magic_run(MG_ROLLS, 0, 4, 0, 12, 1, 0);
+        for (r = p->len - 3u; r < p->len; r++) rolls += p->c[r][4].fx == FX_ROLL && p->c[r][4].note == 3u;
+        CHECK(rolls == 3u, "10. VIRADA: %u rolls of the snare at the end (want 3)", rolls);
+        magic_run(MG_BASS, 0, 2, 0, 8, 1, 0);
+        CHECK(p->c[0][2].note && p->c[0][2].note != NOTE_OFF, "10. GRAVE 808: nothing on the 1");
+        printf("10. BEAT funk on TAMBOR, VIRADA, GRAVE 808: ok\n");
+    }
     if (fails) { printf("features_test: %d failures\n", fails); return 1; }
     printf("features_test: passed\n");
     return 0;

@@ -644,23 +644,42 @@ static void mg_chop(pat_t *p, uint32_t t, uint32_t inten)
     }
 }
 
+/* BEAT on a KIT track: the funk of its kit (kawa_kits.h). A row a 16th; masks: bit n, step n of a bar of 16.
+ * kick (key 1), snare (key 3), a second voice (its key and steps: palms, clap), the kit's percussion (two
+ * keys, two masks), the hats (key 5; PERCUS: the chocalho). Intensity: low, kick and snare; mid, the
+ * percussion and 8th hats; high, 16th hats, ghosts, the second kick and a roll into the next bar */
+typedef struct {
+    uint16_t kick, snr, two, pa, pb;
+    uint8_t ktwo, ka, kb;
+} funk_t;
+static const funk_t FUNK[NKIT] = {
+    {0x0441u, 0x1010u, 0x1010u, 0x0484u, 0x8000u, 4, 9, 16},       /* VOLT: 808, cowbell, the stab */
+    {0x0449u, 0x1010u, 0x1010u, 0x1449u, 0x4924u, 4, 7, 9},   /* TAMBOR: the atabaques */
+    {0x1495u, 0x5010u, 0x0484u, 0x8222u, 0x2000u, 4, 9, 13},   /* 150: rim, a zap */
+    {0x8401u, 0x1010u, 0x1000u, 0xB6B6u, 0x0100u, 4, 7, 9},   /* MANDELA: anvil, bruxaria */
+    {0x4141u, 0x1010u, 0x5050u, 0xA484u, 0x0808u, 4, 7, 8},   /* BREGA: palms doubled, timbal */
+    {0x0909u, 0x1010u, 0x1000u, 0x1010u, 0x0404u, 4, 12, 14},      /* MELODY: tambourine, cowbell */
+    {0x0441u, 0x1010u, 0x1010u, 0x8000u, 1u, 4, 10, 7},           /* TUIN: the tuin, the siren */
+    {0x0449u, 0x1010u, 0x4924u, 0x4444u, 0x2549u, 2, 6, 9},   /* PERCUS */
+};
 static void mg_beat(pat_t *p, uint32_t t, uint32_t inten)
 {
     uint32_t r, len = p->len, e = prj.snd[t].engine;
     for (r = 0; r < len; r++)
         p->c[r][t].note = p->c[r][t].fx = p->c[r][t].fxv = p->c[r][t].fx2 = p->c[r][t].fxv2 = 0;
-    if (e == E_KIT) {                           /* low: four on the floor; mid: broken; high: gabber */
-        uint32_t kick = inten > 10u ? 2u : 1u;
+    if (e == E_KIT) {
+        uint32_t kit = (uint32_t)clampi(prj.snd[t].p[P_KIT], 0, NKIT - 1);
+        const funk_t *f = &FUNK[kit];
         for (r = 0; r < len; r++) {
             cell_t *c = &p->c[r][t];
-            uint32_t b = r % 16u;
-            int hit = 0;
-            if (inten < 5u) hit = b % 4u == 0u;
-            else if (inten < 11u) hit = b == 0u || b == 6u || b == 10u || (b == 13u && rnd(2));
-            else hit = b % 4u == 0u || b == 3u || b == 6u || b == 10u || b == 14u || rnd(6) == 0u;
-            if (hit) { c->note = (uint8_t)kick; c->vol = (uint8_t)(b % 4u ? 12u : 15u); }
-            else if ((b == 4u || b == 12u) && inten >= 3u) { c->note = 3; c->vol = 13; }   /* SNARE */
-            else if (inten >= 7u && rnd(6) == 0u) { c->note = 5; c->vol = 7; }             /* a hat */
+            uint32_t b = r % 16u, m = 1u << b;
+            if (f->kick & m) { c->note = (uint8_t)(inten > 11u && b == 0u && (r % 32u) == 16u ? 2u : 1u); c->vol = (uint8_t)(b % 4u ? 13u : 15u); }
+            else if ((f->snr & m) && inten >= 2u) { c->note = 3; c->vol = 14; }
+            else if ((f->two & m) && inten >= 4u) { c->note = f->ktwo; c->vol = 12; }
+            else if ((f->pa & m) && inten >= 5u) { c->note = f->ka; c->vol = (uint8_t)(10u + rnd(3)); }
+            else if ((f->pb & m) && inten >= 7u) { c->note = f->kb; c->vol = (uint8_t)(9u + rnd(3)); }
+            else if (inten >= 7u && (b % 2u == 0u || inten >= 11u)) { c->note = 5; c->vol = (uint8_t)(b % 2u ? 6u : 8u); }
+            else if (inten >= 12u && rnd(8) == 0u) { c->note = 3; c->vol = 5; }   /* a ghost */
         }
         if (inten > 8u) { cell_t *c = &p->c[len - 1u][t]; c->note = 3; c->vol = 12; c->fx = FX_ROLL; c->fxv = 2; }
         return;
@@ -693,17 +712,18 @@ static void mg_melo(pat_t *p, uint32_t t, uint32_t inten, int bass)
     n = scale_snap(base);
     for (r = 0; r < len; r++) {
         cell_t *c = &p->c[r][t];
-        uint32_t dens = bass ? (r % 4u == 0u ? 16u : 4u + inten / 2u) : 5u + inten;
+        uint32_t dens = bass ? ((1u << (r % 16u)) & 0x4449u ? 18u : 1u + inten / 3u) : 5u + inten;   /* (bass: 0 3 6 10 14) */
         c->fx = c->fxv = c->fx2 = c->fxv2 = 0;
         if (r && rnd(20) >= dens) {             /* a rest (the first row always plays) */
             c->note = (bass || rnd(3)) ? 0u : NOTE_OFF;
             c->vol = 0;
             continue;
         }
-        if (bass) {
-            static const int8_t STEPS[6] = {0, 0, 4, 7, 3, 5};
-            deg = STEPS[rnd(6)];
-            c->note = (uint8_t)(rnd(4) ? scale_degree(deg, n) : scale_degree(deg, n) + 12u);
+        if (bass) {                             /* GRAVE 808: mostly the root, a fifth, the octave; a glide now and then */
+            static const int8_t STEPS[8] = {0, 0, 0, 0, 4, 0, 5, 3};
+            deg = STEPS[rnd(8)];
+            c->note = (uint8_t)(rnd(5) ? scale_degree(deg, n) : scale_degree(deg, n) + 12u);
+            if (rnd(24) < inten) { c->fx = FX_GLIDE; c->fxv = (uint8_t)(6u + rnd(6)); }
         } else {
             deg += (int32_t)rnd(5) - 2;
             deg = clampi(deg, -4, 9);
@@ -713,18 +733,6 @@ static void mg_melo(pat_t *p, uint32_t t, uint32_t inten, int bass)
             else if (rnd(50) < inten) { c->fx = FX_VIB; c->fxv = 6; }
         }
         c->vol = (uint8_t)(r % 4u ? 11u : 13u);
-    }
-}
-
-static void mg_arp(pat_t *p, uint32_t t)
-{
-    uint32_t r;
-    for (r = 0; r < p->len; r++) {
-        cell_t *c = &p->c[r][t];
-        if (c->note && c->note != NOTE_OFF && IS_TONAL(t)) {
-            c->fx = FX_ARP;
-            c->fxv = in_scale(c->note + 4u) ? 0u : in_scale(c->note + 3u) ? 1u : 3u;
-        }
     }
 }
 
@@ -795,6 +803,52 @@ static void mg_rolls(pat_t *p, uint32_t t, uint32_t inten)
     }
 }
 
+/* MONTAGEM: the montagem's cut-up: two to four fragments of the break (slices; on a kit, drums) played in short
+ * groups that repeat, some backwards or pitched; other tracks repeat their first two rows as a stutter */
+static void mg_mont(pat_t *p, uint32_t t, uint32_t inten)
+{
+    uint32_t r, len = p->len, nf = 2u + rnd(3), frag[4], k;
+    int sl = note_mode(t) == NM_SLICE, kit = prj.snd[t].engine == E_KIT;
+    if (!sl && !kit) {
+        for (r = 2; r < len; r++)
+            if (rnd(16) < inten || (r % 4u) < 2u) p->c[r][t] = p->c[r % 2u][t];
+        return;
+    }
+    for (k = 0; k < nf; k++)
+        frag[k] = sl ? rnd(16) : (k == 0u ? 0u : 2u + rnd(14));   /* (a kit: the kick, and others) */
+    for (r = 0; r < len; r++) {
+        cell_t *c = &p->c[r][t];
+        uint32_t g = (r / (inten > 9u ? 1u : 2u)) % nf;           /* groups of two rows (one when intense) */
+        if ((r % 8u) == 0u) g = 0;
+        c->note = (uint8_t)(frag[g] + 1u);
+        c->vol = (uint8_t)(r % 4u ? 11u : 14u);
+        c->fx = c->fx2 = 0;
+        c->fxv = c->fxv2 = 0;
+        if (rnd(48) < inten) c->fx = FX_REV;
+        else if (rnd(64) < inten) { c->fx = FX_PITCH; c->fxv = (uint8_t)(int8_t)(rnd(2) ? 7 : -5); }
+        else if ((r % 4u) == 3u && rnd(32) < inten) { c->fx = FX_ROLL; c->fxv = (uint8_t)rnd(4); }
+        if (rnd(20) < (inten > 12u ? 3u : 1u)) c->note = 0;        /* a gap */
+    }
+}
+
+/* VIRADA: the fill into the next bar: rolls at the ends of the beats (as KAWA's ROLLS), and on a kit the last
+ * four rows a snare roll that speeds up, with a tom (or the atabaque) before it */
+static void mg_virada(pat_t *p, uint32_t t, uint32_t inten)
+{
+    uint32_t len = p->len, k;
+    mg_rolls(p, t, inten);
+    if (prj.snd[t].engine != E_KIT || len < 8u)
+        return;
+    for (k = 0; k < 4u; k++) {
+        cell_t *c = &p->c[len - 4u + k][t];
+        uint32_t kit = (uint32_t)clampi(prj.snd[t].p[P_KIT], 0, NKIT - 1);
+        c->note = (uint8_t)(k == 0u && inten > 6u ? (kit == 7u ? 4u : 7u) : 3u);
+        c->vol = (uint8_t)(10u + k);
+        c->fx = k ? FX_ROLL : 0;
+        c->fxv = (uint8_t)(k ? k + (inten > 10u ? 2u : 0u) : 0u);
+    }
+}
+
 static void lane_apply(uint32_t tool, pat_t *p, uint32_t t, uint32_t inten, uint32_t seed)
 {
     uint32_t r, len = p->len;
@@ -803,10 +857,10 @@ static void lane_apply(uint32_t tool, pat_t *p, uint32_t t, uint32_t inten, uint
     case MG_BEAT: mg_beat(p, t, inten); break;
     case MG_MELO: mg_melo(p, t, inten, 0); break;
     case MG_BASS: mg_melo(p, t, inten, 1); break;
-    case MG_ARP: mg_arp(p, t); break;
+    case MG_MONT: mg_mont(p, t, inten); break;
     case MG_EUCL: mg_eucl(p, t, inten, seed % (len ? len : 1u)); break;
     case MG_VARY: mg_vary(p, t, inten); break;
-    case MG_ROLLS: mg_rolls(p, t, inten); break;
+    case MG_ROLLS: mg_virada(p, t, inten); break;
     case MG_NUANCE:
         for (r = 0; r < len; r++)
             if (p->c[r][t].note && p->c[r][t].note != NOTE_OFF)
@@ -914,7 +968,7 @@ static const char *magic_run(uint32_t tool, uint32_t pi, uint32_t t, uint32_t sc
         if (tool == MG_BASS && tonal && !is_bass(k)) continue;
         if (tool == MG_BEAT && tonal) continue;
         if (tool == MG_CHOP && note_mode(k) != NM_SLICE) continue;
-        if (tool == MG_ARP && (!tonal || is_bass(k))) continue;
+        if (tool == MG_MONT && note_mode(k) != NM_SLICE && prj.snd[k].engine != E_KIT) continue;
         if (tool == MG_TRANSP && !IS_TONAL(k)) continue;
         if (tool == MG_EUCL && k != t) continue;
         lane_apply(tl, p, k, inten, seed + k);
