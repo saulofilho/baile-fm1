@@ -44,13 +44,17 @@ enum { ENC_SELECT = 0, ENC_ALGORITHM = 1, ENC_KNOB1 = 2, ENC_KNOB2 = 3, ENC_KNOB
 #define APP_NAME "DINGHY"
 #endif
 #ifndef FELUCCA_ID
-#define FELUCCA_ID "FM-1_957"                   /* package identity: KAWA's own, every version (tools/build.py) */
+#define FELUCCA_ID "FM-1_971"                   /* package identity: BAILE's own, every version (tools/build.py) */
 #endif
 #ifndef APP_VER
 #define APP_VER "0.0"
 #endif
 
+#if defined(DINGHY_HOST) && defined(__APPLE__)    /* BAILE: the host build on macOS (Mach-O has no ELF sections) */
+bootguard_t bootguard;
+#else
 bootguard_t bootguard __attribute__((section(".noinit")));
+#endif
 static volatile uint32_t fm1_ms;                /* milliseconds since power-on (TIMER5) */
 
 #define RING_PUBLISH() __asm__ volatile("" ::: "memory")
@@ -147,7 +151,7 @@ static void ota_commit(const uint8_t *parm)
 
 /* ---- settings: [magic][length][crc32] then the bytes; settings_save erases the sector (~50 ms with
  * the interrupts off: the sound drops out), so save when nothing plays, not on every knob step */
-#define SETTINGS_MAGIC 0x59474E44u              /* "DNGY" */
+#define SETTINGS_MAGIC 0x4C494142u              /* "BAIL": BAILE's own (KAWA and Dinghy use "DNGY") */
 static uint32_t crc32(const uint8_t *p, uint32_t n)
 {
     uint32_t c = 0xFFFFFFFFu, k;

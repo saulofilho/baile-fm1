@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define FELUCCA_ID "FM-1_957"
+#define FELUCCA_ID "FM-1_971"
 #define FELUCCA_OTA_DRYRUN 0
 static char pkg_id[21];                         /* the package's marker identity */
 #define OTA_IDENTITY pkg_id
@@ -187,9 +187,7 @@ int main(int argc, char **argv)
     logical_len = n - 20;
     free(raw);
     printf("  package identity %s\n", pkg_id);
-    bad += check("package identity is KAWA's (FM-1_95N, FM-1_96N)",
-                 strlen(pkg_id) == 8 && (!strncmp(pkg_id, "FM-1_95", 7) || !strncmp(pkg_id, "FM-1_96", 7)) &&
-                 pkg_id[7] >= '0' && pkg_id[7] <= '9');
+    bad += check("package identity is BAILE's (FM-1_971)", !strcmp(pkg_id, "FM-1_971"));
 
     /* handshake outside a session */
     reset_dev();

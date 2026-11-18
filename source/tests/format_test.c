@@ -17,6 +17,18 @@ static int slot_from(uint32_t k, const char *path)
     memset(host_flash[k], 0xFF, SLOT_SIZE);
     n = fread(host_flash[k], 1, SLOT_SIZE, f);
     fclose(f);
+    {   /* BAILE: the fixtures were saved by KAWA ("KAWA" magic), which BAILE never reads; give them BAILE's magic
+         * and their CRC again, so the format 4 -> 5 conversion is still tested */
+        uint32_t h[2], body, crc;
+        memcpy(h, host_flash[k], 8);
+        if (h[0] == 0x4157414Bu) {
+            h[0] = PRJ_MAGIC;
+            memcpy(host_flash[k], h, 4);
+            body = prj_body(h[1]);
+            crc = ~crc_step(0xFFFFFFFFu, host_flash[k], body);
+            memcpy(host_flash[k] + body, &crc, 4);
+        }
+    }
     return (int)n;
 }
 
@@ -45,6 +57,8 @@ int main(void)
     prj_demo();
     want = prj;
     want.bpm = 160;                             /* (the demo saved by 0.2 ran at 160; the demo now opens at 120) */
+    memset(want.name, 0, sizeof want.name);     /* (KAWA saved it under KAWA's name; BAILE's demo has its own) */
+    memcpy(want.name, "KAWA QUEST", 10);
     prj_new();
     CHECK(prj_load(1) == 0, "demo-v4: refused");
     CHECK(prj.version == PRJ_VERSION, "demo-v4: still format %u", prj.version);

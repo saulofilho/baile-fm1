@@ -59,10 +59,11 @@ SDK_SHA256 = {
     "cfg/eq_cfg_hw.bin": "41167491bffed4651750719c973d2758adeb9021a5670d02d6a53c85ed80ea7d",
 }
 
-# Package identity (the .fwsc marker, the handshake answer): KAWA's own, FM-1_957, the same for every version (as
+# Package identity (the .fwsc marker, the handshake answer): BAILE's own, FM-1_971 (free in the Hub's catalog on
+# 2026-11-17), the same for every version. KAWA, which BAILE is forked from, is FM-1_957. (As
 # The Firmware Hub asks: one identity per firmware, no other firmware uses it; the version is in the text and the file
 # name). The installers want FM-1_9NN. 0.2 to 0.6 used FM-1_95Y per version; 0.7 kept its 957 for good.
-PRODUCT = "FM-1_957"
+PRODUCT = "FM-1_971"
 VERSION = None                      # APP_VER for release builds
 
 
@@ -378,16 +379,16 @@ def mmio_check():
 def main():
     global PRODUCT, VERSION
     ap = argparse.ArgumentParser()
-    ap.add_argument("--release", metavar="X.Y", help="release build: version string X.Y (the identity stays FM-1_957)")
+    ap.add_argument("--release", metavar="X.Y", help="release build: version string X.Y (the identity stays FM-1_971)")
     ap.add_argument("--sdk", type=Path, help="JieLi AC79 SDK checkout (default: $AC79_SDK)")
     a = ap.parse_args()
-    name = "kawa.fwsc"
+    name = "baile.fwsc"
     if a.release:
         m = re.fullmatch(r"(\d+)\.(\d+)(\.\d+)?(-[A-Za-z0-9]+)?", a.release)
         if not m:
             raise SystemExit(f"--release {a.release}: use X.Y, X.Y.Z or X.Y-suffix")
         VERSION = m[1] + "." + m[2] + (m[3] or "")
-        name = f"kawa-{a.release}.fwsc"
+        name = f"baile-{a.release}.fwsc"
     fm1pkg_make.SDK = a.sdk
     for rel, sha in SDK_SHA256.items():          # fail early without the SDK, or with another one
         if hashlib.sha256(fm1pkg_make.sdk_file(rel)).hexdigest() != sha:

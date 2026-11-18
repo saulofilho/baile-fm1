@@ -24,7 +24,7 @@ const defer = fn => (typeof setImmediate === "function" ? setImmediate(fn) : set
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 /* kawa_sysex.c, port for port (and usb.c's SysEx intake). Constants as kawa_core.c. */
-const NUSR = 4, USR_SIZE = 0x9000, USR_DATA = 0x100, USR_CAP = USR_SIZE - USR_DATA, USR_MAGIC = 0x504D534B;
+const NUSR = 4, USR_SIZE = 0x9000, USR_DATA = 0x100, USR_CAP = USR_SIZE - USR_DATA, USR_MAGIC = 0x504D5342;   // "BSMP"
 const OK = 0, EARGS = 1, EBUSY = 2, EFLASH = 3, ECRC = 4, ESTATE = 5;
 
 function cPack7(inp, n) {                              // kw_pack7
@@ -55,7 +55,7 @@ function cCrc(u8) {                                    // zlib's CRC-32, bit by 
 class MockFm1 {
     constructor(o = {}) {
         this.o = Object.assign({ version: "0.4", playing: false, nusr: NUSR, capReported: USR_CAP, faults: {}, silentToKawa: false,
-                                 infoMagic: "KAWA", chunk: 0, noise: false }, o);
+                                 infoMagic: "BAIL", chunk: 0, noise: false }, o);
         this.flash = new Uint8Array(NUSR * USR_SIZE).fill(0xFF);       // [STORE .. ] the four slots, NOR
         this.ms = 0;                                    // fm1_ms (tick() moves it)
         this.slot = 0xFF; this.next = 0; this.kwMs = 0; this.lastRc = 0;

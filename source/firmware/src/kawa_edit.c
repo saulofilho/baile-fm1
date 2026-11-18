@@ -308,7 +308,7 @@ static void prj_demo(void)
     uint32_t p, r;
     prj_new();
     prj.bpm = 120;                              /* (the demo and a new song both start at 120) */
-    memcpy(prj.name, "KAWA QUEST", 11);
+    memcpy(prj.name, "BAILE QUEST", 12);
     prj.root = 0;                               /* C major (the dungeon and the boss are A minor: the same notes) */
     prj.scale = 1;
     sound_preset(T2, preset_named(E_FM, 11));   /* KALIMBA */

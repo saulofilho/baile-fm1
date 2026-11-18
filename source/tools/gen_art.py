@@ -1,25 +1,22 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: GPL-3.0-only
-"""KAWA's pixel art: firmware/gen/kawa_art.h (drawn here as text) and firmware/gen/kawa_photo.h (from a PNG).
+"""BAILE's pixel art (KAWA's generator, with BAILE's mascot and boot): firmware/gen/kawa_art.h (drawn here as text) and firmware/gen/kawa_photo.h (from a PNG).
 
   python3 tools/gen_art.py            (needs Pillow, for the boot picture)
 
 Icons are 8 x 8 ('#' lit), drawn by the firmware in one colour at 1x or 2x.
-The mascot (16 x 16, the corner of every page) is KAWA's dog as Omnipotard drew him in 16 bits: a shepherd
-with headphones and his tongue out, 16 inks (INKS below) drawn with a palette: the headband and the cups take
-the colour of what is going on.
-The boot picture is art/boot-dog.png (the dog in 32 bits, by Omnipotard), taken to 240 x 240 and 192 colours,
-one byte a pixel (kawa_photo.h, about 58 KB of flash), with the stars of its sky that twinkle.
+The mascot (16 x 16, the corner of every page) is BAILE's arara, a scarlet macaw with headphones, 16 inks
+(INKS below) drawn with a palette: the headband and the cups take the colour of what is going on.
+The boot picture is art/boot-baile.png (tools/gen_boot.py), 192 colours, one byte a pixel (kawa_photo.h,
+about 58 KB of flash), with the corners of its tiles, which the boot lights one by one.
 """
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "firmware" / "gen" / "kawa_art.h"
 PHOTO_OUT = ROOT / "firmware" / "gen" / "kawa_photo.h"
-BOOT_PNG = ROOT / "art" / "boot-dog.png"
+BOOT_PNG = ROOT / "art" / "boot-baile.png"     # made by tools/gen_boot.py
 BOOT_COLOURS = 192
-TITLE_BOX = (116, 4, 238, 80)    # x0 y0 x1 y1: the title, on the sky (no twinkle under it)
-SPARKLES = [(40, 12), (22, 50), (204, 96), (228, 106)]   # twinkles in the gaps of the sky
 
 ICONS = {
     # the six tracks
@@ -98,80 +95,81 @@ ICONS = {
     "BETA": [".###....", "#...#...", "#..#....", "####....", "#...#...", "#...#...", "####....", "#......."],
 }
 
-# KAWA's dog: a shepherd with headphones (Omnipotard's 16-bit dog). 4 bits a pixel, inks:
-INKS = ".kDGLWENPTHCcSRz"   # clear, outline, dark / mid / light fur, white, amber eye, nose, pupil, tongue,
-#                            headband (accent), cups, cups' rim, highlight, inner ear, extra
+# BAILE's mascot: an arara (a scarlet macaw) with headphones, 16 x 16, 4 bits a pixel. The inks keep KAWA's
+# sixteen slots (dog_pal in kawa_ui.c gives them the macaw's colours):
+INKS = ".kDGLWENPTHCcSRz"   # clear, outline, dark red, red, light red, white face, eye ring, upper beak, pupil,
+#                            lower beak, headband (accent), cups, cups' rim, highlight, yellow feathers, blue / z z z
 DOG16 = {
     "IDLE": [
-        "..k..........k..",
-        ".kDk........kDk.",
-        ".kDRk.HHHH.kRDk.",
-        ".kDRGkHHHHkGRDk.",
-        ".kGGDDDDDDDDGGk.",
-        "CCkGGLDDDDLGGkCC",
-        "CHGLSPGDDGSPLGHC",
-        "CHGLPPGGGGPPLGHC",
-        "CCkGLLLWWLLLGkCC",
-        ".kGLWWNNNNWWLGk.",
-        ".kLWWWkNNkWWWLk.",
-        "..kLWkkTTkkWLk..",
-        "..kGLkTTTTkLGk..",
-        "...kGkTTTTkGk...",
-        "....kkkTTkkk....",
-        ".......kk.......",
+        "......kkkk......",
+        "....kkGLLGkk....",
+        "...kGGGGGGGGk...",
+        "..kHHHHHHHHHHk..",
+        "..kGGGGGGGGGGk..",
+        "CCkGWWGGGGWWGkCC",
+        "CHkWEPWGGWPEWkHC",
+        "CHkWWWWNNWWWWkHC",
+        "CCkGWWNNNNWWGkCC",
+        "..kGGNNNNNNGGk..",
+        "..kDGGNTTNGGDk..",
+        "..kDGGkTTkGGDk..",
+        "..kRRGGkkGGRRk..",
+        "...kRRRRRRRRk...",
+        "....kzzzzzzk....",
+        ".....kkkkkk.....",
     ],
     "BLINK": [
-        "..k..........k..",
-        ".kDk........kDk.",
-        ".kDRk.HHHH.kRDk.",
-        ".kDRGkHHHHkGRDk.",
-        ".kGGDDDDDDDDGGk.",
-        "CCkGGLDDDDLGGkCC",
-        "CHGLGGGDDGGGLGHC",
-        "CHGLkkGGGGkkLGHC",
-        "CCkGLLLWWLLLGkCC",
-        ".kGLWWNNNNWWLGk.",
-        ".kLWWWkNNkWWWLk.",
-        "..kLWkkTTkkWLk..",
-        "..kGLkTTTTkLGk..",
-        "...kGkTTTTkGk...",
-        "....kkkTTkkk....",
-        ".......kk.......",
+        "......kkkk......",
+        "....kkGLLGkk....",
+        "...kGGGGGGGGk...",
+        "..kHHHHHHHHHHk..",
+        "..kGGGGGGGGGGk..",
+        "CCkGWWGGGGWWGkCC",
+        "CHkWkkWGGWkkWkHC",
+        "CHkWWWWNNWWWWkHC",
+        "CCkGWWNNNNWWGkCC",
+        "..kGGNNNNNNGGk..",
+        "..kDGGNTTNGGDk..",
+        "..kDGGkTTkGGDk..",
+        "..kRRGGkkGGRRk..",
+        "...kRRRRRRRRk...",
+        "....kzzzzzzk....",
+        ".....kkkkkk.....",
     ],
-    "WILD": [                      # a live effect: eyes shut with joy, the tongue out further
-        "..k..........k..",
-        ".kDk........kDk.",
-        ".kDRk.HHHH.kRDk.",
-        ".kDRGkHHHHkGRDk.",
-        ".kGGDDDDDDDDGGk.",
-        "CCkGGLDDDDLGGkCC",
-        "CHGLkkGDDGkkLGHC",
-        "CHGkGGkGGkGGkGHC",
-        "CCkGLLLWWLLLGkCC",
-        ".kGLWWNNNNWWLGk.",
-        ".kLWWWkNNkWWWLk.",
-        "..kLWkTTTTkWLk..",
-        "..kGLkTTTTkLGk..",
-        "...kGkTTTTkGk...",
-        "....kkTTTTkk....",
-        "......kTTk......",
+    "WILD": [
+        "......kkkk......",
+        "....kkGLLGkk....",
+        "...kGGGGGGGGk...",
+        "..kHHHHHHHHHHk..",
+        "..kGGGGGGGGGGk..",
+        "CCkGWkGGGGkWGkCC",
+        "CHkWWkWGGWkWWkHC",
+        "CHkWWWWNNWWWWkHC",
+        "CCkGWWNNNNWWGkCC",
+        "..kGGNNNNNNGGk..",
+        "..kDGGNTTNGGDk..",
+        "..kDGkTTTTkGDk..",
+        "..kRRGGkkGGRRk..",
+        "...kRRRRRRRRk...",
+        "....kzzzzzzk....",
+        ".....kkkkkk.....",
     ],
     "SLEEP": [
-        "..k..........kSz",
-        ".kDk........kDk.",
-        ".kDRk.HHHH.kRDk.",
-        ".kDRGkHHHHkGRDk.",
-        ".kGGDDDDDDDDGGk.",
-        "CCkGGLDDDDLGGkCC",
-        "CHGLGGGDDGGGLGHC",
-        "CHGLDDGGGGDDLGHC",
-        "CCkGLLLWWLLLGkCC",
-        ".kGLWWNNNNWWLGk.",
-        ".kLWWWWNNWWWWLk.",
-        "..kLWWWkkWWWLk..",
-        "..kGLWWWWWWLGk..",
-        "...kGLWWWWLGk...",
-        "....kkLLLLkk....",
+        "......kkkk...Sz.",
+        "....kkGLLGkk....",
+        "...kGGGGGGGGk...",
+        "..kHHHHHHHHHHk..",
+        "..kGGGGGGGGGGk..",
+        "CCkGWWGGGGWWGkCC",
+        "CHkWWWWGGWWWWkHC",
+        "CHkWWWWNNWWWWkHC",
+        "CCkGWWNNNNWWGkCC",
+        "..kGGNNNNNNGGk..",
+        "..kDGGNTTNGGDk..",
+        "..kDGGNkkNGGDk..",
+        "..kRRGGkkGGRRk..",
+        "...kRRRRRRRRk...",
+        "....kzzzzzzk....",
         ".....kkkkkk.....",
     ],
 }
@@ -179,7 +177,7 @@ DOG16 = {
 
 def main():
     names = list(ICONS)
-    lines = ["/* generated by tools/gen_art.py: KAWA's icons (8 x 8) and the mascot (16 x 16, 4 bits) */",
+    lines = ["/* generated by tools/gen_art.py: BAILE's icons (8 x 8) and the mascot (16 x 16, 4 bits) */",
              "#pragma once", "#include <stdint.h>",
              "enum { " + ", ".join(f"ICO_{n}" for n in names) + ", ICO_N };"]
     rows = []
@@ -200,13 +198,14 @@ def main():
     lines.append("static const uint8_t DOG16[DOG_N][128] = {\n    " + ",\n    ".join(
         "{" + ", ".join(map(str, pack4(DOG16[n], 16))) + "}" for n in names16) + "};")
     OUT.write_text("\n".join(lines) + "\n")
-    print("->", OUT, len(names), "icons,", len(names16), "dog frames")
+    print("->", OUT, len(names), "icons,", len(names16), "mascot frames")
     photo()
 
 
 def photo():
-    """the boot picture: 240 x 240, BOOT_COLOURS colours (RGB565), a byte a pixel; and its twinkling stars"""
+    """the boot picture: 240 x 240, BOOT_COLOURS colours (RGB565), a byte a pixel; and its tiles, which light up"""
     from PIL import Image
+    import gen_boot
     im = Image.open(BOOT_PNG).convert("RGB").resize((240, 240), Image.LANCZOS)
     q = im.quantize(colors=BOOT_COLOURS, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE)
     flat = q.getpalette()[:3 * BOOT_COLOURS]
@@ -214,37 +213,20 @@ def photo():
     rgb += [(0, 0, 0)] * (BOOT_COLOURS - len(rgb))
     pal = [(r >> 3) << 11 | (g >> 2) << 5 | (b >> 3) for r, g, b in rgb]
     idx = list(q.get_flattened_data() if hasattr(q, 'get_flattened_data') else q.getdata())
-    lum = [0.3 * rgb[i][0] + 0.59 * rgb[i][1] + 0.11 * rgb[i][2] for i in idx]
-
-    def at(x, y):
-        return lum[y * 240 + x]
-    stars = []                                 # bright and alone in a dark sky, outside the title
-    for y in range(4, 120):
-        for x in range(4, 236):
-            if TITLE_BOX[0] <= x <= TITLE_BOX[2] and TITLE_BOX[1] <= y <= TITLE_BOX[3]:
-                continue
-            v = at(x, y)
-            near = [at(x + dx, y + dy) for dx in (-1, 0, 1) for dy in (-1, 0, 1) if dx or dy]
-            far = [at(x + dx, y + dy) for dx in (-4, 0, 4) for dy in (-4, 0, 4) if dx or dy]
-            if v >= max(near) and v - max(far) > 60 and max(far) < 70 and \
-                    all(abs(x - a) + abs(y - b) > 12 for a, b in stars):
-                stars.append((x, y))
-    for x, y in SPARKLES:                      # and a few more in the gaps of the sky
-        assert max(at(x + dx, y + dy) for dx in (-3, 0, 3) for dy in (-3, 0, 3)) < 90, ("not on dark sky", x, y)
-        stars.append((x, y))
-    stars = stars[:8]
-    lines = ["/* generated by tools/gen_art.py from art/boot-dog.png (KAWA's dog in 32 bits, by Omnipotard): the boot",
-             " * picture, 240 x 240, a byte a pixel into BOOT_PAL (RGB565); BOOT_STAR: stars of its sky that twinkle */",
+    tiles = [(x, y) for x, y, _, _ in gen_boot.tiles()]
+    lines = ["/* generated by tools/gen_art.py from art/boot-baile.png (tools/gen_boot.py: BAILE's mosaic of tiles): the",
+             " * boot picture, 240 x 240, a byte a pixel into BOOT_PAL (RGB565); BOOT_TILE: the tiles' corners, from the",
+             " * middle out, which the boot lights one by one (BOOT_CELL square) */",
              "#pragma once", "#include <stdint.h>",
-             f"#define BOOT_NSTAR {len(stars)}u",
-             "static const uint8_t BOOT_STAR[BOOT_NSTAR][2] = {" + ", ".join(f"{{{x}, {y}}}" for x, y in stars) + "};",
+             f"#define BOOT_NTILE {len(tiles)}u", f"#define BOOT_CELL {gen_boot.CELL}",
+             "static const uint8_t BOOT_TILE[BOOT_NTILE][2] = {" + ", ".join(f"{{{x}, {y}}}" for x, y in tiles) + "};",
              f"static const uint16_t BOOT_PAL[{BOOT_COLOURS}] = {{" + ", ".join(map(str, pal)) + "};",
              "static const uint8_t BOOT_IMG[240u * 240u] = {"]
     for y in range(240):
         lines.append("    " + ",".join(map(str, idx[y * 240:(y + 1) * 240])) + ",")
     lines.append("};")
     PHOTO_OUT.write_text("\n".join(lines) + "\n")
-    print("->", PHOTO_OUT, "240 x 240,", BOOT_COLOURS, "colours,", len(stars), "stars", stars)
+    print("->", PHOTO_OUT, "240 x 240,", BOOT_COLOURS, "colours,", len(tiles), "tiles")
 
 
 if __name__ == "__main__":

@@ -28,7 +28,7 @@ CMD = {"INFO": 1, "BEGIN": 2, "WRITE": 3, "END": 4, "ERASE": 5, "LIST": 6}
 RC = {0: "ok", 1: "bad arguments", 2: "busy: stop KAWA first", 3: "flash error", 4: "CRC mismatch",
       5: "out of order / no session"}
 CAP = 0x9000 - 0x100
-MAGIC = 0x504D534B
+MAGIC = 0x504D5342                              # "BSMP" (KAWA's is "KSMP")
 
 
 def pack7(b):                                   # 7 bits at a time, the low ones first (ota.c, kawa_sysex.c)
@@ -257,7 +257,7 @@ def main():
         return
     dev = Device()
     info = dev.ask("INFO", frame("INFO"))
-    if info[:5] != b"\0KAWA":
+    if info[:5] != b"\0BAIL":
         raise SystemExit("the FM-1 does not run KAWA 0.2 or later")
     if a.cmd == "list":
         show_list(dev.ask("LIST", frame("LIST")))

@@ -19,22 +19,23 @@ static const char *const ENGINE_NAMES[LANG_N][E_N] = {{"CARRE", "ONDE", "BRUIT",
 #define ENGINE_NAME ENGINE_NAMES[lang]
 static const uint8_t ENGINE_ICON[E_N] = {ICO_PULSE, ICO_WAVE, ICO_NOISE, ICO_FM, ICO_KIT, ICO_SAMPLE};
 
-/* ---- themes (OPTIONS, KNOB 1): the screen's colours. KAWA is the look of 0.1 */
+/* ---- themes (OPTIONS, KNOB 1): the screen's colours. BAILE's are from its mood board (docs/moodboard): a black
+ * floor and the six colours of a macaw's feathers, one a track, red to blue. TERRA is the default */
 typedef struct {
     const char *name;
     uint16_t bg, bg2, beat, rule, faint, mid, txt, gold, rec, go, ink;   /* ink: text on a lit tile */
     uint16_t trk[NTRK];
 } theme_t;
 static const theme_t THEMES[3] = {
-    {"KAWA", RGB(18, 12, 36), RGB(26, 18, 50), RGB(38, 28, 72), RGB(56, 44, 98), RGB(118, 106, 170), RGB(176, 166, 224),
-     RGB(240, 236, 255), RGB(255, 222, 110), RGB(255, 64, 96), RGB(96, 255, 150), RGB(18, 12, 36),
-     {RGB(255, 95, 180), RGB(255, 176, 58), RGB(62, 216, 255), RGB(232, 240, 96), RGB(98, 242, 154), RGB(169, 139, 255)}},
-    {"GAME BOY", RGB(15, 56, 15), RGB(24, 70, 24), RGB(40, 92, 36), RGB(56, 108, 48), RGB(110, 150, 70), RGB(160, 196, 60),
-     RGB(214, 236, 150), RGB(236, 250, 170), RGB(250, 120, 90), RGB(200, 248, 120), RGB(15, 56, 15),
-     {RGB(200, 240, 110), RGB(170, 220, 90), RGB(220, 248, 150), RGB(150, 200, 70), RGB(230, 250, 170), RGB(180, 230, 100)}},
-    {"BONBON", RGB(255, 244, 250), RGB(250, 230, 244), RGB(240, 210, 234), RGB(222, 190, 218), RGB(150, 120, 160),
-     RGB(100, 72, 112), RGB(50, 28, 62), RGB(200, 106, 10), RGB(226, 30, 84), RGB(20, 150, 80), RGB(255, 255, 255),
-     {RGB(230, 50, 140), RGB(226, 120, 10), RGB(10, 140, 200), RGB(120, 150, 10), RGB(20, 160, 100), RGB(130, 70, 220)}},
+    {"TERRA", RGB(20, 18, 16), RGB(30, 26, 22), RGB(42, 36, 30), RGB(58, 51, 43), RGB(110, 101, 90), RGB(156, 145, 132),
+     RGB(243, 235, 221), RGB(255, 207, 31), RGB(227, 33, 43), RGB(90, 174, 58), RGB(20, 18, 16),
+     {RGB(227, 33, 43), RGB(242, 106, 27), RGB(255, 207, 31), RGB(90, 174, 58), RGB(20, 163, 168), RGB(52, 112, 230)}},
+    {"CLARO", RGB(243, 235, 221), RGB(232, 222, 206), RGB(220, 208, 190), RGB(200, 186, 166), RGB(150, 138, 122),
+     RGB(100, 90, 78), RGB(20, 18, 16), RGB(214, 92, 20), RGB(200, 20, 30), RGB(40, 130, 40), RGB(20, 18, 16),
+     {RGB(210, 30, 40), RGB(230, 95, 20), RGB(225, 165, 0), RGB(60, 150, 40), RGB(10, 140, 145), RGB(30, 85, 200)}},
+    {"PAREDAO", RGB(0, 0, 0), RGB(14, 14, 14), RGB(30, 30, 30), RGB(48, 48, 48), RGB(110, 110, 110), RGB(170, 170, 170),
+     RGB(255, 255, 255), RGB(255, 207, 31), RGB(255, 26, 26), RGB(90, 220, 70), RGB(0, 0, 0),
+     {RGB(255, 40, 40), RGB(255, 120, 30), RGB(255, 215, 40), RGB(110, 220, 70), RGB(30, 210, 215), RGB(80, 140, 255)}},
 };
 #define NTHEME 3u
 static uint8_t theme;
@@ -55,10 +56,15 @@ static const uint16_t KNOB_COL[4] = {RGB(255, 92, 92), RGB(255, 204, 64), RGB(92
 /* one page, one colour (the page's pill, the emulator's buttons) */
 enum { PG_TRACK, PG_GRID, PG_SOUND, PG_ENV, PG_MIX, PG_MAGIC, PG_SCALE, PG_SONG, PG_PROJ, PG_OPT, PG_FX, PG_HELP, PG_BOOT,
        PG_GROOVE, PG_SEND, PG_FILT, PG_FXSEQ, PG_N };                       /* (GROOVE last: the emulator knows the others by their number) */
-static const uint16_t PAGE_COL[PG_N] = {RGB(169, 139, 255), RGB(255, 96, 146), RGB(62, 216, 255), RGB(98, 242, 154),
-                                        RGB(255, 160, 60), RGB(255, 210, 90), RGB(200, 240, 90), RGB(255, 160, 60),
-                                        RGB(100, 150, 255), RGB(255, 160, 60), RGB(255, 120, 200), RGB(169, 139, 255),
-                                        RGB(169, 139, 255), RGB(255, 160, 60), RGB(255, 120, 200), RGB(255, 70, 90), RGB(90, 200, 255)};
+/* the pages' colours: the macaw's feathers (a little lighter, for dark text on them) */
+#define F_RED RGB(235, 60, 60)
+#define F_ORA RGB(245, 120, 40)
+#define F_YEL RGB(255, 207, 31)
+#define F_GRN RGB(100, 190, 70)
+#define F_TUR RGB(30, 185, 190)
+#define F_BLU RGB(70, 130, 240)
+static const uint16_t PAGE_COL[PG_N] = {F_BLU, F_RED, F_TUR, F_GRN, F_ORA, F_YEL, F_GRN, F_ORA, F_BLU, F_ORA, F_RED,
+                                        F_BLU, F_BLU, F_ORA, F_RED, F_RED, F_TUR};
 
 /* ---- the 24 parameters of a track: SOUND 1, SOUND 2 (the engine's), ENVELOPE, MIX, EFFECT, LFO */
 #define NPARAM 28u
@@ -418,7 +424,7 @@ static const char *const L_SCOPES[LANG_N][2] = {{"PISTE", "MOTIF"}, {"TRACK", "P
 #define L_SCOPE L_SCOPES[lang]
 
 /* ---- names for new projects */
-static const char *const NAME_A[8] = {"KAWA", "MIETTE", "PIXEL", "BOUM", "ZINZIN", "CHIP", "RAGE", "CANDY"};
+static const char *const NAME_A[8] = {"BAILE", "MIETTE", "PIXEL", "BOUM", "ZINZIN", "CHIP", "RAGE", "CANDY"};
 static const char *const NAME_B[8] = {"ROSE", "VOLT", "NOIRE", "FOLLE", "MAGIK", "TURBO", "DOUCE", "SALE"};
 
 /* a list's value in the language (K_LIST: n values x 3 languages; K_NAMES: [3][n], here FM_PATCH_NAME) */

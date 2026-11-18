@@ -279,26 +279,26 @@ static int32_t lane_x(uint32_t t)
 }
 static int32_t lane_w(uint32_t t) { return t == trk() ? FOC_W : NAR_W; }
 
-/* ---- the dog: 16 inks; the headband takes the page's colour (the live effect's when one plays), the
- * cups the track's */
+/* ---- the mascot, BAILE's arara (a scarlet macaw with headphones): 16 inks; the headband takes the page's colour
+ * (the live effect's when one plays), the cups the track's */
 static void dog_pal(uint16_t *pal, uint16_t band, uint16_t cups)
 {
     pal[0] = 0;
-    pal[1] = RGB(26, 18, 32);                   /* outline */
-    pal[2] = RGB(70, 46, 44);                   /* dark fur: the saddle, the ears' edge */
-    pal[3] = RGB(204, 124, 62);                 /* tan */
-    pal[4] = RGB(236, 172, 102);                /* light tan */
-    pal[5] = RGB(250, 218, 166);                /* cream: the muzzle */
-    pal[6] = RGB(255, 184, 48);                 /* amber */
-    pal[7] = RGB(30, 26, 40);                   /* nose */
+    pal[1] = RGB(20, 18, 16);                   /* outline */
+    pal[2] = RGB(150, 16, 26);                  /* dark red */
+    pal[3] = RGB(227, 33, 43);                  /* red */
+    pal[4] = RGB(242, 106, 27);                 /* light red, to orange */
+    pal[5] = RGB(243, 235, 221);                /* the white face */
+    pal[6] = RGB(255, 207, 31);                 /* the eye's ring */
+    pal[7] = RGB(232, 222, 200);                /* the upper beak, ivory */
     pal[8] = RGB(14, 10, 14);                   /* pupil */
-    pal[9] = RGB(246, 104, 136);                /* tongue */
+    pal[9] = RGB(44, 40, 38);                   /* the lower beak */
     pal[10] = band;
     pal[11] = cups;
     pal[12] = g_mix(cups, RGB(0, 0, 0), 110);   /* the cups' rim */
     pal[13] = RGB(255, 255, 255);               /* highlight */
-    pal[14] = RGB(226, 140, 120);               /* inner ear */
-    pal[15] = RGB(170, 160, 230);               /* z z z */
+    pal[14] = RGB(255, 207, 31);                /* the yellow feathers */
+    pal[15] = RGB(52, 112, 230);                /* the blue feathers, z z z */
 }
 static void draw_mascot(int32_t x, int32_t y)
 {
@@ -1652,9 +1652,9 @@ static void draw_tools(void)
 static void draw_first(void)                    /* an empty song on TRACKS: three steps, until the first note */
 {
     static const char *const L[LANG_N][4] = {
-        {"KAWA - MORCEAU VIDE", "1. REC  2. JOUE LES TOUCHES", "3. PLAY POUR ECOUTER", "HOME TENU: AIDE"},
-        {"KAWA - EMPTY SONG", "1. REC  2. PLAY THE KEYS", "3. PLAY TO LISTEN", "HOME HELD: HELP"},
-        {"KAWA - CANCION VACIA", "1. REC  2. TOCA LAS TECLAS", "3. PLAY PARA ESCUCHAR", "HOME PULSADO: AYUDA"}};
+        {"BAILE - MORCEAU VIDE", "1. REC  2. JOUE LES TOUCHES", "3. PLAY POUR ECOUTER", "HOME TENU: AIDE"},
+        {"BAILE - EMPTY SONG", "1. REC  2. PLAY THE KEYS", "3. PLAY TO LISTEN", "HOME HELD: HELP"},
+        {"BAILE - CANCION VACIA", "1. REC  2. TOCA LAS TECLAS", "3. PLAY PARA ESCUCHAR", "HOME PULSADO: AYUDA"}};
     uint32_t i;
     if (page != PG_TRACK || !song_empty || rec || sq_play || tools_open || !g_vis(70, 92)) return;
     g_rrect(8, 72, 224, 88, C_GOLD);
@@ -2025,7 +2025,7 @@ static void draw_opt(void)
         if (clk_in && clk_in_tick) { str_cat(c, " "); fmt_u(c + str_len(c), bpm_now(), 0); }
         g_text_c(120, 184, c, set.clock ? KNOB_COL[2] : C_FAINT, T_CROP);
     }
-    g_text_c(120, 197, "KAWA " APP_VER " BETA by Omnipotard", C_MID, T_CROP);
+    g_text_c(120, 197, "BAILE " APP_VER " - KAWA by Omnipotard", C_MID, T_CROP);
     {                                           /* the audio interrupt's load (for the beta's testers) */
         char c[32];
         c[0] = 0;
@@ -2163,7 +2163,7 @@ static void draw_help(void)
     hint(3, "", "", "");
 }
 
-/* ---- the boot: Omnipotard's dog in 32 bits (kawa_photo.h), notes out of his headphones, stars that twinkle */
+/* ---- the boot: BAILE's mosaic of tiles (kawa_photo.h, tools/gen_boot.py), lit one by one from the middle out */
 static void g_text_sh(int32_t x, int32_t y, const char *s, uint16_t c, uint32_t mode)   /* with a shadow */
 {
     g_text(x + 1, y + 1, s, RGB(8, 6, 20), mode);
@@ -2171,33 +2171,28 @@ static void g_text_sh(int32_t x, int32_t y, const char *s, uint16_t c, uint32_t 
 }
 static void draw_boot(void)
 {
-    uint32_t t = fm1_ms - boot_ms, i;
+    uint32_t t = fm1_ms - boot_ms, i, front = (t / 80u) % (BOOT_NTILE + 16u);
     g_pic(0, 0, BOOT_IMG, 240, 240, BOOT_PAL);
-    for (i = 0; i < BOOT_NSTAR; i++) {          /* the stars twinkle, each in its turn */
-        uint32_t ph = (t / 70u + i * 5u) % 14u;
-        int32_t sx = BOOT_STAR[i][0], sy = BOOT_STAR[i][1];
-        if (ph < 4u) {
-            uint16_t c = ph == 1u || ph == 2u ? C_WHITE : RGB(170, 190, 255);
-            g_rect(sx - 1, sy, 3, 1, c);
-            g_rect(sx, sy - 1, 1, 3, c);
-            if (ph == 2u) { g_px(sx - 2, sy, c); g_px(sx + 2, sy, c); g_px(sx, sy - 2, c); g_px(sx, sy + 2, c); }
+    for (i = 0; i < BOOT_NTILE; i++) {          /* a wave of light runs out from the middle, then a rest */
+        if (i <= front && i + 3u > front) {
+            int32_t x = BOOT_TILE[i][0], y = BOOT_TILE[i][1], s = BOOT_CELL;
+            uint16_t c = i + 1u == front ? C_WHITE : RGB(255, 207, 31);
+            g_rect(x - 2, y - 2, s + 4, 2, c);
+            g_rect(x - 2, y + s, s + 4, 2, c);
+            g_rect(x - 2, y, 2, s, c);
+            g_rect(x + s, y, 2, s, c);
         }
     }
-    for (i = 0; i < 4u; i++) {                  /* notes rise out of the cup, up into the sky */
-        uint32_t ph = (t + i * 350u) % 1400u;
-        int32_t nx = 34 - (int32_t)(ph / 60u) + (int32_t)((ph / 120u) % 3u), ny = 104 - (int32_t)(ph / 15u);
-        if (ny > 4) g_icon(nx < 0 ? 0 : nx, ny, ICO_NOTE, TRK_COL[(i * 3u) % NTRK], 2);
-    }
-    g_text_l(233 - 64 + 1, 9, "KAWA", RGB(8, 6, 20));
-    g_text_l(233 - 64, 8, "KAWA", C_WHITE);
-    g_text_sh(233 - g_text_w("Pocket Tracker"), 44, "Pocket Tracker", C_GOLD, T_BOLD);
-    g_text_sh(233 - g_text_w("by Omnipotard"), 60, "by Omnipotard", C_TXT, 0);
+    g_text_l(120 - 40 + 1, 97, "BAILE", RGB(0, 0, 0));
+    g_text_l(120 - 40, 96, "BAILE", RGB(243, 235, 221));
+    g_text_c(120, 124, "FUNK TRACKER", RGB(255, 207, 31), T_CROP | T_BOLD);
     g_rrect(4, 224, 44, 14, C_REC);
     g_text(8, 224, "BETA", C_WHITE, T_CROP | T_BOLD);
-    g_text_sh(236 - g_text_w("V" APP_VER), 226, "V" APP_VER, C_TXT, T_CROP);
+    g_rrect(236 - g_text_w("V" APP_VER) - 4, 224, g_text_w("V" APP_VER) + 6, 14, RGB(20, 18, 16));
+    g_text(236 - g_text_w("V" APP_VER) - 1, 224, "V" APP_VER, RGB(243, 235, 221), T_CROP);
     if (t > 600u && ((t / 550u) & 1u)) {        /* it waits for you: a key, a button or a knob */
         const char *m = TR("APPUIE SUR UNE TOUCHE", "PRESS ANY KEY", "PULSA UNA TECLA");
-        g_text_sh(120 - g_text_w(m) / 2, 204, m, C_WHITE, T_CROP | T_BOLD);
+        g_text_c(120, 138, m, C_WHITE, T_CROP);
     }
 }
 

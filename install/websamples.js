@@ -29,7 +29,7 @@
 
 const USR_SIZE = 0x9000, USR_DATA = 0x100;
 const CAP = USR_SIZE - USR_DATA;                      // 36608 B of sound: 1.66 s at 22050 Hz, 3.3 s at 11025 Hz
-const MAGIC = 0x504D534B;                             // "KSMP" (usr_hdr_t.magic)
+const MAGIC = 0x504D5342;                             // "BSMP" (usr_hdr_t.magic; KAWA's is "KSMP")
 const RATE = 22050, RATES = [22050, 11025];
 const NSLOTS = 4, NAME_MAX = 11, PACKET = 256, MIN_LEN = 64, HEADER_LEN = 36;
 const SILENCE = 0.003, PEAK = 0.95, FADE = 64;        // kawa_samples.py prepare()
@@ -540,8 +540,8 @@ function findPorts(access, want) {
 
 const ascii = b => Array.from(b, c => (c >= 32 && c < 127 ? String.fromCharCode(c) : "?")).join("");
 const nameText = b => { const z = b.indexOf(0); return ascii(z < 0 ? b : b.subarray(0, z)); };   // (a LIST name: up to the NUL)
-function parseInfo(b) {                               // rc, "KAWA", version (4 chars), slots, capacity (3 B LE)
-    if (!b || b.length < 5 || b[0] !== 0 || ascii(b.subarray(1, 5)) !== "KAWA") return null;
+function parseInfo(b) {                               // rc, "BAIL", version (4 chars), slots, capacity (3 B LE)
+    if (!b || b.length < 5 || b[0] !== 0 || ascii(b.subarray(1, 5)) !== "BAIL") return null;
     return {
         version: b.length >= 9 ? ascii(b.subarray(5, 9)).trim() : "",
         slots: b.length >= 10 ? b[9] : NSLOTS,

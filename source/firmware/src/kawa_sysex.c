@@ -57,8 +57,8 @@ static int kw_prog(uint32_t off, const uint8_t *p, uint32_t n)
     for (i = 0; i < n; i++) kw_flash[off - USR_AT + i] &= p[i];   /* NOR: programming only clears bits */
     return 0;
 }
-static int kw_read(uint32_t off, void *p, uint32_t n) { memcpy(p, kw_flash + off - USR_AT, n); return 0; }
-static const uint8_t *kw_xip(uint32_t off) { return kw_flash + off - USR_AT; }
+static int kw_read(uint32_t off, void *p, uint32_t n) { memcpy(p, kw_flash + (off - USR_AT), n); return 0; }
+static const uint8_t *kw_xip(uint32_t off) { return kw_flash + (off - USR_AT); }
 static void kw_hold_wait(void) {}
 #if defined(DINGHY_HOST)
 static void kw_send(const uint8_t *p, uint32_t n)   /* the reply, for the test script */
@@ -162,7 +162,7 @@ static void kw_handle(uint32_t cmd, const uint8_t *a, uint32_t n)
     switch (cmd) {
     case KW_INFO: {
         static const char V[] = APP_VER "    ";
-        r[1] = 'K'; r[2] = 'A'; r[3] = 'W'; r[4] = 'A';
+        r[1] = 'B'; r[2] = 'A'; r[3] = 'I'; r[4] = 'L';   /* BAILE (KAWA answers "KAWA") */
         for (i = 0; i < 4u; i++) r[5 + i] = (uint8_t)V[i];
         r[9] = NUSR;
         r[10] = (uint8_t)USR_CAP; r[11] = (uint8_t)(USR_CAP >> 8); r[12] = (uint8_t)(USR_CAP >> 16);

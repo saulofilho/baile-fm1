@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BAILE — mood board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@500;800&family=IBM+Plex+Mono:wght@400;500&family=Silkscreen&display=swap" rel="stylesheet">
+<style>
+:root{
+  --preto:#141210; --carvao:#1E1A16; --carvao2:#2A241E; --creme:#F3EBDD; --cinza:#9C9184;
+  --vermelho:#E3212B; --laranja:#F26A1B; --amarelo:#FFCF1F; --verde:#5AAE3A; --turquesa:#14A3A8; --azul:#1F5BD6;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--preto);color:var(--creme);font:16px/1.5 Archivo,system-ui,sans-serif}
+main{max-width:1040px;margin:0 auto;padding:0 16px 96px}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--cinza)}
+#band{display:block;width:100%;height:auto;image-rendering:auto}
+h1{font-family:"Archivo Black",sans-serif;font-size:clamp(64px,14vw,148px);line-height:.85;margin:40px 0 0;letter-spacing:-.03em}
+.sub{font-size:17px;max-width:720px;margin:20px 0 0}
+h2{font-family:"Archivo Black";font-size:30px;letter-spacing:-.01em;margin:72px 0 6px}
+h2 + .mono{margin:0 0 20px;font-size:13px}
+.controls{display:flex;flex-wrap:wrap;gap:6px;margin-top:28px}
+.pill{height:56px;padding:0 28px;border-radius:110px;border:4px solid var(--creme);font:800 20px Archivo;
+  display:inline-flex;align-items:center;justify-content:center;text-transform:uppercase;min-width:160px}
+.pill.on{background:var(--amarelo);border-color:var(--amarelo);color:var(--preto)}
+.status{display:flex;flex-wrap:wrap;gap:6px 24px;margin-top:20px;font:800 13px Archivo;letter-spacing:.14em;text-transform:uppercase;color:var(--cinza)}
+.status b{color:var(--creme)} .status .k{letter-spacing:0;text-transform:none;font-family:"IBM Plex Mono";color:var(--amarelo)}
+/* pad cards */
+.pads{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.pad{display:flex;cursor:pointer;user-select:none;background:var(--carvao);transition:transform .08s}
+.pad:active{transform:scale(.99)}
+.pad .l{flex:none;width:38%;position:relative;display:flex;flex-direction:column;justify-content:center;padding:14px 22px}
+.pad.on .l::before{content:"";position:absolute;left:0;top:0;bottom:0;width:10px;background:var(--c)}
+.pad.on .l{padding-left:28px}
+.pad h3{margin:0;font:900 17px/1 "Archivo Black";text-transform:uppercase}
+.pad p{margin:4px 0 0;color:var(--cinza);font-size:13px}
+.pad canvas{width:62%;display:block}
+/* palette */
+.sws{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.sw{background:var(--carvao)}
+.sw i{display:block;height:84px}
+.sw div{padding:10px 12px;font-size:13px}
+.sw b{display:block;font:800 14px Archivo;text-transform:uppercase}
+.sw span{color:var(--cinza)}
+/* motifs */
+#motifs{display:block;width:100%;max-width:1008px;height:auto}
+/* device screens */
+.screens{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}
+.dev{display:flex;flex-direction:column;gap:10px;max-width:100%}
+.dev canvas{width:240px;height:240px;image-rendering:pixelated;border:10px solid #000;border-radius:6px;box-shadow:0 0 0 2px #3a332b}
+.dev.big canvas{width:360px;height:360px}
+.dev span{font-size:13px;color:var(--cinza);max-width:360px}
+@media (max-width:420px){.dev.big canvas{width:100%;height:auto}}
+/* controls */
+.fx{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
+.cell{background:var(--carvao);padding:16px;display:flex;flex-direction:column;gap:14px}
+.cell .box{aspect-ratio:1;border:3px solid var(--creme);position:relative}
+.cell .rule{border-top:1px solid var(--creme)}
+.cell .lab{display:flex;justify-content:space-between;align-items:center;font:800 14px/1 "Archivo Black";text-transform:uppercase}
+.cell .num{font:900 44px/1 "Archivo Black"}
+.dot{position:absolute;width:18px;height:18px;margin:0 0 -9px -9px;border-radius:50%;background:var(--amarelo);border:3px solid var(--preto)}
+.hl{position:absolute;left:0;right:0;height:1px;background:rgba(243,235,221,.3)} .vl{position:absolute;top:0;bottom:0;width:1px;background:rgba(243,235,221,.3)}
+.fader{position:absolute;left:50%;top:8px;bottom:8px;width:32px;margin-left:-16px;border:3px solid var(--creme)}
+.knob{position:absolute;left:-11px;width:48px;height:24px;margin-bottom:-12px;background:var(--vermelho);border:3px solid var(--preto)}
+/* tables, lists */
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th,td{text-align:left;padding:12px 10px;border-bottom:1px solid #3a332b;vertical-align:top}
+th{font:800 12px "IBM Plex Mono";letter-spacing:.1em;text-transform:uppercase;color:var(--cinza);border-bottom:3px solid var(--creme)}
+td:first-child{font:900 15px "Archivo Black";text-transform:uppercase;white-space:nowrap}
+.tbl{overflow-x:auto}
+.kao{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.kao div{padding:16px 20px;color:var(--preto)}
+.kao div:nth-child(1){background:var(--carvao2);color:var(--creme)} .kao div:nth-child(2){background:var(--azul);color:var(--creme)}
+.kao div:nth-child(3){background:var(--amarelo)} .kao div:nth-child(4){background:var(--vermelho);color:var(--creme)}
+.kao b{display:block;font:900 26px "IBM Plex Mono"}
+.kao span{font:800 13px Archivo;letter-spacing:.14em;text-transform:uppercase}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:6px 16px;font:800 15px Archivo;text-transform:uppercase;color:var(--preto)}
+.chip:nth-child(6n+1){background:var(--vermelho);color:var(--creme)} .chip:nth-child(6n+2){background:var(--laranja)} .chip:nth-child(6n+3){background:var(--amarelo)} .chip:nth-child(6n+4){background:var(--verde)} .chip:nth-child(6n+5){background:var(--turquesa)} .chip:nth-child(6n){background:var(--azul);color:var(--creme)}
+ul.list{padding-left:20px} ul.list li{margin-bottom:8px} ul.list b{font-weight:800}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px} @media (max-width:720px){.two{grid-template-columns:1fr}}
+footer{margin-top:80px;font-size:12px}
+</style>
+</head>
+<body>
+<canvas id="band" width="1440" height="216"></canvas>
+<main>
+  <h1>BAILE</h1>
+  <p class="mono sub">Um tracker de funk brasileiro para o M-VAVE FM-1. Tamborzão, Volt Mix, 150, mandelão, brega funk. Tudo sintetizado, tudo no seu bolso.</p>
+  <div class="controls">
+    <span class="pill">ESTILO</span><span class="pill">TOM</span><span class="pill on">GERAR BAILE</span>
+  </div>
+  <div class="status" id="status"></div>
+
+  <h2>A ideia</h2>
+  <p class="mono">estrutura do Byte Beats · padrão do mosaico de ladrilhos · cores das penas da arara</p>
+  <div class="two">
+    <p>O chão é <b>preto</b>, e o som é um <b>mosaico de ladrilhos</b> pintados à mão: quadrados nas cores das penas da arara (vermelho, laranja,
+    amarelo, verde, turquesa e azul), cada um com um símbolo em traço preto ou colorido: espiral, losango, chevron, zigue-zague, listras,
+    pontos, sol. As juntas pretas entre eles são o ritmo da grade.</p>
+    <p>É a raiz do tamborzão, que vem do atabaque: a batida tem ancestralidade, e o desenho também. Cada trilha é uma
+    fileira de ladrilhos. <b>Muda, os ladrilhos ficam no escuro</b>, só o contorno. <b>Tocando, eles acendem</b>
+    e trocam de símbolo no tempo. A estrutura do Byte Beats fica: cartões, pílulas, números grandes, o kaomoji.</p>
+  </div>
+
+  <h2>Os símbolos</h2>
+  <p class="mono">a biblioteca de ladrilhos · cada peça do kit e cada efeito ganha o seu</p>
+  <canvas id="motifs" width="1008" height="252"></canvas>
+
+  <h2>Os cartões</h2>
+  <p class="mono">toque para ligar e desligar: os ladrilhos acendem e trocam no tempo</p>
+  <div class="pads" id="pads"></div>
+
+  <h2>Paleta</h2>
+  <p class="mono">chão preto e as penas da arara: vermelho → laranja → amarelo → verde → turquesa → azul</p>
+  <div class="sws" id="pal"></div>
+
+  <h2>Na tela do FM-1</h2>
+  <p class="mono">240 × 240, esboços animados · tema TERRA (padrão) e CLARO</p>
+  <div class="screens">
+    <div class="dev big"><canvas id="sBoot" width="240" height="240"></canvas><span>BOOT: o mosaico acende em onda, ladrilho por ladrilho, até a faixa do nome.</span></div>
+    <div class="dev"><canvas id="sHome" width="240" height="240"></canvas><span>HOME (TERRA): uma fileira de ladrilhos por trilha; acesa quando toca, só contorno quando muda.</span></div>
+    <div class="dev"><canvas id="sHomeC" width="240" height="240"></canvas><span>HOME (CLARO): fundo creme, para luz do dia.</span></div>
+    <div class="dev"><canvas id="sGrid" width="240" height="240"></canvas><span>TRILHAS: o tracker; cabeçalhos em ladrilho, efeitos nas cores.</span></div>
+    <div class="dev"><canvas id="sKit" width="240" height="240"></canvas><span>KIT TAMBOR: cada peça é um ladrilho com o seu símbolo; a tocada acende.</span></div>
+    <div class="dev"><canvas id="sFx" width="240" height="240"></canvas><span>AO VIVO: os efeitos como ladrilhos; o número grande é a intensidade.</span></div>
+  </div>
+
+  <h2>Controles</h2>
+  <p class="mono">no hub e no editor web; no FM-1 viram a linha dos quatro knobs</p>
+  <div class="fx">
+    <div class="cell"><div class="box"><div class="hl" style="bottom:70%"></div><div class="vl" style="left:80%"></div><div class="dot" style="left:80%;bottom:70%"></div></div><div class="rule"></div><div class="lab"><span>FILTRO<br>VARRE</span></div></div>
+    <div class="cell"><div class="box"><div class="hl" style="bottom:35%"></div><div class="vl" style="left:25%"></div><div class="dot" style="left:25%;bottom:35%;background:var(--turquesa)"></div></div><div class="rule"></div><div class="lab"><span>ECO<br>MC</span></div></div>
+    <div class="cell"><div class="box" style="border:0"><div class="fader"><div class="knob" style="bottom:72%"></div></div></div><div class="rule"></div><div class="lab"><span>GRAVE<br>DRIVE</span><span class="num">72</span></div></div>
+    <div class="cell"><div class="box" style="border:0"><div class="fader"><div class="knob" style="bottom:18%;background:var(--azul)"></div></div></div><div class="rule"></div><div class="lab"><span>SALA<br>REVERB</span><span class="num">18</span></div></div>
+  </div>
+
+  <h2>Como está o baile</h2>
+  <p class="mono">o status, por quantas trilhas tocam</p>
+  <div class="kao">
+    <div><b>(-_- )</b><span>Parado</span></div>
+    <div><b>(o_O )</b><span>Esquentando</span></div>
+    <div><b>(⌐■_■)</b><span>No grave</span></div>
+    <div><b>( ✧Д✧)</b><span>Paredão</span></div>
+  </div>
+
+  <h2>Tipografia</h2>
+  <p class="mono">três vozes</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Voz</th><th>Onde</th><th>Exemplo</th></tr></thead>
+    <tbody>
+      <tr><td>Título</td><td>Logo, boot, nomes dos cartões, números grandes</td><td style="font:900 28px 'Archivo Black'">TAMBORZÃO 72</td></tr>
+      <tr><td>Rótulo</td><td>Botões, status, controles: grosso e em caixa alta</td><td style="font:800 18px Archivo;text-transform:uppercase">Gerar baile · No grave</td></tr>
+      <tr><td>Legenda</td><td>Descrições e ajuda: mono, cinza, espaçada</td><td class="mono" style="font-family:'IBM Plex Mono'">toque nos cartões para ligar</td></tr>
+      <tr><td>No FM-1</td><td>As fontes do KAWA (BASE, 8-BIT) com acentos; logo e ladrilhos vêm como imagem (gen_art.py)</td><td style="font:14px Silkscreen">GRAVE ROL C-1</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>O som</h2>
+  <p class="mono">o que cada gênero da 1.0 traz para o firmware</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Gênero</th><th>BPM</th><th>Elementos</th><th>No BAILE</th></tr></thead>
+    <tbody>
+      <tr><td>Raiz / Volt</td><td>~130</td><td>Herança do Miami bass: 808 longa, clap, cowbell, hats em semicolcheia</td><td>Kit VOLT, break VOLT, grave com glide</td></tr>
+      <tr><td>Tamborzão</td><td>~130</td><td>Atabaques graves e agudos sincopados, caixa seca, o "atraso"</td><td>Kit TAMBOR, break TAMBOR, modelo de GROOVE</td></tr>
+      <tr><td>Funk 150</td><td>~150</td><td>Mais rápido e curto, kick duro, caixa estalada, repetição</td><td>Kit 150, break CENT50, ROLL e retrig</td></tr>
+      <tr><td>Mandelão</td><td>~130</td><td>Minimalista e distorcido: kick estourado, metal, ruído, reverse</td><td>Kit MANDELA, drive alto, escala frígia, banco DESTROY</td></tr>
+      <tr><td>Brega funk</td><td>a medir</td><td>Kick seco, palmas dobradas, timbal, teclado por cima</td><td>Kit BREGA, modelo de GROOVE próprio</td></tr>
+      <tr><td>Montagem</td><td>qualquer</td><td>Fragmentos recortados e repetidos sobre o beat</td><td>MONTAGEM sobre as 16 fatias, REV / CUT / HOP</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>Vocabulário</h2>
+  <p class="mono">as palavras da interface</p>
+  <div class="chips" id="vocab"></div>
+
+  <h2>Regras</h2>
+  <div class="two">
+    <ul class="list">
+      <li><b>Cor é som.</b> Ladrilho aceso só onde algo toca, está ligado ou foi escolhido. O resto é contorno no preto.</li>
+      <li><b>Feito à mão.</b> Traço grosso e um pouco torto, quadrados que não são perfeitos, juntas pretas entre eles.</li>
+      <li><b>Um símbolo por coisa.</b> Cada peça do kit e cada efeito tem o seu ladrilho, sempre o mesmo.</li>
+    </ul>
+    <ul class="list">
+      <li><b>Nada de samples de discos, de MCs ou do Volt Mix original.</b> Tudo é sintetizado.</li>
+      <li><b>Símbolos geométricos, não sagrados.</b> Espirais, losangos, listras; nada copiado de um povo ou de um rito específico.</li>
+      <li><b>Sem pessoas, armas, neon ou gradiente.</b> Cores chapadas, como tinta.</li>
+    </ul>
+  </div>
+
+  <footer class="mono">BAILE · mood board v4 · fork do KAWA (Omnipotard), GPL-3.0-only · estrutura: Byte Beats · padrão: mosaico de ladrilhos pintados · cores: penas de arara · os esboços de tela são guias, não pixels finais</footer>
+</main>
+<script>
+const P={preto:'#141210',carvao:'#1E1A16',carvao2:'#2A241E',creme:'#F3EBDD',cinza:'#9C9184',vermelho:'#E3212B',laranja:'#F26A1B',amarelo:'#FFCF1F',verde:'#5AAE3A',turquesa:'#14A3A8',azul:'#1F5BD6'};
+const COLS=[P.vermelho,P.laranja,P.amarelo,P.verde,P.turquesa,P.azul];
+const LIGHT=new Set([P.laranja,P.amarelo]);
+
+/* ---- seeded random, so a hand-drawn tile is the same every frame ---- */
+function rng(s){let x=(s*2654435761)>>>0||1;return()=>((x=(x^(x<<13))>>>0,x=(x^(x>>>17))>>>0,x=(x^(x<<5))>>>0)/4294967296)}
+
+/* ---- a rough square ---- */
+function roughRect(c,x,y,s,fill,seed,j){const r=rng(seed);const J=()=>(r()-.5)*j;
+  c.beginPath();c.moveTo(x+J(),y+J());c.lineTo(x+s/2+J(),y+J()*.5);c.lineTo(x+s+J(),y+J());c.lineTo(x+s+J()*.5,y+s/2+J());
+  c.lineTo(x+s+J(),y+s+J());c.lineTo(x+s/2+J(),y+s+J()*.5);c.lineTo(x+J(),y+s+J());c.lineTo(x+J()*.5,y+s/2+J());c.closePath();c.fillStyle=fill;c.fill()}
+
+/* ---- the motifs: drawn in a unit square (0..1), wobbly lines ---- */
+const MOTIFS=['chevron','losango','listrasV','sol','diagonal','pontos','espiral','zigue','quadros','xis','trama','alvo','triangulo','listrasH','grade','gota'];
+function motif(c,kind,x,y,s,ink,seed,lw){
+  const r=rng(seed*7+3);const w=()=>(r()-.5)*s*.04;
+  const L=(pts)=>{c.beginPath();pts.forEach(([a,b],i)=>{const X=x+a*s+w(),Y=y+b*s+w();i?c.lineTo(X,Y):c.moveTo(X,Y)});c.stroke()};
+  c.strokeStyle=ink;c.fillStyle=ink;c.lineWidth=lw;c.lineCap='round';c.lineJoin='round';
+  const m=.2,M=.8;
+  switch(kind){
+  case 'chevron': for(let i=0;i<3;i++){const yy=.28+i*.22;L([[.2,yy],[.5,yy+.12],[.8,yy]])}break;
+  case 'losango': L([[.5,.18],[.82,.5],[.5,.82],[.18,.5],[.5,.18]]);c.beginPath();c.moveTo(x+.5*s,y+.38*s);c.lineTo(x+.62*s,y+.5*s);c.lineTo(x+.5*s,y+.62*s);c.lineTo(x+.38*s,y+.5*s);c.fill();break;
+  case 'listrasV': for(let i=0;i<5;i++){const xx=.22+i*.14;L([[xx,m],[xx,M]])}break;
+  case 'sol': for(let i=0;i<8;i++){const a=i*Math.PI/4;L([[.5,.5],[.5+Math.cos(a)*.32,.5+Math.sin(a)*.32]])}c.beginPath();c.arc(x+.5*s,y+.5*s,s*.34,0,7);c.stroke();break;
+  case 'diagonal': [0,.2,.4].forEach(k=>L([[m+k,M],[M,m+k]]));[.2,.4].forEach(k=>L([[m,M-k],[M-k,m]]));break;
+  case 'pontos': for(let i=0;i<3;i++)for(let j=0;j<3;j++){c.beginPath();c.arc(x+(.27+i*.23)*s+w(),y+(.27+j*.23)*s+w(),s*.05,0,7);c.fill()}break;
+  case 'espiral':{const p=[[.5,.5],[.6,.5],[.6,.62],[.38,.62],[.38,.38],[.72,.38],[.72,.74],[.26,.74],[.26,.26],[.8,.26]];L(p)}break;
+  case 'zigue': for(let k=0;k<2;k++){const yy=.33+k*.32;L([[.18,yy],[.32,yy-.1],[.46,yy+.08],[.6,yy-.1],[.74,yy+.08],[.84,yy-.04]])}break;
+  case 'quadros': [.16,.29,.42].forEach(o=>L([[o,o],[1-o,o],[1-o,1-o],[o,1-o],[o,o]]));break;
+  case 'xis': L([[m,m],[M,M]]);L([[M,m],[m,M]]);L([[m,m],[M,m],[M,M],[m,M],[m,m]]);break;
+  case 'trama': for(let i=0;i<4;i++){const d=.2+i*.2;L([[m,d],[d,m]]);L([[d,M],[M,d]])}for(let i=0;i<4;i++){const d=.2+i*.2;L([[m,1-d],[d,M]]);L([[1-d,m],[M,1-d]])}break;
+  case 'alvo': c.beginPath();c.arc(x+.5*s,y+.5*s,s*.3,0,7);c.stroke();c.beginPath();c.arc(x+.5*s,y+.5*s,s*.1,0,7);c.fill();break;
+  case 'triangulo': L([[.5,.2],[.8,.78],[.2,.78],[.5,.2]]);L([[.5,.42],[.64,.68],[.36,.68],[.5,.42]]);break;
+  case 'listrasH': for(let i=0;i<5;i++){const yy=.22+i*.14;L([[m,yy],[M,yy]])}break;
+  case 'grade': L([[.38,m],[.38,M]]);L([[.62,m],[.62,M]]);L([[m,.38],[M,.38]]);L([[m,.62],[M,.62]]);break;
+  case 'gota': L([[.3,.7],[.3,.4],[.5,.25],[.7,.4],[.7,.7],[.5,.8],[.3,.7]]);c.beginPath();c.arc(x+.5*s,y+.55*s,s*.08,0,7);c.fill();break;
+  }
+}
+/* one tile: lit = colour fill + ink motif; dark = black tile with a faint coloured motif */
+function tile(c,x,y,s,kind,col,lit,seed,lw){
+  if(lit){roughRect(c,x,y,s,col,seed,s*.06);
+    const ink=seed%3!==0?P.preto:col===P.amarelo?P.vermelho:col===P.azul?P.amarelo:col===P.vermelho?P.amarelo:col===P.turquesa?P.azul:P.preto;motif(c,kind,x,y,s,ink,seed,lw)}
+  else{roughRect(c,x,y,s,P.carvao,seed,s*.06);c.globalAlpha=.55;motif(c,kind,x,y,s,col,seed,lw);c.globalAlpha=1}
+}
+
+/* ---- the band at the top: the whole mosaic, a wave of light through it ---- */
+const band=document.getElementById('band').getContext('2d');
+function drawBand(t){const s=64,g=8,cols=Math.ceil(1440/(s+g)),rows=3;band.fillStyle=P.preto;band.fillRect(0,0,1440,216);
+  for(let r=0;r<rows;r++)for(let k=0;k<cols;k++){const id=r*101+k*7;const wave=Math.sin(k*.35-t*.25+r*.8);
+    tile(band,4+k*(s+g),4+r*(s+g),s,MOTIFS[(id+(wave>.6?Math.floor(t/4):0))%16],COLS[(id+r)%6],wave>-.2,id,5)}}
+
+/* ---- motif library ---- */
+(function(){const c=document.getElementById('motifs').getContext('2d');const s=116,g=10;
+  c.fillStyle=P.preto;c.fillRect(0,0,1008,252);
+  MOTIFS.forEach((m,i)=>{const x=4+(i%8)*(s+g+0),y=4+Math.floor(i/8)*(s+g);tile(c,x,y,s,m,COLS[i%6],true,i*13+1,6)});
+})();
+
+/* ---- pad cards ---- */
+const PADS=[['Tambor','kit · tamborzão'],['Grave 808','grave · glide'],['Volt','kit · raiz'],['Melody','fm · teclado'],['Mandela','kit · mandelão'],['Sirene','ruído · efeito']];
+const padsEl=document.getElementById('pads');const padState=[true,true,false,true,false,false];
+PADS.forEach(([n,ty],i)=>{const d=document.createElement('div');d.className='pad'+(padState[i]?' on':'');d.style.setProperty('--c',COLS[i%6]);
+  d.innerHTML=`<div class="l"><h3>${n.split(' ').join('<br>')}</h3><p>${ty}</p></div><canvas width="372" height="168"></canvas>`;
+  d.onclick=()=>{padState[i]=!padState[i];d.classList.toggle('on',padState[i]);status()};padsEl.appendChild(d)});
+const padCtx=[...document.querySelectorAll('.pad canvas')].map(e=>e.getContext('2d'));
+function drawPad(c,i,on,t){c.fillStyle=P.carvao;c.fillRect(0,0,372,168);const s=52,g=8;
+  for(let r=0;r<2;r++)for(let k=0;k<6;k++){const id=i*31+r*6+k;const step=(k+r*6);const beat=Math.floor(t/2)%12;
+    const lit=on&&((id+Math.floor(t/3))%4!==0||step===beat);
+    tile(c,6+k*(s+g)+4,20+r*(s+g)+10,s,MOTIFS[(id+(on?Math.floor(t/6):0))%16],COLS[(i+k+r)%6],lit,id,4)}}
+function status(){const n=padState.filter(Boolean).length;
+  const [s,k]=n===0?['Parado','(-_- )']:n<=2?['Esquentando','(o_O )']:n<=4?['No grave','(⌐■_■)']:['Paredão','( ✧Д✧)'];
+  document.getElementById('status').innerHTML=`<span>Tom: <b>Fá menor</b></span><span>Tempo: <b>130 BPM</b></span><span>Estilo: <b>Tamborzão</b></span><span>Status: <b>${s}</b></span><span class="k">${k}</span>`}
+status();
+
+/* ---- palette, vocab ---- */
+document.getElementById('pal').innerHTML=[['Preto',P.preto,'chão, juntas, traço'],['Carvão',P.carvao,'ladrilho apagado, cartões'],['Creme',P.creme,'texto, tema CLARO'],
+  ['Cinza',P.cinza,'legendas'],['Vermelho',P.vermelho,'trilha 1, REC'],['Laranja',P.laranja,'trilha 2'],['Amarelo',P.amarelo,'trilha 3, destaque'],['Verde',P.verde,'trilha 4, PLAY'],['Turquesa',P.turquesa,'trilha 5'],['Azul',P.azul,'trilha 6']]
+  .map(([n,h,u])=>`<div class="sw"><i style="background:${h};${h===P.preto?'box-shadow:inset 0 0 0 2px #3a332b':''}"></i><div><b>${n}</b>${h}<br><span>${u}</span></div></div>`).join('');
+document.getElementById('vocab').innerHTML=['Grave','Tambor','Puxa','Corta','Segura','Sobe','Virada','Montagem','Paredão','Mandela','Tuin','Sirene','Gerar','Eco MC','Grave+']
+  .map(w=>`<span class="chip">${w}</span>`).join('');
+
+/* ---- device screens ---- */
+function txt(c,s,x,y,col,size=8,font='Silkscreen',align='left'){c.fillStyle=col;c.font=`${size}px ${font}`;c.textAlign=align;c.fillText(s,x,y)}
+function knobs(c,labels,bg,fg){c.fillStyle=bg;c.fillRect(0,226,240,14);labels.forEach((n,i)=>{c.fillStyle=[P.vermelho,P.amarelo,P.verde,P.azul][i];c.fillRect(4+i*59,229,7,7);txt(c,n,14+i*59,236,fg,8)})}
+
+function boot(c,t){c.fillStyle=P.preto;c.fillRect(0,0,240,240);const s=26,g=4;
+  for(let r=0;r<8;r++)for(let k=0;k<8;k++){if(r===3||r===4)continue;const id=r*17+k*5;const d=Math.abs(k-3.5)+Math.abs(r-3.5);
+    tile(c,1+k*(s+g)+2,1+r*(s+g)+2,s,MOTIFS[id%16],COLS[(id)%6],t/2>d+(r<3?0:1),id,2)}
+  c.fillStyle=P.preto;c.fillRect(0,92,240,58);
+  txt(c,'BAILE',120,134,P.creme,40,'Archivo Black','center');
+  if(t>14&&Math.floor(t/6)%2)txt(c,'APERTE UMA TECLA',120,147,P.amarelo,7,'Silkscreen','center');
+}
+function home(c,t,light){
+  const bg=light?P.creme:P.preto,fg=light?P.preto:P.creme,card=light?'#E4DACA':P.carvao;
+  c.fillStyle=bg;c.fillRect(0,0,240,240);
+  txt(c,'BAILE',4,13,fg,12,'Archivo Black');txt(c,'130 BPM',150,12,P.cinza,8);txt(c,'(⌐■_■)',236,12,light?P.vermelho:P.amarelo,9,'IBM Plex Mono','right');
+  const names=[['TAMBOR','KIT'],['GRAVE','808'],['MELODY','FM'],['VOLT','KIT'],['SIRENE','RUÍDO'],['MINHA','SAMPLE']];const on=[1,1,1,0,1,0];
+  names.forEach(([n,ty],i)=>{const y=20+i*34,col=COLS[i%6];c.fillStyle=card;c.fillRect(2,y,236,31);
+    if(i===1){c.fillStyle=col;c.fillRect(2,y,5,31)}
+    txt(c,n,i===1?11:7,y+14,fg,10,'Archivo Black');txt(c,ty,i===1?11:7,y+25,P.cinza,7);
+    for(let k=0;k<5;k++){const id=i*11+k;const beat=Math.floor(t/2)%5;
+      const lit=on[i]&&(k===beat||(id+Math.floor(t/4))%3===0);
+      if(light&&!lit){roughRect(c,96+k*28,y+2,26,'#D6CBB8',id,1.5);c.globalAlpha=.6;motif(c,MOTIFS[id%16],96+k*28,y+2,26,col,id,2);c.globalAlpha=1}
+      else tile(c,96+k*28,y+2,26,MOTIFS[(id+(on[i]?Math.floor(t/8):0))%16],COLS[(i+k)%6],lit,id,2)}});
+  knobs(c,['VOL','PAN','DRIVE','ECO'],card,fg);
+}
+function grid(c,t){c.fillStyle=P.preto;c.fillRect(0,0,240,240);
+  txt(c,'TRILHAS',4,13,P.creme,12,'Archivo Black');txt(c,'P01',100,12,P.cinza,8);
+  c.fillStyle=P.vermelho;c.beginPath();c.arc(198,8,4,0,7);c.fill();txt(c,'REC',236,12,P.creme,8,'Silkscreen','right');
+  [['TAMBOR',22,P.amarelo],['GRAVE',96,P.vermelho],['MELODY',170,P.azul]].forEach(([n,x,col],i)=>{c.fillStyle=col;c.fillRect(x,17,66,13);txt(c,n,x+33,27,i===0?P.preto:P.creme,8,'Silkscreen','center')});
+  const tb=['TB1','','TB2','TB1','','','TB3','','TB1','','TB2','TB1','','TB3','',''];
+  const gv=['C-1','','','','---','','G-0','','C-1','','','D#1','','','',''];const gf=['GLI','','','','','','BND','','','','','GLI','','','',''];
+  const ml=['','','D#3','','','G-3','','','','','D#3','','C-3','','',''];const play=Math.floor(t/3)%16;
+  for(let r=0;r<16;r++){const y=42+r*11.5;
+    if(r===play){c.fillStyle=P.carvao2;c.fillRect(0,y-8,240,11)}else if(r%4===0){c.fillStyle=P.carvao;c.fillRect(0,y-8,240,11)}
+    txt(c,r.toString(16).toUpperCase().padStart(2,'0'),4,y,r%4===0?P.amarelo:P.cinza,8);
+    txt(c,tb[r]||'·',24,y,tb[r]?P.creme:'#4a4239',8);if(tb[r])txt(c,'ROL',52,y,P.amarelo,8);
+    txt(c,gv[r]||'·',98,y,gv[r]?P.creme:'#4a4239',8);if(gf[r])txt(c,gf[r],126,y,'#FF5A4F',8);
+    txt(c,ml[r]||'·',172,y,ml[r]?P.creme:'#4a4239',8);if(ml[r])txt(c,'VIB',200,y,'#2FC6CB',8)}
+  c.fillStyle=P.amarelo;c.fillRect(0,42+play*11.5-8,3,11);
+  knobs(c,['NOTA','VOL','EFEITO','VALOR'],P.carvao,P.creme);
+}
+function kit(c,t){c.fillStyle=P.preto;c.fillRect(0,0,240,240);
+  txt(c,'KIT TAMBOR',4,13,P.creme,12,'Archivo Black');txt(c,'2/8',236,12,P.cinza,8,'Silkscreen','right');
+  const p=['KICK','TB GRV','TB AGU','CAIXA','PALMA','HAT','HAT AB','TUM','AGOGÔ','CUÍCA','SURDO','TAMBOR','CHOC.','APITO','SIRENE','TIRO'];
+  const seq=[1,0,2,1,4,1,3,7];const hit=seq[Math.floor(t/4)%8];
+  for(let i=0;i<16;i++){const x=4+(i%4)*59,y=19+Math.floor(i/4)*51,on=i===hit;
+    tile(c,x+6,y+2,34,MOTIFS[i],COLS[i%6],on,i*13+1,2.5);
+    txt(c,p[i],x+23,y+46,on?P.creme:P.cinza,7,'Silkscreen','center')}
+  knobs(c,['AFINA','DECAY','DRIVE','VOL'],P.carvao,P.creme);
+}
+function fx(c,t){c.fillStyle=P.preto;c.fillRect(0,0,240,240);
+  txt(c,'AO VIVO',4,13,P.creme,12,'Archivo Black');txt(c,'BANCO 1',236,12,P.cinza,8,'Silkscreen','right');
+  const n=['PUXA','CORTA','SEGURA','SOBE','GRAVE+','ECO MC','SIRENE','VIRADA'];const held=Math.floor(t/10)%8;
+  for(let i=0;i<8;i++){const x=4+(i%2)*118,y=19+Math.floor(i/2)*44,on=i===held;
+    c.fillStyle=on?COLS[i%6]:P.carvao;c.fillRect(x,y,114,40);
+    tile(c,x+4,y+4,32,MOTIFS[(i*5+(on?Math.floor(t/3):0))%16],COLS[(i+1)%6],on,i*7+2,2.5);
+    txt(c,n[i],x+42,y+25,on&&LIGHT.has(COLS[i%6])?P.preto:P.creme,12,'Archivo Black')}
+  const v=40+Math.round(30*Math.sin(t/6));txt(c,n[held],4,208,P.cinza,8);txt(c,String(v).padStart(2,'0'),236,220,P.amarelo,34,'Archivo Black','right');
+  knobs(c,['MIX','TEMPO','TOM','FILTRO'],P.carvao,P.creme);
+}
+const screens=[['sBoot',boot],['sHome',(c,t)=>home(c,t,false)],['sHomeC',(c,t)=>home(c,t,true)],['sGrid',grid],['sKit',kit],['sFx',fx]]
+  .map(([id,f])=>[document.getElementById(id).getContext('2d'),f]);
+let t=0,last=0;
+function loop(now){if(now-last>110){last=now;t++;
+  drawBand(t);screens.forEach(([c,f])=>f(c,t));padCtx.forEach((c,i)=>drawPad(c,i,padState[i],t));}
+  requestAnimationFrame(loop)}
+document.fonts.ready.then(()=>requestAnimationFrame(loop));
+</script>
+</body>
+</html>

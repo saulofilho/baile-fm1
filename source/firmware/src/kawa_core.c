@@ -55,7 +55,7 @@ typedef struct {
     uint8_t tick[16];                           /* 1..12 */
     uint8_t len, on, pad[2];                    /* len 1..16 */
 } groove_t;
-#define PRJ_MAGIC 0x4157414Bu                   /* "KAWA" */
+#define PRJ_MAGIC 0x4A525042u                   /* "BPRJ": BAILE's projects (KAWA's are "KAWA") */
 #define PRJ_VERSION 5u
 typedef struct {
     uint32_t magic, version;
@@ -213,7 +213,7 @@ static uint32_t rnd(uint32_t n) { return n ? (xr(&rnd_main) >> 8) % n : 0u; }
 #define USR_SIZE 0x9000u                        /* 36 KiB a slot */
 #define USR_DATA 0x100u
 #define USR_CAP (USR_SIZE - USR_DATA)           /* 36608 B of sound: 1.66 s at 22 kHz, 3.3 s at 11 kHz */
-#define USR_MAGIC 0x504D534Bu                   /* "KSMP" */
+#define USR_MAGIC 0x504D5342u                   /* "BSMP": BAILE's samples (KAWA's are "KSMP") */
 typedef struct {
     uint32_t magic, len, rate;                  /* len in samples; rate 22050 or 11025 */
     char name[12];

@@ -22,7 +22,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 FONTS = ROOT / "assets" / "fonts"
-LARGE = " #-0123456789?ABCDEFGKW"   # what KAWA writes in FONT_L: the tempo, the root of the scale, KAWA
+LARGE = " #-0123456789?ABCDEFGIKLW"   # what is written in FONT_L: the tempo, the root of the scale, BAILE
 
 # (name in the code, file, how, weight small, weight large)
 SPECS = [
