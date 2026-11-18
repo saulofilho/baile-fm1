@@ -119,6 +119,14 @@ Opcional, depois da 1.0: vocais sintéticos por formantes; modo LIVE do KAWA (la
   fragmentos de um break ou de um kit em grupos que se repetem, com avesso e tom; **VIRADA** (no lugar de RUFOS)
   acrescenta, num kit, a virada de caixa que acelera no fim do compasso. Teste novo no `features_test` (10). As
   escalas do KAWA já têm frígia e menor harmônica: ficam.
+- **2026-11-18, Fase 5 (sons e demo):** sons de fábrica novos, depois dos do KAWA (os índices que um projeto guarda
+  não mudam): **GRAVE 808**, **GRAVE TORTO**, **SUB**, **LEAD MELODY**, **SIRENE**, **PIANO MELODY**, **STAB**. Um
+  projeto novo já vem com o GRAVE 808 e o kit TAMBOR. A **demo** agora é "BAILE": um tamborzão em lá menor a 130,
+  4 patterns (intro com o break e o piano; o tamborzão com o 808; o drop com o refrão no lead, os acordes e o break
+  picotado; a virada com o filtro fechando) numa música de 5 entradas. A demo do KAWA mora agora no
+  `format_test` (que confere a conversão do save antigo). `tests/demo_baile.txt` carrega e toca a demo no
+  simulador; o áudio fica em `source/build/demo/baile-demo.wav`. Ficou de fora: um projeto de fábrica por gênero
+  (o KAWA só tem uma demo; dá para fazer depois, como várias demos no menu PROJETOS).
 
 ## Mood
 

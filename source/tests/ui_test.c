@@ -714,10 +714,10 @@ int main(void)
     knob(0, 5);                                         /* LEVEL is already at its end */
     CHECK(undo_h.n == n, "15. an operator knob at its end is not an undo step");
 
-    /* 16. the demo opens at 120 BPM on its last step; a new song is 120 BPM too */
+    /* 16. the demo (BAILE's) opens at 130 BPM on its last step; a new song is 120 BPM */
     fresh();
     pm_act = PM_DEMO; pm_do(PM_DEMO);
-    CHECK(prj.bpm == 120 && song_cur == prj.song_len - 1u && ui_pat == prj.song[song_cur].pat && prj.song_len == 7, "16. the demo: %u BPM, step %u of %u, pattern %u", prj.bpm, song_cur + 1u, prj.song_len, ui_pat);
+    CHECK(prj.bpm == 130 && song_cur == prj.song_len - 1u && ui_pat == prj.song[song_cur].pat && prj.song_len == 5, "16. the demo: %u BPM, step %u of %u, pattern %u", prj.bpm, song_cur + 1u, prj.song_len, ui_pat);
     pm_do(PM_NEW);
     CHECK(prj.bpm == 120 && ui_pat == 0 && song_cur == 0, "16. a new song: %u BPM", prj.bpm);
     /* 17. a black key on a kit or slice track: the drum or slice on its left, an octave up (notes 17..32), shown with a + */
@@ -739,12 +739,12 @@ int main(void)
         CHECK(strcmp(a, b) != 0, "17. slices 10 and 12 an octave up differ (\"%s\", \"%s\")", a, b);
     }
 
-    /* 18. the demo shows its last pattern (7/7), but the first PLAY still starts the song at its first one;
+    /* 18. the demo shows its last entry's pattern, but the first PLAY still starts the song at its first one;
      * after that, PLAY follows the pattern on the screen again, as everywhere else */
     fresh();
     pm_act = PM_DEMO; pm_do(PM_DEMO);
     play_toggle();
-    CHECK(sq_start_pos == 0 && prj.song[sq_start_pos].pat == 0 && ui_pat == prj.song_len - 1u,
+    CHECK(sq_start_pos == 0 && prj.song[sq_start_pos].pat == 0 && ui_pat == prj.song[prj.song_len - 1u].pat,
           "18. demo: the screen shows pattern %u of %u, the first PLAY starts song entry %u", ui_pat + 1u, prj.song_len, sq_start_pos);
     sq_play = 0; sq_req = 0;
     ui_pat = 3; song_cur = 3;

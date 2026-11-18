@@ -246,14 +246,22 @@ static const preset_t PRESETS[] = {
     {{"MEU SAMPLE 2", "MY SAMPLE 2", "MI SAMPLE 2"}, E_SAMPLE, {(int8_t)(BRK_N + 1u), 1, 0, 0, 11, 0, 0, 15}, {0, 15, 15, 3}},
     {{"MEU SAMPLE 3", "MY SAMPLE 3", "MI SAMPLE 3"}, E_SAMPLE, {(int8_t)(BRK_N + 2u), 1, 0, 0, 11, 0, 0, 15}, {0, 15, 15, 3}},
     {{"MEU SAMPLE 4", "MY SAMPLE 4", "MI SAMPLE 4"}, E_SAMPLE, {(int8_t)(BRK_N + 3u), 1, 0, 0, 11, 0, 0, 15}, {0, 15, 15, 3}},
+    /* BAILE's sounds, after KAWA's (so the indices a project holds keep their sounds) */
+    {{"GRAVE 808", "808 BASS", "BAJO 808"}, E_WAVE, {3, 4, 0, 10, 0, 0, 3, 6}, {0, 12, 9, 7}},       /* a punch, a slide */
+    {{"GRAVE TORTO", "BENT 808", "808 TORCIDO"}, E_WAVE, {1, 3, 0, 9, 3, 2, 3, 6}, {0, 11, 10, 6}},  /* mandelao: crushed */
+    {{"SUB", "SUB", "SUB"}, E_WAVE, {2, 0, 0, 6, 0, 0, 3, 0}, {0, 15, 15, 5}},
+    {{"LEAD MELODY", "MELODY LEAD", "LEAD MELODY"}, E_PULSE, {1, 0, 4, 13, 0, 3, 3, 3}, {0, 8, 11, 6}},
+    {{"SIRENE", "SIREN", "SIRENA"}, E_PULSE, {2, -12, 15, 14, 0, 0, 3, 0}, {6, 15, 15, 8}},
+    {{"PIANO MELODY", "MELODY PIANO", "PIANO MELODY"}, E_FM, {0, 0, 0, 0, 4, 0, 0, 0}, {0, 15, 15, 6}},
+    {{"STAB", "STAB", "STAB"}, E_FM, {3, 0, 0, 0, 6, 0, 0, 0}, {0, 6, 0, 3}},
 };
-#define KIT_DEMO 6                              /* the demo's kit (its first knob): SNES */
-#define BRK_DEMO 3                              /* the demo's break: MANDELA (the boss) */
+#define KIT_DEMO 1                              /* the demo's kit (its first knob): TAMBOR */
+#define BRK_DEMO 0                              /* the demo's break: TAMBOR */
 #define NPRESET ((uint8_t)(sizeof(PRESETS) / sizeof(PRESETS[0])))
 /* each track's sound on a new project (an index in PRESETS) */
 static const uint8_t TRK_ENGINE0[NTRK] = {E_PULSE, E_FM, E_WAVE, E_NOISE, E_KIT, E_SAMPLE};   /* a new project: lead, */
-static const int8_t TRK_S0[NTRK] = {1, 0, 0, 0, 0, 0};   /* FM, bass, hats, kit, break (each its engine's sound with this */
-                                                          /* first knob: LEAD 25, TINE EP, NES BASS, HI-HAT, VOLT, TAMBORZAO) */
+static const int8_t TRK_S0[NTRK] = {1, 0, 3, 0, 1, 0};   /* FM, bass, hats, kit, break (each its engine's sound with this */
+                                                          /* first knob: LEAD 25, TINE EP, GRAVE 808, HI-HAT, TAMBOR, TAMBORZAO) */
 
 /* ---- notes */
 static const char *const NOTE_NAME[12] = {"C-", "C#", "D-", "D#", "E-", "F-", "F#", "G-", "G#", "A-", "A#", "B-"};

@@ -9,6 +9,115 @@
 static int fails;
 #define CHECK(c, ...) do { if (!(c)) { printf("FAIL  " __VA_ARGS__); printf("\n"); fails++; } } while (0)
 
+/* KAWA's demo, "KAWA QUEST", as KAWA 0.2 saved it in tests/fixtures/demo-v4.kawa (BAILE has its own demo) */
+static void kawa_quest(void)
+{
+    uint32_t p, r;
+    prj_new();
+    sound_preset(T1, preset_named(E_PULSE, 1));  /* (KAWA's new project: LEAD 25, NES BASS, HI-HAT) */
+    sound_preset(T3, preset_named(E_WAVE, 0));
+    sound_preset(T4, preset_named(E_NOISE, 0));
+    prj.bpm = 120;                              /* (the demo and a new song both start at 120) */
+    memcpy(prj.name, "KAWA QUEST", 11);
+    prj.root = 0;                               /* C major (the dungeon and the boss are A minor: the same notes) */
+    prj.scale = 1;
+    sound_preset(T2, preset_named(E_FM, 11));   /* KALIMBA */
+    sound_preset(T5, preset_named(E_KIT, 6));
+    sound_preset(T6, preset_named(E_SAMPLE, 3));
+    prj.snd[T1].p[P_ECHO] = 3;
+    prj.snd[T2].p[P_ECHO] = 7;
+    prj.snd[T2].p[P_VERB] = 6;
+    prj.snd[T2].p[P_VOL] = 11;
+    prj.snd[T4].p[P_VOL] = 10;
+    prj.snd[T6].p[P_VOL] = 13;
+    prj.snd[T1].p[P_VERB] = 3;
+    for (p = 0; p < 7u; p++)
+        prj.pat[p].len = 32;
+    /* P1, P2: the overworld */
+    lane(0, T1, "C5 . E5 G5 . E5 C6 . A5 . G5 . E5 . D5 . F5 . A5 . G5 E5 . C5 D5 . E5 . C5 . x .", 12);
+    lane(1, T1, "E5 . G5 A5 . G5 E5 . D5 . E5 D5 C5 . A4 . B4 . C5 D5 . E5 G5 . F5 . E5 D5 C5 . . x", 12);
+    lane(0, T3, "C3 . C4 . G3 . C4 . A2 . A3 . E3 . A3 . F2 . F3 . C3 . F3 . G2 . G3 . D3 . G3 .", 13);
+    lane(1, T3, "A2 . A3 . E3 . A3 . F2 . F3 . C3 . F3 . G2 . G3 . D3 . G3 . C3 . C4 . G3 . C4 .", 13);
+    for (p = 0; p < 2u; p++) {
+        static const uint8_t CH[2][4] = {{72, 69, 65, 67}, {69, 65, 67, 72}};   /* roots: C Am F G / Am F G C */
+        static const uint8_t MN[2][4] = {{0, 1, 0, 0}, {1, 0, 0, 0}};
+        for (r = 0; r < 32u; r += 8u) {
+            put(p, r + 2u, T2, CH[p][r / 8u], 9, FX_ARP, MN[p][r / 8u]);
+            put(p, r + 6u, T2, CH[p][r / 8u], 7, FX_ARP, MN[p][r / 8u]);
+        }
+        lane(p, T4, ". . 96 . . . 96 96 . . 96 . . . 96 . . . 96 . . . 96 96 . . 96 . . 96 96 96", 9);
+        lane(p, T5, "1 . . . 3 . . 1 1 . 1 . 3 . . . 1 . . . 3 . . 1 1 . 1 . 3 . 3 3", 13);
+    }
+    put(1, 4, T2, 96, 8, 0, 0);                 /* a counter-melody on the kalimba, between the chords */
+    put(1, 12, T2, 100, 8, 0, 0);
+    put(1, 20, T2, 98, 8, 0, 0);
+    put(1, 28, T2, 103, 8, 0, 0);
+    fx_at(1, 28, T1, FX_VIB, 6);
+    fx_at(0, 6, T1, FX_GLIDE, 4);
+    /* P3, P4: the dungeon (A minor, a 16th ostinato on the kalimba, drops of water) */
+    lane(2, T2, "A4 E5 C5 E5 A4 E5 C5 E5 A#4 F5 D5 F5 A#4 F5 D5 F5 A4 E5 C5 E5 A4 E5 C5 E5 G#4 E5 B4 E5 G#4 E5 B4 E5", 8);
+    lane(3, T2, "D5 A5 F5 A5 D5 A5 F5 A5 A4 E5 C5 E5 A4 E5 C5 E5 A#4 F5 D5 F5 A#4 F5 D5 F5 G#4 E5 B4 E5 G#4 E5 B4 E5", 8);
+    lane(2, T3, "A2 . . . . . . . A#2 . . . . . . . A2 . . . . . . . E2 . . . . . . .", 12);
+    lane(3, T3, "D3 . . . . . . . A2 . . . . . . . A#2 . . . . . . . E2 . . . . . . .", 12);
+    lane(2, T1, ". . . . . . A6 x . . . . . . . . . . . . . . E6 x . . . . . . . .", 6);
+    lane(3, T1, "E5 . . . . . F5 . E5 . . . D5 . . . C5 . . . B4 . . . G#4 . . . . . x .", 11);
+    fx_at(3, 24, T1, FX_VIB, 7);
+    fx_at(3, 6, T1, FX_GLIDE, 6);
+    lane(2, T5, "1 . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . .", 10);
+    lane(3, T5, "1 . . . . . . . 4 . 1 . . . . . 1 . . . . . . . 4 . 1 . . . 4 4", 11);
+    lane(3, T4, "96 . 96 . 96 . 96 . 96 . 96 . 96 . 96 . 96 . 96 . 96 . 96 . 96 . 96 . 96 . 96 96", 5);
+    fx_at(3, 30, T5, FX_ROLL, 2);
+    /* P5, P6: the boss (breakcore: the break chopped, kicks, a riff in harmonic minor) */
+    lane(4, T6, "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 1 2 1 2 5 6 7 8 3 4 11 12 13 13 15 16", 13);
+    lane(5, T6, "1 2 5 6 3 4 7 7 9 10 13 14 11 12 16 16 1 . 1 2 5 5 7 8 9 9 11 12 13 14 15 16", 13);
+    fx_at(4, 29, T6, FX_ROLL, 1);
+    fx_at(4, 31, T6, FX_ROLL, 3);
+    fx_at(5, 8, T6, FX_REV, 0);
+    fx_at(5, 14, T6, FX_ROLL, 2);
+    fx_at(5, 20, T6, FX_PITCH, -5);
+    fx_at(5, 31, T6, FX_ROLL, 5);
+    lane(4, T5, "1 . . . 1 . . . 1 . . . 1 . 1 . 1 . . . 1 . . . 1 . . . 1 . 1 1", 15);
+    lane(5, T5, "1 . . 1 1 . . . 1 . . 1 1 . 1 . 1 . . 1 1 . . . 1 . 1 . 1 1 1 1", 15);
+    fx_at(5, 30, T5, FX_ROLL, 3);
+    lane(4, T3, "A2 . A2 A3 . A2 C3 . G2 . G2 G3 . G2 A#2 . F2 . F2 F3 . F2 A2 . E2 . E2 E3 . G#2 B2 .", 14);
+    lane(5, T3, "A2 . A2 A3 . A2 C3 . G2 . G2 G3 . G2 A#2 . F2 . F2 F3 . F2 A2 . E2 E3 E2 E3 G#2 G#3 B2 B3", 14);
+    lane(4, T1, "A5 . . C6 . . B5 . G#5 . A5 . E5 . . . F5 . . E5 . . D5 . C5 . . . B4 . G#4 .", 12);
+    lane(5, T1, "A5 . . . . . . . A#5 . . . . . . . A5 . . . . . . . G#5 . . . . . . .", 12);
+    fx_at(4, 24, T1, FX_GLIDE, 5);
+    fx_at(5, 0, T1, FX_ARP, 1);                 /* chip arpeggios: Am, Bb, Am, E dim */
+    fx_at(5, 8, T1, FX_ARP, 0);
+    fx_at(5, 16, T1, FX_ARP, 1);
+    fx_at(5, 24, T1, FX_ARP, 8);
+    lane(4, T2, "A4 . . . . . . . G4 . . . . . . . F4 . . . . . . . E4 . . . . . . .", 7);
+    for (r = 0; r < 32u; r += 8u) fx_at(4, r, T2, FX_ARP, r ? 0 : 1);   /* Am G F E */
+    lane(4, T4, "96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96", 6);
+    lane(5, T4, "96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96 96", 7);
+    fx_at(5, 15, T4, FX_ROLL, 2);
+    for (r = 12; r < 16u; r++) prj.pat[5].live[r] = LF_LOOP32 + 1u;   /* live effects, recorded */
+    prj.pat[5].live[30] = prj.pat[5].live[31] = LF_LOOP64 + 1u;
+    for (r = 24; r < 30u; r++) prj.pat[5].live[r] = LF_LPF + 1u;
+    /* P7: the victory */
+    lane(6, T1, "G4 C5 E5 G5 C6 . . . . . . . A#5 . C6 . D6 . . . E6 . . . . . . . x . . .", 13);
+    fx_at(6, 4, T1, FX_VIB, 4);
+    fx_at(6, 20, T1, FX_VIB, 6);
+    lane(6, T2, "C5 . . . . . . . F4 . . . A#4 . . . C5 . . . . . . . C7 . G6 . E6 . C6 .", 8);
+    fx_at(6, 0, T2, FX_ARP, 0);
+    fx_at(6, 8, T2, FX_ARP, 0);
+    fx_at(6, 12, T2, FX_ARP, 0);
+    fx_at(6, 16, T2, FX_ARP, 0);
+    lane(6, T3, "C3 . C4 . C3 . C4 . F2 . F3 . A#2 . A#3 . C3 . . . . . . . . . . . x . . .", 13);
+    lane(6, T5, "9 . . . 3 . . . 1 . . . 3 . 3 3 9 . . . . . . . . . . . . . . .", 14);
+    fx_at(6, 15, T5, FX_ROLL, 3);
+    {
+        static const song_t SONG[7] = {{0, 2}, {1, 2}, {2, 2}, {3, 2}, {4, 2}, {5, 2}, {6, 1}};
+        memcpy(prj.song, SONG, sizeof SONG);
+        prj.song_len = 7;
+    }
+    prj.mode = 1;
+    brushes_reset();
+}
+
+
 static int slot_from(uint32_t k, const char *path)
 {
     FILE *f = fopen(path, "rb");
@@ -54,11 +163,9 @@ int main(void)
     n = slot_from(1, "tests/fixtures/demo-v4.kawa");
     CHECK(n == 26248, "demo-v4: %d bytes, not 26248", n);
     CHECK(slot_valid(1, 0) == 4, "demo-v4: not seen as format 4");
-    prj_demo();
+    kawa_quest();
     want = prj;
     want.bpm = 160;                             /* (the demo saved by 0.2 ran at 160; the demo now opens at 120) */
-    memset(want.name, 0, sizeof want.name);     /* (KAWA saved it under KAWA's name; BAILE's demo has its own) */
-    memcpy(want.name, "KAWA QUEST", 10);
     prj_new();
     CHECK(prj_load(1) == 0, "demo-v4: refused");
     CHECK(prj.version == PRJ_VERSION, "demo-v4: still format %u", prj.version);
