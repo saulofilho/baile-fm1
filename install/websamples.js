@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-only
 // Copyright (C) 2026 Omnipotard
-/* KAWA's web sample importer: install/kawa_samples.py in JavaScript, over Web MIDI (with SysEx).
+/* BAILE's web sample importer: install/baile_samples.py in JavaScript, over Web MIDI (with SysEx).
  *
  * Two halves, both used by samples.html and run by the Node test (source/tests/websamples_test.js):
- *   - the conversion, a port of kawa_samples.py's prepare(): mono, resampled to 22050 Hz (or 11025), the silence
+ *   - the conversion, a port of baile_samples.py's prepare(): mono, resampled to 22050 Hz (or 11025), the silence
  *     before the sound gone, cut to the slot, normalised to 0.95, a fade out, 8-bit mu-law. For a WAV file the
  *     result is the Python tool's, byte for byte (the test checks it); other formats are decoded by the browser;
  *   - the protocol of firmware/src/kawa_sysex.c: F0 7D 4B 57 cmd pack7(args) F7, one request and one reply
@@ -29,19 +29,19 @@
 
 const USR_SIZE = 0x9000, USR_DATA = 0x100;
 const CAP = USR_SIZE - USR_DATA;                      // 36608 B of sound: 1.66 s at 22050 Hz, 3.3 s at 11025 Hz
-const MAGIC = 0x504D5342;                             // "BSMP" (usr_hdr_t.magic; KAWA's is "KSMP")
+const MAGIC = 0x504D5342;                             // "BSMP" (usr_hdr_t.magic; BAILE's is "KSMP")
 const RATE = 22050, RATES = [22050, 11025];
 const NSLOTS = 4, NAME_MAX = 11, PACKET = 256, MIN_LEN = 64, HEADER_LEN = 36;
-const SILENCE = 0.003, PEAK = 0.95, FADE = 64;        // kawa_samples.py prepare()
+const SILENCE = 0.003, PEAK = 0.95, FADE = 64;        // baile_samples.py prepare()
 const CMD = { INFO: 1, BEGIN: 2, WRITE: 3, END: 4, ERASE: 5, LIST: 6 };
 const CMD_NAME = ["", "INFO", "BEGIN", "WRITE", "END", "ERASE", "LIST"];
-const RC = { 0: "ok", 1: "bad arguments", 2: "busy: stop KAWA first", 3: "flash error", 4: "CRC mismatch",
+const RC = { 0: "ok", 1: "bad arguments", 2: "busy: stop BAILE first", 3: "flash error", 4: "CRC mismatch",
              5: "out of order / no session" };
 // milliseconds: the Python tool's seconds x 1000 (ask(): INFO and LIST 2 s, BEGIN and END 3 s, WRITE 1.5 s,
 // ERASE 5 s, two tries). open and portopen are the web's own. The tests shorten them.
 const DELAY = { open: 300, portopen: 5000, tries: 2, info: 2000, list: 2000, begin: 3000, write: 1500, end: 3000,
                 erase: 5000 };
-const PORT_RE = /FM-1|Felucca|KAWA/i;                 // kawa_samples.py's pick(); the emulator ignores the case
+const PORT_RE = /FM-1|Felucca|BAILE/i;                 // baile_samples.py's pick(); the emulator ignores the case
 
 // ------------------------------------------------------------------ errors ---
 
@@ -64,18 +64,18 @@ function messageOf(code, d) {
         return "No MIDI device is connected. Plug the FM-1 into the computer with a USB data cable (a charge-only cable " +
                "does not work), switch it on, then try again.";
     case "noFm1":
-        return "No MIDI port named FM-1, Felucca or KAWA was found. Choose the FM-1's ports in the list, then connect again.";
+        return "No MIDI port named FM-1, Felucca or BAILE was found. Choose the FM-1's ports in the list, then connect again.";
     case "portbusy":
         return "The FM-1's MIDI port could not be opened. Another program may be using it (a DAW, M-UPGRADE, another " +
                "browser tab): close it and try again.";
     case "noanswer":
-        return "The FM-1 did not answer. KAWA 0.2 or later must be running on it: not the original M-VAVE firmware, not the " +
-               "USB rescue screen (it says KAWA USB RESCUE: switch the FM-1 off and on again without holding OCT-). " +
+        return "The FM-1 did not answer. BAILE must be running on it: not the original M-VAVE firmware, not the " +
+               "USB rescue screen (it says BAILE USB RESCUE: switch the FM-1 off and on again without holding OCT-). " +
                "Check that the cable carries data.";
     case "notkawa":
-        return "Something answered, but it is not KAWA 0.2 or later. Samples only go to KAWA.";
+        return "Something answered, but it is not BAILE. Samples only go to BAILE.";
     case "busy":
-        return "KAWA is playing. Press PLAY on the FM-1 to stop it, then send again.";
+        return "BAILE is playing. Press PLAY on the FM-1 to stop it, then send again.";
     case "args":
         return "The FM-1 refused the request (bad arguments). Reload this page and try again.";
     case "flash":
@@ -87,7 +87,7 @@ function messageOf(code, d) {
     case "rcX":
         return `The FM-1 answered with an unknown code (${d.rc}).`;
     case "timeout":
-        return "The FM-1 stopped answering. Check the cable and that KAWA is still running, then send again " +
+        return "The FM-1 stopped answering. Check the cable and that BAILE is still running, then send again " +
                "(the FM-1 plays again by itself within 10 seconds).";
     case "lost":
         return "The FM-1 was disconnected. Plug it back in and send again " +
@@ -132,7 +132,7 @@ class KawaError extends Error {
     }
 }
 
-// ------------------------------------------------------------------ the wire (kawa_samples.py, kawa_sysex.c) ---
+// ------------------------------------------------------------------ the wire (baile_samples.py, kawa_sysex.c) ---
 
 function pack7(b) {                                   // 7 bits at a time, the low ones first (ota.c, kawa_sysex.c)
     const out = [];
@@ -165,7 +165,7 @@ function frame(cmd, payload) {
     f[f.length - 1] = 0xF7;
     return f;
 }
-function parseReply(msg) {                            // -> {cmd, body} or null (kawa_samples.py parse_reply)
+function parseReply(msg) {                            // -> {cmd, body} or null (baile_samples.py parse_reply)
     if (!msg || msg.length < 6 || msg[0] !== 0xF0 || msg[1] !== 0x7D || msg[2] !== 0x4B || msg[3] !== 0x57 ||
         msg[msg.length - 1] !== 0xF7) return null;
     const body = unpack7(msg.subarray(5, msg.length - 1));
@@ -187,7 +187,7 @@ function crc32(u8) {                                  // zlib's
     return (c ^ 0xFFFFFFFF) >>> 0;
 }
 
-/* a name as the header stores it: upper case, ASCII, 11 characters (kawa_samples.py: upper(), encode("ascii",
+/* a name as the header stores it: upper case, ASCII, 11 characters (baile_samples.py: upper(), encode("ascii",
  * "replace"), [:11], padded with zeros to 12). The page only lets names of cleanName() through. */
 function headerName(name) {
     const out = new Uint8Array(12);
@@ -207,7 +207,7 @@ function header(data, rate, name) {                   // usr_hdr_t: magic, len, 
     dv.setUint32(24, crc32(data), true);
     return h;                                         // (rsv[2] stay 0)
 }
-function uploadFrames(slot, data, rate, name) {       // BEGIN, WRITE x n, END: kawa_samples.py upload_frames()
+function uploadFrames(slot, data, rate, name) {       // BEGIN, WRITE x n, END: baile_samples.py upload_frames()
     const out = [{ name: "BEGIN", off: 0, frame: frame(CMD.BEGIN, [slot]) }];
     for (let off = 0; off < data.length; off += PACKET) {
         const chunk = data.subarray(off, Math.min(data.length, off + PACKET));
@@ -242,7 +242,7 @@ const rint = v => {                                   // numpy's round(): halves
     return d < 0.5 ? f : d > 0.5 ? f + 1 : (f % 2 === 0 ? f : f + 1);
 };
 const LOGMU = Math.log1p(255);
-function mulawByte(x) {                               // kawa_samples.py mulaw() (as tools/gen_breaks.py)
+function mulawByte(x) {                               // baile_samples.py mulaw() (as tools/gen_breaks.py)
     const y = Math.sign(x) * Math.log1p(255 * Math.abs(x)) / LOGMU;
     return Math.max(0, Math.min(255, rint((y + 1) * 127.5)));
 }
@@ -273,7 +273,7 @@ function fromChannels(chs, rate) {
     return { rate, length: n, channels: C, at };
 }
 
-/* kawa_samples.py riff_wav(): PCM 8/16/24/32 bits, float 32/64 bits, WAVE_FORMAT_EXTENSIBLE; the channels' mean. */
+/* baile_samples.py riff_wav(): PCM 8/16/24/32 bits, float 32/64 bits, WAVE_FORMAT_EXTENSIBLE; the channels' mean. */
 function readWav(ab) {
     const d = new Uint8Array(ab instanceof ArrayBuffer ? ab : (ab.buffer || ab), ab.byteOffset || 0, ab.byteLength);
     const bad = why => new KawaError("decode", { why });
@@ -317,7 +317,7 @@ function readWav(ab) {
     return { rate: sr, length: frames, channels: ch, at, wav: true };
 }
 
-/* Non-WAV files (MP3, OGG, FLAC...): the browser decodes them, straight at the rate KAWA stores (as the emulator
+/* Non-WAV files (MP3, OGG, FLAC...): the browser decodes them, straight at the rate BAILE stores (as the emulator
  * does), so its own resampler does the work. env: where OfflineAudioContext lives (default: the global scope). */
 async function decodeWithBrowser(ab, rate, env) {
     const g = env || (typeof self !== "undefined" ? self : globalThis);
@@ -372,7 +372,7 @@ function stream(src, rate) {
     };
 }
 
-/* kawa_samples.py prepare(): -> {data (mu-law), rate, cut, silent, start, total, kept}.
+/* baile_samples.py prepare(): -> {data (mu-law), rate, cut, silent, start, total, kept}.
  *   cut     the sound was longer than the slot (its end is lost)
  *   silent  nothing above 0.003 anywhere: the Python tool would send (and amplify) it all the same; the page refuses
  *   start / total / kept   in samples at `rate`: where the kept part begins in the converted whole, its length */
@@ -497,7 +497,7 @@ class Link {
             }
         });
     }
-    /* send, wait for the reply; after a timeout once more (kawa_samples.py ask(): tries = 2) */
+    /* send, wait for the reply; after a timeout once more (baile_samples.py ask(): tries = 2) */
     async ask(cmd, args, ms, match, signal) {
         const f = frame(cmd, args), step = CMD_NAME[cmd];
         this.tries = 0;
@@ -529,7 +529,7 @@ function portList(map) {
     if (map && typeof map.forEach === "function") map.forEach(p => { if (p && p.state !== "disconnected") a.push(p); });
     return a;
 }
-/* the FM-1's ports: by id when given (the page's pickers), else by name (FM-1, Felucca, KAWA) */
+/* the FM-1's ports: by id when given (the page's pickers), else by name (FM-1, Felucca, BAILE) */
 function findPorts(access, want) {
     const w = want || {};
     const outs = portList(access && access.outputs), ins = portList(access && access.inputs);
@@ -595,7 +595,7 @@ class Fm1 {
             return { slot };
         });
     }
-    /* BEGIN, WRITE x n, END: kawa_samples.py's loop with the emulator's care. opts: onProgress(sent, total), signal. */
+    /* BEGIN, WRITE x n, END: baile_samples.py's loop with the emulator's care. opts: onProgress(sent, total), signal. */
     send(slot, data, rate, name, opts) {
         const o = opts || {};
         return this._exclusive(async () => {

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 // Copyright (C) 2026 Leo Kuroshita (@kurogedelic), Hügelton Instruments: the protocol, the checks and the
 // timings are those of install/fm1_install.py (Felucca's installer); the web port: Omnipotard
-/* KAWA's web installer: install/fm1_install.py in JavaScript, over Web MIDI (with SysEx).
+/* BAILE's web installer: install/fm1_install.py in JavaScript, over Web MIDI (with SysEx).
  *
  * The same update: step 1, the running firmware reads parts of the package and starts the update loader; step 2,
  * the loader reads the whole package and writes it. The device asks (SysEx read requests on the logical image),
@@ -629,10 +629,10 @@ function newerVersion(a, b) {             // [0, 10] > [0, 9]; a missing number 
     return false;
 }
 
-function newestInSums(text) {             // install/SHA256SUMS -> the newest "kawa-X.Y.fwsc" there (not older/...), or null
+function newestInSums(text) {             // install/SHA256SUMS -> the newest "baile-X.Y.fwsc" there (not older/...), or null
     let best = null;
     for (const line of String(text).split(/\r?\n/)) {
-        const m = /^([0-9a-f]{64}) [ *]?(kawa-(\d+(?:\.\d+)*)\.fwsc)$/i.exec(line.trim());
+        const m = /^([0-9a-f]{64}) [ *]?(baile-(\d+(?:\.\d+)*)\.fwsc)$/i.exec(line.trim());
         if (!m) continue;
         const v = m[3].split(".").map(Number);
         if (!best || newerVersion(v, best.v)) best = { name: m[2], sha256: m[1].toLowerCase(), v };
@@ -640,7 +640,7 @@ function newestInSums(text) {             // install/SHA256SUMS -> the newest "k
     return best && { name: best.name, sha256: best.sha256 };
 }
 
-/* the package of the site, by relative URLs: the newest kawa-*.fwsc that install/SHA256SUMS names (no version is written
+/* the package of the site, by relative URLs: the newest baile-*.fwsc that install/SHA256SUMS names (no version is written
  * anywhere else), checked against its SHA-256. -> {bytes, name, sha256}. Without the sums (a page opened from a file,
  * offline) there is no way to know which package is the newest: it says so, and the local file picker is the way. */
 async function fetchLatest(fetchFn, dir = "install/") {
@@ -649,7 +649,7 @@ async function fetchLatest(fetchFn, dir = "install/") {
         const r = await fetchFn(dir + "SHA256SUMS", { cache: "no-cache" });
         if (r.ok) latest = newestInSums(await r.text());
         else why = `HTTP ${r.status}`;
-        if (r.ok && !latest) why = "no kawa-*.fwsc in it";
+        if (r.ok && !latest) why = "no baile-*.fwsc in it";
     } catch (e) {
         why = (e && e.message) || "network error";
     }

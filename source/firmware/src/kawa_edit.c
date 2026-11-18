@@ -305,10 +305,13 @@ static void fx_at(uint32_t p, uint32_t r, uint32_t t, uint32_t fx, int32_t v)
 enum { T1, T2, T3, T4, T5, T6 };
 static uint32_t preset_by_name(const char *en)  /* (a factory sound by its English name: the demo's) */
 {
-    uint32_t k;
-    for (k = 0; k < NPRESET; k++)
-        if (!strcmp(PRESETS[k].name[LANG_EN], en))
+    uint32_t k, i;
+    for (k = 0; k < NPRESET; k++) {             /* (no strcmp in the firmware's libc) */
+        const char *a = PRESETS[k].name[LANG_EN];
+        for (i = 0; a[i] && a[i] == en[i]; i++) {}
+        if (a[i] == en[i])
             return k;
+    }
     return 0;
 }
 static void prj_demo(void)

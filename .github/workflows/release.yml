@@ -1,5 +1,5 @@
 # A release for each version tag (git tag v0.10 && git push origin v0.10): The Firmware Hub's shared workflow builds
-# KAWA from this commit, signs the package ("Built from source on GitHub") and attaches it to the release.
+# BAILE from this commit, signs the package ("Built from source on GitHub") and attaches it to the release.
 name: release
 on:
   push:
@@ -13,4 +13,4 @@ jobs:
       attestations: write     # the attestation
     with:
       build: source/build.sh --release "${GITHUB_REF_NAME#v}"
-      packages: source/build/kawa-*.fwsc
+      packages: source/build/baile-*.fwsc

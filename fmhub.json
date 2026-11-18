@@ -1,10 +1,11 @@
 {
-  "what": "A pocket tracker for chiptune and IDM: six tracks of pulse, 4-bit wave, noise, 6-operator FM, drum kits and samples. Chain patterns into songs, chop breaks, and play 64 live effects (with K-GLITCH's DESTROY and BEAT), a filter and an FX sequencer.",
-  "author": "Omnipotard",
+  "what": "A Brazilian funk tracker: tamborzao, Volt Mix, 150, mandelao and brega funk. Eight synthesised baile kits (atabaques, 808, sirens, cuica), six funk breaks to chop, an 808 bass with glides, magic tools that write the funk of each kit, funk grooves and 64 live effects. A fork of KAWA, in Portuguese, English or Spanish.",
+  "author": "saulofilho",
   "kinds": [
     "tracker"
   ],
-  "play": "https://guizmoh.github.io/Kawa-Tracker-Fm1/emulator/",
-  "cheat": "https://guizmoh.github.io/Kawa-Tracker-Fm1/docs/cheatsheet.html",
-  "color": "#FF5FB4"
+  "play": "https://saulofilho.github.io/baile-fm1/emulator/",
+  "image": "docs/boot.png",
+  "color": "#FFCF1F",
+  "sounds": "All synthesised by the firmware (kits, breaks, factory sounds); no recording is used. The recordings on the hub page (docs/audio) are made from this firmware."
 }

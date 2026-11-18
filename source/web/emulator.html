@@ -1,5 +1,5 @@
-<title>KAWA Pocket Tracker</title>
-<meta name="description" content="KAWA, Pocket Tracker by Omnipotard: a tracker firmware for the M-VAVE FM-1, running in the browser.">
+<title>BAILE — emulador</title>
+<meta name="description" content="BAILE, a Brazilian funk tracker for the M-VAVE FM-1 (on KAWA by Omnipotard), running in the browser.">
 <meta name="theme-color" content="#15111d">
 <meta name="color-scheme" content="dark">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2334313b'/%3E%3Crect x='6' y='6' width='20' height='14' rx='2' fill='%23120c24'/%3E%3Crect x='9' y='10' width='4' height='6' fill='%23ff5fb4'/%3E%3Crect x='15' y='9' width='3' height='7' fill='%23ffb03a'/%3E%3Crect x='20' y='12' width='3' height='4' fill='%233ed8ff'/%3E%3Ccircle cx='10' cy='25' r='2.4' fill='%23FF5C5C'/%3E%3Ccircle cx='16' cy='25' r='2.4' fill='%23FFCC40'/%3E%3Ccircle cx='22' cy='25' r='2.4' fill='%235CE274'/%3E%3C/svg%3E">
@@ -281,8 +281,8 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2f2a3b; border-rad
 @media (max-width: 640px) { .ksite { position: static; padding: 6px 8px; } .ksite .ksb { flex-basis: 100%; padding: 4px 8px 6px; } .ksite a.ksl { padding: 0 11px; } }
 </style>
 
-<nav class="ksite" aria-label="KAWA menu">
-  <a class="ksb" href="../index.html" aria-label="KAWA, home">KA<span>WA</span></a>
+<nav class="ksite" aria-label="BAILE menu">
+  <a class="ksb" href="../index.html" aria-label="BAILE, home">BAI<span>LE</span></a>
   <a class="ksl" href="../index.html#install">Install</a>
   <a class="ksl" href="../emulator/index.html" aria-current="page">Emulator</a>
   <a class="ksl" href="../manual/index.html">Manual</a>
@@ -315,12 +315,12 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2f2a3b; border-rad
 
   <header class="top">
     <div class="brand">
-      <h1>KA<span>WA</span></h1>
+      <h1>BAI<span>LE</span></h1>
       <span class="beta" id="beta-badge">__KAWA_VER__ BETA</span>
     </div>
     <div class="tag" data-t="tag"></div>
     <div class="langs" role="group" data-ta="langs" aria-label="Language">
-      <button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="fr" lang="fr">FR</button><button type="button" data-lang="es" lang="es">ES</button>
+      <button type="button" data-lang="pt" lang="pt">PT</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="es" lang="es">ES</button>
     </div>
   </header>
 
@@ -382,11 +382,11 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2f2a3b; border-rad
   const BTN = {OCTD: 0, OCTU: 1, FX: 2, SCL: 3, ENV: 4, LFO: 5, EDIT: 6, GLO: 7, HOME: 8, SAVE: 9, ARP: 10, SEQ: 11, PLAY: 12, REC: 13};
   const ENC = {SELECT: 0, ALGORITHM: 1, K1: 2, K2: 3, K3: 4, K4: 5, PRESETS: 6};
   const KNOB_COL = ["#FF5C5C", "#FFCC40", "#5CE274", "#54A4FF"];   /* the firmware's KNOB_COL */
-  const THEME_ACC = ["#ff5fb4", "#a8d04a", "#ff7ab8"];               /* KAWA, GAME BOY, BONBON */
+  const THEME_ACC = ["#ffcf1f", "#e65c14", "#ff2828"];               /* TERRA, CLARO, PAREDAO */
   const PG = {TRACKS: 0, PROJECTS: 8};
   const SLOT = 0x9000, RATE = 22050;
   let STORE_SIZE = 4 * SLOT, CAP = 36608;                            /* (kawa_store_size, kawa_sample_size) */
-  const LS_STORE = "kawa-store-v1", LS_SMP = "kawa-samples-v1", LS_LANG = "kawa-lang";
+  const LS_STORE = "baile-store-v1", LS_SMP = "baile-samples-v1", LS_LANG = "baile-lang";
 
   /* ---- the engine, the same in the worklet and on the main thread. It reads the screen, the LEDs, the
      knobs' labels, the page, the sample slots and the project store about 30 times a second and posts
@@ -520,10 +520,10 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2f2a3b; border-rad
   /* ---- the page in three languages (the FM-1's screen follows: kawa_lang) */
   const I18N = {
     en: {
-      tag: "Pocket Tracker by Omnipotard · firmware for the M-VAVE FM-1",
+      tag: "Funk tracker · firmware for the M-VAVE FM-1 · on KAWA by Omnipotard",
       langs: "Language",
-      beta: "<b>This is a beta.</b> KAWA has been tested on a real FM-1. Read the safety section of the manual before you install it. The official firmware can always be reinstalled with M-UPGRADE; that is the risky step, so never unplug the FM-1 while it runs.",
-      tip: "If you like this firmware and would like to encourage me to keep developing it, you can leave me a small tip on <a href=\"https://ko-fi.com/omnipotard\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>.",
+      beta: "<b>This is a beta.</b> BAILE has not been tested on a real FM-1 yet. Read the safety section of the manual before you install it. The official firmware can always be reinstalled with M-UPGRADE; that is the risky step, so never unplug the FM-1 while it runs.",
+      tip: "BAILE is a fork of KAWA, by Omnipotard. If you enjoy it, support the author of KAWA on <a href=\"https://ko-fi.com/omnipotard\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>.",
       screen: "The FM-1's screen",
       power: "The firmware runs here as it is, compiled to WebAssembly. Turn the sound on, power up, then press any key.",
       powerBtn: "POWER ON",
@@ -555,7 +555,7 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2f2a3b; border-rad
       "tt.13": "REC turns recording on or off: the keys write at the cursor (on the beat while it plays); REC held + SELECT sets how many rows a note jumps.",
       "s.h": "Your samples",
       "s.how": "Drop a sound on a slot (WAV, MP3, OGG, FLAC…) or choose a file. It becomes what the FM-1 keeps: mono, 22 kHz, 8 bits, up to 1.66 s, without the silence before it. Then, on a track's SOUND page (<b>EDIT</b>): engine <b>SAMPLE</b>, <b>SOURCE</b> = <b>MY 1…4</b> (or the preset MY SAMPLE 1…4 with <b>PRESETS</b>). Your sounds stay in this browser.",
-      "s.fm1": "<b>Send to my FM-1</b> copies a slot onto your FM-1 running KAWA 0.2 or later: a USB data cable, Chrome or Edge, and playback stopped.",
+      "s.fm1": "<b>Send to my FM-1</b> copies a slot onto your FM-1 running BAILE: a USB data cable, Chrome or Edge, and playback stopped.",
       "s.slot": "MY {k}", "s.empty": "empty", "s.pick": "Choose a file", "s.send": "Send to my FM-1", "s.out": "MIDI output (to the FM-1)", "s.in": "MIDI input (from the FM-1)",
       "s.pickL": "Choose a sound for MY {k}", "s.sendL": "Send MY {k} to my FM-1",
       "s.reading": "Reading {f}…",
@@ -567,17 +567,17 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2f2a3b; border-rad
       "s.eShort": "This sound is too short.",
       "s.full": "The browser's storage is full: this sound will be gone after a reload.",
       "m.nomidi": "This browser has no Web MIDI: use Chrome or Edge on a computer.",
-      "m.denied": "MIDI access was refused. KAWA needs it with SysEx: allow it in the site's settings.",
+      "m.denied": "MIDI access was refused. BAILE needs it with SysEx: allow it in the site's settings.",
       "m.search": "Looking for the FM-1…",
       "m.noports": "No MIDI device is connected. Plug the FM-1 in with a USB data cable and switch it on.",
       "m.choose": "No FM-1 found by its name: choose its MIDI ports below, then send again.",
-      "m.timeout": "No answer from the FM-1. Is it on, running KAWA 0.2 or later, plugged in with a data cable?",
-      "m.notkawa": "The FM-1 answered, but it does not run KAWA 0.2 or later.",
+      "m.timeout": "No answer from the FM-1. Is it on, running BAILE, plugged in with a data cable?",
+      "m.notkawa": "The FM-1 answered, but it does not run BAILE.",
       "m.toobig": "The FM-1's slot is smaller than this sound.",
       "m.sending": "Sending to the FM-1… {p} %",
       "m.done": "Done: {n} is in MY {k} on your FM-1. There: SOUND page, engine SAMPLE, SOURCE MY {k}.",
       "m.rc1": "The FM-1 refused the request (bad arguments). Reload this page and try again.",
-      "m.rc2": "The FM-1 is busy: stop KAWA first (PLAY), then send again.",
+      "m.rc2": "The FM-1 is busy: stop BAILE first (PLAY), then send again.",
       "m.rc3": "The FM-1 could not write its memory (flash). Send again; if it goes on, switch it off and on.",
       "m.rc4": "The sound did not arrive intact (CRC). Send it again.",
       "m.rc5": "The transfer went out of order (it was cut). Send it again.",
@@ -587,13 +587,13 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2f2a3b; border-rad
       "p.exp": "Export projects", "p.imp": "Import projects",
       "p.saved": "Saved in this browser at {t}.",
       "p.none": "Nothing saved yet: on the emulator, SAVE then OCT+.",
-      "p.bad": "This is not a KAWA projects file.",
+      "p.bad": "This is not a BAILE projects file.",
       "p.done": "Projects imported: the autosave is loaded, the others are in SAVE › LOAD.",
       "p.later": "Projects imported: they will be there at power-on.",
       "p.full": "The browser's storage is full: export your projects to keep them.",
       "p.exported": "Exported: {f}",
       g1: "The basics",
-      g1l: "<li>A tracker made above all for chiptune and IDM (it can do other styles too). Time runs down: each row is a step (a sixteenth), each column a track, each cell a note, its volume and an effect.</li>" +
+      g1l: "<li>A tracker made for Brazilian funk. Time runs down: each row is a step (a sixteenth), each column a track, each cell a note, its volume and an effect.</li>" +
            "<li>In the web emulator, the demo starts playing on <b>POWER ON</b> when no project is saved in this browser. <b>PLAY</b> stops or resumes it. A saved project opens as before. The FM-1 itself still starts with an empty song. Six tracks, each with its engine: PULSE, WAVE, NOISE, FM (one track, 6 operators), KIT (8 kits) or SAMPLE (the breaks or your own sounds).</li>" +
            "<li><b>ALGORITHM</b> picks the track, <b>SELECT</b> the row, <b>PRESETS</b> the pattern. <b>KNOB 1–4</b> (<span class=\"k1\">red</span>, <span class=\"k2\">yellow</span>, <span class=\"k3\">green</span>, <span class=\"k4\">blue</span> on every page) edit the cell: their labels say what they do.</li>" +
            "<li><b>REC</b>, then the keys: notes go in at the cursor (on the beat while it plays). REC held + SELECT: how many rows a note jumps. <b>ARP</b> is the clear key (not an arpeggiator): it clears the cell.</li>" +
@@ -616,122 +616,122 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2f2a3b; border-rad
            "<li><kbd>↑</kbd><kbd>↓</kbd> row · <kbd>←</kbd><kbd>→</kbd> track · <kbd>PgUp</kbd><kbd>PgDn</kbd> pattern.</li>" +
            "<li><kbd>Ctrl/⌘ Z</kbd> undo · <kbd>Ctrl/⌘ Y</kbd> or <kbd>Ctrl/⌘ Shift Z</kbd> redo · <kbd>Ctrl/⌘ S</kbd> save · <kbd>F1</kbd> or <kbd>?</kbd> held: help.</li>" +
            "<li>The mouse wheel on a knob, or drag it up and down; the arrow keys when it has the focus.</li>",
-      "d.h": "Buy me a beer?",
-      "d.p": "If you enjoy what I do, consider supporting me! Every little bit means the world!",
-      "d.sig": "Omnipotard, who made KAWA",
-      "d.btn": "Buy me a beer on Ko-fi",
+      "d.h": "Made on KAWA",
+      "d.p": "BAILE is a fork of KAWA, a tracker for the FM-1 by Omnipotard. If you enjoy it, support who made the base.",
+      "d.sig": "saulofilho, who made BAILE",
+      "d.btn": "Support Omnipotard on Ko-fi",
       "d.new": " (opens a new tab)",
-      foot: "KAWA is free software (GPL-3.0), built on Dinghy, Felucca and SLOOP, the open platform of the FM-1 community. The breaks are entirely synthesised. The firmware installs on the FM-1 over USB at your own risk: keep the official V15 firmware and M-UPGRADE at hand to go back."
+      foot: "BAILE is free software (GPL-3.0), a fork of KAWA (Omnipotard), built on Dinghy, Felucca and SLOOP, the open platform of the FM-1 community. The breaks are entirely synthesised. The firmware installs on the FM-1 over USB at your own risk: keep the official V15 firmware and M-UPGRADE at hand to go back."
     },
-    fr: {
-      tag: "Pocket Tracker by Omnipotard · firmware pour M-VAVE FM-1",
-      langs: "Langue",
-      beta: "<b>Ceci est une bêta.</b> KAWA a été testé sur un vrai FM-1. Lis la partie sécurité du manuel avant de l'installer. Le firmware officiel se réinstalle toujours avec M-UPGRADE ; c'est l'étape risquée : ne débranche jamais le FM-1 pendant qu'elle tourne.",
-      tip: "Si vous aimez ce firmware et souhaitez m'encourager à poursuivre son développement, vous pouvez m'offrir un petit pourboire sur <a href=\"https://ko-fi.com/omnipotard\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>.",
-      screen: "L'écran du FM-1",
-      power: "Le firmware tourne ici tel quel, compilé en WebAssembly. Mets le son, allume, puis appuie sur une touche.",
-      powerBtn: "ALLUMER",
-      err: "Le son n'a pas pu démarrer dans ce navigateur. Essaie un Chrome, Edge ou Firefox récent.",
-      pages: ["PISTES", "GRILLE", "SON", "ENVELOPPE", "MIX", "MAGIE", "GAMME", "CHAÎNE", "PROJETS", "OPTIONS", "EFFETS", "AIDE", "DÉMARRAGE", "GROOVE", "ENVOIS"],
-      track: "PISTE {n}", master: "MASTER",
-      "k.master": "VOLUME", "k.select": "LIGNE / PAGE", "k.presets": "MOTIF / SON", "k.algo": "PISTE", "k.unused": "inutilisé",
-      "b.oct": "OCTAVE", "b.fx": "ENVOIS / LIVE / FILT.", "b.scl": "GAMME / MAGIE", "b.env": "ENV / MIX", "b.lfo": "LFO / MOD", "b.edit": "SON", "b.glo": "CHAÎNE / OPT.",
-      "b.home": "PISTES", "b.home.alt": "TENU : AIDE", "b.save": "PROJETS", "b.save.alt": "TENU : OUTILS", "b.arp": "EFFACE", "b.seq": "GRILLE", "b.play": "JOUE", "b.rec": "ENREG",
-      colours: ["rouge", "jaune", "vert", "bleu"],
-      "tt.MASTER": "MASTER : le volume de cette page (molette, glisser, ou les flèches quand il a le focus).",
-      "tt.SELECT": "SELECT déplace la ligne du curseur sur PISTES ; sur EDIT, LFO, ENV / MIX, FX et GLO, il parcourt les pages de ce bouton ; sur la GRILLE, il tourne la page de 16 pas ; REC tenu + SELECT règle de combien de lignes saute une note écrite ; ARP tenu + SELECT insère ou supprime une ligne ; avec SAVE tenu, il choisit un outil.",
-      "tt.PRESETS": "PRESETS choisit le son d'usine sur la première page SON (sur un son modifié, marqué *, il montre seulement le suivant en doré : OCT+ le charge, OCT− garde le tien) et le curseur des autres pages EDIT : opérateur, ligne de table, tranche. Il choisit le motif sur PISTES, GRILLE, MAGIE, GAMME et FX, le motif de l'entrée de la chaîne sur CHAÎNE, le volume du clic sur OPTIONS. ARP tenu + PRESETS : le moteur suivant ou précédent.",
-      "tt.ALGORITHM": "ALGORITHM choisit la piste (MIX va jusqu'au master) ; sur CHAÎNE l'entrée de la chaîne, sur GROOVE le pas, sur OPTIONS le mode du métronome. ARP tenu + ALGORITHM insère ou supprime une ligne dans tout le motif.",
-      "tt.K": "KNOB {n} ({c}) : ce qu'il fait sur cette page est écrit dessous et sur la ligne du bas de l'écran.",
-      "tt.0": "OCT− baisse l'octave du clavier ; sur la GRILLE, il ramène le motif à 32, puis 16 pas ; sur PROJETS, il revient en arrière ; sur SON, quand un son d'usine est montré en doré, il garde le tien ; SAVE tenu + OCT− annule aussitôt (motifs et sons).",
-      "tt.1": "OCT+ monte l'octave du clavier ; sur la GRILLE, il passe le motif à 32, puis 64 pas (ce motif lié au suivant) ; sur PROJETS, c'est OK ; sur LIVE, il ouvre la deuxième banque ; sur SON, quand un son d'usine est montré en doré, il le charge ; SAVE tenu + OCT+ refait aussitôt.",
-      "tt.2": "FX : un appui court ouvre ENVOIS (saturation, écho et reverb de chaque piste), un deuxième les effets LIVE, puis le FILTRE et la SEQ FX, puis retour ; SELECT tourne aussi ces pages. Tenu depuis une autre page, une barre jaune marquée LIVE se remplit et LIVE s'affiche tant que tu le tiens : joue les touches blanches pour 64 effets live en quatre banques (OCT− / OCT+ ; DETRUIT et BEAT viennent de K-GLITCH, KNOB 2 leur intensité), sur le master ou une piste. FX tenu et une touche tout de suite : cet effet joue sans attendre la barre.",
-      "tt.3": "SCL ouvre la gamme : sa tonique, ses notes, et le verrou qui garde les touches dedans ; appuie encore pour la MAGIE (des outils sur les touches blanches qui découpent le break et écrivent un beat, une mélodie ou une basse dans la gamme), une troisième fois pour PISTES.",
-      "tt.4": "ENV ouvre l'enveloppe de la piste ; appuie encore (ou tourne SELECT) pour MIX (niveaux et effet master ; touches noires : muet, ARP tenu + touche noire : solo).",
-      "tt.5": "LFO ouvre le LFO de la piste ; appuie encore (ou tourne SELECT) pour la MODULATION.",
-      "tt.6": "EDIT ouvre le son de la piste ; appuie encore (ou tourne SELECT) pour la page suivante : SON 2, les opérateurs FM (ou l'éditeur de sample), EFFET, TABLE. PRESETS choisit le son d'usine, ARP tenu + PRESETS le moteur.",
-      "tt.7": "GLO ouvre la chaîne (des motifs joués N fois) ; appuie encore pour le GROOVE, puis les OPTIONS (SELECT les parcourt aussi) : thème, langue, horloge MIDI, police, et le métronome avec son volume.",
-      "tt.8": "HOME montre les pistes ; tiens-le, une barre jaune marquée AIDE se remplit, pour l'aide de la page où tu es. HOME + PLAY : panique, le morceau s'arrête et tout son est coupé.",
-      "tt.9": "SAVE ouvre le menu des projets (nouveau morceau, sauver, sauver sous, charger, renommer, démo ; OCT+ OK, OCT− retour) ; il clignote tant qu'il y a des changements pas sauvés. Tiens-le, une barre jaune marquée OUTILS se remplit, pour les outils : OPTIONS, ANNULER, REFAIRE, EFFACER, COPIER, COLLER, HASARD. SELECT en choisit un, il s'exécute quand tu lâches ; KNOB 3 choisit la piste ou tout le motif. SAVE tenu + OCT− annule, + OCT+ refait, aussitôt : 10 pas, pour les motifs et les sons (tours de potard, envois, sons d'usine chargés).",
-      "tt.10": "ARP est la touche d'effacement / de décalage, pas un arpégiateur. Un appui court efface : la case sur PISTES, le pas tenu sur la GRILLE, le pas de TABLE, la voie LIVE. Tenu : + SELECT insère ou supprime une ligne (+ ALGORITHM dans tout le motif), + KNOB 3 / 4 règle le second effet de la case, + PRESETS sur SON choisit le moteur, + une touche noire sur MIX met en solo. Sur CHAÎNE, il bascule BOUCLE / CHAÎNE ; sur l'édition du sample, il égalise les tranches.",
-      "tt.11": "SEQ ouvre la grille : 16 pas de la piste sur les 16 touches blanches ; SELECT tourne la page, OCT− / OCT+ règlent le motif à 16, 32 ou 64 pas.",
-      "tt.12": "PLAY lance ou arrête le morceau. HOME + PLAY : panique, tout s'arrête et se tait.",
-      "tt.13": "REC active ou coupe l'enregistrement : les touches écrivent au curseur (sur le temps pendant la lecture) ; REC tenu + SELECT règle de combien de lignes saute une note.",
-      "s.h": "Tes samples",
-      "s.how": "Dépose un son sur un emplacement (WAV, MP3, OGG, FLAC…) ou choisis un fichier. Il devient ce que garde le FM-1 : mono, 22 kHz, 8 bits, 1,66 s au plus, sans le silence du début. Puis, page SON d'une piste (<b>EDIT</b>) : moteur <b>SAMPLE</b>, <b>SOURCE</b> = <b>MON 1…4</b> (ou le preset MON SAMPLE 1…4 avec <b>PRESETS</b>). Tes sons restent dans ce navigateur.",
-      "s.fm1": "<b>Envoyer au FM-1</b> copie un emplacement sur ton FM-1 sous KAWA 0.2 ou plus récent : un câble USB de données, Chrome ou Edge, et la lecture arrêtée.",
-      "s.slot": "MON {k}", "s.empty": "vide", "s.pick": "Choisir un fichier", "s.send": "Envoyer au FM-1", "s.out": "Sortie MIDI (vers le FM-1)", "s.in": "Entrée MIDI (depuis le FM-1)",
-      "s.pickL": "Choisir un son pour MON {k}", "s.sendL": "Envoyer MON {k} au FM-1",
-      "s.reading": "Lecture de {f}…",
-      "s.ready": "{n} est dans MON {k} ({s} s).",
-      "s.later": "{n} est prêt dans MON {k} ({s} s) : il sera là à l'allumage.",
-      "s.cut": " Coupé pour tenir.",
-      "s.eDecode": "Ce fichier n'a pas pu être lu comme un son.",
-      "s.eSilent": "Ce son est muet.",
-      "s.eShort": "Ce son est trop court.",
-      "s.full": "Le stockage du navigateur est plein : ce son disparaîtra au rechargement.",
-      "m.nomidi": "Ce navigateur n'a pas Web MIDI : utilise Chrome ou Edge sur un ordinateur.",
-      "m.denied": "L'accès MIDI a été refusé. KAWA en a besoin avec SysEx : autorise-le dans les réglages du site.",
-      "m.search": "Recherche du FM-1…",
-      "m.noports": "Aucun appareil MIDI branché. Branche le FM-1 avec un câble USB de données et allume-le.",
-      "m.choose": "Aucun FM-1 trouvé par son nom : choisis ses ports MIDI ci-dessous, puis renvoie.",
-      "m.timeout": "Pas de réponse du FM-1. Est-il allumé, sous KAWA 0.2 ou plus récent, branché avec un câble de données ?",
-      "m.notkawa": "Le FM-1 a répondu, mais il ne tourne pas sous KAWA 0.2 ou plus récent.",
-      "m.toobig": "L'emplacement du FM-1 est plus petit que ce son.",
-      "m.sending": "Envoi au FM-1… {p} %",
-      "m.done": "C'est fait : {n} est dans MON {k} sur ton FM-1. Là-bas : page SON, moteur SAMPLE, SOURCE MON {k}.",
-      "m.rc1": "Le FM-1 a refusé la demande (mauvais arguments). Recharge cette page et réessaie.",
-      "m.rc2": "Le FM-1 est occupé : arrête d'abord KAWA (PLAY), puis renvoie.",
-      "m.rc3": "Le FM-1 n'a pas pu écrire sa mémoire (flash). Renvoie ; si ça continue, éteins-le et rallume-le.",
-      "m.rc4": "Le son n'est pas arrivé intact (CRC). Renvoie-le.",
-      "m.rc5": "Le transfert est arrivé dans le désordre (il a été coupé). Renvoie-le.",
-      "m.rcX": "Le FM-1 a répondu un code inconnu ({c}).",
-      "p.h": "Projets sauvés",
-      "p.how": "Ce que tu sauves sur l'émulateur (<b>SAVE</b> puis <b>OCT+</b>, ou <kbd>Ctrl/⌘ S</kbd>) reste dans ce navigateur et revient à l'allumage. Exporte un fichier .kawa pour en garder une copie ou le passer sur un autre ordinateur.",
-      "p.exp": "Exporter les projets", "p.imp": "Importer des projets",
-      "p.saved": "Sauvé dans ce navigateur à {t}.",
-      "p.none": "Rien de sauvé pour l'instant : sur l'émulateur, SAVE puis OCT+.",
-      "p.bad": "Ce n'est pas un fichier de projets KAWA.",
-      "p.done": "Projets importés : la sauvegarde auto est chargée, les autres sont dans SAVE › CHARGER.",
-      "p.later": "Projets importés : ils seront là à l'allumage.",
-      "p.full": "Le stockage du navigateur est plein : exporte tes projets pour les garder.",
-      "p.exported": "Exporté : {f}",
-      g1: "Les bases",
-      g1l: "<li>Un tracker fait avant tout pour la chiptune et l'IDM (il sait faire d'autres styles aussi). Le temps descend : chaque ligne est un pas (une double croche), chaque colonne une piste, chaque case une note, son volume et un effet.</li>" +
-           "<li>Dans l\u2019\u00e9mulateur Web, la d\u00e9mo d\u00e9marre au clic sur <b>ALLUMER</b> si aucun projet n\u2019est sauvegard\u00e9 dans ce navigateur. <b>PLAY</b> arr\u00eate ou reprend la lecture. Le dernier projet sauvegard\u00e9 est recharg\u00e9 normalement. Sur le FM-1, le morceau de d\u00e9marrage reste vide. Six pistes, chacune avec son moteur : PULSE, WAVE, NOISE, FM (une piste, 6 op\u00e9rateurs), KIT (8 kits) ou SAMPLE (les breaks ou tes sons).</li>" +
-           "<li><b>ALGORITHM</b> choisit la piste, <b>SELECT</b> la ligne, <b>PRESETS</b> le motif. <b>KNOB 1 à 4</b> (<span class=\"k1\">rouge</span>, <span class=\"k2\">jaune</span>, <span class=\"k3\">vert</span>, <span class=\"k4\">bleu</span> sur toutes les pages) changent la case : leurs étiquettes disent ce qu'ils font.</li>" +
-           "<li><b>REC</b> puis les touches : les notes s'écrivent au curseur (sur le temps pendant la lecture). REC tenu + SELECT : de combien de lignes saute une note. <b>ARP</b> est la touche d'effacement (pas un arpégiateur) : elle efface la case.</li>" +
-           "<li><b>HOME</b> les pistes (tenu : l'aide de la page) · <b>SEQ</b> la grille (OCT− / OCT+ : 16, 32 ou 64 pas) · <b>EDIT</b> le son, encore pour la page suivante (ARP tenu + PRESETS choisit le moteur) · <b>LFO</b> le LFO, encore la MODULATION · <b>ENV</b> l'enveloppe, encore MIX · <b>GLO</b> la chaîne, encore le groove, puis les options (avec un métronome).</li>" +
-           "<li><b>SAVE</b> : nouveau morceau, sauver, sauver sous, charger, renommer, démo (<b>OCT+</b> OK, <b>OCT−</b> retour) ; il clignote tant qu'il y a des changements pas sauvés. SAVE tenu : les outils OPTIONS, ANNULER, REFAIRE, EFFACER, COPIER, COLLER, HASARD (SELECT en choisit un, il s'exécute quand tu lâches). SAVE tenu + OCT− : annuler aussitôt, + OCT+ : refaire. Annuler marche aussi sur les sons (tours de potard, envois, sons d'usine chargés) : « ANNULE: SON 3 », 10 pas.</li>" +
-           "<li>Tiens <b>HOME</b>, <b>FX</b> ou <b>SAVE</b> : une barre jaune marquée AIDE, LIVE ou OUTILS se remplit en bas de l'écran, et l'aide, les effets LIVE ou les outils apparaissent quand elle est pleine.</li>" +
-           "<li><b>HOME</b> + <b>PLAY</b> : panique. Le morceau s'arrête, chaque voix et chaque effet live est coupé.</li>",
-      g2: "Effets et magie",
-      g2l: "<li><b>FX</b> : ENVOIS (une saturation, un écho et une reverb par piste : ALGORITHM choisit la piste, KNOB 1–3 règlent les niveaux), encore les effets LIVE, puis le FILTRE (11 types, les touches l'accordent) et la SEQ FX (la piste LIVE à la main), puis retour.</li>" +
-           "<li>Garde <b>FX</b> enfoncé et joue les touches blanches : 64 effets live en quatre banques (<b>OCT−</b> / <b>OCT+</b>), sur le master ou une piste. Relâche et tu reviens.</li>" +
-           "<li><b>SCL</b> ouvre la gamme, encore la magie : découper le break, écrire un beat, une mélodie ou une basse dans la gamme, Euclide, roulements…</li>" +
-           "<li><b>MIX</b> (ENV deux fois) : les niveaux et l'effet master. Les touches noires coupent ; ARP tenu + touche noire : solo.</li>" +
-           "<li>ARP tenu + SELECT : une ligne en plus ou en moins ; + ALGORITHM : dans tout le motif.</li>" +
-           "<li><b>EDIT</b> encore et encore : SON, SON 2, (FM : OPÉRATEUR, ENV. OP ; SAMPLE : ÉDITER LE SAMPLE), EFFET, TABLE. <b>LFO</b> : le LFO, puis la MODULATION.</li>" +
-           "<li>Sur SON, <b>PRESETS</b> change tout de suite un son pas touché. Un son modifié (marqué *) est gardé : le son d'usine suivant est seulement montré en doré, avec ? et OCT+. Continue de tourner pour parcourir ; <b>OCT+</b> le charge, <b>OCT−</b> garde le tien.</li>" +
-           "<li>Deux effets par case : <b>ARP</b> tenu + KNOB 3 et 4 règlent le second. SAU saute à une ligne, FIN termine le motif.</li>",
-      g3: "Au clavier",
-      g3l: "<li>Notes : rangées <kbd>W X C V…</kbd> et <kbd>A Z E R…</kbd> (positions des touches, AZERTY ou QWERTY).</li>" +
-           "<li><kbd>Espace</kbd> PLAY · <kbd>Entrée</kbd> REC · <kbd>Maj</kbd> tenu FX · <kbd>Retour</kbd> ARP · <kbd>Échap</kbd> HOME · <kbd>)</kbd> <kbd>=</kbd> OCT− OCT+.</li>" +
-           "<li><kbd>↑</kbd><kbd>↓</kbd> ligne · <kbd>←</kbd><kbd>→</kbd> piste · <kbd>PgUp</kbd><kbd>PgDn</kbd> motif.</li>" +
-           "<li><kbd>Ctrl/⌘ Z</kbd> annuler · <kbd>Ctrl/⌘ Y</kbd> ou <kbd>Ctrl/⌘ Maj Z</kbd> refaire · <kbd>Ctrl/⌘ S</kbd> sauver · <kbd>F1</kbd> ou <kbd>?</kbd> tenu : l'aide.</li>" +
-           "<li>Molette sur un potard, ou glisse vers le haut et le bas ; les flèches quand il a le focus.</li>",
-      "d.h": "Tu m'offres une bière ?",
-      "d.p": "Si ce que je fais te plaît, pense à me soutenir ! Chaque petit geste compte énormément !",
-      "d.sig": "Omnipotard, qui a fait KAWA",
-      "d.btn": "Offre-moi une bière sur Ko-fi",
-      "d.new": " (ouvre un nouvel onglet)",
-      foot: "KAWA est un logiciel libre (GPL-3.0), construit sur Dinghy, Felucca et SLOOP, la plateforme ouverte de la communauté FM-1. Les breaks sont entièrement synthétisés. Le firmware s'installe sur le FM-1 par USB, à tes risques : garde le firmware officiel V15 et M-UPGRADE sous la main pour revenir en arrière."
+    pt: {
+      tag: "Tracker de funk · firmware para o M-VAVE FM-1 · sobre o KAWA de Omnipotard",
+      langs: "Idioma",
+      beta: "<b>Isto é um beta.</b> O BAILE ainda não foi testado num FM-1 de verdade. Leia a parte de segurança do manual antes de instalar. O firmware oficial sempre pode ser reinstalado com o M-UPGRADE; esse é o passo arriscado, então nunca desconecte o FM-1 enquanto ele roda.",
+      tip: "O BAILE é um fork do KAWA, de Omnipotard. Se você curtir, apoie o autor do KAWA no <a href=\"https://ko-fi.com/omnipotard\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>.",
+      screen: "A tela do FM-1",
+      power: "O firmware roda aqui do jeito que é, compilado para WebAssembly. Ligue o som, ligue o aparelho e aperte qualquer tecla.",
+      powerBtn: "LIGAR",
+      err: "O som não conseguiu começar neste navegador. Tente um Chrome, Edge ou Firefox recente.",
+      pages: ["FAIXAS", "GRADE", "SOM", "ENVELOPE", "MIX", "MAGICA", "ESCALA", "MUSICA", "PROJETOS", "OPCOES", "EFEITOS", "AJUDA", "BOOT", "GROOVE", "ENVIOS"],
+      track: "FAIXA {n}", master: "MASTER",
+      "k.master": "VOLUME", "k.select": "LINHA / PÁGINA", "k.presets": "PADRÃO / SOM", "k.algo": "FAIXA", "k.unused": "sem uso",
+      "b.oct": "OITAVA", "b.fx": "ENVIOS / LIVE / FILTRO", "b.scl": "ESCALA / MÁGICA", "b.env": "ENV / MIX", "b.lfo": "LFO / MOD", "b.edit": "SOM", "b.glo": "MÚSICA / OPÇ.",
+      "b.home": "FAIXAS", "b.home.alt": "SEGURE: AJUDA", "b.save": "PROJETOS", "b.save.alt": "SEGURE: FERRAM.", "b.arp": "APAGAR", "b.seq": "GRADE", "b.play": "PLAY", "b.rec": "REC",
+      colours: ["vermelho", "amarelo", "verde", "azul"],
+      "tt.MASTER": "MASTER: o volume desta página (roda do mouse, arrastar, ou as setas quando ele tem o foco).",
+      "tt.SELECT": "SELECT move a linha do cursor em FAIXAS; em EDIT, LFO, ENV / MIX, FX e GLO percorre as páginas desse botão; na GRADE vira a página de 16 passos; REC segurado + SELECT diz quantas linhas uma nota escrita pula; ARP segurado + SELECT insere ou apaga uma linha; com SAVE segurado escolhe uma ferramenta.",
+      "tt.PRESETS": "PRESETS escolhe o som de fábrica na primeira página de SOM (num som que você editou, marcado *, só mostra o próximo em dourado: OCT+ carrega, OCT− mantém o seu), e o cursor nas outras páginas de EDIT: operador, linha da tabela, fatia. Escolhe o padrão em FAIXAS, GRADE, MÁGICA, ESCALA e FX, o padrão da entrada em MÚSICA, o volume do clique em OPÇÕES. ARP segurado + PRESETS: o próximo motor, ou o anterior.",
+      "tt.ALGORITHM": "ALGORITHM escolhe a faixa (MIX vai até o master); em MÚSICA a entrada, em GROOVE o passo, em OPÇÕES o modo do metrônomo. ARP segurado + ALGORITHM insere ou apaga uma linha no padrão inteiro.",
+      "tt.K": "KNOB {n} ({c}): o que ele faz nesta página está escrito embaixo dele e na linha de baixo da tela.",
+      "tt.0": "OCT− desce a oitava do teclado; na GRADE leva o padrão para 32, depois 16 passos; em PROJETOS volta; em SOM, enquanto um som de fábrica aparece em dourado, mantém o seu; SAVE segurado + OCT− desfaz na hora (padrões e sons).",
+      "tt.1": "OCT+ sobe a oitava do teclado; na GRADE leva o padrão para 32, depois 64 passos (este padrão ligado ao próximo); em PROJETOS é OK; no LIVE abre o banco seguinte; em SOM, enquanto um som de fábrica aparece em dourado, carrega ele; SAVE segurado + OCT+ refaz na hora.",
+      "tt.2": "FX: um toque abre os ENVIOS (drive, eco e reverb de cada faixa), outro toque os efeitos LIVE, depois o FILTRO e a SEQ FX, e volta; SELECT também vira essas páginas. Segurado de outra página, uma barra amarela LIVE enche e o LIVE aparece enquanto você segura: toque as teclas brancas para 64 efeitos ao vivo em quatro bancos (OCT− / OCT+: BAILE, PAREDAO, e DESTROI e BEAT do K-GLITCH, com o KNOB 2 de intensidade) no master ou numa faixa. FX segurado e uma tecla logo em seguida: o efeito toca sem esperar a barra.",
+      "tt.3": "SCL abre a escala: a tônica, as notas e a trava que mantém as teclas nela; aperte de novo para a MÁGICA (ferramentas nas teclas brancas: picar o break, BEAT FUNK, GRAVE 808, MONTAGE, VIRADA…), uma terceira vez para FAIXAS.",
+      "tt.4": "ENV abre o envelope da faixa; aperte de novo (ou gire SELECT) para o MIX (níveis e o efeito do master; teclas pretas silenciam, ARP segurado + uma tecla preta deixa solo).",
+      "tt.5": "LFO abre o LFO da faixa; aperte de novo (ou gire SELECT) para a MODULAÇÃO.",
+      "tt.6": "EDIT abre o som da faixa; aperte de novo (ou gire SELECT) para a próxima página: SOM 2, os operadores FM (ou o editor de sample), EFEITO, TABELA. PRESETS escolhe o som de fábrica, ARP segurado + PRESETS o motor.",
+      "tt.7": "GLO abre a música (padrões tocados N vezes); aperte de novo para o GROOVE, depois as OPÇÕES (SELECT também percorre): tema, idioma, relógio MIDI, fonte e o metrônomo com o volume dele.",
+      "tt.8": "HOME mostra as faixas; segure, uma barra amarela AJUDA enche, para a ajuda da página em que você está. HOME + PLAY: pânico, a música para e todo som é cortado.",
+      "tt.9": "SAVE abre os projetos (música nova, salvar, salvar como, carregar, renomear, demo; OCT+ OK, OCT− volta); pisca enquanto houver mudanças não salvas. Segure, uma barra amarela FERRAMENTAS enche, para as ferramentas: OPÇÕES, DESFAZER, REFAZER, APAGAR, COPIAR, COLAR, ACASO. SELECT escolhe e ela roda quando você solta; o KNOB 3 escolhe a faixa ou o padrão inteiro. SAVE segurado + OCT− desfaz, + OCT+ refaz, na hora: 10 passos, para padrões e sons.",
+      "tt.10": "ARP é a tecla de apagar e de shift, não um arpejador. Um toque apaga: a célula em FAIXAS, o passo segurado na GRADE, o passo da TABELA, a faixa LIVE. Segurado: + SELECT insere ou apaga uma linha (+ ALGORITHM no padrão inteiro), + KNOB 3 / 4 o segundo efeito da célula, + PRESETS em SOM escolhe o motor, + uma tecla preta no MIX deixa solo. Em MÚSICA alterna LOOP / MÚSICA; na edição de sample iguala as fatias.",
+      "tt.11": "SEQ abre a grade: 16 passos da faixa nas 16 teclas brancas; SELECT vira a página, OCT− / OCT+ deixam o padrão com 16, 32 ou 64 passos.",
+      "tt.12": "PLAY começa ou para a música. HOME + PLAY: pânico, tudo para e fica em silêncio.",
+      "tt.13": "REC liga ou desliga a gravação: as teclas escrevem no cursor (no tempo enquanto toca); REC segurado + SELECT diz quantas linhas uma nota pula.",
+      "s.h": "Os seus samples",
+      "s.how": "Solte um som num espaço (WAV, MP3, OGG, FLAC…) ou escolha um arquivo. Ele vira o que o FM-1 guarda: mono, 22 kHz, 8 bits, até 1,66 s, sem o silêncio antes. Depois, na página de SOM de uma faixa (<b>EDIT</b>): motor <b>SAMPLE</b>, <b>FONTE</b> = <b>MEU 1…4</b> (ou o preset MEU SAMPLE 1…4 com <b>PRESETS</b>). Os seus sons ficam neste navegador.",
+      "s.fm1": "<b>Mandar para o meu FM-1</b> copia um espaço para o seu FM-1 com o BAILE: um cabo USB de dados, Chrome ou Edge, e a música parada.",
+      "s.slot": "MEU {k}", "s.empty": "vazio", "s.pick": "Escolher um arquivo", "s.send": "Mandar para o meu FM-1", "s.out": "Saída MIDI (para o FM-1)", "s.in": "Entrada MIDI (do FM-1)",
+      "s.pickL": "Escolher um som para MEU {k}", "s.sendL": "Mandar MEU {k} para o meu FM-1",
+      "s.reading": "Lendo {f}…",
+      "s.ready": "{n} está em MEU {k} ({s} s).",
+      "s.later": "{n} está pronto em MEU {k} ({s} s): vai estar lá ao ligar.",
+      "s.cut": " Cortado para caber.",
+      "s.eDecode": "Este arquivo não pôde ser lido como som.",
+      "s.eSilent": "Este som está em silêncio.",
+      "s.eShort": "Este som é curto demais.",
+      "s.full": "O armazenamento do navegador está cheio: este som vai sumir depois de recarregar.",
+      "m.nomidi": "Este navegador não tem Web MIDI: use o Chrome ou o Edge num computador.",
+      "m.denied": "O acesso MIDI foi recusado. O BAILE precisa dele com SysEx: permita nas configurações do site.",
+      "m.search": "Procurando o FM-1…",
+      "m.noports": "Nenhum aparelho MIDI conectado. Ligue o FM-1 com um cabo USB de dados.",
+      "m.choose": "Nenhum FM-1 achado pelo nome: escolha as portas MIDI dele abaixo e mande de novo.",
+      "m.timeout": "O FM-1 não respondeu. Ele está ligado, rodando o BAILE, conectado com um cabo de dados?",
+      "m.notkawa": "O FM-1 respondeu, mas não roda o BAILE.",
+      "m.toobig": "O espaço do FM-1 é menor que este som.",
+      "m.sending": "Mandando para o FM-1… {p} %",
+      "m.done": "Pronto: {n} está em MEU {k} no seu FM-1. Lá: página de SOM, motor SAMPLE, FONTE MEU {k}.",
+      "m.rc1": "O FM-1 recusou o pedido (argumentos errados). Recarregue esta página e tente de novo.",
+      "m.rc2": "O FM-1 está ocupado: pare o BAILE (PLAY) e mande de novo.",
+      "m.rc3": "O FM-1 não conseguiu gravar a memória (flash). Mande de novo; se continuar, desligue e ligue.",
+      "m.rc4": "O som não chegou inteiro (CRC). Mande de novo.",
+      "m.rc5": "A transferência saiu de ordem (foi cortada). Mande de novo.",
+      "m.rcX": "O FM-1 respondeu um código desconhecido ({c}).",
+      "p.h": "Projetos salvos",
+      "p.how": "O que você salva no emulador (<b>SAVE</b>, depois <b>OCT+</b>, ou <kbd>Ctrl/⌘ S</kbd>) fica neste navegador e volta ao ligar. Exporte um arquivo para guardar uma cópia ou levar para outro computador.",
+      "p.exp": "Exportar projetos", "p.imp": "Importar projetos",
+      "p.saved": "Salvo neste navegador às {t}.",
+      "p.none": "Nada salvo ainda: no emulador, SAVE e depois OCT+.",
+      "p.bad": "Este não é um arquivo de projetos do BAILE.",
+      "p.done": "Projetos importados: o salvo automático está carregado, os outros estão em SAVE › CARREGAR.",
+      "p.later": "Projetos importados: vão estar lá ao ligar.",
+      "p.full": "O armazenamento do navegador está cheio: exporte os seus projetos para guardá-los.",
+      "p.exported": "Exportado: {f}",
+      g1: "O básico",
+      g1l: "<li>Um tracker feito para funk brasileiro. O tempo desce: cada linha é um passo (uma semicolcheia), cada coluna uma faixa, cada célula uma nota, o volume dela e um efeito.</li>" +
+           "<li>No emulador, a demo \"BAILE\" começa a tocar ao <b>LIGAR</b> quando não há projeto salvo neste navegador. <b>PLAY</b> para ou continua. O FM-1 de verdade começa com uma música vazia. Seis faixas, cada uma com um motor: PULSO, ONDA, RUÍDO, FM (uma faixa, 6 operadores), KIT (8 kits de baile) ou SAMPLE (os breaks ou os seus sons).</li>" +
+           "<li><b>ALGORITHM</b> escolhe a faixa, <b>SELECT</b> a linha, <b>PRESETS</b> o padrão. <b>KNOB 1–4</b> (<span class=\"k1\">vermelho</span>, <span class=\"k2\">amarelo</span>, <span class=\"k3\">verde</span>, <span class=\"k4\">azul</span> em toda página) editam a célula: os rótulos dizem o que fazem.</li>" +
+           "<li><b>REC</b>, depois as teclas: as notas entram no cursor (no tempo enquanto toca). REC segurado + SELECT: quantas linhas uma nota pula. <b>ARP</b> é a tecla de apagar (não é um arpejador): apaga a célula.</li>" +
+           "<li><b>HOME</b> faixas (segurado: a ajuda da página) · <b>SEQ</b> a grade (OCT− / OCT+: 16, 32 ou 64 passos) · <b>EDIT</b> o som, de novo a próxima página (ARP segurado + PRESETS escolhe o motor) · <b>LFO</b> o LFO, de novo a MODULAÇÃO · <b>ENV</b> o envelope, de novo o MIX · <b>GLO</b> a música, de novo o groove, depois as opções (com metrônomo).</li>" +
+           "<li><b>SAVE</b>: música nova, salvar, salvar como, carregar, renomear, demo (<b>OCT+</b> OK, <b>OCT−</b> volta); pisca enquanto houver mudanças. Segure SAVE para as ferramentas: OPÇÕES, DESFAZER, REFAZER, APAGAR, COPIAR, COLAR, ACASO. SAVE segurado + OCT−: desfaz na hora, + OCT+: refaz. Desfazer cobre os sons também, 10 passos.</li>" +
+           "<li>Segure <b>HOME</b>, <b>FX</b> ou <b>SAVE</b>: uma barra amarela AJUDA, LIVE ou FERRAMENTAS enche embaixo da tela, e a ajuda, os efeitos LIVE ou as ferramentas aparecem quando ela enche.</li>" +
+           "<li><b>HOME</b> + <b>PLAY</b>: pânico. A música para, toda voz e todo efeito ao vivo são cortados.</li>",
+      g2: "Efeitos e mágica",
+      g2l: "<li><b>FX</b>: ENVIOS (um drive, um eco e um reverb para cada faixa: ALGORITHM escolhe a faixa, KNOB 1–3 os níveis), de novo os efeitos LIVE, depois o FILTRO (11 tipos, as teclas afinam) e a SEQ FX (a faixa LIVE à mão), e volta.</li>" +
+           "<li>Segure <b>FX</b> e toque as teclas brancas: 64 efeitos ao vivo em quatro bancos (<b>OCT−</b> / <b>OCT+</b>): SEGURA, PUXA, SOBE, CORTA, ECO MC, GRAVE+, SIRENE…, no master ou numa faixa. Solte e você volta.</li>" +
+           "<li><b>SCL</b> abre a escala, de novo a mágica: picar o break, BEAT FUNK (o ritmo do kit), GRAVE 808, MONTAGE, VIRADA, Euclides…</li>" +
+           "<li><b>MIX</b> (ENV duas vezes): os níveis e o efeito do master. As teclas pretas silenciam; ARP segurado + uma tecla preta: solo.</li>" +
+           "<li>ARP segurado + SELECT: uma linha entra ou sai; + ALGORITHM: no padrão inteiro.</li>" +
+           "<li><b>EDIT</b> de novo e de novo: SOM, SOM 2, (FM: OPERADOR, ENV OPERADOR; SAMPLE: EDIÇÃO), EFEITO, TABELA. <b>LFO</b>: o LFO, depois a MODULAÇÃO.</li>" +
+           "<li>Em SOM, <b>PRESETS</b> troca na hora um som que você não mexeu. Um som editado (marcado *) é mantido: o próximo som de fábrica só aparece em dourado, com ? e OCT+. Continue girando para navegar; <b>OCT+</b> carrega, <b>OCT−</b> mantém o seu.</li>" +
+           "<li>Dois efeitos por célula: <b>ARP</b> segurado + KNOB 3 e 4 ajustam o segundo. PUL pula para uma linha, FIM acaba o padrão.</li>",
+      g3: "No teclado",
+      g3l: "<li>Notas: as fileiras <kbd>Z X C V…</kbd> e <kbd>Q W E R…</kbd> (pela posição das teclas: QWERTY e AZERTY iguais).</li>" +
+           "<li><kbd>Espaço</kbd> PLAY · <kbd>Enter</kbd> REC · <kbd>Shift</kbd> segurado FX · <kbd>Backspace</kbd> ARP · <kbd>Esc</kbd> HOME · <kbd>-</kbd> <kbd>=</kbd> OCT− OCT+.</li>" +
+           "<li><kbd>↑</kbd><kbd>↓</kbd> linha · <kbd>←</kbd><kbd>→</kbd> faixa · <kbd>PgUp</kbd><kbd>PgDn</kbd> padrão.</li>" +
+           "<li><kbd>Ctrl/⌘ Z</kbd> desfazer · <kbd>Ctrl/⌘ Y</kbd> ou <kbd>Ctrl/⌘ Shift Z</kbd> refazer · <kbd>Ctrl/⌘ S</kbd> salvar · <kbd>F1</kbd> ou <kbd>?</kbd> segurado: ajuda.</li>" +
+           "<li>A roda do mouse num knob, ou arraste para cima e para baixo; as setas quando ele tem o foco.</li>",
+      "d.h": "Feito sobre o KAWA",
+      "d.p": "O BAILE é um fork do KAWA, um tracker para o FM-1 feito por Omnipotard. Se você curtir, apoie quem fez a base.",
+      "d.sig": "saulofilho, que fez o BAILE",
+      "d.btn": "Apoiar Omnipotard no Ko-fi",
+      "d.new": " (abre uma aba nova)",
+      foot: "O BAILE é software livre (GPL-3.0), um fork do KAWA (Omnipotard), construído sobre Dinghy, Felucca e SLOOP, a plataforma aberta da comunidade FM-1. Os kits e os breaks são todos sintetizados. O firmware se instala no FM-1 pelo USB por sua conta e risco: tenha à mão o firmware oficial V15 e o M-UPGRADE para voltar."
     },
     es: {
-      tag: "Pocket Tracker by Omnipotard · firmware para el M-VAVE FM-1",
+      tag: "Tracker de funk · firmware para el M-VAVE FM-1 · sobre KAWA de Omnipotard",
       langs: "Idioma",
-      beta: "<b>Esto es una beta.</b> KAWA se ha probado en un FM-1 real. Lee la sección de seguridad del manual antes de instalarlo. El firmware oficial siempre se puede reinstalar con M-UPGRADE; es el paso delicado: nunca desconectes el FM-1 mientras se ejecuta.",
-      tip: "Si te gusta este firmware y quieres animarme a seguir desarrollándolo, puedes dejarme una pequeña propina en <a href=\"https://ko-fi.com/omnipotard\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>.",
+      beta: "<b>Esto es una beta.</b> BAILE aún no se ha probado en un FM-1 real. Lee la sección de seguridad del manual antes de instalarlo. El firmware oficial siempre se puede reinstalar con M-UPGRADE; es el paso delicado: nunca desconectes el FM-1 mientras se ejecuta.",
+      tip: "BAILE es un fork de KAWA, de Omnipotard. Si te gusta, apoya al autor de KAWA en <a href=\"https://ko-fi.com/omnipotard\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>.",
       screen: "La pantalla del FM-1",
       power: "El firmware funciona aquí tal cual, compilado a WebAssembly. Sube el sonido, enciende y luego pulsa una tecla.",
       powerBtn: "ENCENDER",
@@ -763,7 +763,7 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2f2a3b; border-rad
       "tt.13": "REC activa o desactiva la grabación: las teclas escriben en el cursor (a tiempo mientras suena); REC mantenido + SELECT ajusta cuántas filas salta una nota.",
       "s.h": "Tus samples",
       "s.how": "Suelta un sonido en una ranura (WAV, MP3, OGG, FLAC…) o elige un archivo. Se convierte en lo que guarda el FM-1: mono, 22 kHz, 8 bits, 1,66 s como mucho, sin el silencio del principio. Luego, en la página SONIDO de una pista (<b>EDIT</b>): motor <b>SAMPLE</b>, <b>FUENTE</b> = <b>MI 1…4</b> (o el preset MI SAMPLE 1…4 con <b>PRESETS</b>). Tus sonidos se quedan en este navegador.",
-      "s.fm1": "<b>Enviar a mi FM-1</b> copia una ranura a tu FM-1 con KAWA 0.2 o posterior: un cable USB de datos, Chrome o Edge, y la reproducción parada.",
+      "s.fm1": "<b>Enviar a mi FM-1</b> copia una ranura a tu FM-1 con BAILE: un cable USB de datos, Chrome o Edge, y la reproducción parada.",
       "s.slot": "MI {k}", "s.empty": "vacía", "s.pick": "Elegir un archivo", "s.send": "Enviar a mi FM-1", "s.out": "Salida MIDI (al FM-1)", "s.in": "Entrada MIDI (del FM-1)",
       "s.pickL": "Elegir un sonido para MI {k}", "s.sendL": "Enviar MI {k} a mi FM-1",
       "s.reading": "Leyendo {f}…",
@@ -775,17 +775,17 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2f2a3b; border-rad
       "s.eShort": "Este sonido es demasiado corto.",
       "s.full": "El almacenamiento del navegador está lleno: este sonido desaparecerá al recargar.",
       "m.nomidi": "Este navegador no tiene Web MIDI: usa Chrome o Edge en un ordenador.",
-      "m.denied": "Se rechazó el acceso MIDI. KAWA lo necesita con SysEx: permítelo en los ajustes del sitio.",
+      "m.denied": "Se rechazó el acceso MIDI. BAILE lo necesita con SysEx: permítelo en los ajustes del sitio.",
       "m.search": "Buscando el FM-1…",
       "m.noports": "No hay ningún aparato MIDI conectado. Conecta el FM-1 con un cable USB de datos y enciéndelo.",
       "m.choose": "No se encontró ningún FM-1 por su nombre: elige sus puertos MIDI abajo y vuelve a enviar.",
-      "m.timeout": "El FM-1 no responde. ¿Está encendido, con KAWA 0.2 o posterior, conectado con un cable de datos?",
-      "m.notkawa": "El FM-1 respondió, pero no lleva KAWA 0.2 o posterior.",
+      "m.timeout": "El FM-1 no responde. ¿Está encendido, con BAILE, conectado con un cable de datos?",
+      "m.notkawa": "El FM-1 respondió, pero no lleva BAILE.",
       "m.toobig": "La ranura del FM-1 es más pequeña que este sonido.",
       "m.sending": "Enviando al FM-1… {p} %",
       "m.done": "Hecho: {n} está en MI {k} en tu FM-1. Allí: página SONIDO, motor SAMPLE, FUENTE MI {k}.",
       "m.rc1": "El FM-1 rechazó la petición (argumentos incorrectos). Recarga esta página y vuelve a intentarlo.",
-      "m.rc2": "El FM-1 está ocupado: para KAWA primero (PLAY) y vuelve a enviar.",
+      "m.rc2": "El FM-1 está ocupado: para BAILE primero (PLAY) y vuelve a enviar.",
       "m.rc3": "El FM-1 no pudo escribir su memoria (flash). Vuelve a enviar; si sigue, apágalo y enciéndelo.",
       "m.rc4": "El sonido no llegó intacto (CRC). Vuelve a enviarlo.",
       "m.rc5": "La transferencia llegó desordenada (se cortó). Vuelve a enviarla.",
@@ -795,13 +795,13 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2f2a3b; border-rad
       "p.exp": "Exportar proyectos", "p.imp": "Importar proyectos",
       "p.saved": "Guardado en este navegador a las {t}.",
       "p.none": "Nada guardado todavía: en el emulador, SAVE y luego OCT+.",
-      "p.bad": "Esto no es un archivo de proyectos KAWA.",
+      "p.bad": "Esto no es un archivo de proyectos BAILE.",
       "p.done": "Proyectos importados: el autoguardado está cargado, los demás están en SAVE › CARGAR.",
       "p.later": "Proyectos importados: estarán ahí al encender.",
       "p.full": "El almacenamiento del navegador está lleno: exporta tus proyectos para conservarlos.",
       "p.exported": "Exportado: {f}",
       g1: "Lo básico",
-      g1l: "<li>Un tracker hecho ante todo para el chiptune y el IDM (sabe hacer otros estilos también). El tiempo baja: cada fila es un paso (una semicorchea), cada columna una pista, cada celda una nota, su volumen y un efecto.</li>" +
+      g1l: "<li>Un tracker hecho para el funk brasileño. El tiempo baja: cada fila es un paso (una semicorchea), cada columna una pista, cada celda una nota, su volumen y un efecto.</li>" +
            "<li>En el emulador web, la demo empieza a sonar al pulsar <b>ENCENDER</b> si no hay un proyecto guardado en este navegador. <b>PLAY</b> la detiene o reanuda. Un proyecto guardado se abre como antes. El FM-1 sigue arrancando con una cancion vacia. Seis pistas, cada una con su motor: PULSE, WAVE, NOISE, FM (una pista, 6 operadores), KIT (8 kits) o SAMPLE (los breaks o tus propios sonidos).</li>" +
            "<li><b>ALGORITHM</b> elige la pista, <b>SELECT</b> la fila, <b>PRESETS</b> el patrón. <b>KNOB 1 a 4</b> (<span class=\"k1\">rojo</span>, <span class=\"k2\">amarillo</span>, <span class=\"k3\">verde</span>, <span class=\"k4\">azul</span> en todas las páginas) cambian la celda: sus etiquetas dicen lo que hacen.</li>" +
            "<li><b>REC</b> y luego las teclas: las notas se escriben en el cursor (a tiempo mientras suena). REC mantenido + SELECT: cuántas filas salta una nota. <b>ARP</b> es la tecla de borrar (no un arpegiador): borra la celda.</li>" +
@@ -824,16 +824,16 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2f2a3b; border-rad
            "<li><kbd>↑</kbd><kbd>↓</kbd> fila · <kbd>←</kbd><kbd>→</kbd> pista · <kbd>RePág</kbd><kbd>AvPág</kbd> patrón.</li>" +
            "<li><kbd>Ctrl/⌘ Z</kbd> deshacer · <kbd>Ctrl/⌘ Y</kbd> o <kbd>Ctrl/⌘ Mayús Z</kbd> rehacer · <kbd>Ctrl/⌘ S</kbd> guardar · <kbd>F1</kbd> o <kbd>?</kbd> mantenido: ayuda.</li>" +
            "<li>La rueda del ratón sobre un potenciómetro, o arrástralo arriba y abajo; las flechas cuando tiene el foco.</li>",
-      "d.h": "¿Me invitas a una cerveza?",
-      "d.p": "Si te gusta lo que hago, ¡piensa en apoyarme! ¡Cada pequeño gesto significa muchísimo!",
-      "d.sig": "Omnipotard, quien hizo KAWA",
-      "d.btn": "Invítame a una cerveza en Ko-fi",
+      "d.h": "Hecho sobre KAWA",
+      "d.p": "BAILE es un fork de KAWA, un tracker para el FM-1 de Omnipotard. Si te gusta, apoya a quien hizo la base.",
+      "d.sig": "saulofilho, quien hizo BAILE",
+      "d.btn": "Apoya a Omnipotard en Ko-fi",
       "d.new": " (abre una pestaña nueva)",
-      foot: "KAWA es software libre (GPL-3.0), construido sobre Dinghy, Felucca y SLOOP, la plataforma abierta de la comunidad FM-1. Los breaks están totalmente sintetizados. El firmware se instala en el FM-1 por USB bajo tu propio riesgo: ten a mano el firmware oficial V15 y M-UPGRADE para volver atrás."
+      foot: "BAILE es software libre (GPL-3.0), un fork de KAWA (Omnipotard), construido sobre Dinghy, Felucca y SLOOP, la plataforma abierta de la comunidad FM-1. Los breaks están totalmente sintetizados. El firmware se instala en el FM-1 por USB bajo tu propio riesgo: ten a mano el firmware oficial V15 y M-UPGRADE para volver atrás."
     }
   };
-  const LANG_ID = {fr: 0, en: 1, es: 2};
-  let lang = "en";
+  const LANG_ID = {pt: 0, en: 1, es: 2};
+  let lang = "pt";
   const T = (k, v) => {
     let s = (I18N[lang] && k in I18N[lang]) ? I18N[lang][k] : (k in I18N.en ? I18N.en[k] : "");
     if (v && typeof s === "string") s = s.replace(/\{(\w+)\}/g, (m, n) => (n in v ? String(v[n]) : m));
@@ -1410,7 +1410,7 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2f2a3b; border-rad
     return h;
   }
   let midiAcc = null;
-  const PORT_RE = /FM-1|Felucca|KAWA/i;
+  const PORT_RE = /FM-1|Felucca|BAILE/i;
   function fillPicker(outs, ins, o, i) {
     const fill = (sel, list, pick) => {
       sel.textContent = "";
@@ -1456,7 +1456,7 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2f2a3b; border-rad
       link = new Link(p.o, p.i);
       await link.open();
       const info = await link.ask(1, [], 1000);
-      if (info[0] !== 0 || info.length < 5 || String.fromCharCode(info[1], info[2], info[3], info[4]) !== "KAWA") throw new KErr("m.notkawa");
+      if (info[0] !== 0 || info.length < 5 || String.fromCharCode(info[1], info[2], info[3], info[4]) !== "BAIL") throw new KErr("m.notkawa");
       const cap = info.length >= 13 ? info[10] | info[11] << 8 | info[12] << 16 : 0;
       if (cap && s.data.length > cap) throw new KErr("m.toobig");
       rcCheck(await link.ask(2, [k], 3000), "BEGIN");     /* (it erases: a longer wait) */
@@ -1517,7 +1517,7 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2f2a3b; border-rad
     if (I18N[h]) return h;
     const s = ls.get(LS_LANG);
     if (I18N[s]) return s;
-    return "en";                                /* English first, whatever the browser's language */
+    return "pt";                                /* BAILE: Portuguese first, whatever the browser's language */
   }
   buildSlots();
   loadSamples();
@@ -1565,7 +1565,7 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2f2a3b; border-rad
           await audio.audioWorklet.addModule(url);
           const node = new AudioWorkletNode(audio, "kawa", {numberOfInputs: 0, outputChannelCount: [2], processorOptions: {bytes: wasm, boot: bootData()}});
           node.port.onmessage = (ev) => onEngine(ev.data);
-          node.onprocessorerror = (ev) => { console.error("KAWA engine stopped", ev); err.hidden = false; err.textContent = T("err"); $("power").hidden = false; };
+          node.onprocessorerror = (ev) => { console.error("BAILE engine stopped", ev); err.hidden = false; err.textContent = T("err"); $("power").hidden = false; };
           node.connect(audio.destination);
           send = (m) => node.port.postMessage(m);
           ok = true;

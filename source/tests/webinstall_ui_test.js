@@ -7,7 +7,7 @@
  *
  *   NODE_PATH=$(npm root -g) node source/tests/webinstall_ui_test.js        (PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers here)
  *
- * Without Playwright it says so and exits 0. KAWA_SHOTS=DIR also saves screenshots (desktop and phone width).
+ * Without Playwright it says so and exits 0. BAILE_SHOTS=DIR also saves screenshots (desktop and phone width).
  * It does not prove the real Web MIDI of Chrome, Edge or Opera: only a real FM-1 does. */
 "use strict";
 const assert = require("node:assert/strict");
@@ -22,7 +22,7 @@ try { ({ chromium } = require("playwright")); } catch (e) {
 }
 const ROOT = path.join(__dirname, "..", "..");
 const MOCK = fs.readFileSync(path.join(__dirname, "fm1_mock.js"), "utf8");
-const SHOTS = process.env.KAWA_SHOTS;
+const SHOTS = process.env.BAILE_SHOTS;
 const TYPES = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", ".png": "image/png", ".fwsc": "application/octet-stream" };
 const FAST = { open: 5, start: 20, reply: 0, loader: 20, reboot: 20, retry: 20, poll: 30, hs: 100, idle_check: 400, idle_write: 600, wait_loader: 3000, wait_reboot: 3000, portopen: 500, refresh: 50 };
 
@@ -77,8 +77,8 @@ async function shot(page, name) { if (SHOTS) { fs.mkdirSync(SHOTS, { recursive: 
 
 test("the page: content, image, links, no network, no console error", async () => {
     const { ctx, page, seen } = await open();
-    assert.equal(await page.title(), "KAWA — Pocket Tracker for the M-VAVE FM-1");
-    assert.equal(await text(page, "h1"), "KAWA — Pocket Tracker for the M-VAVE FM-1");
+    assert.equal(await page.title(), "BAILE — Funk Tracker for the M-VAVE FM-1");
+    assert.equal(await text(page, "h1"), "BAILE — Funk Tracker for the M-VAVE FM-1");
     assert.equal(await text(page, ".lead"), "A free tracker firmware for the M-VAVE FM-1. Write patterns on six tracks (FM, chiptune, drums, breaks, samples), chain them into a song, and play live effects. Beta, GPL-3.0.");
     const warn = await text(page, ".warn");
     assert.match(warn, /Tested on a real FM-1/); assert.match(warn, /unofficial firmware/); assert.match(warn, /at your own risk/); assert.match(warn, /M-UPGRADE/);
@@ -86,12 +86,12 @@ test("the page: content, image, links, no network, no console error", async () =
     assert.match(await text(page, "#browsers"), /INSTALL-Windows\.bat/);
     assert.match(await text(page, "#official"), /M-UPGRADE/);
     assert.equal(await page.$eval("#official a", a => a.getAttribute("href")), "https://github.com/Guizmoh/Kawa-Tracker-Fm1#go-back-to-the-official-firmware-or-install-another-one");
-    assert.equal(await page.$eval(".hero img", i => [i.getAttribute("src"), i.complete && i.naturalWidth]).then(x => x.join(" ")), "manual/img/kawa-preview.png 1280");
+    assert.equal(await page.$eval(".hero img", i => [i.getAttribute("src"), i.complete && i.naturalWidth]).then(x => x.join(" ")), "manual/img/baile-preview.png 1280");
     const hrefs = await page.$$eval("a[href]", a => a.map(x => x.getAttribute("href")));
     for (const h of ["manual/index.html", "manual/fr.html", "manual/es.html", "emulator/index.html", "samples.html", "https://github.com/Guizmoh/Kawa-Tracker-Fm1", "https://github.com/Guizmoh/Kawa-Tracker-Fm1#readme"]) assert.ok(hrefs.includes(h), h);
-    assert.equal(await page.$eval("#go", b => b.textContent.trim() + "|" + b.disabled), "Install KAWA|false");
+    assert.equal(await page.$eval("#go", b => b.textContent.trim() + "|" + b.disabled), "Install BAILE|false");
     assert.equal(await text(page, "#status"), "Ready.");
-    assert.match(await text(page, "#pkg"), /^Package: kawa-/);
+    assert.match(await text(page, "#pkg"), /^Package: baile-/);
     assert.deepEqual(seen.external, [], "something was loaded from the network");
     assert.deepEqual(seen.errors, []);
     // no horizontal scroll at desktop and phone width
@@ -106,7 +106,7 @@ test("the page: content, image, links, no network, no console error", async () =
 test("a browser without Web MIDI: the message, the buttons off", async () => {
     const { ctx, page } = await open({ noWebMidi: true });
     assert.equal(await page.$eval("#go", b => b.disabled), true);
-    assert.equal(await text(page, "#status"), "This browser cannot install KAWA.");
+    assert.equal(await text(page, "#status"), "This browser cannot install BAILE.");
     assert.match(await text(page, "#error"), /^Error: this browser has no Web MIDI with SysEx, which the installer needs to talk to the FM-1\. Use Chrome, Edge or Opera on a computer/);
     assert.ok(await visible(page, "#error"));
     await ctx.close();
@@ -117,8 +117,8 @@ test("install: cancel in the dialog writes nothing; confirm writes; the guards w
     await page.click("#go");
     await page.waitForFunction(() => document.getElementById("dlg").open);
     const info = await text(page, "#dlg");
-    assert.match(info, /Write KAWA to the FM-1\?/); assert.match(info, /Do not unplug the FM-1/); assert.match(info, /do not close or reload this page/);
-    assert.match(await text(page, "#dlg-info"), /^Package FM-1_957 \(kawa-[\d.]+\.fwsc\) onto the device FM-1_015 on the port "FM-1"\.$/);
+    assert.match(info, /Write BAILE to the FM-1\?/); assert.match(info, /Do not unplug the FM-1/); assert.match(info, /do not close or reload this page/);
+    assert.match(await text(page, "#dlg-info"), /^Package FM-1_971 \(baile-[\d.]+\.fwsc\) onto the device FM-1_015 on the port "FM-1"\.$/);
     assert.equal(await page.evaluate(() => document.getElementById("dlg-no") === document.activeElement), true, "Cancel has the focus, not the write button");
     await shot(page, "dialog.png");
     await page.click("#dlg-no");
@@ -141,16 +141,16 @@ test("install: cancel in the dialog writes nothing; confirm writes; the guards w
     assert.equal(mid.keep, true); assert.equal(mid.go, true); assert.match(mid.pick, /off/); assert.match(mid.status, /^Writing \d+%$/); assert.equal(mid.writing, "writing");
     await shot(page, "writing.png");
     await page.waitForSelector("#done:not([hidden])", { timeout: 60000 });
-    assert.equal(await text(page, "#done"), "Done: the FM-1 runs KAWA (FM-1_957).");
-    assert.equal(await text(page, "#status"), "Done: the FM-1 runs KAWA (FM-1_957).");
+    assert.equal(await text(page, "#done"), "Done: the FM-1 runs BAILE (FM-1_971).");
+    assert.equal(await text(page, "#status"), "Done: the FM-1 runs BAILE (FM-1_971).");
     const end = await page.evaluate(() => {
         const e = new Event("beforeunload", { cancelable: true }); dispatchEvent(e);
         return { guard: e.defaultPrevented, keep: !document.getElementById("keep").hidden, go: document.getElementById("go").disabled,
                  bar: document.getElementById("bar").getAttribute("aria-valuenow"), log: document.getElementById("log").textContent };
     });
     assert.deepEqual([end.guard, end.keep, end.go, end.bar], [false, false, false, "100"], "guards released at the end");
-    assert.match(end.log, /^package: FM-1_957 {2}\(kawa-/); assert.match(end.log, /device: {2}FM-1_015 {2}\(FM-1\)/);
-    assert.match(end.log, /Starting the update on FM-1_015\nSwitching to update mode\nRestarting\ndone: the FM-1 runs FM-1_957$/);
+    assert.match(end.log, /^package: FM-1_971 {2}\(baile-/); assert.match(end.log, /device: {2}FM-1_015 {2}\(FM-1\)/);
+    assert.match(end.log, /Starting the update on FM-1_015\nSwitching to update mode\nRestarting\ndone: the FM-1 runs FM-1_971$/);
     assert.equal(await appOk(page), true, "the simulated chip does not hold the package");
     const st = await stats(page);
     assert.equal(st.finishes, 1); assert.equal(st.upgrades, 2);
@@ -181,35 +181,35 @@ test("closing the tab while writing: the browser asks first (the real beforeunlo
 test("a newer package named in install/SHA256SUMS (0.7) is the one the page shows, downloads and installs: no version in the page", async () => {
     const hash = require("node:crypto").createHash("sha256").update(PKG).digest("hex");
     const { ctx, page, seen } = await open({ before: async pg => {
-        await pg.route("**/install/SHA256SUMS", r => r.fulfill({ contentType: "text/plain", body: `${hash}  kawa-0.7.fwsc\n${"c".repeat(64)}  kawa-0.4.fwsc\n${"d".repeat(64)}  older/kawa-0.3.fwsc\n` }));
-        await pg.route("**/install/kawa-0.7.fwsc", r => r.fulfill({ contentType: "application/octet-stream", body: PKG }));
+        await pg.route("**/install/SHA256SUMS", r => r.fulfill({ contentType: "text/plain", body: `${hash}  baile-0.7.fwsc\n${"c".repeat(64)}  baile-0.4.fwsc\n${"d".repeat(64)}  older/baile-0.3.fwsc\n` }));
+        await pg.route("**/install/baile-0.7.fwsc", r => r.fulfill({ contentType: "application/octet-stream", body: PKG }));
     } });
-    assert.equal(await text(page, "#pkg"), "Package: kawa-0.7.fwsc");
+    assert.equal(await text(page, "#pkg"), "Package: baile-0.7.fwsc");
     await page.click("#go");
     await page.waitForFunction(() => document.getElementById("dlg").open);
-    assert.match(await text(page, "#dlg-info"), /\(kawa-0\.7\.fwsc\)/);
+    assert.match(await text(page, "#dlg-info"), /\(baile-0\.7\.fwsc\)/);
     await page.click("#dlg-yes");
     await page.waitForSelector("#done:not([hidden])", { timeout: 60000 });
-    assert.equal(await text(page, "#done"), "Done: the FM-1 runs KAWA (FM-1_957).");
-    assert.ok(seen.requests.some(u => u.endsWith("/install/kawa-0.7.fwsc")) && !seen.requests.some(u => u.endsWith("/install/kawa-0.4.fwsc")));
+    assert.equal(await text(page, "#done"), "Done: the FM-1 runs BAILE (FM-1_971).");
+    assert.ok(seen.requests.some(u => u.endsWith("/install/baile-0.7.fwsc")) && !seen.requests.some(u => u.endsWith("/install/baile-0.4.fwsc")));
     await ctx.close();
 });
 
 test("a local damaged .fwsc: refused, nothing written, no MIDI asked; then a good local file installs", async () => {
     const { ctx, page } = await open();
     const bad = Buffer.from(PKG); bad[0x40000 + 20] ^= 1;
-    await page.setInputFiles("#file", { name: "kawa-damaged.fwsc", mimeType: "application/octet-stream", buffer: bad });
+    await page.setInputFiles("#file", { name: "baile-damaged.fwsc", mimeType: "application/octet-stream", buffer: bad });
     await page.waitForFunction(() => !document.getElementById("error").hidden);
-    assert.match(await text(page, "#error"), /^Error: kawa-damaged\.fwsc: damaged package \(flash\.bin: CRC\); nothing was written\. Download it again\.$/);
+    assert.match(await text(page, "#error"), /^Error: baile-damaged\.fwsc: damaged package \(flash\.bin: CRC\); nothing was written\. Download it again\.$/);
     assert.equal(await text(page, "#status"), "Stopped. Nothing was written.");
     assert.equal(await page.evaluate(() => window.__midi.requests), 0);
     assert.equal(await page.$eval("#go", b => b.disabled), false);
-    await page.setInputFiles("#file", { name: "kawa-local.fwsc", mimeType: "application/octet-stream", buffer: PKG });
+    await page.setInputFiles("#file", { name: "baile-local.fwsc", mimeType: "application/octet-stream", buffer: PKG });
     await page.waitForFunction(() => document.getElementById("dlg").open);
-    assert.match(await text(page, "#dlg-info"), /\(kawa-local\.fwsc\)/);
+    assert.match(await text(page, "#dlg-info"), /\(baile-local\.fwsc\)/);
     await page.click("#dlg-yes");
     await page.waitForSelector("#done:not([hidden])", { timeout: 60000 });
-    assert.equal(await text(page, "#done"), "Done: the FM-1 runs FM-1_957.", "a local file does not claim to be KAWA");
+    assert.equal(await text(page, "#done"), "Done: the FM-1 runs FM-1_971.", "a local file does not claim to be BAILE");
     assert.equal(await appOk(page), true);
     assert.equal(await page.evaluate(() => document.getElementById("error").hidden), true, "the old error is gone");
     await ctx.close();
@@ -247,7 +247,7 @@ test("no FM-1 / wrong model: the message, no dialog, nothing written", async () 
     t = await open({ dev: { appId: "FM-2_015" } });
     await t.page.click("#go");
     await t.page.waitForFunction(() => !document.getElementById("error").hidden);
-    assert.match(await text(t.page, "#error"), /^Error: the device is FM-2_015, the package is for FM-1_957$/);
+    assert.match(await text(t.page, "#error"), /^Error: the device is FM-2_015, the package is for FM-1_971$/);
     assert.equal(await t.page.evaluate(() => document.getElementById("dlg").open), false);
     assert.equal((await stats(t.page)).upgrades, 0);
     await t.ctx.close();
@@ -278,7 +278,7 @@ test("from file://: the page works, the download cannot, a local file installs",
     await page.waitForFunction(() => document.getElementById("dlg").open);
     await page.click("#dlg-yes");
     await page.waitForSelector("#done:not([hidden])", { timeout: 60000 });
-    assert.equal(await text(page, "#done"), "Done: the FM-1 runs FM-1_957.");
+    assert.equal(await text(page, "#done"), "Done: the FM-1 runs FM-1_971.");
     assert.deepEqual(seen.external, []);
     await ctx.close();
 });

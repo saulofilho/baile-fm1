@@ -47,6 +47,27 @@ headphone** que pisca, dança com os efeitos e dorme quando você para. Temas **
 | **PLAY**, **REC** | Toca / para; grava |
 | **ARP** | A tecla de apagar e de *shift* |
 
+## Instalar
+
+**Pelo navegador (Chrome, Edge, Opera):** abra o [hub](https://saulofilho.github.io/baile-fm1/), ligue o FM-1 com um
+cabo USB de dados, feche outros programas MIDI e clique em *Instalar o BAILE*. O pacote é conferido antes de apagar
+qualquer coisa; se o cabo cair, conecte de novo e clique outra vez: a instalação continua.
+
+### Instalar sem o navegador
+
+Precisa de [Python 3](https://www.python.org/downloads/). Baixe este repositório (*Code*, *Download ZIP*), descompacte e
+rode o lançador do seu sistema: **Windows** `INSTALL-Windows.bat`, **Mac** `INSTALL-Mac.command` (na primeira vez:
+botão direito, Abrir), **Linux** `./INSTALL-Linux.sh`. O pacote fica em [`install/`](install/).
+
+## Voltar ao firmware oficial
+
+1. Os projetos do BAILE se perdem: o firmware oficial não os lê.
+2. Use uma fonte de energia estável e um cabo USB de dados. Se o BAILE estiver estranho, abra antes o resgate USB
+   (segure OCT− ao ligar).
+3. Instale o firmware oficial **V15** da M-VAVE com o **M-UPGRADE**.
+4. **Não desconecte nada durante a transferência** (o firmware oficial reescreve também o bootloader). Se parar,
+   conecte de novo e recomece.
+
 ## No computador
 
 Tudo fica em [`source/`](source/BUILDING.md). O simulador roda no macOS e no Linux; as telas e o áudio saem em

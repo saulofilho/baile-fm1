@@ -6,8 +6,8 @@
  *
  *   node source/tests/webinstall_test.js
  *
- * It runs the installer's own code, with the delays shortened, on the real package install/kawa-*.fwsc:
- *   - a good install (stock firmware -> loader -> KAWA), with noise on the MIDI line, SysEx cut in pieces, a stale port
+ * It runs the installer's own code, with the delays shortened, on the real package install/baile-*.fwsc:
+ *   - a good install (stock firmware -> loader -> BAILE), with noise on the MIDI line, SysEx cut in pieces, a stale port
  *     list, a device that re-enumerates under another name; the flash of the simulated chip must end up equal to the
  *     package's app area, the flash head and the user's data untouched;
  *   - a damaged package (every kind: header, file list, a file's CRC, cut short, too short, not an FM-1 package, no
@@ -77,7 +77,7 @@ async function goodInstall(name, o = {}) {
     const dev = r.dev;
     assert.equal(r.err, undefined, r.err && r.err.message);
     assert.deepEqual(r.res, { done: true, id: PRODUCT });
-    assert.equal(PRODUCT, "FM-1_957");
+    assert.equal(PRODUCT, "FM-1_971");
     // the Python tool's sequence: start, check..., loader, write 0..100, reboot, done
     const k = kinds(r), ks = [...new Set(k)];
     assert.deepEqual(ks, ["start", "check", "loader", "write", "reboot", "done"]);
@@ -87,7 +87,7 @@ async function goodInstall(name, o = {}) {
     assert.equal(w[0], 0); assert.equal(w[w.length - 1], 100);
     assert.ok(w.slice(0, -1).every(x => x <= 99), "write % stays under 100 until the end");
     assert.ok(w.every((x, i) => i === 0 || x >= w[i - 1]), "write % never goes back");
-    assert.equal(W.STEP_TEXT.done(PRODUCT), "done: the FM-1 runs FM-1_957");
+    assert.equal(W.STEP_TEXT.done(PRODUCT), "done: the FM-1 runs FM-1_971");
     // the chip: the app area is the package's, the flash head and the user's data were never written
     assert.ok(Buffer.from(dev.appArea()).equals(Buffer.from(dev.expectedApp(PKG))), "app area differs from the package's flash.bin");
     assert.ok(dev.appChanged() && dev.untouched());
@@ -96,25 +96,25 @@ async function goodInstall(name, o = {}) {
     assert.deepEqual([dev.stats.step1Fails, dev.stats.loaderFails], [[], []]);
     assert.equal(dev.stats.stray, 0); assert.equal(dev.stats.junk, 0);
     assert.equal(dev.stats.upgrades, 2, "UPGRADE once per step");
-    assert.equal(dev.appId, "FM-1_957"); assert.equal(dev.mode, "app");
+    assert.equal(dev.appId, "FM-1_971"); assert.equal(dev.mode, "app");
     assert.deepEqual(dev.events.filter(e => e.startsWith("plug")), ["plug:app", "plug:loader", "plug:app"]);
     assert.deepEqual(r.busy, [true, false]);
     assert.deepEqual(r.midi.sysexAsked, r.midi.sysexAsked.map(() => true), "SysEx must be asked for");
     assert.ok(r.midi.sysexAsked.length >= 1);
     assert.equal(r.asked.length, 1); assert.equal(r.asked[0].product, PRODUCT); assert.equal(r.asked[0].resume, false);
-    assert.match(r.lines[0], /^package: FM-1_957 {2}\(kawa-\d/);
+    assert.match(r.lines[0], /^package: FM-1_971 {2}\(baile-\d/);
     assert.equal(r.lines[1], `device:  ${o.dev && o.dev.appId || "FM-1_015"}  (FM-1)`);
     assert.equal(dev.inPort.connection, "closed"); assert.equal(dev.outPort.connection, "closed");   // no port left open
     quiet(dev);
     return r;
 }
-test("good install: stock firmware -> loader -> KAWA (flash == package)", () => goodInstall());
+test("good install: stock firmware -> loader -> BAILE (flash == package)", () => goodInstall());
 test("good install: noise on the line (clock, sensing, notes) and SysEx cut in 37-byte pieces", () => goodInstall("", { midi: { noise: true, chunk: 37 } }));
 test("good install: a browser whose port list goes stale (re-asks for MIDI access)", async () => {
     const r = await goodInstall("", { midi: { stale: true } });
     assert.ok(r.midi.requests >= 3, "asked the browser again while waiting for the re-enumeration");
 });
-test("good install: from an older KAWA (FM-1_953) with a port filter 'fm-1'", () => goodInstall("", { dev: { appId: "FM-1_953" }, port: "fm-1" }));
+test("good install: from an older BAILE (FM-1_953) with a port filter 'fm-1'", () => goodInstall("", { dev: { appId: "FM-1_953" }, port: "fm-1" }));
 test("good install: the loader and the firmware keep the same port name", () =>
     goodInstall("", { dev: { names: { app: "FM-1", loader: "FM-1" } } }));
 test("good install: slow re-enumeration (the loader appears after 400 ms)", () => goodInstall("", { dev: { reenum: 400 } }));
@@ -180,8 +180,8 @@ function refused(code, text, o) {
 }
 test("wrong model refused: the device is an FM-2", refused("model", `the device is FM-2_015, the package is for ${PRODUCT}`,
                                                                 { dev: { appId: "FM-2_015" } }));
-test("wrong model refused: the package is for an FM-2", refused("model", "the device is FM-1_015, the package is for FM-2_957",
-                                                                { bytes: withProduct(PKG, "FM-2_957") }));
+test("wrong model refused: the package is for an FM-2", refused("model", "the device is FM-1_015, the package is for FM-2_971",
+                                                                { bytes: withProduct(PKG, "FM-2_971") }));
 test("wrong model refused: an FM-2 in update mode", refused("model", `the device is ota-FM-2_900, the package is for ${PRODUCT}`,
                                                               { dev: { mode: "loader", loaderId: "ota-FM-2_900" } }));
 test("another firmware's update mode refused (ota-FM-1_015: M-UPGRADE's)", refused("foreign",
@@ -423,11 +423,11 @@ test("pair_output: exact name, Windows numbering, the only output, else none", (
 });
 test("the package of the site: newest in SHA256SUMS, its hash is the file's, fetched with relative URLs", async () => {
     assert.equal(W.newestInSums(sums).name, PKGNAME);
-    const files = fs.readdirSync(path.join(ROOT, "install")).filter(f => /^kawa-[\d.]+\.fwsc$/.test(f)).sort((a, b) => a.localeCompare(b, "en", { numeric: true }));
-    assert.equal(files[files.length - 1], PKGNAME, "the newest install/kawa-*.fwsc is not the one SHA256SUMS names");
+    const files = fs.readdirSync(path.join(ROOT, "install")).filter(f => /^baile-[\d.]+\.fwsc$/.test(f)).sort((a, b) => a.localeCompare(b, "en", { numeric: true }));
+    assert.equal(files[files.length - 1], PKGNAME, "the newest install/baile-*.fwsc is not the one SHA256SUMS names");
     assert.equal(await W.sha256hex(PKG), latest.sha256, "install/SHA256SUMS does not match the package: the page would refuse it");
     const h = "a".repeat(64), g = "b".repeat(64);
-    assert.deepEqual(W.newestInSums(`${h}  older/kawa-0.9.fwsc\n${g}  kawa-0.9.fwsc\n${h}  kawa-0.10.fwsc\n${h}  kawa-0.2.fwsc\n`), { name: "kawa-0.10.fwsc", sha256: h });
+    assert.deepEqual(W.newestInSums(`${h}  older/baile-0.9.fwsc\n${g}  baile-0.9.fwsc\n${h}  baile-0.10.fwsc\n${h}  baile-0.2.fwsc\n`), { name: "baile-0.10.fwsc", sha256: h });
     assert.equal(W.newestInSums("junk\n"), null);
     const asked = [];
     const bytesOf = b => b.buffer.slice(b.byteOffset, b.byteOffset + b.length);
@@ -440,22 +440,22 @@ test("the package of the site: newest in SHA256SUMS, its hash is the file's, fet
     assert.equal(got.name, PKGNAME); assert.deepEqual(Array.from(got.bytes), Array.from(PKG)); assert.equal(got.sha256, latest.sha256);
     // a newer package named in the sums (0.5 after 0.4, said nowhere else): that one is fetched, by its relative URL
     const h5 = await W.sha256hex(PKG), asked5 = [];
-    const sums5 = `${h5}  kawa-0.7.fwsc\n${"c".repeat(64)}  kawa-0.4.fwsc\n${"d".repeat(64)}  older/kawa-0.3.fwsc\n`;
+    const sums5 = `${h5}  baile-0.7.fwsc\n${"c".repeat(64)}  baile-0.4.fwsc\n${"d".repeat(64)}  older/baile-0.3.fwsc\n`;
     const fake5 = async url => { asked5.push(url);
         return url === "install/SHA256SUMS" ? { ok: true, text: async () => sums5 } : { ok: true, arrayBuffer: async () => bytesOf(PKG) }; };
-    assert.equal((await W.fetchLatest(fake5)).name, "kawa-0.7.fwsc");
-    assert.deepEqual(asked5, ["install/SHA256SUMS", "install/kawa-0.7.fwsc"]);
+    assert.equal((await W.fetchLatest(fake5)).name, "baile-0.7.fwsc");
+    assert.deepEqual(asked5, ["install/SHA256SUMS", "install/baile-0.7.fwsc"]);
     // no SHA256SUMS (a page opened from a file, offline): the newest cannot be known, so it says so instead of guessing a version
     const noSums = async url => (url === "install/SHA256SUMS" ? { ok: false, status: 404 } : fake(url, { cache: "no-cache" }));
     await assert.rejects(W.fetchLatest(noSums), e => e.code === "download" && /^cannot read install\/SHA256SUMS to find the newest package \(HTTP 404\); opened from a file, or offline\? Choose the \.fwsc file from the install folder instead$/.test(e.message));
-    await assert.rejects(W.fetchLatest(async url => ({ ok: true, text: async () => "nothing here\n" })), e => /no kawa-\*\.fwsc in it/.test(e.message));
+    await assert.rejects(W.fetchLatest(async url => ({ ok: true, text: async () => "nothing here\n" })), e => /no baile-\*\.fwsc in it/.test(e.message));
     // a download that is not what the sums say
     const wrong = async url => (url === "install/SHA256SUMS" ? fake(url, { cache: "no-cache" }) : { ok: true, arrayBuffer: async () => new ArrayBuffer(1000) });
     await assert.rejects(W.fetchLatest(wrong), e => e.code === "download" && /does not match install\/SHA256SUMS; nothing was written/.test(e.message));
     // network failure (offline, or a page opened from a file): says what to do
     await assert.rejects(W.fetchLatest(async () => { throw new TypeError("Failed to fetch"); }), e => e.code === "download" && /\(Failed to fetch\); opened from a file, or offline\? Choose the \.fwsc file/.test(e.message));
     const sumsOnly = async url => (url === "install/SHA256SUMS" ? { ok: true, text: async () => sums } : { ok: false, status: 404 });
-    await assert.rejects(W.fetchLatest(sumsOnly), e => e.code === "download" && /^cannot download install\/kawa-[\d.]+\.fwsc \(HTTP 404\); choose the \.fwsc file yourself instead$/.test(e.message));
+    await assert.rejects(W.fetchLatest(sumsOnly), e => e.code === "download" && /^cannot download install\/baile-[\d.]+\.fwsc \(HTTP 404\); choose the \.fwsc file yourself instead$/.test(e.message));
 });
 test("index.html: loads install/webinstall.js, links exist, nothing from the network", () => {
     const html = fs.readFileSync(path.join(ROOT, "index.html"), "utf8");
@@ -465,15 +465,15 @@ test("index.html: loads install/webinstall.js, links exist, nothing from the net
     const PENDING = ["samples.html"];                          // the sample importer, being written by someone else: linked, not here yet
     for (const u of rel) assert.ok(fs.existsSync(path.join(ROOT, u)) || PENDING.includes(u), "broken link: " + u);
     for (const u of PENDING) if (!fs.existsSync(path.join(ROOT, u))) console.log(`       (note: ${u} is linked but does not exist yet)`);
-    assert.doesNotMatch(html, /kawa-\d/, "a package version is written in index.html");
-    assert.doesNotMatch(fs.readFileSync(path.join(ROOT, "install", "webinstall.js"), "utf8"), /kawa-\d/, "a package version is written in webinstall.js");
-    assert.match(html, /Made for chiptune and IDM: breakbeat slicing, rolls, stutter, glitch effects, FM and 4-bit waves, 6 tracks/);
-    for (const u of ["manual/index.html", "manual/fr.html", "manual/es.html", "emulator/index.html", "samples.html", "manual/img/kawa-preview.png"])
+    assert.doesNotMatch(html, /baile-\d/, "a package version is written in index.html");
+    assert.doesNotMatch(fs.readFileSync(path.join(ROOT, "install", "webinstall.js"), "utf8"), /baile-\d/, "a package version is written in webinstall.js");
+    assert.match(html, /Feito para funk brasileiro: tamborzão, Volt Mix, 150, mandelão, brega funk e montagem, 6 faixas/);
+    for (const u of ["manual/index.html", "emulator/index.html", "samples.html", "docs/boot.png", "docs/audio/demo.m4a"])
         assert.ok(rel.includes(u), "index.html does not use " + u);
     const ext = [...html.matchAll(/<(?:script|link|img|iframe|source)\b[^>]*(?:src|href)="(https?:[^"]+)"/g)].map(m => m[1]);
-    assert.deepEqual(ext.filter(u => !/^https:\/\/github\.com\/Guizmoh\/Kawa-Tracker-Fm1/.test(u)), [], "a resource loaded from the network");
+    assert.deepEqual(ext.filter(u => !/^https:\/\/github\.com\/saulofilho\/baile-fm1/.test(u)), [], "a resource loaded from the network");
     assert.ok(!/@import|url\(\s*["']?https?:/.test(html), "a stylesheet loads from the network");
-    assert.match(html, /https:\/\/github\.com\/Guizmoh\/Kawa-Tracker-Fm1/);
+    assert.match(html, /https:\/\/github\.com\/saulofilho\/baile-fm1/);
     assert.ok(!/<meta[^>]+http-equiv="refresh"/i.test(html), "still a redirect");
 });
 
@@ -531,7 +531,7 @@ test(hasPython ? "parity with install/fm1_install.py: constants, delays, wire fo
     }
     reqs.push(hex(W.HS_QUERY), hex(W.UPGRADE), "", "f0", "f7f0");
     const idents = [];
-    for (const t of ["FM-1_015", "ota-FM-1_900", "FM-1_957", "x", "FM-1", "A_B_1", "FM-1_", "FM-1_9a", "FM-\xE91_001", "OTA-FM-1_9", "_1", "ota-_5"]) {
+    for (const t of ["FM-1_015", "ota-FM-1_900", "FM-1_971", "x", "FM-1", "A_B_1", "FM-1_", "FM-1_9a", "FM-\xE91_001", "OTA-FM-1_9", "_1", "ota-_5"]) {
         const body = new Uint8Array(27); body.set(Uint8Array.from(t, c => c.charCodeAt(0)));
         idents.push(hex(M.msgFrame(0x11, body)));
     }
@@ -539,10 +539,10 @@ test(hasPython ? "parity with install/fm1_install.py: constants, delays, wire fo
     const crcs = [0, 1, 5, 64, 80, 1000, 4096].map(n => hex(rb(n)));
     const pair = [["FM-1", ["X", "FM-1"]], ["FM-1 2", ["FM-1 3", "Other"]], ["FM-1 2", ["FM-1 3", "FM-1 4"]], ["A", ["B"]], ["A", ["B", "C"]], ["A", []],
                   ["MIDIIN2 (FM-1)", ["MIDIOUT2 (FM-1)"]], ["FM-1  7", ["FM-1 9"]], ["USB MIDI 12 34", ["USB MIDI 12 99", "x"]]];
-    const model = ["FM-1_957", "ota-FM-1_900", "ota-FM-2_1", "FM-1", "ota-", "x_y_z", "OTA-FM-1_9"];
+    const model = ["FM-1_971", "ota-FM-1_900", "ota-FM-2_1", "FM-1", "ota-", "x_y_z", "OTA-FM-1_9"];
     // every variant of the package: the same verdict and the same message (the file name is the path, as in Python)
-    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "kawa-webinstall-"));
-    const variants = { good: PKG, other_model: withProduct(PKG, "FM-2_957"), long_product: withProduct(PKG, "FM-1_957_x"), no_product: withProduct(PKG, "") };
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "baile-webinstall-"));
+    const variants = { good: PKG, other_model: withProduct(PKG, "FM-2_971"), long_product: withProduct(PKG, "FM-1_971_x"), no_product: withProduct(PKG, "") };
     for (const [w, f] of Object.entries(BAD)) { const r = Uint8Array.from(PKG), c = f(r); variants[w.replace(/\W+/g, "_")] = c ? Uint8Array.from(c) : r; }
     for (const i of [0, 7, 0x3F, 0x45, 0x3FF, 0x401, 123456, 0x93500]) variants["flip_" + i] = mutate(PKG, r => { r[rawIndex(Math.min(i, 610245))] ^= 0x10; });
     variants.empty = new Uint8Array(0); variants.header_only = PKG.subarray(0, 600); variants.short_body = PKG.subarray(0, 1000);

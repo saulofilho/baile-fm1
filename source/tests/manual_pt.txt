@@ -1,0 +1,31 @@
+# BAILE: the screens of the Portuguese manual (manual/img/pt), with the demo loaded
+400 shot m01-boot
+2000 btn 8
+2600 btn 9
+3000 shot m09-projetos
+3200 enc 0 8
+3700 btn 1
+4300 btn 1
+5000 btn 8
+5400 enc 1 4
+5800 shot m02-faixas
+6000 btn 11
+6400 shot m03-grade
+6600 enc 1 -2
+6800 btn 6
+7200 shot m04-som-808
+7400 enc 1 2
+7600 shot m05-som-kit
+7800 btn 3
+8000 btn 3
+8400 shot m06-magica
+8600 btn 7
+8800 btn 7
+9200 shot m07-groove
+9400 btn 2
+9600 btn 2
+10000 shot m08-live
+10200 btn 8
+10400 btn 12
+14000 shot m10-tocando
+14200 end

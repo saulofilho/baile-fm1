@@ -5,7 +5,7 @@
 cd "$(dirname "$0")/../.." || exit 1
 fail=0
 ( cd install && sha256sum -c SHA256SUMS >/dev/null 2>&1 ) || { echo "FAIL  install/SHA256SUMS does not match the files"; fail=1; }
-newest=$(ls install/kawa-*.fwsc 2>/dev/null | sort -V | tail -n 1)
+newest=$(ls install/baile-*.fwsc 2>/dev/null | sort -V | tail -n 1)
 [ -n "$newest" ] || { echo "FAIL  no package in install/"; exit 1; }
 top="$(basename "$newest")"
 if [ -f "$top" ] && cmp -s "$top" "$newest"; then echo "ok    $top at the top of the repository = $newest"

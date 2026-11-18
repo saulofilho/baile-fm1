@@ -11,7 +11,7 @@ cd "$(dirname "$0")/.."
 OUT=build/loader-tests
 CC="${CC:-cc}"
 export AC79_SDK="${AC79_SDK:-$HOME/fw-AC79_AIoT_SDK}"
-for f in build/kawa.fwsc build/kawa.bin build/loader/ota.bin; do
+for f in build/baile.fwsc build/kawa.bin build/loader/ota.bin; do
     [ -f "$f" ] || { echo "run_loader_tests.sh: no $f (run ./build.sh first)"; exit 1; }
 done
 mkdir -p "$OUT"
@@ -31,8 +31,8 @@ build_and_run() {                               # build_and_run SUFFIX LABEL CFL
     shift 2
     $CC "$@" -O1 -Wall -Wextra -Wno-unused-function -o "$OUT/ota_test$x" tests/ota_test.c
     $CC "$@" -O1 -Wall -Wextra -Wno-unused-function -o "$OUT/ldr_test$x" tests/ldr_test.c
-    run "step 1, ota.c$tag" "$OUT/ota_test$x" build/kawa.fwsc
-    run "update loader, ldr_core.c: other app -> this build$tag" "$OUT/ldr_test$x" "$OUT/old.fwsc" build/kawa.fwsc
+    run "step 1, ota.c$tag" "$OUT/ota_test$x" build/baile.fwsc
+    run "update loader, ldr_core.c: other app -> this build$tag" "$OUT/ldr_test$x" "$OUT/old.fwsc" build/baile.fwsc
 }
 build_and_run "" ""
 if echo 'int main(void){return 0;}' | $CC -fsanitize=address,undefined -x c -o "$OUT/san_probe" - 2>/dev/null &&

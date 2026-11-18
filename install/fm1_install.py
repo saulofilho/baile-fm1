@@ -214,7 +214,7 @@ class MidoBackend:
 
 
 class Rtmidi2Link:
-    """the same over rtmidi2 (KAWA): RtMidi too, with ready wheels up to Python 3.14 (python-rtmidi stops at 3.12)"""
+    """the same over rtmidi2 (BAILE): RtMidi too, with ready wheels up to Python 3.14 (python-rtmidi stops at 3.12)"""
 
     def __init__(self, backend, in_name, out_name):
         import rtmidi2

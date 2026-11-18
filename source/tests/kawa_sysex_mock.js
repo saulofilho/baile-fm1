@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-only
 // Copyright (C) 2026 Omnipotard
-/* A simulated FM-1 running KAWA on a simulated Web MIDI, for install/websamples.js (source/tests/websamples_test.js, in
+/* A simulated FM-1 running BAILE on a simulated Web MIDI, for install/websamples.js (source/tests/websamples_test.js, in
  * Node, and websamples_ui_test.js, inside a real Chromium whose headless build has no MIDI device).
  *
  * MockFm1 is kawa_sysex.c, port for port, written from the C code and not from the page under test: usb.c's SysEx intake
@@ -252,7 +252,7 @@ class MockFm1 {
         const cmd = f.length > 3 ? f[3] : 0;
         this.counts[cmd] = (this.counts[cmd] || 0) + 1;
         const nth = this.counts[cmd], fl = this.o.faults;
-        if (this.o.silentToKawa && f[0] === 0x7D) return;                      // rescue mode: this firmware does not know KAWA's frames
+        if (this.o.silentToKawa && f[0] === 0x7D) return;                      // rescue mode: this firmware does not know BAILE's frames
         this.seen.push({ cmd, frame: Uint8Array.from([0xF0, ...f, 0xF7]) });
         if (fl.dropRequest && fl.dropRequest.some(d => d.cmd === cmd && d.nth === nth)) return;
         if (fl.corrupt && fl.corrupt.cmd === cmd && fl.corrupt.nth === nth) f[fl.corrupt.index] ^= 1;

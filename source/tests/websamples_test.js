@@ -7,7 +7,7 @@
  *   node source/tests/websamples_test.js
  *
  * What it runs (the page's own code, with the delays shortened):
- *   1. against install/kawa_samples.py (needs python3 with numpy, as the tool does): pack7 / unpack7 / frames / reply
+ *   1. against install/baile_samples.py (needs python3 with numpy, as the tool does): pack7 / unpack7 / frames / reply
  *      parsing / CRC-32 / header, the mu-law byte for 300 000 values, and the whole conversion on generated WAV files
  *      (mono, stereo, 8 / 11.025 / 22.05 / 44.1 / 48 / 96 / 192 kHz, 8 / 16 / 24 / 32 bits, float, extensible, too long,
  *      silent, too short...): the sound bytes and every SysEx frame must be the Python tool's, byte for byte;
@@ -21,7 +21,7 @@
  *      itself fails;
  *   3. with a C compiler on the PATH: the REAL firmware code (firmware/src/kawa.c built as the host simulator,
  *      tests/host.c) receives the page's frames, and its replies are read back.
- * Exit code 0 when everything passed. SKIPPED lines say what could not run here (KAWA_REQUIRE_ALL=1 makes them fail).
+ * Exit code 0 when everything passed. SKIPPED lines say what could not run here (BAILE_REQUIRE_ALL=1 makes them fail).
  * What this is not: a real browser (Chrome's Web MIDI, decodeAudioData, the canvas) and a real FM-1. */
 "use strict";
 const assert = require("node:assert/strict");
@@ -119,7 +119,7 @@ const PY = String.raw`
 import sys, json, zlib
 req = json.load(sys.stdin)
 sys.path.insert(0, req["install"])
-import kawa_samples as ks
+import baile_samples as ks
 out = {}
 op = req["op"]
 if op == "prims":
@@ -148,7 +148,7 @@ elif op == "mulaw":
     out["bytes"] = ks.mulaw(np.array(req["values"], dtype=np.float64)).tobytes().hex()
 elif op == "script":
     import subprocess
-    r = subprocess.run([sys.executable, "-I", req["install"] + "/kawa_samples.py", "script", str(req["slot"]), req["wav"], req["out"],
+    r = subprocess.run([sys.executable, "-I", req["install"] + "/baile_samples.py", "script", str(req["slot"]), req["wav"], req["out"],
                         "--name", req["name"], "--rate", str(req["rate"]), "--start", str(req["start"])], capture_output=True, text=True)
     out["rc"] = r.returncode
 print(json.dumps(out))
@@ -299,7 +299,7 @@ const CASES = (() => {
 })();
 
 test("the conversion on generated WAV files: the sound bytes and every SysEx frame are the Python tool's", () => {
-    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "kawa-ws-"));
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "baile-ws-"));
     try {
         const files = CASES.map((c, i) => { const f = path.join(dir, `c${i}.wav`); fs.writeFileSync(f, makeWav(c.wav)); return f; });
         const slot = 2, name = "TEST SOUND";
@@ -346,7 +346,7 @@ test("the conversion on generated WAV files: the sound bytes and every SysEx fra
 }, "py");
 
 test("the Python tool's own 'script' frames (what the simulator replays) are the page's frames", () => {
-    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "kawa-ws-"));
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "baile-ws-"));
     try {
         const wavFile = path.join(dir, "k.wav"), out = path.join(dir, "k.txt");
         fs.writeFileSync(wavFile, makeWav({ rate: 44100, chans: [tone(44100, 1.1, 180, 0.8, 3)] }));
@@ -605,7 +605,7 @@ test("several sounds at once, MY 1..4, and a second round replaces them; the old
         assert.deepEqual(Array.from(b.dev.slotSound(1)), Array.from(again));
         assert.equal(b.dev.slotName(1), "NEW");
         assert.deepEqual(Array.from(b.dev.slotSound(0)), Array.from(jobs[0].data), "the others stay");
-        // now KAWA plays: every job is refused at BEGIN, nothing is erased, the old sounds are still there
+        // now BAILE plays: every job is refused at BEGIN, nothing is erased, the old sounds are still there
         b.dev.sqPlay = 1;
         const eraseBefore = b.dev.eraseCalls;
         const res2 = await K.sendAll(fm1, jobs, {});
@@ -720,7 +720,7 @@ test("the user cancels: 'cancelled', nothing half written", async () => {
     });
 });
 
-test("a refused frame: busy (KAWA plays) keeps the old sound; a flash error and a corrupted byte leave the slot empty", async () => {
+test("a refused frame: busy (BAILE plays) keeps the old sound; a flash error and a corrupted byte leave the slot empty", async () => {
     const old = sound(0.4, 22050, 250), data = sound(1.0, 22050, 800);
     // busy: BEGIN refused, the old sound stays, nothing erased
     await withFm1({}, async (fm1, b) => {
@@ -854,7 +854,7 @@ test("SysEx cut in pieces, a lone F7, clock and active sensing between the piece
     }
 });
 
-test("the connection fails clearly: no Web MIDI, refused, no device, no FM-1 port, port busy, silent, not KAWA, rescue mode, unplugged", async () => {
+test("the connection fails clearly: no Web MIDI, refused, no device, no FM-1 port, port busy, silent, not BAILE, rescue mode, unplugged", async () => {
     // no Web MIDI
     let e = await rejects(K.connect({ nav: {} }), "nomidi");
     assert.match(e.message, /Chrome or Edge/);
@@ -879,7 +879,7 @@ test("the connection fails clearly: no Web MIDI, refused, no device, no FM-1 por
         await fm1.close();
     }
     // the names that count
-    for (const n of ["FM-1", "M-VAVE FM-1 MIDI", "Felucca", "KAWA", "MIDIIN2 (FM-1)", "usb fm-1"]) assert.ok(K.PORT_RE.test(n), n);
+    for (const n of ["FM-1", "M-VAVE FM-1 MIDI", "Felucca", "BAILE", "MIDIIN2 (FM-1)", "usb fm-1"]) assert.ok(K.PORT_RE.test(n), n);
     for (const n of ["Launchkey", "IAC Driver Bus 1", "Midi Through", ""]) assert.ok(!K.PORT_RE.test(n), n);
     // the port cannot be opened (another program holds it)
     e = await rejects(bench({}, { hang: true }).then(b => b.connect()), "portbusy");
@@ -891,7 +891,7 @@ test("the connection fails clearly: no Web MIDI, refused, no device, no FM-1 por
         e = await rejects(b.connect(), "noanswer");
         assert.ok(Date.now() - t0 >= 2 * K.DELAY.info - 20);
         assert.equal(b.dev.framesOf(1).length, 2, "two tries");
-        assert.match(e.message, /KAWA 0\.2 or later/);
+        assert.match(e.message, /BAILE/);
         assert.match(e.message, /rescue/i);
     }
     // the first INFO is lost, the second answered: fine
@@ -901,16 +901,16 @@ test("the connection fails clearly: no Web MIDI, refused, no device, no FM-1 por
         assert.equal(b.dev.framesOf(1).length, 2);
         await fm1.close();
     }
-    // rescue mode / the stock firmware: a port that answers nothing to KAWA's frames
+    // rescue mode / the stock firmware: a port that answers nothing to BAILE's frames
     {
         const b = await bench({ silentToKawa: true });
         await rejects(b.connect(), "noanswer");
     }
-    // something answers INFO but is not KAWA
+    // something answers INFO but is not BAILE
     {
         const b = await bench({ infoMagic: "ABCD" });
         e = await rejects(b.connect(), "notkawa");
-        assert.match(e.message, /not KAWA/);
+        assert.match(e.message, /not BAILE/);
     }
     // unplugged after connecting: the next request says so
     {
@@ -978,11 +978,11 @@ test("nothing is sent that the firmware would refuse: the slot, the size, the ra
     for (let c = 1; c <= 6; c++) assert.deepEqual(Array.from(K.frame(c).subarray(0, 4)), [0xF0, 0x7D, 0x4B, 0x57]);
 });
 
-test("the delays are the Python tool's (kawa_samples.py ask(): INFO / LIST 2 s, BEGIN / END 3 s, WRITE 1.5 s, ERASE 5 s, two tries)", () => {
+test("the delays are the Python tool's (baile_samples.py ask(): INFO / LIST 2 s, BEGIN / END 3 s, WRITE 1.5 s, ERASE 5 s, two tries)", () => {
     assert.deepEqual({ info: REAL.info, list: REAL.list, begin: REAL.begin, write: REAL.write, end: REAL.end, erase: REAL.erase, tries: REAL.tries },
                      { info: 2000, list: 2000, begin: 3000, write: 1500, end: 3000, erase: 5000, tries: 2 });
     if (hasPython) {
-        const src = fs.readFileSync(path.join(ROOT, "install", "kawa_samples.py"), "utf8");
+        const src = fs.readFileSync(path.join(ROOT, "install", "baile_samples.py"), "utf8");
         assert.match(src, /def ask\(self, cmd, msg, timeout=2\.0, tries=2\)/);
         assert.match(src, /timeout=3 if name != "WRITE" else 1\.5/);
         assert.match(src, /frame\("ERASE", bytes\(\[a\.slot - 1\]\)\), timeout=5/);
@@ -999,7 +999,7 @@ const haveCC = cp.spawnSync("cc", ["--version"], { encoding: "utf8" }).status ==
 let hostBin = null, hostDir = null;
 function buildHost() {
     if (hostBin) return hostBin;
-    hostDir = fs.mkdtempSync(path.join(os.tmpdir(), "kawa-host-"));
+    hostDir = fs.mkdtempSync(path.join(os.tmpdir(), "baile-host-"));
     const bin = path.join(hostDir, "kawa");
     const r = cp.spawnSync("cc", ["-O1", "-w", "-DDINGHY_HOST", '-DAPP_VER="0.4"', "-I" + path.join(ROOT, "source", "firmware", "src"),
                                   "-I" + path.join(ROOT, "source", "firmware", "gen"), "-o", bin, path.join(ROOT, "source", "firmware", "src", "kawa.c")],
@@ -1089,7 +1089,7 @@ test("the REAL firmware and MockFm1 answer alike: the same frames give the same 
 (async () => {
     const only = process.argv[2];
     let pass = 0, fail = 0, skip = 0;
-    const require_all = process.env.KAWA_REQUIRE_ALL === "1";
+    const require_all = process.env.BAILE_REQUIRE_ALL === "1";
     for (const t of tests) {
         if (only && !t.name.includes(only)) continue;
         if ((t.needs === "py" && !hasPython) || (t.needs === "cc" && !haveCC)) {

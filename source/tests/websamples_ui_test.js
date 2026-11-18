@@ -8,7 +8,7 @@
  *
  *   NODE_PATH=$(npm root -g) PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers node source/tests/websamples_ui_test.js
  *
- * Without Playwright it says so and exits 0. KAWA_SHOTS=DIR also saves screenshots (desktop and phone width).
+ * Without Playwright it says so and exits 0. BAILE_SHOTS=DIR also saves screenshots (desktop and phone width).
  * It does not prove Chrome's real Web MIDI (permission prompt, USB, port names): only a real FM-1 does. */
 "use strict";
 const assert = require("node:assert/strict");
@@ -26,7 +26,7 @@ try { ({ chromium } = require("playwright")); } catch (e) {
 const ROOT = path.join(__dirname, "..", "..");
 const K = require(path.join(ROOT, "install", "websamples.js"));
 const MOCK = fs.readFileSync(path.join(__dirname, "kawa_sysex_mock.js"), "utf8");
-const SHOTS = process.env.KAWA_SHOTS;
+const SHOTS = process.env.BAILE_SHOTS;
 const TYPES = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", ".png": "image/png" };
 const FAST = { open: 2, portopen: 300, info: 150, list: 150, begin: 300, write: 150, end: 300, erase: 300 };
 
@@ -110,7 +110,7 @@ const inkOf = (page, i) => page.locator(".item").nth(i).locator("canvas").evalua
 
 test("the page loads alone: nothing from the network, no error, Send waits for a sound; works from file://", async () => {
     const { ctx, page, seen } = await open();
-    assert.equal(await page.title(), "KAWA Sample Importer");
+    assert.equal(await page.title(), "BAILE Sample Importer");
     assert.equal(await page.locator("#send").isDisabled(), true);
     assert.match(await page.locator("#why").innerText(), /Add a sound first/);
     assert.equal(await page.locator("#slots li").count(), 4);
@@ -190,7 +190,7 @@ test("Send to my FM-1: connect, read the slots, send three sounds, the FM-1 hold
     await settled(page, 3);
     await page.locator("#connect").click();
     await page.waitForFunction(() => /Connected to FM-1/.test(document.getElementById("devtext").textContent));
-    assert.match(await page.locator("#devtext").innerText(), /KAWA 0\.4, 4 slots of 36608 bytes/);
+    assert.match(await page.locator("#devtext").innerText(), /BAILE 0\.4, 4 slots of 36608 bytes/);
     assert.equal(await page.locator("#slots li.empty").count(), 4, "all four empty");
     await page.locator("#send").click();
     await page.waitForFunction(() => /^Done: 3 sounds sent/.test(document.getElementById("summary").textContent), null, { timeout: 15000 });
@@ -226,12 +226,12 @@ test("replacing a sound asks first; the 'busy' refusal keeps the old sound and s
     await page.locator("#send").click();
     await page.waitForSelector("dialog[open]");
     assert.match(await page.locator("dialog").innerText(), /MY 1: ONE becomes TWO/);
-    assert.match(await page.locator("dialog").innerText(), /KAWA must be stopped/);
+    assert.match(await page.locator("dialog").innerText(), /BAILE must be stopped/);
     assert.match(await page.locator("dialog").innerText(), /slot stays empty/);
     await page.locator("#confirm-no").click();
     assert.deepEqual(await devSlot(page, 0), first, "cancelled: nothing changed");
     assert.equal(await page.evaluate(() => window.__dev.framesOf(2).length), 1, "no second BEGIN");
-    // KAWA plays: the FM-1 refuses at BEGIN
+    // BAILE plays: the FM-1 refuses at BEGIN
     await page.evaluate(() => { window.__dev.sqPlay = 1; });
     await page.locator("#send").click();
     await page.waitForSelector("dialog[open]");
@@ -291,7 +291,7 @@ test("silence and a too-short file are refused with a clear message and cannot b
 test("MP3, OGG and FLAC go through the browser's decoder (made with ffmpeg; skipped where Chromium lacks the codec)", async () => {
     const ff = cp.spawnSync("ffmpeg", ["-version"]);
     if (ff.status !== 0) { console.log("         (no ffmpeg: skipped)"); return; }
-    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "kawa-ui-"));
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "baile-ui-"));
     try {
         fs.writeFileSync(path.join(dir, "src.wav"), wav(44100, [tone(44100, 0.8, 440, 0.7, 2), tone(44100, 0.8, 660, 0.5, 2)]));
         const made = [];
@@ -351,7 +351,7 @@ test("the preview plays the converted sound and stops; the AudioContext gets the
     await ctx.close();
 });
 
-test("the connection errors are shown in the page: no device, another device only (ports can be chosen), silent, not KAWA", async () => {
+test("the connection errors are shown in the page: no device, another device only (ports can be chosen), silent, not BAILE", async () => {
     // nothing plugged in
     let { ctx, page } = await open({ noDevice: true });
     await page.locator("#connect").click();
@@ -365,7 +365,7 @@ test("the connection errors are shown in the page: no device, another device onl
     await settled(page, 1);
     await page.locator("#connect").click();
     await page.waitForSelector("#devmsg:not([hidden])");
-    assert.match(await page.locator("#devmsg").innerText(), /No MIDI port named FM-1, Felucca or KAWA/);
+    assert.match(await page.locator("#devmsg").innerText(), /No MIDI port named FM-1, Felucca or BAILE/);
     assert.equal(await page.locator("#ports").evaluate(d => d.open), true);
     assert.deepEqual(await page.locator("#port-out option").allInnerTexts(), ["Some Synth"]);
     assert.equal(await page.evaluate(() => window.__dev.seen.length), 0, "nothing was sent to a device that is not an FM-1");
@@ -378,15 +378,15 @@ test("the connection errors are shown in the page: no device, another device onl
     await page.waitForSelector("#devmsg:not([hidden])");
     const t = await page.locator("#devmsg").innerText();
     assert.match(t, /did not answer/);
-    assert.match(t, /KAWA 0\.2 or later/);
-    assert.match(t, /KAWA USB RESCUE/);
+    assert.match(t, /BAILE/);
+    assert.match(t, /BAILE USB RESCUE/);
     await shot(page, "samples-error");
     await ctx.close();
-    // something that is not KAWA
+    // something that is not BAILE
     ({ ctx, page } = await open({ dev: { infoMagic: "ABCD" } }));
     await page.locator("#connect").click();
     await page.waitForSelector("#devmsg:not([hidden])");
-    assert.match(await page.locator("#devmsg").innerText(), /not KAWA 0\.2 or later/);
+    assert.match(await page.locator("#devmsg").innerText(), /not BAILE/);
     await ctx.close();
     // the permission is refused
     ({ ctx, page } = await open({ midi: { reject: true } }));
@@ -498,7 +498,7 @@ test("a phone: no sideways scrolling with four sounds, the slots in two columns,
     await small.ctx.close();
 });
 
-test("a desktop screenshot of a full session (when KAWA_SHOTS is set); no page ever asked the network for anything", async () => {
+test("a desktop screenshot of a full session (when BAILE_SHOTS is set); no page ever asked the network for anything", async () => {
     const { ctx, page } = await open({ viewport: { width: 1180, height: 900 } });
     await files(page, [["kick.wav", F.kick], ["snare.wav", F.snare], ["hat.wav", F.hat], ["long.wav", F.long]]);
     await settled(page, 4);

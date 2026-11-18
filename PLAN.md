@@ -133,6 +133,17 @@ Opcional, depois da 1.0: vocais sintéticos por formantes; modo LIVE do KAWA (la
   **GRAVE+** (os graves abaixo de ~120 Hz em dobro, com o joelho suave) e **SIRENE** (um tom que sobe e desce de 700
   a 1300 Hz a cada batida e meia, por cima de tudo), com ícone novo. O stress test toca todos no máximo: ok. **Falta
   ouvir** o GRAVE+ e a SIRENE.
+- **2026-11-18, Fase 7 (web):** o **pacote** compila (`./build.sh`, com o Docker Desktop no macOS): `baile-0.1.fwsc`,
+  `FM-1_971`, todas as checagens de tamanho, RAM e flash ok; os testes do loader passam (instalação, retomada, chip
+  desconhecido). Um `strcmp` que só existia no build do computador foi trocado (a libc do firmware não tem). Os
+  pacotes do KAWA saíram de `install/`; `install/baile-0.1.fwsc` e a cópia na raiz, com `SHA256SUMS`
+  (`release_check.sh` ok). **Instalador web** e lançadores com a identidade do BAILE (48 testes ok com o pacote
+  real). **Hub** novo (`index.html`) em PT no visual do mood board: instalador, áudios da demo e dos 6 breaks
+  (`docs/audio/`, AAC feito com `afconvert`), o que tem, links. **Emulador** (`emulator/index.html`) compilado num
+  contêiner Debian com clang e lld; a página em PT (padrão), EN e ES, com o crédito ao KAWA. **Manual** novo em PT
+  (`manual/index.html`) com telas do simulador (`source/tests/manual_pt.txt`); o manual, o cheat sheet e o card do
+  KAWA saíram. Importador de samples renomeado. `fmhub.json` do BAILE. **Falta:** o teste num FM-1 de verdade
+  (Fase 8) e a página do importador de samples em PT.
 
 ## Mood
 
