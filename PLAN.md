@@ -96,6 +96,13 @@ Opcional, depois da 1.0: vocais sintéticos por formantes; modo LIVE do KAWA (la
   "track" é **FAIXA**. `tools/i18n_slots.py` acha as posições e aplica `tools/i18n_pt.json` (para revisar uma
   tradução: editar o JSON, `check`, `apply`). Nomes dos patches FM em `tools/gen_fm_patches.py`. Sem acentos: as
   fontes da tela são ASCII.
+- **2026-11-18, Fase 2 (kits):** os 8 kits do KAWA viraram **VOLT, TAMBOR, 150, MANDELA, BREGA, MELODY, TUIN e
+  PERCUS** (`source/firmware/src/kawa_kits.h`), 16 peças cada, com as mesmas regras de tecla (1 bumbo, 2 segundo
+  bumbo, 3 caixa, 5 e 6 chimbal; no PERCUS, atabaques, chocalho e pandeiro). Presets de kit renomeados (KIT
+  TAMBORZAO, KIT MANDELAO, KIT 150 SUJO…). `kits_test` verde (sem clip, sem silêncio, nenhuma tecla igual entre
+  kits); o `features_test` agora espera o bumbo do VOLT terminar (até ~1,7 s depois do STOP). **Falta ouvir:** os
+  WAVs de cada kit saem em `source/build/kits/` (`kit_N.wav`, `beat_N.wav`) com `tests/run_kits_test.sh`; ajustar o
+  timbre de ouvido. Os breaks e os grooves de funk são as Fases 3 e 4.
 
 ## Mood
 

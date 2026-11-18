@@ -28,11 +28,11 @@ typedef struct { int8_t tune, decay, drive, crush, ton; } kt_knob_t;
 static const kt_knob_t REC[NKIT] = {{0, 0, 1, 0, 13}, {0, 0, 3, 0, 12}, {0, 0, 2, 0, 15}, {0, 0, 1, 0, 11},
                                     {0, 0, 4, 2, 9}, {0, 0, 0, 0, 15}, {0, 0, 1, 0, 14}, {0, 0, 0, 0, 14}};
 #else
-static const kt_knob_t REC[NKIT] = {{0, 0, 0, 0, 15}, {0, 0, 1, 0, 13}, {0, 0, 1, 0, 15}, {0, 0, 0, 0, 13},
-                                    {0, 0, 1, 0, 11}, {0, 0, 0, 0, 15}, {0, 0, 0, 0, 15}, {0, 0, 0, 0, 15}};
+static const kt_knob_t REC[NKIT] = {{0, 0, 0, 0, 14}, {0, 0, 1, 0, 14}, {0, 0, 1, 0, 15}, {0, 0, 2, 0, 13},
+                                    {0, 0, 1, 0, 14}, {0, 0, 0, 0, 15}, {0, 0, 0, 0, 15}, {0, 0, 0, 0, 15}};
 #endif
-static const char *const KIT_EN[NKIT] = {"ACOUSTIC", "HIP HOP", "TECHNO", "DUB REGGAE", "LO-FI", "GAME BOY",
-                                         "SNES", "PERCU"};
+static const char *const KIT_EN[NKIT] = {"VOLT", "TAMBOR", "150", "MANDELA", "BREGA", "MELODY", "TUIN",
+                                         "PERCUS"};
 
 typedef struct {
     double peak, loud, crest, dc, t20, t40, cent, flat, tpk, band[KT_NB];

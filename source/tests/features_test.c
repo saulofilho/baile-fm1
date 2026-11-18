@@ -163,8 +163,9 @@ int main(void)
         sq_req = 2;
         block();
         CHECK(!tk[4].tb_run, "5. the stop did not end the table");
-        for (j = 0; j < 100u; j++) block();
-        CHECK(!drum[4][0].on && !drum[4][1].on, "5. a drum still plays after the stop");
+        for (j = 0; j < 1000u && (drum[4][0].on || drum[4][1].on); j++) block();   /* (BAILE: the VOLT kit's 808 */
+        CHECK(!drum[4][0].on && !drum[4][1].on, "5. a drum still plays after the stop");   /* boom rings on) */
+        printf("5. after the stop the drums end in %u ms (drums %u and %u)\n", j * BLK * 1000u / 44100u, drum[4][0].drum, drum[4][1].drum);
     }
     /* 6. the groove: 9 then 3 ticks; the rows last that long, the MIDI clock sends as many ticks */
     fresh();
