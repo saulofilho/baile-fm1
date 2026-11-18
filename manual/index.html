@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23141210'/%3E%3Crect x='4' y='4' width='11' height='11' rx='2' fill='%23E3212B'/%3E%3Crect x='17' y='4' width='11' height='11' rx='2' fill='%23FFCF1F'/%3E%3Crect x='4' y='17' width='11' height='11' rx='2' fill='%235AAE3A'/%3E%3Crect x='17' y='17' width='11' height='11' rx='2' fill='%231F5BD6'/%3E%3C/svg%3E">
 <title>BAILE — manual</title>
 <meta name="description" content="O manual do BAILE, o tracker de funk brasileiro para o M-VAVE FM-1.">
 <style>
@@ -35,12 +36,24 @@ kbd,.b{font:700 13px ui-monospace,Menlo,monospace;background:var(--carvao);borde
 .box{background:var(--carvao);padding:14px 18px;border-left:8px solid var(--c,var(--amarelo));margin:16px 0}
 ol li,ul li{margin-bottom:6px}
 footer{margin-top:64px;color:var(--cinza);font-size:13px}
+nav.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 18px;padding:12px 0;border-bottom:1px solid #3A332B}
+nav.site a{color:#F3EBDD;text-decoration:none;font-weight:800;font-size:15px}
+nav.site a.home{font:900 20px "Arial Black",Impact,sans-serif;margin-right:auto;letter-spacing:.02em}
+nav.site a.home span{color:#FFCF1F}
+nav.site a[aria-current]{color:#FFCF1F}
 </style>
 </head>
 <body>
 <div class="stripe"></div>
 <main>
-<nav class="top"><a href="../index.html">← BAILE</a><span><a href="../emulator/index.html">Emulador</a> · <a href="../samples.html">Samples</a></span></nav>
+<nav class="site" aria-label="BAILE">
+  <a class="home" href="../index.html">BAI<span>LE</span></a>
+  <a href="../index.html#install">Instalar</a>
+  <a href="../emulator/index.html">Emulador</a>
+  <a href="../manual/index.html" aria-current="page">Manual</a>
+  <a href="../samples.html">Samples</a>
+  <a href="https://github.com/saulofilho/baile-fm1">GitHub</a>
+</nav>
 
 <h1>Manual do BAILE</h1>
 <p class="lead">Um tracker de funk brasileiro para o M-VAVE FM-1. Este manual vai do primeiro botão até um baile inteiro.
