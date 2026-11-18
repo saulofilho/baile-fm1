@@ -31,7 +31,8 @@ static struct {
 static uint32_t lfx_prev;
 static uint8_t lpf_note = 127, hpf_note = 0;    /* the sweeps, MIDI note of the cutoff (the FX page draws them) */
 static int32_t svf_lp[2], svf_bp[2];
-static uint32_t lfo_ph, ring_ph;
+static uint32_t lfo_ph, sir_ph, sir_lfo;
+static int32_t bass_lo[2];                    /* GRAVE+: the lows, a pole at ~120 Hz */
 static int32_t hold_l, hold_r, gate_g = 32767;
 static uint32_t hold_n;
 static uint8_t lv_target;                       /* the bus the live effects play on now: 0 the mix, 1..8 a track */
@@ -225,7 +226,7 @@ static void fx_live(int32_t *L, int32_t *R, int32_t *E)
 {
     uint32_t i, on = lfx_on;
     int32_t q = 13000, f = 0, mode = 0;
-    /* the filter: the LPF sweep wins, then the HPF, then wobble, then vinyl's top cut */
+    /* the filter: the LPF sweep wins, then the HPF, then wobble */
     if (on >> LF_LPF & 1u) { if (lpf_note > 34u) lpf_note--; }
     else if (lpf_note < 127u) lpf_note = (uint8_t)(lpf_note + 4u > 127u ? 127u : lpf_note + 4u);
     if (on >> LF_HPF & 1u) { if (hpf_note < 100u) hpf_note++; }
@@ -234,7 +235,6 @@ static void fx_live(int32_t *L, int32_t *R, int32_t *E)
     if (lpf_note < 127u) { mode = 1; f = SVF_F[lpf_note]; q = 9000; }
     else if (hpf_note) { mode = 2; f = SVF_F[hpf_note + 20u]; q = 12000; }
     else if (on >> LF_WOB & 1u) { mode = 1; f = SVF_F[64 + (sine(lfo_ph) * 28 >> 15)]; q = 7000; }
-    else if (on >> LF_VINYL & 1u) { mode = 1; f = SVF_F[98]; q = 20000; }
     kg_begin(kg_want_blk, kg_sint_blk, afr);
     for (i = 0; i < CHUNK; i++) {
         int32_t l = clampi(L[i], -65535, 65535), r = clampi(R[i], -65535, 65535);   /* (two full scales: the
@@ -280,13 +280,13 @@ static void fx_live(int32_t *L, int32_t *R, int32_t *E)
             r = clampi(r, -65535, 65535);
         } else
             svf_lp[0] = svf_lp[1] = svf_bp[0] = svf_bp[1] = 0;
-        if (on >> LF_RING & 1u) {
-            int32_t s;
-            ring_ph += 21424000u;               /* 220 Hz */
-            s = sine(ring_ph);
-            l = (l * s) >> 15;
-            r = (r * s) >> 15;
-        }
+        if (on >> LF_BASS & 1u) {              /* GRAVE+ (BAILE): the lows twice as loud, then the soft knee */
+            bass_lo[0] += ((l - bass_lo[0]) * 560) >> 15;
+            bass_lo[1] += ((r - bass_lo[1]) * 560) >> 15;
+            l = sat(l + bass_lo[0]);
+            r = sat(r + bass_lo[1]);
+        } else
+            bass_lo[0] = bass_lo[1] = 0;
         if (on & ((1u << LF_GATE16) | (1u << LF_GATE32))) {
             uint32_t g = on >> LF_GATE16 & 1u ? g_rowlen : g_rowlen / 2u, ph = since_grid(g);
             int32_t tgt = ph < (g * 3u) / 5u ? 32767 : 0;
@@ -300,12 +300,16 @@ static void fx_live(int32_t *L, int32_t *R, int32_t *E)
             l = (sat(l * 5) * 22000) >> 15;
             r = (sat(r * 5) * 22000) >> 15;
         }
-        if (on >> LF_VINYL & 1u) {              /* crackle */
-            uint32_t x = xr(&rnd_isr);
-            if (x < 0x00080000u) { l += 9000; r += 9000; }
-            l += (int32_t)(x >> 24) - 128;
-            r += (int32_t)(x >> 24) - 128;
-        }
+        if (on >> LF_SIREN & 1u) {             /* SIRENE (BAILE): a tone that wails from 700 to 1300 Hz and back, */
+            int32_t s;                          /* once a beat and a half, over everything */
+            sir_lfo += 0xFFFFFFFFu / (g_rowlen * 6u + 1u);
+            sir_ph += 97391u * (uint32_t)(1000 + (sine(sir_lfo) * 300 >> 15));   /* (2^32 / 44100 = 97391.5 a Hz) */
+            s = sine(sir_ph);
+            s = s > 0 ? 7000 - ((7000 - (s >> 2)) >> 1) : -7000 + ((7000 + (s >> 2)) >> 1);   /* a little square */
+            l += s;
+            r += s;
+        } else
+            sir_lfo = 0x40000000u * 3u;         /* (it starts low and rises) */
         kg_frame(&l, &r, afr);                  /* K-GLITCH's effect, the FILTER */
         if (on >> LF_ECHO & 1u)
             E[i] += (l + r) >> 1;

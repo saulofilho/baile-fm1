@@ -127,6 +127,12 @@ Opcional, depois da 1.0: vocais sintéticos por formantes; modo LIVE do KAWA (la
   `format_test` (que confere a conversão do save antigo). `tests/demo_baile.txt` carrega e toca a demo no
   simulador; o áudio fica em `source/build/demo/baile-demo.wav`. Ficou de fora: um projeto de fábrica por gênero
   (o KAWA só tem uma demo; dá para fazer depois, como várias demos no menu PROJETOS).
+- **2026-11-18, Fase 6 (efeitos ao vivo):** bancos **BAILE** e **PAREDAO** (DESTROI e BEAT, do K-GLITCH, ficam).
+  Renomeados: **SEGURA** (stutter), **PUXA** (scratch), **SOBE** (build-up), **CORTA** (gate), **ECO MC** (o eco de
+  colcheia pontuada do KAWA). Novos, no lugar do ANEL e do VINIL do KAWA (`source/firmware/src/kawa_fx.c`):
+  **GRAVE+** (os graves abaixo de ~120 Hz em dobro, com o joelho suave) e **SIRENE** (um tom que sobe e desce de 700
+  a 1300 Hz a cada batida e meia, por cima de tudo), com ícone novo. O stress test toca todos no máximo: ok. **Falta
+  ouvir** o GRAVE+ e a SIRENE.
 
 ## Mood
 

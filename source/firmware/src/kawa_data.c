@@ -364,7 +364,8 @@ static const scale_t SCALES[12] = {
 enum { LF_LOOP16, LF_LOOP12, LF_LOOP32, LF_LOOP64, LF_UNI, LF_UNILO, LF_OCTUP, LF_OCTDN,
        LF_STUT4, LF_STUT3, LF_SCR, LF_SCRF, LF_TRIP, LF_AGAIN, LF_REV, LF_ROLLUP,
        LF_CRUSH, LF_DECIM, LF_LPF, LF_HPF, LF_TAPE, LF_DIVE, LF_GATE16, LF_GATE32,
-       LF_FREEZE, LF_RING, LF_ECHO, LF_DIST, LF_WOB, LF_VINYL, LF_NOMEL, LF_NOBEAT, LF_N };
+       LF_FREEZE, LF_BASS, LF_ECHO, LF_DIST, LF_WOB, LF_SIREN, LF_NOMEL, LF_NOBEAT, LF_N };   /* (BAILE: GRAVE+ for KAWA's
+                                                 * RING, SIRENE for its VINYL) */
 typedef struct {
     const char *name[LANG_N], *sub[LANG_N];
     uint8_t icon;
@@ -378,32 +379,32 @@ static const lfx_t LFX[LF_N] = {
     {{"UNISSON", "UNISON", "UNISONO"}, {"GRV", "LOW", "GRAVE"}, ICO_UNI},
     {{"OITAVA", "OCTAVE", "OCTAVA"}, {"+1", "+1", "+1"}, ICO_UP},
     {{"OITAVA", "OCTAVE", "OCTAVA"}, {"-1", "-1", "-1"}, ICO_DOWN},
-    {{"GAGUEJA", "STUTTER", "TARTAMU"}, {"X4", "X4", "X4"}, ICO_STUT},
-    {{"GAGUEJA", "STUTTER", "TARTAMU"}, {"X3", "X3", "X3"}, ICO_STUT},
-    {{"SCRATCH", "SCRATCH", "SCRATCH"}, {"", "", ""}, ICO_DISC},
-    {{"SCRATCH", "SCRATCH", "SCRATCH"}, {"RAPIDO", "FAST", "RAPIDO"}, ICO_DISC},
+    {{"SEGURA", "STUTTER", "TARTAMU"}, {"X4", "X4", "X4"}, ICO_STUT},
+    {{"SEGURA", "STUTTER", "TARTAMU"}, {"X3", "X3", "X3"}, ICO_STUT},
+    {{"PUXA", "SCRATCH", "SCRATCH"}, {"", "", ""}, ICO_DISC},
+    {{"PUXA", "SCRATCH", "SCRATCH"}, {"RAPIDO", "FAST", "RAPIDO"}, ICO_DISC},
     {{"6/8", "6/8", "6/8"}, {"TERCINA", "TRIPLET", "SWING"}, ICO_TRI3},
     {{"REPETE", "RETRIG", "REPITE"}, {"1 TEMPO", "1 BEAT", "1 PULSO"}, ICO_AGAIN},
     {{"AVESSO", "REVERSE", "REVES"}, {"", "", ""}, ICO_REV},
-    {{"VIRADA", "BUILDUP", "REDOBLE"}, {"ACELERA", "ROLL", "ACELERA"}, ICO_ACCEL},
+    {{"SOBE", "BUILDUP", "REDOBLE"}, {"ACELERA", "ROLL", "ACELERA"}, ICO_ACCEL},
     {{"ESMAGA", "CRUSH", "TRITURA"}, {"4 BITS", "4 BITS", "4 BITS"}, ICO_CRUSH},
     {{"DIZIMA", "LO-FI", "DIEZMA"}, {"", "RATE", ""}, ICO_PIXEL},
     {{"FILTRO", "LOWPASS", "FILTRO"}, {"GRV", "SWEEP", "GRAVES"}, ICO_LPF},
     {{"FILTRO", "HIPASS", "FILTRO"}, {"AGUDOS", "SWEEP", "AGUDOS"}, ICO_HPF},
     {{"FITA", "TAPE", "CINTA"}, {"PARA", "STOP", "PARADA"}, ICO_TAPE},
     {{"MERGULH", "DIVE", "PICADO"}, {"", "", ""}, ICO_DIVE},
-    {{"GATE", "GATE", "GATE"}, {"1/16", "1/16", "1/16"}, ICO_GATE},
-    {{"GATE", "GATE", "GATE"}, {"1/32", "1/32", "1/32"}, ICO_GATE},
+    {{"CORTA", "GATE", "GATE"}, {"1/16", "1/16", "1/16"}, ICO_GATE},
+    {{"CORTA", "GATE", "GATE"}, {"1/32", "1/32", "1/32"}, ICO_GATE},
     {{"CONGELA", "FREEZE", "CONGELA"}, {"", "", ""}, ICO_SNOW},
-    {{"ANEL", "RING", "ANILLO"}, {"", "", ""}, ICO_RING},
-    {{"ECO", "ECHO", "ECO"}, {"", "", ""}, ICO_ECHO},
+    {{"GRAVE+", "BASS+", "GRAVES+"}, {"", "", ""}, ICO_BASS},
+    {{"ECO", "ECHO", "ECO"}, {"MC", "", ""}, ICO_ECHO},
     {{"DISTOR", "DISTORT", "DISTOR"}, {"", "", ""}, ICO_DIST},
     {{"WOBBLE", "WOBBLE", "WOBBLE"}, {"", "", ""}, ICO_WOB},
-    {{"VINIL", "VINYL", "VINILO"}, {"", "", ""}, ICO_DISC},
+    {{"SIRENE", "SIREN", "SIRENA"}, {"", "", ""}, ICO_SIREN},
     {{"SEM", "NO", "SIN"}, {"MELODIA", "MELODY", "MELODIA"}, ICO_NOMEL},
     {{"SEM", "NO", "SIN"}, {"BEAT", "BEAT", "RITMO"}, ICO_NOBEAT},
 };
-static const char *const LBANK_NAMES[LANG_N][4] = {{"BOLSO", "RACHA", "DESTROI", "BEAT"}, {"POCKET", "WRECK", "DESTROY", "BEAT"},
+static const char *const LBANK_NAMES[LANG_N][4] = {{"BAILE", "PAREDAO", "DESTROI", "BEAT"}, {"POCKET", "WRECK", "DESTROY", "BEAT"},
                                                    {"BOLSA", "ROTO", "DESTRUYE", "BEAT"}};   /* (DESTROY, BEAT: K-GLITCH's, kawa_kg.c) */
 #define LBANK_NAME LBANK_NAMES[lang]
 static const uint16_t LBANK_COL[4] = {RGB(255, 120, 200), RGB(255, 110, 70), RGB(255, 70, 90), RGB(90, 200, 255)};
