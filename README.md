@@ -1,129 +1,75 @@
-# KAWA — Pocket Tracker for the M-VAVE FM-1
+# BAILE — tracker de funk brasileiro para o M-VAVE FM-1
 
-![KAWA, Pocket Tracker for the M-VAVE FM-1](manual/img/kawa-preview.png)
+![O boot do BAILE: o mosaico de ladrilhos nas cores da arara](docs/boot.png)
 
-**[▶ Open the KAWA website](https://guizmoh.github.io/Kawa-Tracker-Fm1/)** — [Install](https://guizmoh.github.io/Kawa-Tracker-Fm1/#install) · [Emulator](https://guizmoh.github.io/Kawa-Tracker-Fm1/emulator/index.html) · [Manual](https://guizmoh.github.io/Kawa-Tracker-Fm1/manual/index.html) · [Cheat sheet](https://guizmoh.github.io/Kawa-Tracker-Fm1/docs/cheatsheet.html) · [Samples](https://guizmoh.github.io/Kawa-Tracker-Fm1/samples.html)
+**BAILE** é um firmware livre para o **M-VAVE FM-1** feito para **funk brasileiro**: tamborzão, Volt Mix, funk 150,
+mandelão, brega funk e montagem. É um *tracker*: cada linha é um passo, cada coluna uma faixa, e a música desce a
+tela. Seis faixas, um sequenciador por passos, patterns encadeados numa música, 64 efeitos ao vivo, tabelas, groove
+por passo e um drive em cada faixa. A tela fala **português**, inglês ou espanhol.
 
-**English** · [Français](README.fr.md) · [Español](README.es.md)
+É um fork do [KAWA](https://github.com/Guizmoh/Kawa-Tracker-Fm1), de Omnipotard, e herda dele o motor inteiro.
 
-KAWA is a free tracker firmware for the **M-VAVE FM-1**, made above all for **chiptune and IDM**: 4-bit waves,
-pulse and noise like the old consoles, FM, breakbeats cut into slices, rolls and ratchets, stutter and glitch
-live effects, tables, a groove, a drive on every track. (It can do other styles, but that is what it is built
-for.) Six tracks, a step sequencer you write with the keys, a chain of patterns that makes a song, 64 live
-effects and a creative filter. The screen speaks English, French or Spanish.
+> **Em desenvolvimento.** A identidade, o visual e a interface em português estão prontos; os kits, os breaks e os
+> grooves de funk vêm nas próximas fases ([PLAN.md](PLAN.md)). Ainda não foi testado num FM-1. Firmware não oficial,
+> não feito nem endossado pela M-VAVE: instale por sua conta e risco.
 
-> **Beta 0.10 — tested on a real FM-1.** It also passes every automatic check (size, memory, an install tested
-> against simulated power cuts, the simulator and the web emulator). Installing an
-> unofficial firmware is at your own risk, but you can always [go back to the official one](#go-back-to-the-official-firmware-or-install-another-one).
+## O visual
 
-## Start here
+Um **mosaico de ladrilhos pintados à mão** sobre chão preto, nas **cores das penas da arara** (vermelho, laranja,
+amarelo, verde, turquesa e azul): uma cor por faixa. O mascote, no canto de cada página, é uma **arara de
+headphone** que pisca, dança com os efeitos e dorme quando você para. Temas **TERRA** (padrão), **CLARO** e
+**PAREDAO**. O mood board está em [`docs/moodboard/index.html`](docs/moodboard/index.html).
 
-| | |
+## O que vem do KAWA
+
+- **Um tracker.** Cada célula tem uma nota, um volume e até dois efeitos (arpejo, glide, rufo, chance, atraso,
+  avesso, pulo, fim…). Patterns de 16, 32 ou 64 passos, encadeados numa música.
+- **Seis faixas, cada uma com um motor:** pulso, onda de 4 bits, ruído, FM de 6 operadores (uma faixa), kit de
+  bateria ou sample, este cortado em 16 fatias.
+- **Tabelas, groove e geração:** uma tabela por faixa (uma pequena sequência dentro de cada nota), groove passo a
+  passo, Euclides, acaso e picador, 64 efeitos ao vivo em quatro bancos, filtro de 11 tipos, sequenciador de
+  efeitos.
+- **Seus samples** (4 espaços), desfazer e refazer, música salva sozinha e três espaços de projeto, relógio MIDI.
+
+## Os botões
+
+| Botão | O que faz |
 | --- | --- |
-| **1. Install** | **[Install from your browser](https://guizmoh.github.io/Kawa-Tracker-Fm1/)** (Chrome or Edge: plug the FM-1 in, click *Install KAWA*). Or download [`kawa-0.10.fwsc`](kawa-0.10.fwsc) and use the [launcher](#install) for your computer. |
-| **2. Play** | Switch the FM-1 on and press any key. Press **REC**, play the keys, press **PLAY**. **HOME held** shows the help of the page you are on. |
-| **3. Learn** | **[The manual](https://guizmoh.github.io/Kawa-Tracker-Fm1/manual/index.html)** ([FR](https://guizmoh.github.io/Kawa-Tracker-Fm1/manual/fr.html), [ES](https://guizmoh.github.io/Kawa-Tracker-Fm1/manual/es.html)): five short tutorials, from an empty song to a saved one. Or try KAWA right now in the **[web emulator](https://guizmoh.github.io/Kawa-Tracker-Fm1/emulator/index.html)**. |
-| **4. Your sounds** | The **[sample importer](https://guizmoh.github.io/Kawa-Tracker-Fm1/samples.html)** puts your own WAV / MP3 / OGG / FLAC files into KAWA over USB. |
+| **HOME** | As faixas. Segurado: a ajuda da página. **HOME + PLAY**: pânico (para tudo) |
+| **SEQ** | A grade de passos. **OCT− / OCT+**: 16, 32 ou 64 passos |
+| **EDIT** | O som da faixa: SOM, SOM 2, (operadores FM / edição do sample), EFEITO, TABELA |
+| **LFO** | LFO, depois MODULAÇÃO |
+| **ENV** | ENVELOPE, depois MIX |
+| **FX** | ENVIOS, depois LIVE (64 efeitos), FILTRO, SEQ FX. Segurado: LIVE enquanto você segura |
+| **SCL** | ESCALA, depois MÁGICA (batidas, melodias, picador) |
+| **GLO** | MÚSICA (a sequência), GROOVE, OPÇÕES (tema, idioma, relógio, fonte, metrônomo) |
+| **SAVE** | PROJETOS. Segurado: as ferramentas. **OCT− / OCT+** segurando: desfazer / refazer |
+| **PLAY**, **REC** | Toca / para; grava |
+| **ARP** | A tecla de apagar e de *shift* |
 
-| | | |
-| --- | --- | --- |
-| ![The tracks](manual/img/en/02-tracks.png) | ![FM and its operators](manual/img/en/53-fm-operator.png) | ![Live effects](manual/img/en/60-fx.png) |
-| ![The chain: each pattern played N times](manual/img/en/34-song-play.png) | ![The envelope](manual/img/en/50-envelope.png) | ![SENDS: drive, echo and reverb for each track](manual/img/en/70-sends.png) |
+## No computador
 
-## What you get
+Tudo fica em [`source/`](source/BUILDING.md). O simulador roda no macOS e no Linux; as telas e o áudio saem em
+`source/build/host/`:
 
-- **A tracker.** Each row is a step, each column a track, each cell a note, a volume and up to two effects (arpeggio,
-  glide, roll, chance, delay, reverse, HOP, END…). Patterns of 16, 32 or 64 steps, chained into a song.
-- **Six tracks, each with an engine:** pulse, 4-bit wave, noise, 6-operator FM (one track), drum kit or sample.
-  Factory sounds for all of them, an ADSR, an effect, an LFO and a modulation page on every sound.
-- **Made for chiptune and IDM:** 8 synthesised drum kits and 6 breaks to cut into 16 slices, a **table** on every
-  track (a little sequence played inside each note: chip arpeggios, pitch drops, ratchets), a **groove** (7 5, 8 4…),
-  Euclid, random and chop tools, 64 live effects in four banks (stutter, retrig, build-up…, and from
-  K-GLITCH: DESTROY, BEAT and a realistic scratch, each with its intensity), an 11-type filter, an FX sequencer,
-  a drive per track.
-- **Your own samples** (4 slots), with an editor: start, end, slices, normalise, reverse.
-- **Easy to live with.** The bottom line always says what the four knobs do (KNOB 1 red, 2 yellow, 3 green, 4 blue).
-  HOME held opens the help. **Undo / redo cover patterns and sounds** (10 steps). A sound you edited is never replaced
-  by mistake. The song is autosaved, plus three project slots. Three themes, four fonts, MIDI clock in and out, a metronome.
+```bash
+python3 -m venv .venv && .venv/bin/pip install pillow
+cd source && PATH="$PWD/../.venv/bin:$PATH" tests/run_host.sh
+```
 
-## Controls at a glance
+O pacote do FM-1 (`baile.fwsc`, identidade `FM-1_971`) é feito com `source/build.sh`, a toolchain JieLi e o SDK
+AC79, como no KAWA ([BUILDING.md](source/BUILDING.md)).
 
-| Button | What it does |
-| --- | --- |
-| **HOME** | The tracks. Held: the help of the page you are on. **HOME + PLAY**: panic (everything stops) |
-| **SEQ** | The step grid. **OCT− / OCT+** there: 16, 32 or 64 steps |
-| **EDIT** | The sound of the track: SOUND, SOUND 2, (FM operators / sample edit), EFFECT, TABLE. Press again: next page |
-| **LFO** | LFO, then MODULATION |
-| **ENV** | ENVELOPE, then MIX (levels, pan, sends, master) |
-| **FX** | SENDS (drive, echo, reverb per track), then LIVE (64 live effects, 4 banks), FILTER, FX SEQ, then back. Held: LIVE while you hold it |
-| **SCL** | SCALE, then MAGIC (beats, melodies, break chops), then back |
-| **GLO** | SONG (the chain), GROOVE, OPTIONS (theme, language, clock, font, metronome) |
-| **SAVE** | PROJECTS (it blinks while there are unsaved changes). Held: the tools (OPTIONS, UNDO, REDO, CLEAR, COPY, PASTE, RANDOM). **OCT− / OCT+** while held: undo / redo |
-| **PLAY**, **REC** | Play / stop; record (the keys write at the cursor, or on the beat while playing) |
-| **ARP** | Not an arpeggiator: the **clear / shift** key. A tap on TRACKS clears the cell. Held: + SELECT inserts or deletes a row, + KNOB 3 / 4 edits the cell's second effect, + PRESETS picks the next engine |
-| **OCT− / OCT+** | The octave of the keys (other uses on the pages above: bank, add / remove, OK / back) |
+## Créditos e licença
 
-| Encoder | What it does |
-| --- | --- |
-| **SELECT** | Turns the pages of EDIT, LFO, ENV, FX and GLO. Elsewhere: the row, the 16-step page, the menu |
-| **ALGORITHM** | The track. On SONG the entry of the chain, on GROOVE the step, on OPTIONS the metronome |
-| **PRESETS** | The factory sound (on the first SOUND page), or the page's cursor (operator, table row, slice); the pattern elsewhere |
+BAILE, de saulofilho, sobre o **KAWA** de **Omnipotard** (com os efeitos do K-GLITCH), que roda sobre
+[Dinghy](https://github.com/zvenson/dinghy) (zvenson), [Felucca](https://github.com/hugelton/Felucca) (Leo
+Kuroshita, Hügelton Instruments) e [SLOOP](https://github.com/isod89/sloop-fm1) (isod89); o motor FM é o msfa (Dexed,
+Apache-2.0). GPL-3.0-only: você pode usar, mudar e compartilhar, e quem receber um firmware feito daqui recebe também
+o código. Detalhes em [LICENSING.md](LICENSING.md). "M-VAVE" e "FM-1" pertencem aos seus donos.
 
-A **yellow bar** fills at the bottom of the screen when holding a button is about to open something. The 27 keys
-play notes on the current track. Everything is explained, with screens, in [the manual](https://guizmoh.github.io/Kawa-Tracker-Fm1/manual/index.html).
+---
 
-## Install
-
-You need a USB **data** cable (not a charge-only one). Switch the FM-1 on, plug it in, close every other MIDI program
-(a DAW, M-UPGRADE), then pick one way:
-
-- **From your browser (Chrome, Edge, Opera):** open the [home page](https://guizmoh.github.io/Kawa-Tracker-Fm1/) and click *Install KAWA*.
-- **Launcher** (needs [Python 3](https://www.python.org/downloads/)): download this repository (green *Code* button,
-  *Download ZIP*), unzip it, then **Windows**: double-click `INSTALL-Windows.bat`; **Mac**: double-click
-  `INSTALL-Mac.command` (the first time: right click, Open); **Linux**: `./INSTALL-Linux.sh`.
-
-Either way the package is checked before anything is erased, you are asked to confirm, and the FM-1 restarts into
-KAWA. **Do not unplug it while it writes.** A cut install resumes at the next power-on. The chip's bootloader is never
-written. If KAWA ever fails to start twice in a row, the FM-1 opens the USB rescue by itself (or hold **OCT−** while
-switching on): then run the installer again.
-
-## Go back to the official firmware (or install another one)
-
-1. Your KAWA projects are lost: the official firmware cannot read them. The same goes for any other firmware, and
-   KAWA does not read the projects or samples another firmware saved. Projects cannot be copied to a computer yet.
-2. Use a stable power supply and a USB data cable. If KAWA misbehaves, open the USB rescue first (OCT− held while switching on).
-3. Install M-VAVE's official firmware **V15** with **M-UPGRADE**. KAWA first checks that the tool is M-VAVE's own and that
-   its package matches your FM-1; otherwise nothing is written and KAWA keeps running.
-4. **Unplug nothing during the transfer** (the official firmware also rewrites the bootloader). If it stops, plug back in and start again.
-
-## Your samples
-
-The **[sample importer](https://guizmoh.github.io/Kawa-Tracker-Fm1/samples.html)** (Chrome or Edge) converts your files
-(mono, 22 kHz, normalised, up to 1.66 s each) and sends up to four to the slots MY 1 to MY 4, with KAWA **stopped**.
-On a SAMPLE track, choose SOURCE = MY 1 to 4. Without a browser:
-`python3 install/kawa_samples.py put 1 my-sound.wav` (and `list`).
-
-## Something wrong?
-
-- **The installer does not find the FM-1:** a data cable, the FM-1 switched on, no other MIDI program open; for the browser, Chrome or Edge.
-- **Stuck on the dog:** press any key, KAWA waits for you.
-- **Silence:** KAWA starts on an empty song. Write notes (REC, then the keys), or load the demo: SAVE, DEMO, OCT+, PLAY.
-- **PRESETS does not change my sound:** you edited it (`*`): it shows the next one in gold, **OCT+** loads it.
-- **I made a mistake:** hold SAVE and press OCT− (undo), or SAVE then UNDO.
-- **The click is in my recording:** the metronome is also in the USB audio, turn it off (GLO, third page).
-- More answers in the [manual](https://guizmoh.github.io/Kawa-Tracker-Fm1/manual/index.html), under *Help*.
-
-## Support KAWA
-
-KAWA is free and open. If you enjoy what I do, consider supporting me! Every little bit means the world!
-**[Buy me a beer on Ko-fi](https://ko-fi.com/omnipotard)**.
-
-## Credits and licence
-
-KAWA by Omnipotard. GPL-3.0-only: you may use, change and share it, and whoever receives a firmware built from it
-also receives its source code. Built on [Dinghy](https://github.com/zvenson/dinghy) (zvenson),
-[Felucca](https://github.com/hugelton/Felucca) (Leo Kuroshita, Hügelton Instruments) and
-[SLOOP](https://github.com/isod89/sloop-fm1) (isod89); the FM engine is msfa (Dexed, Apache-2.0). Details in
-[LICENSING.md](LICENSING.md). "M-VAVE" and "FM-1" belong to their owners; KAWA is neither made nor endorsed by them.
-
-*For developers:* the source, the build, the tests and the file formats are in [`source/`](source/BUILDING.md).
+**In English:** BAILE is a free Brazilian funk tracker firmware for the M-VAVE FM-1, forked from Omnipotard's KAWA.
+Its screen speaks Portuguese, English or Spanish; its look is a mosaic of painted tiles in a macaw's colours. Work in
+progress, not yet tested on an FM-1. GPL-3.0-only.

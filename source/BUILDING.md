@@ -1,6 +1,6 @@
-# Building KAWA
+# Building BAILE (KAWA's build)
 
-[README](../README.md) · [Français](../README.fr.md) · [Español](../README.es.md)
+[README](../README.md)
 
 Everything here is for changing KAWA itself. To put KAWA on an FM-1, see the README: the ready package is in
 [`../install/`](../install/). Run every command below from this `source/` folder.
@@ -129,7 +129,7 @@ CRC16 and the same verdict for every damaged package.
 | File | Made by | |
 | --- | --- | --- |
 | `firmware/gen/kawa_art.h` | `tools/gen_art.py` | icons 8 x 8 and the mascot 16 x 16, drawn as text |
-| `firmware/gen/kawa_photo.h` | `tools/gen_art.py` | the boot picture, from `art/boot-dog.png`: 240 x 240, 192 colours, a byte a pixel (needs Pillow) |
+| `firmware/gen/kawa_photo.h` | `tools/gen_art.py` | the boot picture, from `art/boot-baile.png` (made by `tools/gen_boot.py`): 240 x 240, 192 colours, a byte a pixel, and its tiles (needs Pillow) |
 | `firmware/gen/kawa_breaks.h` | `tools/gen_breaks.py` | six breaks, synthesised, 22050 Hz, 8-bit mu-law (needs numpy; `--wav DIR` to listen; `tests/breaks_check.py` checks them) |
 | `firmware/gen/kawa_tables.h` | `tools/gen_tables.py` | fixed-point tables: pitch, envelopes, filters, the 4-bit waves |
 | `firmware/gen/felucca_font.h` | Dinghy | Terminus 8 x 16 (SIL OFL 1.1): the screen font BASE |

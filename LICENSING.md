@@ -1,31 +1,31 @@
 # Licensing
 
-KAWA is free software under the GNU General Public License, version 3 only (`GPL-3.0-only`, full text in
+BAILE is free software under the GNU General Public License, version 3 only (`GPL-3.0-only`, full text in
 `LICENSE`). You may use, study, change and share it. If you give someone a firmware built from it, give
-them its complete source under the same licence too.
+them its complete source under the same licence too. BAILE is a fork of KAWA (Omnipotard), under the same licence.
 
-*En bref : KAWA est un logiciel libre sous GPL-3.0. Tu peux l'utiliser, l'étudier, le modifier et le
-partager ; si tu donnes un firmware construit à partir de lui, donne aussi son code source.*
-*En resumen: KAWA es software libre bajo GPL-3.0. Puedes usarlo, estudiarlo, cambiarlo y compartirlo; si
-das un firmware construido a partir de él, da también su código fuente.*
+*Em resumo: o BAILE é software livre sob a GPL-3.0. Você pode usar, estudar, mudar e compartilhar; se der a alguém
+um firmware feito a partir dele, dê também o código-fonte.*
 
 ## Who made what
 
 | | |
 | --- | --- |
+| BAILE's changes to KAWA (see `git log` from `bc7dcf8`, KAWA 0.10): the identity, the themes, the Portuguese interface (`source/tools/i18n_slots.py`, `source/tools/i18n_pt.json`), the arara mascot (`source/tools/gen_art.py`), the boot mosaic (`source/tools/gen_boot.py`, `source/art/boot-baile.png`), the mood board (`docs/moodboard/`), `PLAN.md`, `README.md` | saulofilho |
 | KAWA: `source/firmware/src/kawa*.c`, `source/firmware/gen/kawa_*.h`, `source/tools/gen_*.py`, `source/tests/`, `source/web/`, `emulator/`, `manual/`, the install launchers and the docs | Omnipotard |
 | The live effects of K-GLITCH in `source/firmware/src/kawa_kg.c` (the DESTROY and BEAT banks, the scratch, the FILTER), from K-GLITCH's `kg_dd.c`, `kg_beat.c` and `kg_filter.c`; its trapezoidal state-variable filter after Andrew Simper's (Cytomic) published design | Omnipotard ([K-GLITCH](https://github.com/Guizmoh/K-Glitch)), GPL-3.0-only |
-| KAWA's dog: `source/art/boot-dog.png` (the boot picture, the dog in 32 bits) and `source/art/mascot-dog.png` (the 16-bit dog the mascot is drawn after) | Omnipotard |
 | The platform: `source/firmware/hal/`, `source/firmware/loader/`, `crt0.S`, `app.ld`, `source/firmware/src/` (`usb.c`, `ota.c`, `recovery.c`, `lcd.c`, `gfx.c`, `libc.c`, `bootguard.h`, `uac_fir.h`), `source/tools/build.py`, `install/fm1_install.py`, `source/tools/fm1pkg_make.py`, `source/tools/lz4blk.py`, `source/tools/get_toolchain.sh` | Copyright (C) 2026 Leo Kuroshita (@kurogedelic), Hügelton Instruments ([Felucca](https://github.com/hugelton/Felucca)), with the changes of [SLOOP](https://github.com/isod89/sloop-fm1) (isod89) |
 | The wiring `source/firmware/src/platform.c` and the host mode that `source/tests/host.c` started from | zvenson ([Dinghy](https://github.com/zvenson/dinghy)) |
 
 KAWA changes the platform in two places: `platform.c` widens the flash range it may write to the project
-slots (`STORE_LO` to `STORE_HI`) and includes `source/web/wasm_host.c` for the browser build. `source/tools/build.py`
-builds `kawa.c` under KAWA's package identity (`FM-1_95N`).
+slots (`STORE_LO` to `STORE_HI`) and includes `source/web/wasm_host.c` for the browser build. BAILE changes it in
+three more: its own settings magic (`BAIL`), its package identity (`FM-1_971`, `source/tools/build.py`), and no ELF
+sections in the host build on macOS (`gfx.c`, `platform.c`). KAWA's dog (its boot picture and mascot, by Omnipotard)
+is not in BAILE.
 
 ## Sounds
 
-Every sound of KAWA is synthesised. The breaks are made by `source/tools/gen_breaks.py` from sines, noise and
+Every sound of BAILE, as of KAWA, is synthesised. The breaks are made by `source/tools/gen_breaks.py` from sines, noise and
 filters, and played in classic break rhythms; no recording is used. The eight drum kits, the waves and the
 noise are generated live by the firmware. The sounds you put in the four user slots are yours.
 
@@ -42,4 +42,4 @@ noise are generated live by the firmware. The sounds you put in the four user sl
 ## Trademarks
 
 "Felucca" and "Hügelton Instruments" are names of Hügelton Instruments; "M-VAVE" and "FM-1" belong to their
-owners. KAWA is not made or endorsed by them.
+owners. BAILE and KAWA are not made or endorsed by them.

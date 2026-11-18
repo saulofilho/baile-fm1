@@ -89,8 +89,8 @@ Opcional, depois da 1.0: vocais sintéticos por formantes; modo LIVE do KAWA (la
   **CLARO** e **PAREDAO** com as penas da arara; cores das páginas. Mascote: a **arara** de headphone no lugar do
   cachorro do KAWA (`tools/gen_art.py`). Boot: o **mosaico de ladrilhos** (`tools/gen_boot.py` → `art/boot-baile.png`)
   acendendo do centro para fora, "BAILE" na fonte grande (I e L acrescentados em `tools/gen_fonts.py`).
-  **Falta na Fase 1:** README e `LICENSING.md` novos, tirar `art/boot-dog.png` e `art/mascot-dog.png` (não usados
-  mais).
+  README (PT, com resumo em EN) e `LICENSING.md` novos; a arte do cachorro e os READMEs FR/ES do KAWA saíram.
+  **Fase 1 completa** no computador (o site, o instalador web e o manual ainda são os do KAWA: Fase 7).
 - **2026-11-18, interface em PT:** o português ocupa o lugar do francês do KAWA (`LANG_PT`, idiomas PT, EN, ES) e é
   o padrão de um FM-1 novo. 731 posições de texto (518 textos), cada uma no limite de largura do texto original;
   "track" é **FAIXA**. `tools/i18n_slots.py` acha as posições e aplica `tools/i18n_pt.json` (para revisar uma
