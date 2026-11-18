@@ -839,13 +839,13 @@ static const char *mg_clone(uint32_t pi, uint32_t song_at)
 {
     uint32_t k, q = NPAT;
     if (pat_in_pair(pi))
-        return TR("MOTIF LIE", "LINKED", "ENLAZADO");   /* (a 64-step pair: its two halves would not both come) */
+        return TR("LIGADO", "LINKED", "ENLAZADO");   /* (a 64-step pair: its two halves would not both come) */
     for (k = 1; k < NPAT; k++) {
         uint32_t c = (pi + k) % NPAT;
         if (pat_empty(&prj.pat[c]) && !pat_in_pair(c)) { q = c; break; }   /* (an empty half of a pair is not free) */
     }
     if (q >= NPAT)
-        return TR("PLUS DE PLACE", "NO ROOM", "SIN ESPACIO");
+        return TR("SEM ESPACO", "NO ROOM", "SIN ESPACIO");
     undo_push(q);
     prj.pat[q] = prj.pat[pi];
     prj.pat[q].pad[0] = 0;                      /* (a copy goes on into nothing) */
@@ -879,12 +879,12 @@ static const char *magic_run(uint32_t tool, uint32_t pi, uint32_t t, uint32_t sc
             clip_len = p->len;
             clip_trk = (uint8_t)t;
         }
-        return TR("COPIE", "COPIED", "COPIADO");
+        return TR("COPIADO", "COPIED", "COPIADO");
     }
     if (tool == MG_CLONE)
         return mg_clone(pi, song_at);
     if (tool == MG_PASTE && !clip_kind)
-        return TR("VIDE", "EMPTY", "VACIO");    /* (refused: no undo step, the redo stays) */
+        return TR("VAZIO", "EMPTY", "VACIO");    /* (refused: no undo step, the redo stays) */
     if (tool == MG_DOUBLE && p->len > 16u)
         return "MAX 32";
     undo_push(pi);                              /* each tool its own undo step */
@@ -892,7 +892,7 @@ static const char *magic_run(uint32_t tool, uint32_t pi, uint32_t t, uint32_t sc
         if (clip_kind == 2) { uint8_t lk = p->pad[0]; *p = clip_pat; p->pad[0] = lk; }   /* (its own link stays) */
         else
             for (k = 0; k < NROW; k++) p->c[k][t] = clip_lane[k];
-        return TR("COLLE", "PASTED", "PEGADO");
+        return TR("COLADO", "PASTED", "PEGADO");
     }
     if (tool == MG_DOUBLE) {
         uint32_t len = p->len, r, tt;

@@ -54,13 +54,13 @@ int main(void)
     uint32_t i, k, t, n, pk0 = 0, pk1 = 0, pk2 = 0;
     uint8_t seen[SP_N];
     fm1_ms = 1000;
-    /* 1. a new FM-1 starts on an empty song at 120 BPM, in English */
+    /* 1. a new FM-1 starts on an empty song at 120 BPM, in Portuguese (BAILE) */
     memset(host_settings, 0, sizeof host_settings);
     app_init();
     for (n = 0, k = 0; k < NPAT; k++)
         for (i = 0; i < NROW; i++)
             for (t = 0; t < NTRK; t++) n += prj.pat[k].c[i][t].note != 0;
-    CHECK(n == 0 && prj.bpm == 120 && lang == LANG_EN, "1. first start: %u notes, %u BPM, language %u (want 0, 120, English)", n, prj.bpm, lang);
+    CHECK(n == 0 && prj.bpm == 120 && lang == LANG_PT, "1. first start: %u notes, %u BPM, language %u (want 0, 120, Portuguese)", n, prj.bpm, lang);
     set_page(PG_TRACK);
     /* 1b. the boot screen stays until something is touched (a minute: still there); that touch is only that */
     page = PG_BOOT;
@@ -349,11 +349,11 @@ int main(void)
     }
     met_mode = 0;
     memset(host_settings, 0, sizeof host_settings);   /* kept: 0.4's five bytes load, 0.5's seven keep the metronome */
-    set.metro = 1; set.mvol = 2; set.lang = LANG_FR; set.theme = 1; set.font = 2; set.clock = 0; set.oct = 0;
+    set.metro = 1; set.mvol = 2; set.lang = LANG_PT; set.theme = 1; set.font = 2; set.clock = 0; set.oct = 0;
     settings_save(&set, sizeof set);
     memset(&set, 0, sizeof set);
     app_init();
-    CHECK(set.metro == 1 && set.mvol == 2 && lang == LANG_FR && g_font == 2, "8. the settings keep the metronome (%u, %u)", set.metro, set.mvol);
+    CHECK(set.metro == 1 && set.mvol == 2 && lang == LANG_PT && g_font == 2, "8. the settings keep the metronome (%u, %u)", set.metro, set.mvol);
     memset(host_settings, 0, sizeof host_settings);
     { uint8_t v4[5] = {LANG_ES, 2, 0, 0, 1}; settings_save(v4, 5u); }
     memset(&set, 0, sizeof set);

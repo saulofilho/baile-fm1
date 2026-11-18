@@ -17,8 +17,8 @@
  * the cell, OCT-/OCT+ the keyboard's octave. */
 
 static const char *const PAGE_NAMES[LANG_N][PG_N] = {
-    {"PISTES", "GRILLE", "SON", "ENVELOPPE", "MIX", "MAGIE", "GAMME", "CHAINE", "PROJETS", "OPTIONS", "EFFETS", "AIDE", "",
-     "GROOVE", "ENVOIS", "FILTRE", "SEQ FX"},
+    {"FAIXAS", "GRADE", "SOM", "ENVELOPE", "MIX", "MAGIA", "ESCALA", "MUSICA", "PROJETOS", "OPCOES", "EFEITOS", "AJUDA", "",
+     "GROOVE", "ENVIOS", "FILTRO", "SEQ FX"},
     {"TRACKS", "GRID", "SOUND", "ENVELOPE", "MIX", "MAGIC", "SCALE", "SONG", "PROJECTS", "OPTIONS", "EFFECTS", "HELP", "",
      "GROOVE", "SENDS", "FILTER", "FX SEQ"},
     {"PISTAS", "REJILLA", "SONIDO", "ENVOLVENTE", "MEZCLA", "MAGIA", "ESCALA", "CANCION", "PROYECTOS", "OPCIONES", "EFECTOS",
@@ -50,7 +50,7 @@ static uint8_t tools_open, tools_sel;              /* SAVE held: the tools (OPTI
 #define HOLD_FX_MS 250u
 #define TOOL_N 7u
 static const char *const TOOL_NAMES[LANG_N][TOOL_N] = {
-    {"OPTIONS", "ANNULER", "REFAIRE", "EFFACER", "COPIER", "COLLER", "HASARD"},
+    {"OPCOES", "DESFAZER", "REFAZER", "APAGAR", "COPIAR", "COLAR", "ACASO"},
     {"OPTIONS", "UNDO", "REDO", "CLEAR", "COPY", "PASTE", "RANDOM"},
     {"OPCIONES", "DESHACER", "REHACER", "BORRAR", "COPIAR", "PEGAR", "AZAR"}};
 static char toast_s[24];
@@ -200,7 +200,7 @@ static void src_text(int32_t v, char *s)        /* a SAMPLE's source: a break, o
     if (v < (int32_t)BRK_N) { str_cat(s, BRK_NAME[v < 0 ? 0 : v]); return; }
     n = usr_name((uint32_t)v - BRK_N);
     if (n) { str_cat(s, n); return; }
-    str_cat(s, TR("MON ", "MY ", "MI "));
+    str_cat(s, TR("MEU ", "MY ", "MI "));
     fmt_u(s + str_len(s), (uint32_t)v - BRK_N + 1u, 0);
     str_cat(s, " -");
 }
@@ -569,16 +569,16 @@ static void draw_track(void)
         a[0] = 0;
         note_text(ct, c->note, a, 1);
         fmt_u(b, c->vol, 0);
-        hint(0, TR("NOTE", "NOTE", "NOTA"), "", a);
+        hint(0, TR("NOTA", "NOTE", "NOTA"), "", a);
         hint(1, TR("VOLUME", "VOLUME", "VOLUMEN"), "V", c->note ? b : "-");
         if (two) {                              /* ARP held: KNOB 3 and 4 on the second column */
-            hint(2, TR("EFFET 2", "CELL FX 2", "EFECTO 2"), "2", FXD[c->fx2 % FX_N].tag[lang]);
+            hint(2, TR("EFEITO 2", "CELL FX 2", "EFECTO 2"), "2", FXD[c->fx2 % FX_N].tag[lang]);
             fx_text(ct, c->fx2, c->fxv2, b);
-            hint(3, TR("VALEUR 2", "VALUE 2", "VALOR 2"), "2", c->fx2 && b[0] ? b : "-");
+            hint(3, TR("VALOR 2", "VALUE 2", "VALOR 2"), "2", c->fx2 && b[0] ? b : "-");
         } else {
-            hint(2, TR("EFFET CASE", "CELL FX", "EFECTO"), "", FXD[c->fx % FX_N].tag[lang]);
+            hint(2, TR("EFEITO", "CELL FX", "EFECTO"), "", FXD[c->fx % FX_N].tag[lang]);
             fxv_text(ct, c, b);
-            hint(3, TR("VALEUR", "VALUE", "VALOR"), "", c->fx && b[0] ? b : "-");
+            hint(3, TR("VALOR", "VALUE", "VALOR"), "", c->fx && b[0] ? b : "-");
         }
     }
 }
@@ -674,11 +674,11 @@ static void draw_grid(void)
         s[0] = 0;
         note_text(t, c->note, s, 1);
         fmt_u(v, c->vol, 0);
-        hint(0, TR("NOTE", "NOTE", "NOTA"), "", s);
+        hint(0, TR("NOTA", "NOTE", "NOTA"), "", s);
         hint(1, TR("VOLUME", "VOLUME", "VOLUMEN"), "V", v);
-        hint(2, TR("EFFET CASE", "CELL FX", "EFECTO"), "", FXD[c->fx % FX_N].tag[lang]);
+        hint(2, TR("EFEITO", "CELL FX", "EFECTO"), "", FXD[c->fx % FX_N].tag[lang]);
         fxv_text(t, c, v);
-        hint(3, TR("VALEUR", "VALUE", "VALOR"), "", c->fx ? v : "-");
+        hint(3, TR("VALOR", "VALUE", "VALOR"), "", c->fx ? v : "-");
     }
 }
 
@@ -792,7 +792,7 @@ static void draw_fm(int32_t x0, int32_t y0, uint32_t t, uint16_t col, uint32_t s
     fmt_u(s + str_len(s), alg + 1u, 0);
     g_text(x0, y0, s, C_GOLD, T_CROP | T_BOLD);
     g_rect(x0 + 80, y0 + 4, 6, 6, col);
-    g_text(x0 + 90, y0, TR("PORTEUSE", "CARRIER", "PORTADORA"), C_TXT, T_CROP);
+    g_text(x0 + 90, y0, TR("PORTADORA", "CARRIER", "PORTADORA"), C_TXT, T_CROP);
     g_rect(x0 + 168, y0 + 4, 6, 6, C_GOLD);
     g_text(x0 + 178, y0, "MOD", C_TXT, T_CROP);
     for (n = 1; n <= 6u; n++) {                 /* operator n is the patch's 6 - n (msfa) */
@@ -850,9 +850,9 @@ static void draw_smp(uint32_t t, uint16_t col, int edit)
     int32_t sx[16], a = (int32_t)((uint32_t)se->start * 224u >> 16), b = se->end >= 65535u ? 224 : (int32_t)((uint32_t)se->end * 224u >> 16);
     make_peaks(src);
     if (!smp_source(src, &d, &len, &rate)) {
-        g_text_c(120, 84, TR("EMPLACEMENT VIDE", "EMPTY SLOT", "RANURA VACIA"), C_FAINT, T_CROP | T_BOLD);
-        g_text_c(120, 102, TR("GLISSE UN SON DANS", "DROP A SOUND ON THE", "SUELTA UN SONIDO EN"), C_FAINT, T_CROP);
-        g_text_c(120, 116, TR("L'EMULATEUR", "EMULATOR", "EL EMULADOR"), C_FAINT, T_CROP);
+        g_text_c(120, 84, TR("ESPACO VAZIO", "EMPTY SLOT", "RANURA VACIA"), C_FAINT, T_CROP | T_BOLD);
+        g_text_c(120, 102, TR("SOLTE UM SOM NO", "DROP A SOUND ON THE", "SUELTA UN SONIDO EN"), C_FAINT, T_CROP);
+        g_text_c(120, 116, TR("EMULADOR", "EMULATOR", "EL EMULADOR"), C_FAINT, T_CROP);
         return;
     }
     sed_slices_px(se, sx);
@@ -891,9 +891,9 @@ static void sed_mark_text(uint32_t t, char *n, char *pos)   /* SAMPLE EDIT: the 
     const uint8_t *d;
     uint32_t len = 1, rate = 22050, v = se_cur == 0u ? se->start : se_cur == 1u ? se->end : se->sl[se_cur - 1u], f;
     n[0] = 0;
-    if (se_cur == 0u) str_cat(n, TR("DEBUT", "START", "INICIO"));
-    else if (se_cur == 1u) str_cat(n, TR("FIN", "END", "FIN"));
-    else { str_cat(n, TR("TR ", "SL ", "CR ")); fmt_u(n + str_len(n), se_cur, 0); }
+    if (se_cur == 0u) str_cat(n, TR("INICIO", "START", "INICIO"));
+    else if (se_cur == 1u) str_cat(n, TR("FINO", "END", "FIN"));
+    else { str_cat(n, TR("FT ", "SL ", "CR ")); fmt_u(n + str_len(n), se_cur, 0); }
     if (se_cur >= 2u && !se->manual) {          /* (even slices: where they are now) */
         uint32_t b = se->end;
         v = se->start + (uint32_t)(((b - se->start) * (se_cur - 1u)) >> 4);
@@ -917,15 +917,15 @@ static void smp_cards(uint32_t t)               /* SAMPLE EDIT's four knobs */
         *q++ = '.';
         fmt_u(q, (se->gain % 256u) * 10u / 256u, 0);
     } else
-        str_cat(g, TR("NON", "OFF", "NO"));
-    nm[0] = TR("DEPLACE", "MOVE", "MOVER");
-    nm[1] = TR("PRECIS", "FINE", "FINO");
+        str_cat(g, TR("NAO", "OFF", "NO"));
+    nm[0] = TR("MOVE", "MOVE", "MOVER");
+    nm[1] = TR("FINO", "FINE", "FINO");
     nm[2] = "NORM";                             /* (normalise: the card holds 7 letters) */
-    nm[3] = TR("ENVERS", "REVERSE", "REVES");
+    nm[3] = TR("AVESSO", "REVERSE", "REVES");
     val[0] = n;
     val[1] = pos;
     val[2] = g;
-    val[3] = se->rev ? TR("OUI", "ON", "SI") : TR("NON", "OFF", "NO");
+    val[3] = se->rev ? TR("SIM", "ON", "SI") : TR("NAO", "OFF", "NO");
     num[0] = num[1] = (int32_t)(v >> 8);
     den[0] = den[1] = 255;
     num[2] = se->norm;
@@ -953,7 +953,7 @@ static void tb_fx_text(const tstep_t *st, char *s)
 static void tb_loop_text(const table_t *tb, char *s)   /* the step it goes back to after the last, or none */
 {
     if (tb->loop < tb->len) fmt_u(s, tb->loop + 1u, 0);
-    else str_cat(s, TR("NON", "OFF", "NO"));
+    else str_cat(s, TR("NAO", "OFF", "NO"));
 }
 static void draw_table(uint32_t t, uint16_t col)
 {
@@ -961,7 +961,7 @@ static void draw_table(uint32_t t, uint16_t col)
     uint32_t i, len = (uint32_t)clampi(tb->len, 1, NTSTEP), now = tb_now[t];
     char s[16];
     if (g_vis(144, 38)) g_rect(0, 144, 240, 38, C_BG);   /* (draw_sound paints to 144: the rest is the table's) */
-    static const char *const SET_L[LANG_N][4] = {{"VIT", "LONG", "BOUC", ""}, {"SPD", "LEN", "LOOP", ""},
+    static const char *const SET_L[LANG_N][4] = {{"VEL", "LONGO", "LOOP", ""}, {"SPD", "LEN", "LOOP", ""},
                                                  {"VEL", "LARG", "BUCL", ""}};
     for (i = 0; i < 4u; i++) {                  /* the settings: four chips in the knobs' colours */
         int32_t x = 4 + (int32_t)i * 58;
@@ -971,7 +971,7 @@ static void draw_table(uint32_t t, uint16_t col)
         if (i == 0u) str_cat(fmt_u(s, tb->speed, 0), "T");
         else if (i == 1u) fmt_u(s, len, 0);
         else if (i == 2u) { if (tb->loop < len) fmt_u(s, tb->loop + 1u, 0); else str_cat(s, "-"); }
-        else str_cat(s, tb->on ? TR("OUI", "ON", "SI") : TR("NON", "OFF", "NO"));
+        else str_cat(s, tb->on ? TR("SIM", "ON", "SI") : TR("NAO", "OFF", "NO"));
         g_text(x + 3, 59, SET_L[lang][i], KNOB_COL[i], T_CROP);
         if (i == 3u) g_text_c(x + 28, 59, s, tb->on ? C_GO : C_FAINT, T_CROP | T_BOLD);
         else g_text(x + 53 - g_text_w(s), 59, s, tb_cur == 0u ? C_WHITE : C_TXT, T_CROP | T_BOLD);
@@ -1013,31 +1013,31 @@ static void draw_table(uint32_t t, uint16_t col)
             if (tb->loop < len && i == tb->loop) g_rect(x, 220, 12, 2, KNOB_COL[2]);   /* (where the loop goes back) */
         }
         if (!tb->on)
-            g_text_c(120, 184, TR("TABLE ARRETEE: K4 SUR LA LIGNE 0", "TABLE OFF: K4 ON ROW 0", "TABLA APAGADA: K4 EN FILA 0"),
+            g_text_c(120, 184, TR("TABELA PARADA: K4 NA LINHA 0", "TABLE OFF: K4 ON ROW 0", "TABLA APAGADA: K4 EN FILA 0"),
                      C_FAINT, T_CROP);
     }
     if (tb_cur == 0u) {
         s[0] = 0;
         str_cat(fmt_u(s, tb->speed, 0), "T");
-        hint(0, TR("VITESSE", "SPEED", "VELOCIDAD"), "", s);
+        hint(0, TR("VELOC", "SPEED", "VELOCIDAD"), "", s);
         fmt_u(s, len, 0);
-        hint(1, TR("LONGUEUR", "LENGTH", "LARGO"), "", s);
+        hint(1, TR("TAMANHO", "LENGTH", "LARGO"), "", s);
         s[0] = 0;
         tb_loop_text(tb, s);
-        hint(2, TR("BOUCLE", "LOOP", "BUCLE"), "", s);
-        hint(3, "TABLE", "", tb->on ? TR("OUI", "ON", "SI") : TR("NON", "OFF", "NO"));
+        hint(2, TR("LOOP", "LOOP", "BUCLE"), "", s);
+        hint(3, "TABLE", "", tb->on ? TR("SIM", "ON", "SI") : TR("NAO", "OFF", "NO"));
     } else {
         const tstep_t *st = &tb->s[(tb_cur - 1u) % NTSTEP];
         char v[8];
         s[0] = v[0] = 0;
         if (st->tr) fmt_s(s, st->tr); else str_cat(s, "0");
-        hint(0, TR("TRANSPOSE", "TRANSPOSE", "TRANSPONE"), "", s);
+        hint(0, TR("TRANSPOE", "TRANSPOSE", "TRANSPONE"), "", s);
         s[0] = 0;
         tb_vol_text(st->vol, s);
         hint(1, TR("VOLUME", "VOLUME", "VOLUMEN"), "V", s);
-        hint(2, TR("EFFET", "TRICK", "EFECTO"), "", TBD[st->fx % TB_N].tag[lang]);
+        hint(2, TR("EFEITO", "TRICK", "EFECTO"), "", TBD[st->fx % TB_N].tag[lang]);
         tb_fx_text(st, v);
-        hint(3, TR("VALEUR", "VALUE", "VALOR"), "", v[0] ? v : "-");
+        hint(3, TR("VALOR", "VALUE", "VALOR"), "", v[0] ? v : "-");
     }
 }
 
@@ -1071,7 +1071,7 @@ static void draw_sound(void)
     if (g_vis(40, 102)) {
         g_rect(0, 40, 240, 104, C_BG);           /* (to the cards at 144: no row left unpainted) */
         if (sp == SP_SON1) {                    /* the engines: the factory sound's (PRESETS), or ARP + PRESETS (FM: one track only) */
-            static const char *const E3[LANG_N][E_N] = {{"CAR", "OND", "BRU", "FM", "KIT", "SMP"},
+            static const char *const E3[LANG_N][E_N] = {{"PUL", "OND", "RUI", "FM", "KIT", "SMP"},
                                                          {"PUL", "WAV", "NOI", "FM", "KIT", "SMP"},
                                                          {"PUL", "OND", "RUI", "FM", "KIT", "SMP"}};
             for (i = 0; i < E_N; i++) {
@@ -1108,11 +1108,11 @@ static void draw_sound(void)
             int32_t m = p[P_FXM];
             g_icon(12, 64, FXT_ICON[clampi(p[P_FXT], 0, FXT_N - 1)], col, 2);
             g_text(34, 64, pd_value(&PDESC[e][P_FXT], p[P_FXT]), C_TXT, T_CROP | T_BOLD);
-            g_text(34, 76, TR("SUR CETTE PISTE", "ON THIS TRACK", "EN ESTA PISTA"), C_FAINT, T_CROP);
+            g_text(34, 76, TR("NESTA FAIXA", "ON THIS TRACK", "EN ESTA PISTA"), C_FAINT, T_CROP);
             if (p[P_FXT]) draw_fx_curve(12, 90, 200, 48, fp, col);
             else {
-                g_text_c(116, 100, TR("LE MASTER: ENV, ENV", "THE MASTER: ENV, ENV", "EL MASTER: ENV, ENV"), C_MID, T_CROP);
-                g_text_c(116, 114, TR("PUIS ALGO SUR M", "THEN ALGO TO M", "LUEGO ALGO A M"), C_MID, T_CROP);
+                g_text_c(116, 100, TR("O MASTER: ENV, ENV", "THE MASTER: ENV, ENV", "EL MASTER: ENV, ENV"), C_MID, T_CROP);
+                g_text_c(116, 114, TR("DEPOIS ALGO M", "THEN ALGO TO M", "LUEGO ALGO A M"), C_MID, T_CROP);
             }
             g_rect(222, 136 - m * 50 / 15, 6, m * 50 / 15, KNOB_COL[3]);
         } else if (sp == SP_LFO) {
@@ -1134,7 +1134,7 @@ static void draw_sound(void)
             g_text(14, 60, pd_value(&PDESC[e][P_LFOD], p[P_LFOD]), C_GOLD, T_CROP | T_BOLD);
             if (p[P_LFOD]) g_rect(16 + 200 + 4, 98 - (tk[t].lfo * (6 + dpt * 2)) / 32767 - 2, 5, 5, C_WHITE);
         } else if (sp == SP_MOD) {             /* what moves what: the envelope and the velocity */
-            static const char *const ML[LANG_N][3] = {{"ENVELOPPE > EFFET A", "VELOCITE > EFFET A", "ENVELOPPE > HAUTEUR"},
+            static const char *const ML[LANG_N][3] = {{"ENVELOPE > EFEITO A", "VELOC. > EFEITO A", "ENVELOPE > ALTURA"},
                                                        {"ENVELOPE > EFFECT A", "VELOCITY > EFFECT A", "ENVELOPE > PITCH"},
                                                        {"ENVOLVENTE > EFECTO A", "VELOCIDAD > EFECTO A", "ENVOLVENTE > ALTURA"}};
             static const uint8_t MK[3] = {P_MENVA, P_MVELA, P_MENVP};
@@ -1147,7 +1147,7 @@ static void draw_sound(void)
                 else if (w < 0) g_rect(120 + w, y + 15, -w, 4, KNOB_COL[i]);
             }
             if (p[P_FXT] == FXT_OFF && (p[P_MENVA] || p[P_MVELA]))
-                g_text(12, 130, TR("(CHOISIS UN EFFET: EDIT)", "(PICK AN EFFECT: EDIT)", "(ELIGE UN EFECTO: EDIT)"), C_REC, T_CROP);
+                g_text(12, 130, TR("(ESCOLHA EFEITO: EDIT)", "(PICK AN EFFECT: EDIT)", "(ELIGE UN EFECTO: EDIT)"), C_REC, T_CROP);
         } else if (e <= E_NOISE) {
             draw_wave(12, 60, 120, 76, e, (uint32_t)p[P_SHAPE], col);
             draw_wave(13, 60, 120, 76, e, (uint32_t)p[P_SHAPE], col);
@@ -1218,8 +1218,8 @@ static void draw_envpage(void)
         g_icon(6, 25, ENGINE_ICON[ENG(t)], C_INK, 1);
         trk_name(t, s);
         g_text(16, 22, s, C_INK, T_CROP | T_BOLD);
-        if (ENG(t) == E_FM) g_text(92, 22, TR("+ OPERATEURS", "+ OPERATORS", "+ OPERADORES"), C_MID, T_CROP);
-        else if (ENG(t) == E_KIT || note_mode(t) == NM_SLICE) g_text(92, 22, TR("COUPE LES COUPS", "SHAPES THE HITS", "CORTA GOLPES"), C_MID, T_CROP);
+        if (ENG(t) == E_FM) g_text(92, 22, TR("+ OPERADORES", "+ OPERATORS", "+ OPERADORES"), C_MID, T_CROP);
+        else if (ENG(t) == E_KIT || note_mode(t) == NM_SLICE) g_text(92, 22, TR("CORTA BATIDAS", "SHAPES THE HITS", "CORTA GOLPES"), C_MID, T_CROP);
     }
     if (g_vis(40, 124)) {
         int32_t py = by;
@@ -1317,21 +1317,21 @@ static void draw_mix(void)
         const pdesc_t *d = &PDESC[0][P_FXT];
         int32_t ty = clampi(prj.mfx[0], 0, FXT_N - 1);
         fmt_u(s, (uint32_t)prj.mfx[1], 0);
-        hint(0, TR("EFFET MASTER", "MASTER FX", "EFECTO MASTER"), "", pd_value(d, ty));
+        hint(0, TR("EFEITO MASTER", "MASTER FX", "EFECTO MASTER"), "", pd_value(d, ty));
         hint(1, FXA_NAMES[lang][ty], "A", s);
         fmt_u(s, (uint32_t)prj.mfx[2], 0);
         hint(2, FXB_NAMES[lang][ty], "B", s);
         fmt_u(s, (uint32_t)prj.mfx[3], 0);
-        hint(3, TR("DOSAGE", "MIX", "MEZCLA"), "M", s);
+        hint(3, TR("MIX", "MIX", "MEZCLA"), "M", s);
     } else {
         const int8_t *p = prj.snd[trk()].p;
         char b[8];
         fmt_u(s, (uint32_t)p[P_VOL], 0);
         hint(0, TR("VOLUME", "VOLUME", "VOLUMEN"), "VOL", s);
         param_text(&PDESC[0][P_PAN], p[P_PAN], b, 0);
-        hint(1, TR("PANO", "PAN", "PANEO"), "PAN", b);
+        hint(1, TR("PAN", "PAN", "PANEO"), "PAN", b);
         fmt_u(s, (uint32_t)p[P_ECHO], 0);
-        hint(2, "ECHO", TR("ECH", "ECH", "ECO"), s);
+        hint(2, "ECHO", TR("ECO", "ECH", "ECO"), s);
         fmt_u(s, (uint32_t)p[P_VERB], 0);
         hint(3, "REVERB", "REV", s);
     }
@@ -1348,7 +1348,7 @@ static void draw_magic(void)
         if (mg_scope) {
             g_rrect(3, 22, 120, 15, C_GOLD);
             g_icon(6, 25, ICO_CHAIN, C_INK, 1);
-            g_text(16, 22, TR("TOUT LE MOTIF", "WHOLE PATTERN", "TODO EL PATRON"), C_INK, T_CROP | T_BOLD);
+            g_text(16, 22, TR("TODO O PADRAO", "WHOLE PATTERN", "TODO EL PATRON"), C_INK, T_CROP | T_BOLD);
         } else {
             g_rrect(3, 22, 82, 15, TRK_COL[t]);
             g_icon(6, 25, ENGINE_ICON[ENG(t)], C_INK, 1);
@@ -1364,10 +1364,10 @@ static void draw_magic(void)
         draw_tile(x, y, 44, i, mc, 0, MAGIC[i].icon, MAGIC[i].name[lang], MAGIC[i].sub[lang]);
     }
     fmt_u(s, mg_inten, 0);
-    hint(0, TR("FORCE", "AMOUNT", "FUERZA"), TR("FOR", "AMT", "FZA"), s);
+    hint(0, TR("FORCA", "AMOUNT", "FUERZA"), TR("FOR", "AMT", "FZA"), s);
     fmt_u(s, mg_seed, 0);
-    hint(1, TR("DE", "DIE", "DADO"), TR("DE", "DIE", "DAD"), s);
-    hint(2, TR("PORTEE", "SCOPE", "ALCANCE"), "", L_SCOPE[mg_scope]);
+    hint(1, TR("DADO", "DIE", "DADO"), TR("DADO", "DIE", "DAD"), s);
+    hint(2, TR("ALCANCE", "SCOPE", "ALCANCE"), "", L_SCOPE[mg_scope]);
     hint_none(3);
 }
 
@@ -1446,16 +1446,16 @@ static void draw_fx(void)
         }
     }
     for (t = 0; t < NTRK; t++) { (void)t; }
-    hint(0, TR("BANQUE", "BANK", "BANCO"), "", LBANK_NAME[fx_bank % NLBANK]);
+    hint(0, TR("BANCO", "BANK", "BANCO"), "", LBANK_NAME[fx_bank % NLBANK]);
     if (kgb && kg_sel < DD_N) {                 /* KNOB 2: the intensity of the last pad played */
         fmt_u(s, kd_int[kg_sel], 0);
-        hint(1, TR("INTENSITE", "INTENSITY", "INTENSIDAD"), "I", s);
+        hint(1, TR("INTENSID.", "INTENSITY", "INTENSIDAD"), "I", s);
     } else
         hint_none(1);
-    hint(2, TR("ENREG. LIVE", "REC LIVE", "GRABAR LIVE"), "REC", rec ? TR("OUI", "YES", "SI") : TR("NON", "NO", "NO"));
+    hint(2, TR("GRAVA LIVE", "REC LIVE", "GRABAR LIVE"), "REC", rec ? TR("SIM", "YES", "SI") : TR("NAO", "NO", "NO"));
     if (lfx_target) { s[0] = 'T'; s[1] = (char)('0' + lfx_target); s[2] = 0; }
     else { s[0] = 0; str_cat(s, "MAST"); }
-    hint(3, TR("CIBLE", "TARGET", "DESTINO"), "", s);
+    hint(3, TR("ALVO", "TARGET", "DESTINO"), "", s);
 }
 
 /* the name, the icon and the bank of a LIVE lane value (1 .. 64) */
@@ -1499,10 +1499,10 @@ static void draw_fxseq(void)
     }
     s[0] = 0;
     str_cat(s, b->name[lang]);
-    hint(0, TR("EFFET", "EFFECT", "EFECTO"), "", s);
-    if (bv >= KG_LANE) { fmt_u(s, kd_int[(bv - KG_LANE) % DD_N], 0); hint(1, TR("INTENSITE", "INTENSITY", "INTENSIDAD"), "I", s); }
+    hint(0, TR("EFEITO", "EFFECT", "EFECTO"), "", s);
+    if (bv >= KG_LANE) { fmt_u(s, kd_int[(bv - KG_LANE) % DD_N], 0); hint(1, TR("INTENSID.", "INTENSITY", "INTENSIDAD"), "I", s); }
     else hint_none(1);
-    hint(2, TR("ENREG. LIVE", "REC LIVE", "GRABAR LIVE"), "REC", rec ? TR("OUI", "YES", "SI") : TR("NON", "NO", "NO"));
+    hint(2, TR("GRAVA LIVE", "REC LIVE", "GRABAR LIVE"), "REC", rec ? TR("SIM", "YES", "SI") : TR("NAO", "NO", "NO"));
     hint_none(3);
 }
 
@@ -1574,24 +1574,24 @@ static void draw_filt(void)
     }
     if (g_vis(140, 84)) {
         g_rect(0, 140, 240, 84, C_BG);
-        g_text(6, 146, TR("TOUCHES: ACCORDENT LE FILTRE", "KEYS: TUNE THE FILTER", "TECLAS: AFINAN EL FILTRO"), C_TXT, T_CROP);
-        g_text(6, 160, TR("SUR LA CIBLE DE LIVE (K4 DE LIVE)", "ON LIVE'S TARGET (LIVE'S K4)", "EN EL DESTINO DE LIVE (K4)"), C_MID, T_CROP);
+        g_text(6, 146, TR("TECLAS: AFINAM O FILTRO", "KEYS: TUNE THE FILTER", "TECLAS: AFINAN EL FILTRO"), C_TXT, T_CROP);
+        g_text(6, 160, TR("NO ALVO DO LIVE (K4 DO LIVE)", "ON LIVE'S TARGET (LIVE'S K4)", "EN EL DESTINO DE LIVE (K4)"), C_MID, T_CROP);
         g_text(6, 174, TR("FX: SEQ FX", "FX: FX SEQ", "FX: SEC FX"), C_MID, T_CROP);
     }
-    hint(0, TR("TYPE", "TYPE", "TIPO"), "", KF_NAMES[t]);
+    hint(0, TR("TIPO", "TYPE", "TIPO"), "", KF_NAMES[t]);
     s[0] = 0;
     str_cat(s, NOTE_NAME[kf_note % 12u]);
     fmt_u(s + str_len(s), kf_note / 12u ? kf_note / 12u - 1u : 0u, 1);
-    hint(1, TR("FREQUENCE", "FREQ", "FRECUENCIA"), "", s);
+    hint(1, TR("FREQUENCIA", "FREQ", "FRECUENCIA"), "", s);
     fmt_u(s, kf_res, 0);
-    hint(2, TR("RESONANCE", "RESO", "RESONANCIA"), "Q", s);
+    hint(2, TR("RESSONAN.", "RESO", "RESONANCIA"), "Q", s);
     fmt_u(s, kf_move, 0);
-    hint(3, TR("MOUVEMENT", "MOVE", "MOVIMIENTO"), "M", kf_move ? s : "-");
+    hint(3, TR("MOVIMENTO", "MOVE", "MOVIMIENTO"), "M", kf_move ? s : "-");
 }
 
 static void draw_send(void)
 {
-    static const char *const CH[LANG_N][3] = {{"SATURE", "ECHO", "REVERB"}, {"DRIVE", "ECHO", "REVERB"}, {"SATURA", "ECO", "REVERB"}};
+    static const char *const CH[LANG_N][3] = {{"SATURA", "ECO", "REVERB"}, {"DRIVE", "ECHO", "REVERB"}, {"SATURA", "ECO", "REVERB"}};
     uint32_t t, k;
     char s[16];
     if (g_vis(20, 204)) g_rect(0, 20, 240, 204, C_BG);
@@ -1644,7 +1644,7 @@ static void draw_tools(void)
         g_text_c(120, y + 1, TOOL_NAMES[lang][i], i == tools_sel ? C_INK : C_TXT, T_CROP | T_BOLD);
     }
     s[0] = 0;                                   /* what CLEAR, COPY, PASTE, RANDOM act on (K3) */
-    str_cat(s, TR("SUR ", "ON ", "EN "));
+    str_cat(s, TR("EM ", "ON ", "EN "));
     if (mg_scope) str_cat(s, L_SCOPE[1]);
     else trk_name(trk(), s + str_len(s));
     g_text_c(120, 190, s, KNOB_COL[2], T_CROP);
@@ -1652,7 +1652,7 @@ static void draw_tools(void)
 static void draw_first(void)                    /* an empty song on TRACKS: three steps, until the first note */
 {
     static const char *const L[LANG_N][4] = {
-        {"BAILE - MORCEAU VIDE", "1. REC  2. JOUE LES TOUCHES", "3. PLAY POUR ECOUTER", "HOME TENU: AIDE"},
+        {"BAILE - MUSICA VAZIA", "1. REC  2. TOQUE AS TECLAS", "3. PLAY PARA OUVIR", "HOME SEGURO: AJUDA"},
         {"BAILE - EMPTY SONG", "1. REC  2. PLAY THE KEYS", "3. PLAY TO LISTEN", "HOME HELD: HELP"},
         {"BAILE - CANCION VACIA", "1. REC  2. TOCA LAS TECLAS", "3. PLAY PARA ESCUCHAR", "HOME PULSADO: AYUDA"}};
     uint32_t i;
@@ -1666,9 +1666,9 @@ static void draw_hold(void)
 {
     uint32_t since = 0, need = 0;
     const char *what = "";
-    if (home_held && !home_did && page != PG_HELP) { since = fm1_ms - home_down_ms; need = HOLD_HOME_MS; what = TR("AIDE", "HELP", "AYUDA"); }
+    if (home_held && !home_did && page != PG_HELP) { since = fm1_ms - home_down_ms; need = HOLD_HOME_MS; what = TR("AJUDA", "HELP", "AYUDA"); }
     else if (fx_down && page == PG_SEND) { since = fm1_ms - fx_down_ms; need = HOLD_FX_MS; what = "LIVE"; }
-    else if (save_held && !tools_open && !save_did) { since = fm1_ms - save_down_ms; need = HOLD_SAVE_MS; what = TR("OUTILS", "TOOLS", "HERRAM."); }
+    else if (save_held && !tools_open && !save_did) { since = fm1_ms - save_down_ms; need = HOLD_SAVE_MS; what = TR("FERRAM.", "TOOLS", "HERRAM."); }
     if (!need || since < 100u || since >= need || !g_vis(190, 26)) return;
     g_text_c(120, 190, what, C_GOLD, T_CROP | T_BOLD);
     g_rrect(66, 205, 108, 10, C_BG);
@@ -1690,10 +1690,10 @@ static void draw_scale(void)
     if (s[1] == '-') s[1] = 0;
     g_text_l(16, 32, s, C_GOLD);
     g_text(64, 34, SCALES[prj.scale % 12u].name[lang], C_TXT, T_BOLD);
-    g_text(64, 50, prj.lock ? TR("VERROU: LES TOUCHES", "LOCKED: THE KEYS", "FIJA: LAS TECLAS")
-                            : TR("LIBRE: CHROMATIQUE", "FREE: CHROMATIC", "LIBRE: CROMATICA"), C_MID, T_CROP);
-    g_text(64, 62, prj.lock ? TR("RESTENT DANS LA GAMME", "STAY IN THE SCALE", "QUEDAN EN LA ESCALA")
-                            : TR("TOUTES LES NOTES", "ALL THE NOTES", "TODAS LAS NOTAS"), C_FAINT, T_CROP);
+    g_text(64, 50, prj.lock ? TR("TRAVA: AS TECLAS", "LOCKED: THE KEYS", "FIJA: LAS TECLAS")
+                            : TR("LIVRE: CROMATICA", "FREE: CHROMATIC", "LIBRE: CROMATICA"), C_MID, T_CROP);
+    g_text(64, 62, prj.lock ? TR("FICAM NA ESCALA", "STAY IN THE SCALE", "QUEDAN EN LA ESCALA")
+                            : TR("TODAS AS NOTAS", "ALL THE NOTES", "TODAS LAS NOTAS"), C_FAINT, T_CROP);
     for (i = 0; i < 7u; i++) {                  /* one octave from C, the scale's notes lit */
         uint32_t n = WHITE7[i], in = mask >> ((n + 12u - prj.root) % 12u) & 1u;
         int32_t x = 8 + (int32_t)i * 32;
@@ -1706,16 +1706,16 @@ static void draw_scale(void)
         g_rrect(x, 86, 18, 58, in ? (n == prj.root ? C_GOLD : pc) : C_BG2);
         g_frame(x, 86, 18, 58, C_BG);
     }
-    g_text(8, 192, TR("UNE TOUCHE = TONIQUE", "A KEY = THE ROOT", "UNA TECLA = TONICA"), C_FAINT, T_CROP);
+    g_text(8, 192, TR("UMA TECLA = TONICA", "A KEY = THE ROOT", "UNA TECLA = TONICA"), C_FAINT, T_CROP);
     {
         char a[4] = {0}, b[8];
         str_cat(a, NOTE_NAME[prj.root % 12u]);
         if (a[1] == '-') a[1] = 0;
-        hint(0, TR("TONIQUE", "ROOT", "TONICA"), TR("TON", "KEY", "TON"), a);
-        hint(1, TR("GAMME", "SCALE", "ESCALA"), "", SCALES[prj.scale % 12u].name[lang]);
-        hint(2, TR("VERROU", "LOCK", "FIJAR"), "", prj.lock ? TR("VERROU", "LOCK", "FIJA") : TR("LIBRE", "FREE", "LIBRE"));
+        hint(0, TR("TONICA", "ROOT", "TONICA"), TR("TOM", "KEY", "TON"), a);
+        hint(1, TR("ESCALA", "SCALE", "ESCALA"), "", SCALES[prj.scale % 12u].name[lang]);
+        hint(2, TR("TRAVA", "LOCK", "FIJAR"), "", prj.lock ? TR("TRAVA", "LOCK", "FIJA") : TR("LIVRE", "FREE", "LIBRE"));
         fmt_u(b, prj.step, 0);
-        hint(3, TR("PAS DU CURSEUR", "CURSOR STEP", "PASO CURSOR"), TR("PAS", "STP", "PAS"), b);
+        hint(3, TR("PASSO CURSOR", "CURSOR STEP", "PASO CURSOR"), TR("PAS", "STP", "PAS"), b);
     }
 }
 
@@ -1735,8 +1735,8 @@ static void draw_song(void)
         else str_cat(fmt_u(str_cat(s, "SWING "), prj.swing, 0), "%");
         g_text(64, 40, s, prj.grv.on ? C_GOLD : C_MID, T_CROP);
         g_rrect(150, 24, 84, 18, prj.mode ? sc : C_BG2);
-        g_text_c(192, 27, prj.mode ? TR("CHAINE", "SONG", "CANCION") : TR("BOUCLE", "LOOP", "BUCLE"), prj.mode ? C_INK : C_TXT, T_CROP | T_BOLD);
-        g_text(150, 44, TR("ARP: MODE", "ARP: MODE", "ARP: MODO"), C_FAINT, T_CROP);
+        g_text_c(192, 27, prj.mode ? TR("MUSICA", "SONG", "CANCION") : TR("LOOP", "LOOP", "BUCLE"), prj.mode ? C_INK : C_TXT, T_CROP | T_BOLD);
+        g_text(150, 44, TR("ARP: MODO", "ARP: MODE", "ARP: MODO"), C_FAINT, T_CROP);
         g_rect(4, 60, 232, 1, C_RULE);
     }
     for (i = 0; i < 24u; i++) {
@@ -1772,8 +1772,8 @@ static void draw_song(void)
         fmt_u(d, plen(), 0);
         hint(0, "TEMPO", "BPM", a);
         hint(1, "SWING", "SW", b);
-        hint(2, TR("REPETER", "REPEAT", "REPETIR"), TR("REP", "REP", "REP"), song_cur < prj.song_len ? c : "-");
-        hint(3, TR("PAS DU MOTIF", "PATTERN STEPS", "PASOS PATRON"), TR("PAS", "STP", "PAS"), d);
+        hint(2, TR("REPETIR", "REPEAT", "REPETIR"), TR("REP", "REP", "REP"), song_cur < prj.song_len ? c : "-");
+        hint(3, TR("PASSOS PADRAO", "PATTERN STEPS", "PASOS PATRON"), TR("PAS", "STP", "PAS"), d);
     }
 }
 
@@ -1781,7 +1781,7 @@ static void draw_song(void)
  * it there again, SAVE AS picks a slot and a name; slot 0 is the autosave */
 enum { PM_NEW, PM_SAVE, PM_SAVEAS, PM_LOAD, PM_RENAME, PM_DEMO, PM_N };
 static const char *const PM_NAMES[LANG_N][PM_N] = {
-    {"NOUVEAU MORCEAU", "SAUVER", "SAUVER SOUS...", "CHARGER...", "RENOMMER...", "DEMO"},
+    {"NOVA MUSICA", "SALVAR", "SALVAR COMO...", "CARREGA...", "RENOMEAR...", "DEMO"},
     {"NEW SONG", "SAVE", "SAVE AS...", "LOAD...", "RENAME...", "DEMO"},
     {"NUEVA CANCION", "GUARDAR", "GUARDAR COMO...", "CARGAR...", "RENOMBRAR...", "DEMO"}};
 static const uint8_t PM_ICON[PM_N] = {ICO_NOTE, ICO_DOWN, ICO_COPY, ICO_UP, ICO_SHAPE, ICO_PLAY};
@@ -1843,7 +1843,7 @@ static void draw_proj(void)
             }
         }
     } else if (pm_state == PMS_SLOT) {
-        g_text(8, 46, pm_act == PM_LOAD ? TR("CHARGER DE :", "LOAD FROM:", "CARGAR DE:") : TR("SAUVER DANS :", "SAVE INTO:", "GUARDAR EN:"),
+        g_text(8, 46, pm_act == PM_LOAD ? TR("CARREGAR DE:", "LOAD FROM:", "CARGAR DE:") : TR("SALVAR EM:", "SAVE INTO:", "GUARDAR EN:"),
                C_MID, T_CROP);
         for (k = 0; k < NSLOT; k++) {
             int32_t y = 62 + (int32_t)k * 34;
@@ -1855,11 +1855,11 @@ static void draw_proj(void)
             if (k == 0u) str_cat(s, "AUTO");
             else fmt_u(s, k, 0);
             g_text(14, y + 9, s, off ? C_RULE : C_MID, T_CROP | T_BOLD);
-            g_text(62, y + 9, names_ok[k] ? slot_name[k] : TR("- VIDE -", "- EMPTY -", "- VACIO -"),
+            g_text(62, y + 9, names_ok[k] ? slot_name[k] : TR("- VAZIO -", "- EMPTY -", "- VACIO -"),
                    off ? C_RULE : names_ok[k] ? C_TXT : C_FAINT, T_CROP);
         }
     } else if (pm_state == PMS_NAME) {
-        g_text(8, 50, TR("LE NOM :", "THE NAME:", "EL NOMBRE:"), C_MID, T_CROP);
+        g_text(8, 50, TR("O NOME:", "THE NAME:", "EL NOMBRE:"), C_MID, T_CROP);
         for (k = 0; k < 15u; k++) {             /* one box a letter, the cursor's lit */
             int32_t x = 8 + (int32_t)k * 15, y = 74;
             char c[2] = {nm_buf[k] ? nm_buf[k] : ' ', 0};
@@ -1868,35 +1868,35 @@ static void draw_proj(void)
             g_rrect(x, y, 14, 24, on ? KNOB_COL[0] : C_BG2);
             g_text(x + 3, y + 5, c, on ? C_INK : C_WHITE, T_CROP | T_BOLD);
         }
-        g_text(8, 112, TR("SELECT: LA PLACE", "SELECT: THE PLACE", "SELECT: EL SITIO"), C_FAINT, T_CROP);
-        g_text(8, 126, TR("K1: LA LETTRE", "K1: THE LETTER", "K1: LA LETRA"), KNOB_COL[0], T_CROP);
-        g_text(8, 140, TR("K2: UN NOM AU HASARD", "K2: A RANDOM NAME", "K2: UN NOMBRE AL AZAR"), KNOB_COL[1], T_CROP);
-        g_text(8, 154, TR("K3: TOUT EFFACER", "K3: CLEAR IT", "K3: BORRARLO"), KNOB_COL[2], T_CROP);
+        g_text(8, 112, TR("SELECT: O LUGAR", "SELECT: THE PLACE", "SELECT: EL SITIO"), C_FAINT, T_CROP);
+        g_text(8, 126, TR("K1: A LETRA", "K1: THE LETTER", "K1: LA LETRA"), KNOB_COL[0], T_CROP);
+        g_text(8, 140, TR("K2: UM NOME AO ACASO", "K2: A RANDOM NAME", "K2: UN NOMBRE AL AZAR"), KNOB_COL[1], T_CROP);
+        g_text(8, 154, TR("K3: APAGAR TUDO", "K3: CLEAR IT", "K3: BORRARLO"), KNOB_COL[2], T_CROP);
     } else if (g_vis(70, 100)) {                /* PMS_ASK */
         g_rrect(14, 76, 212, 96, C_GOLD);
         g_rrect(16, 78, 208, 92, C_BG2);
-        g_text_c(120, 88, pm_act == PM_SAVEAS ? TR("CET EMPLACEMENT EST PRIS", "THIS SLOT IS TAKEN", "ESTA RANURA ESTA USADA")
-                                              : TR("LE MORCEAU N'EST PAS SAUVE", "THE SONG IS NOT SAVED", "LA CANCION NO ESTA GUARDADA"),
+        g_text_c(120, 88, pm_act == PM_SAVEAS ? TR("ESTE ESPACO ESTA OCUPADO", "THIS SLOT IS TAKEN", "ESTA RANURA ESTA USADA")
+                                              : TR("A MUSICA NAO FOI SALVA", "THE SONG IS NOT SAVED", "LA CANCION NO ESTA GUARDADA"),
                  C_GOLD, T_CROP | T_BOLD);
-        g_text_c(120, 108, pm_act == PM_SAVEAS ? TR("L'ECRASER ?", "WRITE OVER IT?", "SOBREESCRIBIR?")
-                                               : TR("CONTINUER QUAND MEME ?", "GO ON ANYWAY?", "SEGUIR DE TODOS MODOS?"),
+        g_text_c(120, 108, pm_act == PM_SAVEAS ? TR("SOBRESCREVER?", "WRITE OVER IT?", "SOBREESCRIBIR?")
+                                               : TR("CONTINUAR MESMO ASSIM?", "GO ON ANYWAY?", "SEGUIR DE TODOS MODOS?"),
                  C_TXT, T_CROP);
-        g_text_c(120, 140, TR("OCT+ OUI     OCT- NON", "OCT+ YES     OCT- NO", "OCT+ SI     OCT- NO"), C_WHITE, T_CROP | T_BOLD);
+        g_text_c(120, 140, TR("OCT+ SIM     OCT- NAO", "OCT+ YES     OCT- NO", "OCT+ SI     OCT- NO"), C_WHITE, T_CROP | T_BOLD);
     }
     if (g_vis(200, 22)) {
         g_rect(0, 200, 240, 22, C_BG);
         g_rrect(6, 202, 110, 18, C_GO);
         g_text_c(61, 204, TR("OCT+ : OK", "OCT+ : OK", "OCT+ : OK"), C_INK, T_CROP | T_BOLD);
         g_rrect(124, 202, 110, 18, C_BG2);
-        g_text_c(179, 204, TR("OCT- : RETOUR", "OCT- : BACK", "OCT- : VOLVER"), C_TXT, T_CROP | T_BOLD);
+        g_text_c(179, 204, TR("OCT- : VOLTA", "OCT- : BACK", "OCT- : VOLVER"), C_TXT, T_CROP | T_BOLD);
     }
     if (pm_state == PMS_NAME) {
-        hint(0, TR("LETTRE", "LETTER", "LETRA"), "", "A-Z");
-        hint(1, TR("HASARD", "RANDOM", "AZAR"), "", "?");
-        hint(2, TR("EFFACER", "CLEAR", "BORRAR"), "", "X");
+        hint(0, TR("LETRA", "LETTER", "LETRA"), "", "A-Z");
+        hint(1, TR("ACASO", "RANDOM", "AZAR"), "", "?");
+        hint(2, TR("APAGAR", "CLEAR", "BORRAR"), "", "X");
         hint_none(3);
     } else {
-        hint(0, pm_state == PMS_SLOT ? TR("EMPLACEMENT", "SLOT", "RANURA") : TR("CHOIX", "CHOICE", "ELECCION"), "", "");
+        hint(0, pm_state == PMS_SLOT ? TR("ESPACO", "SLOT", "RANURA") : TR("ESCOLHA", "CHOICE", "ELECCION"), "", "");
         hint_none(1);
         hint_none(2);
         hint_none(3);
@@ -1916,14 +1916,14 @@ static void draw_groove(void)
     if (g_vis(20, 204)) g_rect(0, 20, 240, 204, C_BG);
     if (g_vis(22, 20)) {
         g_rrect(4, 24, 72, 16, g->on ? pc : C_BG2);
-        g_text_c(40, 26, g->on ? TR("ACTIF", "ON", "ACTIVO") : TR("ARRETE", "OFF", "APAGADO"), g->on ? C_INK : C_TXT,
+        g_text_c(40, 26, g->on ? TR("LIGADO", "ON", "ACTIVO") : TR("PARADO", "OFF", "APAGADO"), g->on ? C_INK : C_TXT,
                  T_CROP | T_BOLD);
         g_text(84, 26, GROOVE_NAMES[lang][gr_preset % 6u], C_MID, T_CROP);
     }
     if (g_vis(44, 12)) {                        /* what it adds up to: as many ticks as straight rows keeps the bar */
         s[0] = 0;
-        str_cat(fmt_u(s, sum, 0), TR(" TICKS EN ", " TICKS IN ", " TICKS EN "));
-        str_cat(fmt_u(s + str_len(s), len, 0), TR(" LIGNES", " ROWS", " FILAS"));
+        str_cat(fmt_u(s, sum, 0), TR(" TICKS EM ", " TICKS IN ", " TICKS EN "));
+        str_cat(fmt_u(s + str_len(s), len, 0), TR(" LINHAS", " ROWS", " FILAS"));
         g_text(8, 44, s, sum == len * 6u ? C_GOLD : C_REC, T_CROP);
     }
     for (i = 0; i < 16u; i++) {                 /* the steps: a bar of 1..12 ticks, the straight 6 dotted */
@@ -1938,7 +1938,7 @@ static void draw_groove(void)
         g_text_c(x + 7, 162, s, in ? (i == gr_cur ? C_WHITE : C_TXT) : C_RULE, T_CROP);
     }
     if (g_vis(182, 30)) {                       /* one turn of it as it plays: each row its length */
-        g_text(8, 180, TR("UN TOUR:", "ONE TURN:", "UNA VUELTA:"), C_FAINT, T_CROP);
+        g_text(8, 180, TR("UMA VOLTA:", "ONE TURN:", "UNA VUELTA:"), C_FAINT, T_CROP);
         for (i = 0; i < len; i++) {
             uint32_t x0 = 4u + acc * 232u / sum, x1;
             acc += (uint32_t)clampi(g->tick[i], 1, 12);
@@ -1951,17 +1951,17 @@ static void draw_groove(void)
     fmt_u(s, (uint32_t)clampi(g->tick[gr_cur % 16u], 1, 12), 0);
     hint(0, "TICKS", "", s);
     fmt_u(s, len, 0);
-    hint(1, TR("LONGUEUR", "LENGTH", "LARGO"), "", s);
-    hint(2, TR("MODELE", "PRESET", "MODELO"), "", GROOVE_NAMES[lang][gr_preset % 6u]);
-    hint(3, "GROOVE", "", g->on ? TR("OUI", "ON", "SI") : TR("NON", "OFF", "NO"));
+    hint(1, TR("TAMANHO", "LENGTH", "LARGO"), "", s);
+    hint(2, TR("MODELO", "PRESET", "MODELO"), "", GROOVE_NAMES[lang][gr_preset % 6u]);
+    hint(3, "GROOVE", "", g->on ? TR("SIM", "ON", "SI") : TR("NAO", "OFF", "NO"));
 }
 
 /* ---- OPTIONS (GLO three times): the theme, the language, the MIDI clock */
 static const char *clock_name(void)
 {
-    return set.clock == 2u ? TR("ENTREE", "IN", "ENTRADA") : set.clock ? TR("SORTIE", "OUT", "SALIDA") : TR("NON", "OFF", "NO");
+    return set.clock == 2u ? TR("ENTRADA", "IN", "ENTRADA") : set.clock ? TR("SAIDA", "OUT", "SALIDA") : TR("NAO", "OFF", "NO");
 }
-static const char *const FONT_NAMES[LANG_N][NFONT] = {{"BASE", "DOUCE", "CLAIRE", "8-BIT"},
+static const char *const FONT_NAMES[LANG_N][NFONT] = {{"BASE", "SUAVE", "CLARA", "8-BIT"},
                                                        {"BASIC", "SMOOTH", "CLEAR", "8-BIT"},
                                                        {"BASE", "SUAVE", "CLARA", "8-BIT"}};
 static void draw_opt(void)
@@ -1969,7 +1969,7 @@ static void draw_opt(void)
     uint32_t k, i;
     char s[24];
     if (g_vis(20, 204)) g_rect(0, 20, 240, 204, C_BG);
-    g_text(8, 22, TR("THEME", "THEME", "TEMA"), KNOB_COL[0], T_CROP | T_BOLD);
+    g_text(8, 22, TR("TEMA", "THEME", "TEMA"), KNOB_COL[0], T_CROP | T_BOLD);
     for (k = 0; k < NTHEME; k++) {              /* each theme as a little screen */
         const theme_t *th = &THEMES[k];
         int32_t x = 8 + (int32_t)k * 76, y = 37;
@@ -1982,14 +1982,14 @@ static void draw_opt(void)
         g_rect(x + 2, y + 29, 40, 2, th->gold);
         g_text_c(x + 34, y + 31, th->name, th->txt, T_CROP);
     }
-    g_text(8, 85, TR("LANGUE", "LANGUAGE", "IDIOMA"), KNOB_COL[1], T_CROP | T_BOLD);
+    g_text(8, 85, TR("IDIOMA", "LANGUAGE", "IDIOMA"), KNOB_COL[1], T_CROP | T_BOLD);
     for (k = 0; k < LANG_N; k++) {
         int32_t x = 8 + (int32_t)k * 76;
         g_rrect(x, 98, 68, 16, k == lang ? KNOB_COL[1] : C_BG2);
         g_text_c(x + 34, 98, k == 0u ? "FRANCAIS" : k == 1u ? "ENGLISH" : "ESPANOL", k == lang ? C_INK : C_TXT, T_CROP | T_BOLD);
     }
     s[0] = 0;                                   /* the fonts, each written in itself */
-    str_cat(str_cat(s, TR("POLICE: ", "FONT: ", "FUENTE: ")), FONT_NAMES[lang][g_font]);
+    str_cat(str_cat(s, TR("FONTE: ", "FONT: ", "FUENTE: ")), FONT_NAMES[lang][g_font]);
     g_text(8, 117, s, KNOB_COL[3], T_CROP | T_BOLD);
     for (k = 0; k < NFONT; k++) {
         const felucca_font_t *keep = g_fs;
@@ -2001,10 +2001,10 @@ static void draw_opt(void)
         g_fs = keep;
     }
     {                                           /* the metronome (ALGO: off, on, only while REC) and its volume (PRESETS) */
-        static const char *const MV[LANG_N][3] = {{"NON", "OUI", "REC"}, {"OFF", "ON", "REC"}, {"NO", "SI", "REC"}};
-        static const char *const VV[LANG_N][3] = {{"FAI", "MOY", "FORT"}, {"LOW", "MED", "HIGH"}, {"BAJ", "MED", "ALT"}};
+        static const char *const MV[LANG_N][3] = {{"NAO", "SIM", "REC"}, {"OFF", "ON", "REC"}, {"NO", "SI", "REC"}};
+        static const char *const VV[LANG_N][3] = {{"BAI", "MED", "ALTO"}, {"LOW", "MED", "HIGH"}, {"BAJ", "MED", "ALT"}};
         s[0] = 0;
-        g_text(8, 151, TR("METRONOME", "METRONOME", "METRONOMO"), C_MID, T_CROP | T_BOLD);
+        g_text(8, 151, TR("METRONOMO", "METRONOME", "METRONOMO"), C_MID, T_CROP | T_BOLD);
         g_text(86, 151, "ALGO", C_FAINT, T_CROP);
         g_text(124, 151, TR("VOLUME", "VOLUME", "VOLUMEN"), C_MID, T_CROP | T_BOLD);
         g_text(180, 151, "PRESETS", C_FAINT, T_CROP);
@@ -2020,7 +2020,7 @@ static void draw_opt(void)
     {                                           /* the MIDI clock: out, or in (its tempo leads) */
         char c[32];
         c[0] = 0;
-        str_cat(c, TR("HORLOGE MIDI: ", "MIDI CLOCK: ", "RELOJ MIDI: "));
+        str_cat(c, TR("RELOGIO MIDI: ", "MIDI CLOCK: ", "RELOJ MIDI: "));
         str_cat(c, clock_name());
         if (clk_in && clk_in_tick) { str_cat(c, " "); fmt_u(c + str_len(c), bpm_now(), 0); }
         g_text_c(120, 184, c, set.clock ? KNOB_COL[2] : C_FAINT, T_CROP);
@@ -2035,26 +2035,26 @@ static void draw_opt(void)
         if (audio_late) { str_cat(c, " !"); fmt_u(c + str_len(c), audio_late > 99u ? 99u : audio_late, 0); }
         g_text_c(120, 210, c, cpu_max > 70u ? C_REC : cpu_max > 45u ? C_GOLD : C_GO, T_CROP);
     }
-    hint(0, TR("THEME", "THEME", "TEMA"), "", THEMES[theme].name);
-    hint(1, TR("LANGUE", "LANGUAGE", "IDIOMA"), "", LANG_CODE[lang]);
-    hint(2, TR("HORLOGE MIDI", "MIDI CLOCK", "RELOJ MIDI"), "", clock_name());
-    hint(3, TR("POLICE", "FONT", "FUENTE"), "", FONT_NAMES[lang][g_font]);
+    hint(0, TR("TEMA", "THEME", "TEMA"), "", THEMES[theme].name);
+    hint(1, TR("IDIOMA", "LANGUAGE", "IDIOMA"), "", LANG_CODE[lang]);
+    hint(2, TR("RELOGIO MIDI", "MIDI CLOCK", "RELOJ MIDI"), "", clock_name());
+    hint(3, TR("FONTE", "FONT", "FUENTE"), "", FONT_NAMES[lang][g_font]);
 }
 
 /* ---- HELP (HOME held): what the knobs, the encoders and the keys do on the page it was held on */
 typedef struct { const char *e[3], *l[3]; } help_t;
 static const help_t HELP[LANG_N][PG_HELP] = {
-    {{{"LIGNE", "PISTE", "MOTIF"}, {"REC+SEL: SAUT  ARP+SEL: LIGNE", "SAVE TENU: LES OUTILS", "ARP + K3 K4: LE 2E EFFET"}},
-     {{"PAGE DE 16 PAS", "PISTE", "MOTIF"}, {"BLANCHES: PAS OUI/NON", "NOIRES: LA PISTE", "OCT-/OCT+: 16, 32, 64 PAS"}},
-     {{"PAGE SUIVANTE", "PISTE", "USINE / CURSEUR"}, {"MODIFIE: PRESETS PUIS OCT+", "ARP+PRESETS: LE MOTEUR", "ANNULER: SAVE+OCT- LE RAMENE"}},
-     {{"ENV / MIX", "PISTE", "-"}, {"ENV ENCORE: LE MIX", "TOUCHES: ECOUTER"}},
-     {{"ENV / MIX", "PISTE / MASTER", "-"}, {"NOIRES: MUET  ARP+NOIRE: SOLO", "APRES LA 6: LE MASTER"}},
-     {{"-", "PISTE", "MOTIF"}, {"BLANCHE: UN OUTIL", "SCL: GAMME, PUIS MAGIE", "SAVE TENU: LES OUTILS"}},
-     {{"-", "PISTE", "MOTIF"}, {"UNE TOUCHE: LA TONIQUE", "VERROU: NOTES DE LA GAMME", "SCL ENCORE: MAGIE"}},
-     {{"GROOVE, OPTIONS", "ENTREE", "SON MOTIF"}, {"BLANCHE: MOTIF  K3: X FOIS", "OCT+ AJOUTE  OCT- ENLEVE", "GLO: GROOVE, OPTIONS"}},
-     {{"CHOIX", "-", "-"}, {"OCT+: OK   OCT-: RETOUR", "SAVE PUIS OCT+: SAUVER VITE"}},
-     {{"CHAINE / GROOVE", "METRONOME", "VOLUME CLIC"}, {"K1-K4: THEME LANGUE HORLOGE", "POLICE: TOUS GARDES", "GLO: RETOUR A LA CHAINE"}},
-     {{"ENVOIS/LIVE/FILTRE", "PISTE", "MOTIF"}, {"FX TENU + BLANCHES", "OCT: 4 BANQUES  NOIRES: MUETS", "DETRUIT, BEAT: K2 INTENSITE"}}},
+    {{{"LINHA", "FAIXA", "PADRAO"}, {"REC+SEL: PULO  ARP+SEL: LINHA", "SAVE SEGURO: FERRAMENTAS", "ARP + K3 K4: O 2O EFEITO"}},
+     {{"PAGINA DE 16", "FAIXA", "PADRAO"}, {"BRANCAS: PASSOS SIM/NAO", "PRETAS: A FAIXA", "OCT-/OCT+: 16, 32, 64 PASS."}},
+     {{"PROXIMA PAG.", "FAIXA", "FABRICA / CURSOR"}, {"EDITADO: PRESETS E OCT+", "ARP+PRESETS: O MOTOR", "DESFAZER: SAVE+OCT- VOLTA"}},
+     {{"ENV / MIX", "FAIXA", "-"}, {"ENV DE NOVO: O MIX", "TECLAS: OUVIR"}},
+     {{"ENV / MIX", "FAIXA/MASTER", "-"}, {"PRETAS: MUDO  ARP+PRETA: SOLO", "DEPOIS DA 6: O MASTER"}},
+     {{"-", "FAIXA", "PADRAO"}, {"BRANCA: UMA FERRAMENTA", "SCL: ESCALA, E MAGIA", "SAVE SEGURO: FERRAMENTAS"}},
+     {{"-", "FAIXA", "PADRAO"}, {"UMA TECLA: A TONICA", "TRAVA: NOTAS DA ESCALA", "SCL DE NOVO: MAGIA"}},
+     {{"GROOVE, OPCOES", "ENTRADA", "SEU PADRAO"}, {"BRANCA: PADRAO  K3: VEZES", "OCT+ POE  OCT- TIRA", "GLO: GROOVE, OPCOES"}},
+     {{"ESCOLHA", "-", "-"}, {"OCT+: OK   OCT-: VOLTA", "SAVE E OCT+: SALVAR RAPIDO"}},
+     {{"MUSICA / GROOVE", "METRONOMO", "VOL. CLIQUE"}, {"K1-K4: TEMA IDIOMA RELOG FONTE", "TUDO FICA GUARDADO", "GLO: VOLTA PARA A MUSICA"}},
+     {{"ENVIOS/LIVE/FILTRO", "FAIXA", "PADRAO"}, {"FX SEGURO + BRANCAS", "OCT: 4 BANCOS  PRETAS: MUDO", "DESTROI, BEAT: K2 INTENSIDADE"}}},
     {{{"ROW", "TRACK", "PATTERN"}, {"REC+SEL: STEP  ARP+SEL: ROW", "SAVE HELD: THE TOOLS", "ARP + K3 K4: THE 2ND FX"}},
      {{"16 STEPS PAGE", "TRACK", "PATTERN"}, {"WHITE KEYS: STEPS ON/OFF", "BLACK KEYS: THE TRACK", "OCT-/OCT+: 16, 32, 64 STEPS"}},
      {{"NEXT PAGE", "TRACK", "FACTORY / CURSOR"}, {"EDITED: PRESETS, THEN OCT+", "ARP+PRESETS: THE ENGINE", "UNDO: SAVE+OCT- BRINGS IT BACK"}},
@@ -2078,27 +2078,27 @@ static const help_t HELP[LANG_N][PG_HELP] = {
      {{"CANCION / GROOVE", "METRONOMO", "VOLUMEN CLIC"}, {"K1-K4: TEMA IDIOMA RELOJ FUENTE", "TODO SE GUARDA", "GLO: VOLVER A LA CANCION"}},
      {{"ENVIOS/LIVE/FILTRO", "PISTA", "PATRON"}, {"FX PULSADO + BLANCAS", "OCT: 4 BANCOS  NEGRAS: MUTE", "DESTRUYE, BEAT: K2 INTENSIDAD"}}}};
 static const help_t HELP_SEND[LANG_N] = {   /* the first page of FX */
-    {{"ENVOIS / LIVE", "PISTE", "-"}, {"K1 SATURE  K2 ECHO  K3 REVERB", "0: RIEN, PAR PISTE", "FX ENCORE: LES EFFETS LIVE"}},
+    {{"ENVIOS / LIVE", "FAIXA", "-"}, {"K1 SATURA  K2 ECO  K3 REVERB", "0: NADA, POR FAIXA", "FX DE NOVO: EFEITOS LIVE"}},
     {{"SENDS / LIVE", "TRACK", "-"}, {"K1 DRIVE  K2 ECHO  K3 REVERB", "0: NOTHING, PER TRACK", "FX AGAIN: THE LIVE EFFECTS"}},
     {{"ENVIOS / LIVE", "PISTA", "-"}, {"K1 SATURA  K2 ECO  K3 REVERB", "0: NADA, POR PISTA", "FX OTRA VEZ: EFECTOS LIVE"}}};
 static const help_t HELP_FILT[LANG_N] = {   /* the third page of FX */
-    {{"ENVOIS/LIVE/FILTRE", "-", "-"}, {"K1 TYPE K2 FREQ K3 RESO K4 MOUV", "TOUCHES: ACCORDENT, OCT: 8VE", "FX: LA SEQ FX"}},
+    {{"ENVIOS/LIVE/FILTRO", "-", "-"}, {"K1 TIPO K2 FREQ K3 RESO K4 MOV", "TECLAS: AFINAM  OCT: OITAVA", "FX: A SEQ FX"}},
     {{"SENDS/LIVE/FILTER", "-", "-"}, {"K1 TYPE K2 FREQ K3 RESO K4 MOVE", "KEYS: TUNE IT  OCT: OCTAVE", "FX: THE FX SEQ"}},
     {{"ENVIOS/LIVE/FILTRO", "-", "-"}, {"K1 TIPO K2 FREC K3 RESO K4 MOV", "TECLAS: AFINAN  OCT: OCTAVA", "FX: LA SEC FX"}}};
 static const help_t HELP_FXSEQ[LANG_N] = {   /* the fourth page of FX */
-    {{"ENVOIS/LIVE/FILTRE", "-", "MOTIF"}, {"K1: L'EFFET  BLANCHE: UN PAS", "OCT: PAS 1-16 / 17-32", "ARP: EFFACE  FX: RETOUR"}},
+    {{"ENVIOS/LIVE/FILTRO", "-", "PADRAO"}, {"K1: O EFEITO  BRANCA: UM PASSO", "OCT: PASSO 1-16 / 17-32", "ARP: APAGA  FX: VOLTA"}},
     {{"SENDS/LIVE/FILTER", "-", "PATTERN"}, {"K1: THE FX  WHITE KEY: A STEP", "OCT: STEPS 1-16 / 17-32", "ARP: CLEARS  FX: BACK"}},
     {{"ENVIOS/LIVE/FILTRO", "-", "PATRON"}, {"K1: EL EFECTO  BLANCA: UN PASO", "OCT: PASOS 1-16 / 17-32", "ARP: BORRA  FX: VOLVER"}}};
 static const help_t HELP_GROOVE[LANG_N] = {   /* GROOVE, and two pages of SOUND (EDIT): TABLE, SAMPLE EDIT */
-    {{"CHAINE / OPTIONS", "PAS DU GROOVE", "-"}, {"BLANCHE: UN PAS  K1: TICKS", "6 TICKS: UNE LIGNE DROITE", "GLO: LES OPTIONS"}},
+    {{"MUSICA / OPCOES", "PASSO DO GROOVE", "-"}, {"BRANCA: UM PASSO  K1: TICKS", "6 TICKS: UMA LINHA RETA", "GLO: AS OPCOES"}},
     {{"SONG / OPTIONS", "GROOVE STEP", "-"}, {"WHITE KEY: A STEP K1: TICKS", "6 TICKS: A STRAIGHT ROW", "GLO: THE OPTIONS"}},
     {{"CANCION / OPCIONES", "PASO DEL GROOVE", "-"}, {"BLANCA: UN PASO  K1: TICKS", "6 TICKS: UNA FILA RECTA", "GLO: LAS OPCIONES"}}};
 static const help_t HELP_TABLE[LANG_N] = {
-    {{"PAGE SUIVANTE", "PISTE", "LIGNE TABLE"}, {"LIGNE 0: VITESSE LONG BOUCLE", "K4 SUR LA LIGNE 0: ACTIVE", "ARP: EFFACE LE PAS"}},
+    {{"PROXIMA PAG.", "FAIXA", "LINHA TABEL"}, {"LINHA 0: VELOC TAMANHO LOOP", "K4 NA LINHA 0: LIGA", "ARP: APAGA O PASSO"}},
     {{"NEXT PAGE", "TRACK", "TABLE ROW"}, {"ROW 0: SPEED LENGTH LOOP", "K4 ON ROW 0: ON / OFF", "ARP: CLEARS THE STEP"}},
     {{"PAG. SIGUIENTE", "PISTA", "FILA TABLA"}, {"FILA 0: VELOC LARGO BUCLE", "K4 EN LA FILA 0: ACTIVA", "ARP: BORRA EL PASO"}}};
 static const help_t HELP_SMP[LANG_N] = {
-    {{"PAGE SUIVANTE", "PISTE", "DEBUT FIN TRANCHE"}, {"K1: DEPLACE  K2: PRECIS", "K3 NORMALISE  K4 A L'ENVERS", "ARP: TRANCHES EGALES"}},
+    {{"PROXIMA PAG.", "FAIXA", "INICIO FIM FATIA"}, {"K1: MOVE  K2: FINO", "K3 NORMALIZA  K4 AO AVESSO", "ARP: FATIAS IGUAIS"}},
     {{"NEXT PAGE", "TRACK", "START END SLICE"}, {"K1: MOVE  K2: FINE", "K3 NORMALISE  K4 REVERSE", "ARP: EVEN SLICES"}},
     {{"PAG. SIGUIENTE", "PISTA", "INICIO FIN CORTE"}, {"K1: MOVER  K2: FINO", "K3 NORMALIZA  K4 AL REVES", "ARP: CORTES IGUALES"}}};
 static void draw_help(void)
@@ -2191,7 +2191,7 @@ static void draw_boot(void)
     g_rrect(236 - g_text_w("V" APP_VER) - 4, 224, g_text_w("V" APP_VER) + 6, 14, RGB(20, 18, 16));
     g_text(236 - g_text_w("V" APP_VER) - 1, 224, "V" APP_VER, RGB(243, 235, 221), T_CROP);
     if (t > 600u && ((t / 550u) & 1u)) {        /* it waits for you: a key, a button or a knob */
-        const char *m = TR("APPUIE SUR UNE TOUCHE", "PRESS ANY KEY", "PULSA UNA TECLA");
+        const char *m = TR("APERTE UMA TECLA", "PRESS ANY KEY", "PULSA UNA TECLA");
         g_text_c(120, 138, m, C_WHITE, T_CROP);
     }
 }
@@ -2412,7 +2412,7 @@ static void rows_shift(int32_t d, int all)      /* rows pushed down from the cur
             if (s > 0) { for (r = len - 1u; r > cur_row; r--) pt->live[r] = pt->live[r - 1u]; pt->live[cur_row] = 0; }
             else { for (r = cur_row; r + 1u < len; r++) pt->live[r] = pt->live[r + 1u]; pt->live[len - 1u] = 0; }
         }
-        toast(s > 0 ? TR("LIGNE INSEREE", "ROW IN", "FILA INSERTADA") : TR("LIGNE OTEE", "ROW OUT", "FILA QUITADA"));
+        toast(s > 0 ? TR("LINHA INSERIDA", "ROW IN", "FILA INSERTADA") : TR("LINHA TIRADA", "ROW OUT", "FILA QUITADA"));
     }
 }
 
@@ -2732,10 +2732,10 @@ static void pm_do(uint32_t act)                 /* the action, its questions ans
         }
         break;
     case PM_LOAD:
-        if (prj_load(pm_slot)) { toast(TR("RIEN ICI", "NOTHING HERE", "NADA AQUI")); pm_state = PMS_SLOT; break; }
+        if (prj_load(pm_slot)) { toast(TR("NADA AQUI", "NOTHING HERE", "NADA AQUI")); pm_state = PMS_SLOT; break; }
         ev_push(EV_KILL, NTRK, 0, 0, 0, 0);     /* (every voice of the old song goes) */
         proj_cur = prj.home >= 1u && prj.home < NSLOT ? prj.home : 0xFF;
-        song_fresh(TR("CHARGE !", "LOADED !", "CARGADO !"));
+        song_fresh(TR("CARREGA!", "LOADED !", "CARGADO !"));
         break;
     case PM_SAVE: case PM_SAVEAS: {
         int rc;
@@ -2744,10 +2744,10 @@ static void pm_do(uint32_t act)                 /* the action, its questions ans
         kw_hold_wait();                         /* would loop the last block), as for a sample (kawa_sysex.c) */
         rc = prj_save(pm_slot);
         audio_hold = 0;
-        if (rc) { toast(TR("ERREUR !", "ERROR !", "ERROR !")); break; }
+        if (rc) { toast(TR("ERRO !", "ERROR !", "ERROR !")); break; }
         proj_cur = pm_slot;
         pm_state = PMS_MENU;
-        toast(TR("SAUVE !", "SAVED !", "GUARDADO !"));
+        toast(TR("SALVO !", "SAVED !", "GUARDADO !"));
         break;
     }
     case PM_RENAME:
@@ -2810,11 +2810,11 @@ static void steps_turn(int32_t d)
     if (n < 16u || n > 64u) return;
     if (n == 64u) {
         if (pi + 1u >= NPAT) {
-            toast(TR("DERNIER MOTIF", "LAST PATTERN", "ULTIMO PATRON"));
+            toast(TR("ULTIMO PADRAO", "LAST PATTERN", "ULTIMO PATRON"));
             return;
         }
         if (pat_linked(pi + 1u) || (pi && pat_linked(pi - 1u))) {
-            toast(TR("MOTIF DEJA LIE", "PATTERN ALREADY LINKED", "PATRON YA ENLAZADO"));
+            toast(TR("PADRAO JA LIGADO", "PATTERN ALREADY LINKED", "PATRON YA ENLAZADO"));
             return;
         }
         prj.pat[pi + 1u].len = 32;              /* (the second half's length is not an undo step of its own: one UNDO takes the link back) */
@@ -2826,7 +2826,7 @@ static void steps_turn(int32_t d)
     grid_page = 0;
     touched();
     s[0] = 0;
-    fmt_u(str_cat(s, TR("PAS ", "STEPS ", "PASOS ")), n, 0);
+    fmt_u(str_cat(s, TR("PASS. ", "STEPS ", "PASOS ")), n, 0);
     toast(s);
 }
 
@@ -2842,16 +2842,16 @@ static void undo_do(int redo)                   /* UNDO or REDO: a pattern or a 
         if (snd_page >= sp_n(t)) snd_page = 0;
         pre_cand = 0xFF;
         s[0] = 0;
-        fmt_u(str_cat(s, redo ? TR("REFAIT: SON ", "REDONE: SOUND ", "REHECHO: SONIDO ")
-                              : TR("ANNULE: SON ", "UNDONE: SOUND ", "DESHECHO: SONIDO ")), t + 1u, 0);
+        fmt_u(str_cat(s, redo ? TR("REFEITO: SOM ", "REDONE: SOUND ", "REHECHO: SONIDO ")
+                              : TR("DESFEITO: SOM ", "UNDONE: SOUND ", "DESHECHO: SONIDO ")), t + 1u, 0);
         toast(s);
         return;
     }
     if (p >= 0) { ui_pat = (uint8_t)p; if (cur_row >= plen()) cur_row = 0; }
-    toast(p == -2 ? TR("FM: UNE SEULE PISTE", "FM: ONE TRACK ONLY", "FM: UNA SOLA PISTA")
-          : p < 0 ? (redo ? TR("RIEN A REFAIRE", "NOTHING TO REDO", "NADA QUE REHACER")
-                          : TR("RIEN A ANNULER", "NOTHING TO UNDO", "NADA QUE DESHACER"))
-                  : (redo ? TR("REFAIT", "REDONE", "REHECHO") : TR("ANNULE", "UNDONE", "DESHECHO")));
+    toast(p == -2 ? TR("FM: SO UMA FAIXA", "FM: ONE TRACK ONLY", "FM: UNA SOLA PISTA")
+          : p < 0 ? (redo ? TR("NADA A REFAZER", "NOTHING TO REDO", "NADA QUE REHACER")
+                          : TR("NADA A DESFAZER", "NOTHING TO UNDO", "NADA QUE DESHACER"))
+                  : (redo ? TR("REFEITO", "REDONE", "REHECHO") : TR("DESFEITO", "UNDONE", "DESHECHO")));
 }
 static void tools_run(uint32_t k)
 {
@@ -2951,7 +2951,7 @@ static void button_down(uint32_t b)
         } else if (page == PG_FX || page == PG_FXSEQ) {
             undo_push(ui_pat);
             memset(P()->live, 0, sizeof P()->live);
-            toast(TR("LIVE EFFACE", "LIVE CLEARED", "LIVE BORRADO"));
+            toast(TR("LIVE APAGADO", "LIVE CLEARED", "LIVE BORRADO"));
         } else if (page == PG_SONG) {
             prj.mode ^= 1u;
             touched();
@@ -2967,7 +2967,7 @@ static void button_down(uint32_t b)
             smp_even(&prj.sed[trk()]);
             sed_normalise(trk());
             touched();
-            toast(TR("TRANCHES EGALES", "EVEN SLICES", "CORTES IGUALES"));
+            toast(TR("FATIAS IGUAIS", "EVEN SLICES", "CORTES IGUALES"));
         }
         break;
     case BTN_OCT_DOWN:
@@ -2978,7 +2978,7 @@ static void button_down(uint32_t b)
             undo_do(d > 0);
         } else if (page == PG_SOUND && pre_cand != 0xFF) {   /* a factory sound is shown: OCT+ loads it, OCT- keeps the sound */
             if (d > 0) preset_commit();
-            else { pre_cand = 0xFF; toast(TR("GARDE", "KEPT", "CONSERVADO")); }
+            else { pre_cand = 0xFF; toast(TR("GUARDADO", "KEPT", "CONSERVADO")); }
         } else if (page == PG_FX) { fx_bank = (uint8_t)clampi(fx_bank + d, 0, NLBANK - 1); lfx_keys = 0; kg_keys_set(0); }
         else if (page == PG_FILT) kf_note = (uint8_t)clampi(kf_note + d * 12, 12, 124);
         else if (page == PG_FXSEQ) fs_half = (uint8_t)(d > 0 && plen() > 16u);
@@ -3197,10 +3197,10 @@ static void preset_commit(void)
 {
     uint32_t t = pre_cand_t;
     if (pre_cand == 0xFF || t >= NTRK) return;
-    if (PRESETS[pre_cand].engine == E_FM && !fm_free(t)) { toast(TR("FM: UNE SEULE PISTE", "FM: ONE TRACK ONLY", "FM: UNA SOLA PISTA")); pre_cand = 0xFF; return; }
+    if (PRESETS[pre_cand].engine == E_FM && !fm_free(t)) { toast(TR("FM: SO UMA FAIXA", "FM: ONE TRACK ONLY", "FM: UNA SOLA PISTA")); pre_cand = 0xFF; return; }
     preset_load(t, pre_cand, 1);
     pre_cand = 0xFF;
-    toast(TR("CHARGE", "LOADED", "CARGADO"));
+    toast(TR("CARREG.", "LOADED", "CARGADO"));
 }
 static void preset_turn(int32_t d)
 {
@@ -3213,7 +3213,7 @@ static void preset_turn(int32_t d)
         arp_turned = 1;
         if (ne == E_FM && !fm_free(t)) ne += d > 0 ? 1 : -1;   /* FM: one track only */
         e = (uint32_t)clampi(ne, 0, E_N - 1);
-        if (e == E_FM && !fm_free(t)) { toast(TR("FM: UNE SEULE PISTE", "FM: ONE TRACK ONLY", "FM: UNA SOLA PISTA")); return; }
+        if (e == E_FM && !fm_free(t)) { toast(TR("FM: SO UMA FAIXA", "FM: ONE TRACK ONLY", "FM: UNA SOLA PISTA")); return; }
         if (e == PRESETS[from % NPRESET].engine) return;
         k = preset_first(e);
     } else {
@@ -3224,7 +3224,7 @@ static void preset_turn(int32_t d)
         while (--guard && PRESETS[k].engine == E_FM && !fm_free(t));
     }
     if (!sound_is_preset(t)) {                  /* edited: only shown */
-        if (!showing) toast(TR("OCT+: CHARGER", "OCT+: LOAD IT", "OCT+: CARGAR"));
+        if (!showing) toast(TR("OCT+: CARREGA", "OCT+: LOAD IT", "OCT+: CARGAR"));
         pre_cand = (uint8_t)k;
         pre_cand_t = (uint8_t)t;
         pre_cand_ms = fm1_ms;
@@ -3268,7 +3268,7 @@ static void ui_input(void)
         prj.step = (uint8_t)clampi(prj.step + d, 0, 16);
         touched();
         s[0] = 0;
-        fmt_u(str_cat(s, TR("SAUT ", "STEP ", "SALTO ")), prj.step, 0);
+        fmt_u(str_cat(s, TR("PULO ", "STEP ", "SALTO ")), prj.step, 0);
         toast(s);
         d = 0;
     }
@@ -3567,6 +3567,7 @@ static void app_init(void)
     } else {
         theme_set(0);
         g_font_set(FN_DOUCE);
+        lang = LANG_PT;                         /* a new FM-1 speaks Portuguese (BAILE) */
         set.lang = lang;
         set.font = g_font;
     }
@@ -3622,7 +3623,7 @@ static void app_step(void)
     met_rec = rec;
     if (clk_in && sq_play && fm1_ticks() - ci_last > 1000000u * FM1_TICKS_PER_US &&   /* (a second) */
         fm1_ms - toast_ms > 2500u)              /* PLAY on the clock in, and no clock: it waits for it */
-        toast(TR("ATTEND L'HORLOGE MIDI", "WAITING FOR MIDI CLOCK", "ESPERA EL RELOJ MIDI"));
+        toast(TR("ESPERANDO RELOGIO MIDI", "WAITING FOR MIDI CLOCK", "ESPERA EL RELOJ MIDI"));
     if (fm1_ms - ui_frame_ms >= 33u) {          /* ~30 frames a second, only what changed is sent */
         ui_frame_ms = fm1_ms;
         ui_leds();
@@ -3664,7 +3665,7 @@ WASM_EXPORT("kawa_sample_commit") void kawa_sample_commit(uint32_t slot, uint32_
 {
     usr_put(slot, w_smp_stage, len, rate, w_smp_name);
     wv_src = 0xFF;
-    toast(TR("SAMPLE PRET !", "SAMPLE READY !", "SAMPLE LISTO !"));
+    toast(TR("SAMPLE PRONTO!", "SAMPLE READY !", "SAMPLE LISTO !"));
 }
 WASM_EXPORT("kawa_sample_slot_name") const char *kawa_sample_slot_name(uint32_t slot)
 {
