@@ -234,26 +234,26 @@ static const preset_t PRESETS[] = {
     {{"KIT TUIN", "TUIN FX KIT", "KIT TUIN"}, E_KIT, {6, 0, 0, 0, 0, 15, 0, 0}, {0, 15, 15, 15}},
     {{"KIT PERCUSSAO", "BR PERC KIT", "KIT PERCUSION"}, E_KIT, {7, 0, 0, 0, 0, 15, 0, 0}, {0, 15, 15, 15}},
     {{"KIT 150 SUJO", "DIRTY 150 KIT", "KIT 150 SUCIO"}, E_KIT, {2, 2, 2, 12, 0, 13, 0, 0}, {0, 15, 15, 15}},
-    {{"SOLEIL", "SOLEIL", "SOLEIL"}, E_SAMPLE, {0, 0, 0, 1, 11, 2, 0, 15}, {0, 15, 15, 2}},      /* ride, live room */
-    {{"GRELOT", "GRELOT", "GRELOT"}, E_SAMPLE, {1, 0, 0, 1, 11, 2, 0, 15}, {0, 15, 15, 2}},      /* 70s funk, 16th hats */
-    {{"TENDU", "TENDU", "TENDU"}, E_SAMPLE, {2, 0, 0, 1, 11, 2, 0, 15}, {0, 15, 15, 2}},         /* dry, tight, claps */
-    {{"ABYSSE", "ABYSSE", "ABYSSE"}, E_SAMPLE, {3, 0, 0, 1, 11, 2, 0, 15}, {0, 15, 15, 2}},      /* ragga jungle, sub */
-    {{"MAMBO", "MAMBO", "MAMBO"}, E_SAMPLE, {4, 0, 0, 1, 11, 2, 0, 15}, {0, 15, 15, 2}},         /* congas, bongos, bell */
-    {{"GRENIER", "GRENIER", "GRENIER"}, E_SAMPLE, {5, 0, 0, 1, 11, 2, 0, 15}, {0, 15, 15, 2}},   /* hip hop swing, dusty */
-    {{"ABYSSE SUJO", "ABYSSE DIRTY", "ABYSSE SUCIO"}, E_SAMPLE, {3, 0, 0, 1, 11, 10, 3, 12}, {0, 15, 15, 2}},
-    {{"TENDU CURTO", "TENDU SHORT", "TENDU CORTO"}, E_SAMPLE, {2, 0, 0, 1, 3, 2, 0, 15}, {0, 15, 15, 1}},
+    {{"TAMBORZAO", "TAMBORZAO", "TAMBORZAO"}, E_SAMPLE, {0, 0, 0, 1, 11, 2, 0, 15}, {0, 15, 15, 2}},   /* atabaques */
+    {{"VOLT", "VOLT", "VOLT"}, E_SAMPLE, {1, 0, 0, 1, 11, 2, 0, 15}, {0, 15, 15, 2}},            /* Miami bass, 808 */
+    {{"FUNK 150", "FUNK 150", "FUNK 150"}, E_SAMPLE, {2, 0, 0, 1, 11, 2, 0, 15}, {0, 15, 15, 2}},   /* fast, hard */
+    {{"MANDELAO", "MANDELAO", "MANDELAO"}, E_SAMPLE, {3, 0, 0, 1, 11, 2, 0, 15}, {0, 15, 15, 2}},   /* bare, a sub, metal */
+    {{"BREGA FUNK", "BREGA FUNK", "BREGA FUNK"}, E_SAMPLE, {4, 0, 0, 1, 11, 2, 0, 15}, {0, 15, 15, 2}},   /* timbal, palms */
+    {{"MONTAGEM", "MONTAGEM", "MONTAGEM"}, E_SAMPLE, {5, 0, 0, 1, 11, 2, 0, 15}, {0, 15, 15, 2}},   /* a hit every 16th */
+    {{"MANDELAO SUJO", "DIRTY MANDELAO", "MANDELAO SUCIO"}, E_SAMPLE, {3, 0, 0, 1, 11, 10, 3, 12}, {0, 15, 15, 2}},
+    {{"150 CURTO", "SHORT 150", "150 CORTO"}, E_SAMPLE, {2, 0, 0, 1, 3, 2, 0, 15}, {0, 15, 15, 1}},
     {{"MEU SAMPLE 1", "MY SAMPLE 1", "MI SAMPLE 1"}, E_SAMPLE, {(int8_t)(BRK_N + 0u), 1, 0, 0, 11, 0, 0, 15}, {0, 15, 15, 3}},
     {{"MEU SAMPLE 2", "MY SAMPLE 2", "MI SAMPLE 2"}, E_SAMPLE, {(int8_t)(BRK_N + 1u), 1, 0, 0, 11, 0, 0, 15}, {0, 15, 15, 3}},
     {{"MEU SAMPLE 3", "MY SAMPLE 3", "MI SAMPLE 3"}, E_SAMPLE, {(int8_t)(BRK_N + 2u), 1, 0, 0, 11, 0, 0, 15}, {0, 15, 15, 3}},
     {{"MEU SAMPLE 4", "MY SAMPLE 4", "MI SAMPLE 4"}, E_SAMPLE, {(int8_t)(BRK_N + 3u), 1, 0, 0, 11, 0, 0, 15}, {0, 15, 15, 3}},
 };
 #define KIT_DEMO 6                              /* the demo's kit (its first knob): SNES */
-#define BRK_DEMO 3                              /* the demo's break: ABYSSE (the boss is breakcore) */
+#define BRK_DEMO 3                              /* the demo's break: MANDELA (the boss) */
 #define NPRESET ((uint8_t)(sizeof(PRESETS) / sizeof(PRESETS[0])))
 /* each track's sound on a new project (an index in PRESETS) */
 static const uint8_t TRK_ENGINE0[NTRK] = {E_PULSE, E_FM, E_WAVE, E_NOISE, E_KIT, E_SAMPLE};   /* a new project: lead, */
 static const int8_t TRK_S0[NTRK] = {1, 0, 0, 0, 0, 0};   /* FM, bass, hats, kit, break (each its engine's sound with this */
-                                                          /* first knob: LEAD 25, TINE EP, NES BASS, HI-HAT, ACOUSTIC, SOLEIL) */
+                                                          /* first knob: LEAD 25, TINE EP, NES BASS, HI-HAT, VOLT, TAMBORZAO) */
 
 /* ---- notes */
 static const char *const NOTE_NAME[12] = {"C-", "C#", "D-", "D#", "E-", "F-", "F#", "G-", "G#", "A-", "A#", "B-"};

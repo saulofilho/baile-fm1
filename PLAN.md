@@ -103,6 +103,14 @@ Opcional, depois da 1.0: vocais sintéticos por formantes; modo LIVE do KAWA (la
   kits); o `features_test` agora espera o bumbo do VOLT terminar (até ~1,7 s depois do STOP). **Falta ouvir:** os
   WAVs de cada kit saem em `source/build/kits/` (`kit_N.wav`, `beat_N.wav`) com `tests/run_kits_test.sh`; ajustar o
   timbre de ouvido. Os breaks e os grooves de funk são as Fases 3 e 4.
+- **2026-11-18, Fase 3 (breaks):** os 6 breaks do KAWA viraram **TAMBOR, VOLT, CENT50, MANDELA, BREGA e MONTAG**
+  (`source/tools/gen_breaks.py` → `kawa_breaks.h`), batidas originais e sintetizadas, cada uma com o seu "estúdio"
+  (sala, mesa, fita, sampler): o tamborzão com atabaques, o Volt com 808 e sub, o 150 seco num sampler de 16 kHz, o
+  mandelão sujo a 9 kHz e 8 bits, o brega com swing, timbal e ride, a montagem com um som diferente a cada
+  semicolcheia. `tests/breaks_check.py` ok (caixa no 2 e no 4, bumbos e caixas onde marcados, nenhum par parecido).
+  O BPM dos breaks continua 160 (o do KAWA): fatiados, eles tocam a 130–150 sem problema. Presets de sample
+  renomeados (TAMBORZAO, VOLT, FUNK 150, MANDELAO, BREGA FUNK, MONTAGEM…). `numpy` na `.venv` para o gerador.
+  **Falta ouvir:** `source/build/breaks/*.wav`.
 
 ## Mood
 
