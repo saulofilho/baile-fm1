@@ -257,7 +257,7 @@ def page_bar(lang, B, cur, twin):
     return ("<!-- bar -->\n"
             f'<header class="sbar">\n  <nav aria-label="BAILE">{a("install")}{a("manual")}</nav>\n'
             f'  <a class="slogo" href="{B}{h["home"]}" aria-label="BAILE"><img src="{FAVICON}" alt="">BAILE</a>\n'
-            f'  <nav class="r" aria-label="BAILE">{a("emu")}{a("samples")}<span class="langs">{pt}{en}</span></nav>\n</header>\n'
+            f'  <nav class="r" aria-label="BAILE">{a("emu")}{a("samples")}<span class="slangs">{pt}{en}</span></nav>\n</header>\n'
             f'<nav class="smnav" aria-label="BAILE">{a("install")}{a("emu")}{a("manual")}{a("samples")}</nav>\n'
             "<!-- /bar -->")
 

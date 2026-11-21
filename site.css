@@ -11,13 +11,13 @@
 .sbar nav.r{justify-content:flex-end}
 .sbar a{font:900 15px/1 var(--heavy);text-transform:uppercase;text-decoration:none;color:var(--preto);letter-spacing:.02em}
 .sbar a:hover,.sbar a:focus-visible{color:var(--vermelho)}
-.sbar a[aria-current="page"]:not(.langs a){color:var(--vermelho)}
+.sbar a[aria-current="page"]:not(.slangs a){color:var(--vermelho)}
 .sbar .slogo{font:900 40px/1 var(--heavy);letter-spacing:-.02em;color:var(--vermelho);display:inline-flex;align-items:center;gap:10px;
   -webkit-text-stroke:2px var(--preto);paint-order:stroke fill;text-shadow:3px 3px 0 var(--preto),5px 5px 0 var(--preto)}
 .sbar .slogo img{width:36px;height:36px;transform:rotate(-8deg)}
-.sbar .langs{display:inline-flex;border:3px solid var(--preto);border-radius:40px;overflow:hidden}
-.sbar .langs a{padding:5px 10px;font-size:13px}
-.sbar .langs a[aria-current]{background:var(--preto);color:var(--amarelo)}
+.sbar .slangs{display:inline-flex;border:3px solid var(--preto);border-radius:40px;overflow:hidden}
+.sbar .slangs a{padding:5px 10px;font-size:13px}
+.sbar .slangs a[aria-current]{background:var(--preto);color:var(--amarelo)}
 .smnav{display:none;flex-wrap:wrap;justify-content:center;gap:6px 18px;background:var(--preto);padding:10px 12px}
 .smnav a{color:var(--amarelo);font:900 14px/1 var(--heavy);text-transform:uppercase;text-decoration:none}
 @media (max-width:760px){
