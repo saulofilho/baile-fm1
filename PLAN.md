@@ -159,10 +159,16 @@ Opcional, depois da 1.0: vocais sintéticos por formantes; modo LIVE do KAWA (la
 
 ## TODO
 
-- [ ] **Refazer a diagramação do site** (hub, manual, emulador, samples) tendo como referência
-  <https://www.lamannabakery.com/>, mantendo a paleta e os ladrilhos do mood board.
-- [ ] **Versão em inglês do site:** hub, manual e importador de samples (o emulador já tem EN), com a troca de idioma
-  em todas as páginas.
+- [x] **Refazer a diagramação do site** (2026-11-21) com a diagramação de <https://www.lamannabakery.com/> e as cores do
+  BAILE: barra fixa amarela com a logo no meio, hero vermelho com tipografia gigante e a tela do FM-1 por cima, títulos
+  com sombra em camadas, selo-estrela girando, letreiros correndo, blobs, "Feito sobre" (os créditos), "Ouça" (um
+  carrossel de estrelas que tocam as demos e os breaks), blocos chapados com ladrilhos nas laterais. O hub é gerado
+  por `source/tools/gen_site.py` a partir de `source/web/hub.html`; a barra das outras páginas vem do mesmo script
+  (`site.css`, entre `<!-- bar -->` e `<!-- /bar -->`). O manual ganhou o mesmo visual (creme, títulos pesados, telas
+  com moldura); o emulador e o importador ficam escuros (a mesa), com a barra amarela em cima.
+- [x] **Versão em inglês do site** (2026-11-21): `en/index.html` (do mesmo modelo do hub), `manual/en.html`,
+  `samples.en.html` (gerado do `samples.html` com `source/tools/samples_en.json`); o emulador já tinha EN (`#en`).
+  PT/EN na barra de todas as páginas.
 - [ ] Publicar a release `v0.2` (push da tag) e mandar o e-mail ao FM-1 Firmware Hub (`docs/HUB-EMAIL.md`).
 - [ ] Opcionais: vocais de MC por formantes; um modo LIVE de lançar trechos ao vivo.
 

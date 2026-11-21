@@ -20,7 +20,7 @@ body = Path("web/emulator.html").read_text().replace("__KAWA_WASM__", b64).repla
 Path("build/web/kawa-emulator.html").write_text(body)
 head, rest = body.split("<style>", 1)
 css, content = rest.split("</style>", 1)
-page = ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
+page = ('<!doctype html>\n<html lang="pt-BR">\n<head>\n<meta charset="utf-8">\n'
         '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
         + head + "<style>" + css + "</style>\n</head>\n<body>" + content + "\n</body>\n</html>\n")
 Path("../emulator/index.html").write_text(page)
