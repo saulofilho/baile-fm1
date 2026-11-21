@@ -12,6 +12,7 @@
 <meta name="theme-color" content="#141210">
 <meta name="color-scheme" content="dark">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23141210'/%3E%3Crect x='4' y='4' width='11' height='11' rx='2' fill='%23E3212B'/%3E%3Crect x='17' y='4' width='11' height='11' rx='2' fill='%23FFCF1F'/%3E%3Crect x='4' y='17' width='11' height='11' rx='2' fill='%235AAE3A'/%3E%3Crect x='17' y='17' width='11' height='11' rx='2' fill='%231F5BD6'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="site.css">
 <style>
 /* The FM-1's own night (the manual's palette), one dark look. System fonts only. */
 :root {
@@ -177,14 +178,14 @@ body.dragging .overlay { display: grid; }
 </style>
 </head>
 <body>
-<nav class="ksite" aria-label="BAILE menu">
-  <a class="ksb" href="index.html" aria-label="BAILE, home">BAI<span>LE</span></a>
-  <a class="ksl" href="index.html#install">Instalar</a>
-  <a class="ksl" href="emulator/index.html">Emulador</a>
-  <a class="ksl" href="manual/index.html">Manual</a>
-  <a class="ksl" href="samples.html" aria-current="page">Samples</a>
-  <a class="ksl" href="https://github.com/saulofilho/baile-fm1">GitHub</a>
-</nav>
+<!-- bar -->
+<header class="sbar">
+  <nav aria-label="BAILE"><a href="index.html#install">Instalar</a><a href="manual/index.html">Manual</a></nav>
+  <a class="slogo" href="index.html" aria-label="BAILE"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23141210'/%3E%3Crect x='4' y='4' width='11' height='11' rx='2' fill='%23E3212B'/%3E%3Crect x='17' y='4' width='11' height='11' rx='2' fill='%23FFCF1F'/%3E%3Crect x='4' y='17' width='11' height='11' rx='2' fill='%235AAE3A'/%3E%3Crect x='17' y='17' width='11' height='11' rx='2' fill='%231F5BD6'/%3E%3C/svg%3E" alt="">BAILE</a>
+  <nav class="r" aria-label="BAILE"><a href="emulator/index.html">Emulador</a><a href="samples.html" aria-current="page">Samples</a><span class="langs"><a href="#" aria-current="page">PT</a><a href="samples.en.html" hreflang="en">EN</a></span></nav>
+</header>
+<nav class="smnav" aria-label="BAILE"><a href="index.html#install">Instalar</a><a href="emulator/index.html">Emulador</a><a href="manual/index.html">Manual</a><a href="samples.html" aria-current="page">Samples</a></nav>
+<!-- /bar -->
 
 <main>
 

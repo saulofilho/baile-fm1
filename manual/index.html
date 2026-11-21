@@ -6,59 +6,55 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23141210'/%3E%3Crect x='4' y='4' width='11' height='11' rx='2' fill='%23E3212B'/%3E%3Crect x='17' y='4' width='11' height='11' rx='2' fill='%23FFCF1F'/%3E%3Crect x='4' y='17' width='11' height='11' rx='2' fill='%235AAE3A'/%3E%3Crect x='17' y='17' width='11' height='11' rx='2' fill='%231F5BD6'/%3E%3C/svg%3E">
 <title>BAILE — manual</title>
 <meta name="description" content="O manual do BAILE, o tracker de funk brasileiro para o M-VAVE FM-1.">
+<link rel="stylesheet" href="../site.css">
 <style>
-:root{--preto:#141210;--carvao:#1E1A16;--linha:#3A332B;--creme:#F3EBDD;--cinza:#9C9184;
-  --vermelho:#E3212B;--laranja:#F26A1B;--amarelo:#FFCF1F;--verde:#5AAE3A;--turquesa:#14A3A8;--azul:#1F5BD6}
+/* the manual in the hub's look (lamannabakery.com's layout, BAILE's colours): cream, heavy type, framed screens */
 *{box-sizing:border-box}
-html{color-scheme:dark}
-body{margin:0;background:var(--preto);color:var(--creme);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-a{color:var(--amarelo)}
-.stripe{height:10px;background:linear-gradient(90deg,var(--vermelho) 0 16.6%,var(--laranja) 0 33.3%,var(--amarelo) 0 50%,var(--verde) 0 66.6%,var(--turquesa) 0 83.3%,var(--azul) 0)}
-main{max-width:920px;margin:0 auto;padding:24px 16px 80px}
-nav.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-nav.top a{font-weight:800;text-decoration:none}
-h1{font:900 clamp(40px,9vw,80px)/.95 "Arial Black",Impact,system-ui,sans-serif;margin:28px 0 8px;letter-spacing:-.02em}
-h2{font:900 26px/1.2 "Arial Black",Impact,system-ui,sans-serif;margin:56px 0 12px;padding-top:8px;border-top:4px solid var(--linha)}
-h3{font-size:18px;margin:24px 0 6px;color:var(--amarelo)}
-.lead{color:var(--cinza);font-size:18px}
-.toc{background:var(--carvao);padding:14px 20px;columns:2;gap:24px}
-@media (max-width:640px){.toc{columns:1}}
-.toc a{display:block;padding:2px 0}
-figure{margin:18px 0;display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap}
-figure img{width:240px;height:240px;image-rendering:pixelated;border:8px solid #000;border-radius:4px;box-shadow:0 0 0 2px var(--linha)}
-figcaption{flex:1;min-width:220px;color:var(--cinza);font-size:15px}
-table{width:100%;border-collapse:collapse;font-size:15px;margin:10px 0}
-th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--linha);vertical-align:top}
-th{color:var(--cinza);font-size:12px;text-transform:uppercase;letter-spacing:.08em}
-td:first-child{font-weight:800;white-space:nowrap}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--creme);color:var(--preto);font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--vermelho);font-weight:700}
+.hero{background:var(--vermelho);color:var(--amarelo);text-align:center;padding:7vw 6vw 6vw;border-bottom:4px solid var(--preto)}
+.hero h1{font:900 clamp(52px,12vw,150px)/.85 var(--heavy);letter-spacing:-.04em;margin:0;text-transform:uppercase}
+.hero p{max-width:720px;margin:20px auto 0;color:var(--creme);font-size:19px}
+main{max-width:980px;margin:0 auto;padding:40px 20px 80px}
+.toc{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:0 0 20px}
+.toc a{font:900 14px/1 var(--heavy);text-transform:uppercase;text-decoration:none;color:var(--preto);background:var(--amarelo);border:3px solid var(--preto);
+  border-radius:110px;padding:10px 16px;box-shadow:4px 4px 0 var(--preto)}
+.toc a:nth-child(3n+2){background:var(--turquesa)}.toc a:nth-child(3n){background:var(--laranja)}
+.toc a:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--preto)}
+h2{font:900 clamp(34px,6vw,64px)/.95 var(--heavy);letter-spacing:-.03em;margin:80px 0 22px;color:var(--amarelo);-webkit-text-stroke:2px var(--preto);paint-order:stroke fill;
+  text-shadow:1px 1px 0 var(--vermelho),2px 2px 0 var(--vermelho),3px 3px 0 var(--vermelho),4px 4px 0 var(--vermelho),5px 5px 0 var(--vermelho),6px 6px 0 var(--vermelho),7px 7px 0 var(--preto)}
+h3{font:900 22px/1.2 var(--heavy);margin:30px 0 8px;text-transform:uppercase}
+figure{margin:26px 0;display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap}
+figure img{width:260px;height:260px;image-rendering:pixelated;border:10px solid var(--preto);border-radius:6px;box-shadow:8px 8px 0 var(--preto);transform:rotate(-2deg)}
+figure:nth-of-type(even) img{transform:rotate(2deg)}
+figcaption{flex:1;min-width:240px;font-size:16px}
+table{width:100%;border-collapse:collapse;font-size:15.5px;margin:14px 0;background:#fff;border:3px solid var(--preto)}
+th,td{text-align:left;padding:10px 12px;border-bottom:2px solid var(--preto);vertical-align:top}
+th{background:var(--preto);color:var(--amarelo);font:900 13px var(--heavy);text-transform:uppercase;letter-spacing:.04em}
+td:first-child{font-weight:900;white-space:nowrap}
 .tbl{overflow-x:auto}
-kbd,.b{font:700 13px ui-monospace,Menlo,monospace;background:var(--carvao);border:1px solid var(--linha);padding:1px 6px;border-radius:4px;white-space:nowrap}
-.box{background:var(--carvao);padding:14px 18px;border-left:8px solid var(--c,var(--amarelo));margin:16px 0}
-ol li,ul li{margin-bottom:6px}
-footer{margin-top:64px;color:var(--cinza);font-size:13px}
-nav.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 18px;padding:12px 0;border-bottom:1px solid #3A332B}
-nav.site a{color:#F3EBDD;text-decoration:none;font-weight:800;font-size:15px}
-nav.site a.home{font:900 20px "Arial Black",Impact,sans-serif;margin-right:auto;letter-spacing:.02em}
-nav.site a.home span{color:#FFCF1F}
-nav.site a[aria-current]{color:#FFCF1F}
+kbd,.b{font:800 13px ui-monospace,Menlo,monospace;background:var(--preto);color:var(--amarelo);padding:2px 8px;border-radius:5px;white-space:nowrap}
+.box{background:var(--c,var(--amarelo));color:var(--preto);padding:16px 20px;border:3px solid var(--preto);box-shadow:6px 6px 0 var(--preto);margin:20px 0;font-weight:700}
+ol li,ul li{margin-bottom:8px}
+footer{background:var(--preto);color:var(--cinza);padding:40px 6vw;text-align:center;font-size:14px}
 </style>
 </head>
 <body>
-<div class="stripe"></div>
-<main>
-<nav class="site" aria-label="BAILE">
-  <a class="home" href="../index.html">BAI<span>LE</span></a>
-  <a href="../index.html#install">Instalar</a>
-  <a href="../emulator/index.html">Emulador</a>
-  <a href="../manual/index.html" aria-current="page">Manual</a>
-  <a href="../samples.html">Samples</a>
-  <a href="https://github.com/saulofilho/baile-fm1">GitHub</a>
-</nav>
-
-<h1>Manual do BAILE</h1>
-<p class="lead">Um tracker de funk brasileiro para o M-VAVE FM-1. Este manual vai do primeiro botão até um baile inteiro.
+<!-- bar -->
+<header class="sbar">
+  <nav aria-label="BAILE"><a href="../index.html#install">Instalar</a><a href="../manual/index.html" aria-current="page">Manual</a></nav>
+  <a class="slogo" href="../index.html" aria-label="BAILE"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23141210'/%3E%3Crect x='4' y='4' width='11' height='11' rx='2' fill='%23E3212B'/%3E%3Crect x='17' y='4' width='11' height='11' rx='2' fill='%23FFCF1F'/%3E%3Crect x='4' y='17' width='11' height='11' rx='2' fill='%235AAE3A'/%3E%3Crect x='17' y='17' width='11' height='11' rx='2' fill='%231F5BD6'/%3E%3C/svg%3E" alt="">BAILE</a>
+  <nav class="r" aria-label="BAILE"><a href="../emulator/index.html">Emulador</a><a href="../samples.html">Samples</a><span class="langs"><a href="#" aria-current="page">PT</a><a href="../manual/en.html" hreflang="en">EN</a></span></nav>
+</header>
+<nav class="smnav" aria-label="BAILE"><a href="../index.html#install">Instalar</a><a href="../emulator/index.html">Emulador</a><a href="../manual/index.html" aria-current="page">Manual</a><a href="../samples.html">Samples</a></nav>
+<!-- /bar -->
+<header class="hero">
+  <h1>Manual do BAILE</h1>
+  <p>Um tracker de funk brasileiro para o M-VAVE FM-1. Este manual vai do primeiro botão até um baile inteiro.
 Todas as telas aqui são do próprio firmware, no simulador.</p>
-
+</header>
+<main>
 <div class="toc">
   <a href="#comecar">1. Começar</a>
   <a href="#botoes">2. Os botões</a>
@@ -224,7 +220,7 @@ O BAILE não lê os projetos do KAWA nem de outros firmwares.</figcaption></figu
 <figure><img src="img/m10-tocando.png" alt="A demo tocando"><figcaption>A demo tocando: o cursor verde na linha que soa.</figcaption></figure>
 
 <h2 id="ajuda">11. Ajuda e segurança</h2>
-<div class="box" style="--c:var(--vermelho)">O BAILE é beta e ainda não foi testado num FM-1 de verdade. Instale por sua conta e risco.</div>
+<div class="box" style="--c:var(--vermelho)">O BAILE é beta (0.2), testado num FM-1 de verdade. É um firmware não oficial: instale por sua conta e risco.</div>
 <ul>
 <li><b>Instalar:</b> pelo <a href="../index.html#install">hub</a> (Chrome, Edge, Opera), com um cabo USB de dados e os outros programas MIDI fechados. Não desconecte durante a gravação; se cair, conecte de novo e clique outra vez: continua de onde parou.</li>
 <li><b>Resgate:</b> se o BAILE não ligar duas vezes seguidas, o FM-1 abre o resgate USB sozinho (ou segure <span class="b">OCT−</span> ao ligar). Então rode o instalador de novo.</li>
@@ -235,7 +231,7 @@ O BAILE não lê os projetos do KAWA nem de outros firmwares.</figcaption></figu
 <li><b>Voltar ao oficial:</b> M-UPGRADE da M-VAVE, firmware V15. Os projetos do BAILE se perdem. <a href="https://github.com/saulofilho/baile-fm1#voltar-ao-firmware-oficial">Os passos</a>.</li>
 </ul>
 
-<footer>BAILE, de saulofilho, GPL-3.0-only, sobre o KAWA de Omnipotard. Não é feito nem endossado pela M-VAVE.</footer>
 </main>
+<footer>BAILE, de saulofilho, GPL-3.0-only, sobre o KAWA de Omnipotard. Não é feito nem endossado pela M-VAVE.</footer>
 </body>
 </html>

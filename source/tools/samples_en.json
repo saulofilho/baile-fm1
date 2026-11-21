@@ -1,0 +1,422 @@
+[
+[
+"  <h1>Ponha os seus sons no seu <b>FM-1</b></h1>",
+"  <h1>Put your own sounds into your <b>FM-1</b></h1>"
+],
+[
+"  <p class=\"lead\">Solte aqui arquivos WAV, MP3, OGG ou FLAC, escolha um espaço (MEU 1 a MEU 4) e mande para o seu FM-1 pelo USB. A página converte para o que o BAILE guarda: mono, 22 kHz, 8 bits, até 1,66 segundo. Nada sai do seu computador.</p>",
+"  <p class=\"lead\">Drop WAV, MP3, OGG or FLAC files here, choose a slot (MY 1 to MY 4), and send them to your FM-1 over USB. The page makes them what BAILE stores: mono, 22 kHz, 8 bits, up to 1.66 seconds. Nothing leaves your computer.</p>"
+],
+[
+"<div id=\"fatal\" class=\"msg err\" role=\"alert\" hidden>Esta página precisa do <code>install/websamples.js</code> ao lado dela (ele não carregou). Abra a página pelo site ou pelo repositório, não sozinha.</div>",
+"<div id=\"fatal\" class=\"msg err\" role=\"alert\" hidden>This page needs <code>install/websamples.js</code> next to it (it did not load). Open the page from the repository or the website, not on its own.</div>"
+],
+[
+"  <h2 id=\"before-h\"><span class=\"tag\">ANTES DE MANDAR</span></h2>",
+"  <h2 id=\"before-h\"><span class=\"tag\">BEFORE YOU SEND</span></h2>"
+],
+[
+"    <li><strong>O BAILE tem que estar rodando no FM-1</strong> (a tela do tracker), ligado a este computador com um cabo USB <em>de dados</em>, no Chrome ou no Edge, num computador.</li>",
+"    <li><strong>BAILE must be running on the FM-1</strong> (the tracker screen), plugged into this computer with a USB <em>data</em> cable, in Chrome or Edge on a computer.</li>"
+],
+[
+"    <li><strong>O BAILE tem que estar parado: aperte <kbd>PLAY</kbd> para nada tocar</strong>, e não mexa no FM-1 até a transferência acabar. Ele fica mudo enquanto um espaço é gravado.</li>",
+"    <li><strong>BAILE must be stopped: press <kbd>PLAY</kbd> so nothing is playing</strong>, and leave the FM-1 alone until the transfer ends. The FM-1 is silent while a slot is being written.</li>"
+],
+[
+"    <li>O espaço que recebe o som é <strong>substituído</strong>. Se o cabo sair ou algo der errado, ele fica <strong>vazio</strong>, nunca pela metade. É só mandar de novo.</li>",
+"    <li>A slot that is sent to is <strong>replaced</strong>. If the cable is pulled or anything goes wrong, that slot stays <strong>empty</strong>: never half written. Send it again.</li>"
+],
+[
+"  <h2 id=\"fm1-h\"><span class=\"n\">1</span> O seu FM-1</h2>",
+"  <h2 id=\"fm1-h\"><span class=\"n\">1</span> Your FM-1</h2>"
+],
+[
+"    <button type=\"button\" id=\"connect\">Conectar ao meu FM-1</button>",
+"    <button type=\"button\" id=\"connect\">Connect to my FM-1</button>"
+],
+[
+"    <button type=\"button\" id=\"refresh\" disabled>Ler os espaços de novo</button>",
+"    <button type=\"button\" id=\"refresh\" disabled>Read the slots again</button>"
+],
+[
+"  <p class=\"status\" id=\"devstatus\" role=\"status\" aria-live=\"polite\"><span class=\"dot\"></span><span id=\"devtext\">Não conectado. Você pode preparar os sons antes e conectar na hora de mandar.</span></p>",
+"  <p class=\"status\" id=\"devstatus\" role=\"status\" aria-live=\"polite\"><span class=\"dot\"></span><span id=\"devtext\">Not connected. You can prepare your sounds first and connect when you send.</span></p>"
+],
+[
+"  <ol class=\"slots\" id=\"slots\" aria-label=\"Os quatro espaços de sample do FM-1\"></ol>",
+"  <ol class=\"slots\" id=\"slots\" aria-label=\"The four sample slots of the FM-1\"></ol>"
+],
+[
+"    <summary>O FM-1 não aparece? Escolha as portas MIDI dele</summary>",
+"    <summary>The FM-1 is not found? Choose its MIDI ports</summary>"
+],
+[
+"      <label>Saída MIDI (para o FM-1)<select id=\"port-out\"></select></label>",
+"      <label>MIDI output (to the FM-1)<select id=\"port-out\"></select></label>"
+],
+[
+"      <label>Entrada MIDI (do FM-1)<select id=\"port-in\"></select></label>",
+"      <label>MIDI input (from the FM-1)<select id=\"port-in\"></select></label>"
+],
+[
+"    <p class=\"note\">A página procura uma porta chamada FM-1, Felucca ou BAILE. Se o seu sistema der outro nome, escolha aqui e conecte de novo.</p>",
+"    <p class=\"note\">The page looks for a port named FM-1, Felucca or BAILE. If your system names it otherwise, pick it here, then connect again.</p>"
+],
+[
+"  <h2 id=\"add-h\"><span class=\"n\">2</span> Os seus sons</h2>",
+"  <h2 id=\"add-h\"><span class=\"n\">2</span> Your sounds</h2>"
+],
+[
+"    <strong>Solte os arquivos de som aqui, ou escolha</strong>",
+"    <strong>Drop sound files here, or choose them</strong>"
+],
+[
+"    <span class=\"note\">WAV, MP3, OGG, FLAC (o que o seu navegador toca). Vários de uma vez. Cada um vai para um espaço; os primeiros livres, em ordem.</span>",
+"    <span class=\"note\">WAV, MP3, OGG, FLAC (what your browser can play). Several at once. Each goes to a slot; the first free ones are taken in order.</span>"
+],
+[
+"    <span class=\"btn\">Escolher arquivos</span>",
+"    <span class=\"btn\">Choose files</span>"
+],
+[
+"  <ul class=\"items\" id=\"items\" aria-label=\"Os seus sons\"></ul>",
+"  <ul class=\"items\" id=\"items\" aria-label=\"Your sounds\"></ul>"
+],
+[
+"  <h2 id=\"send-h\"><span class=\"n\">3</span> Mandar</h2>",
+"  <h2 id=\"send-h\"><span class=\"n\">3</span> Send</h2>"
+],
+[
+"      <button type=\"button\" class=\"big\" id=\"send\" disabled>Mandar para o meu FM-1</button>",
+"      <button type=\"button\" class=\"big\" id=\"send\" disabled>Send to my FM-1</button>"
+],
+[
+"      <button type=\"button\" id=\"cancel\" hidden>Cancelar</button>",
+"      <button type=\"button\" id=\"cancel\" hidden>Cancel</button>"
+],
+[
+"    <summary>O que acontece com um som, e como usar</summary>",
+"    <summary>What happens to a sound, and how to use it</summary>"
+],
+[
+"      <li>Ele vira <strong>mono</strong> a <strong>22 050 Hz</strong> (ou 11 025 Hz se você escolher <em>Mais longo</em>: o dobro do tempo, mais abafado). Os WAV são lidos por esta página, do mesmo jeito que o <code>install/baile_samples.py</code>; os outros formatos, pelo seu navegador.</li>",
+"      <li>It is mixed to <strong>mono</strong> and brought to <strong>22 050 Hz</strong> (or 11 025 Hz if you choose <em>Longer</em>: twice as long, duller). WAV files are read by this page, exactly as <code>install/baile_samples.py</code> does; other formats are decoded by your browser.</li>"
+],
+[
+"      <li>O <strong>silêncio antes do som</strong> sai, o som é <strong>normalizado</strong> a 95 %, cortado no tamanho do espaço (<strong>36 608 bytes</strong>: 1,66 s a 22 kHz, 3,3 s a 11 kHz) com um fade bem curto no fim, e guardado em <strong>mu-law de 8 bits</strong>, como os breaks do BAILE. A forma de onda e o <em>Ouvir</em> mostram exatamente esse resultado.</li>",
+"      <li>The <strong>silence before the sound</strong> is removed, the sound is <strong>normalised</strong> to 95 %, cut to the slot (<strong>36 608 bytes</strong>: 1.66 s at 22 kHz, 3.3 s at 11 kHz) with a very short fade at the end, and stored as <strong>8-bit mu-law</strong>, like BAILE's own breaks. The waveform and <em>Play</em> show exactly that result.</li>"
+],
+[
+"      <li>Nome: até 11 caracteres (A-Z, 0-9, espaço e <code>_ - . ! + #</code>). É o que o FM-1 mostra.</li>",
+"      <li>Name: up to 11 characters (A-Z, 0-9, space and <code>_ - . ! + #</code>). It is what the FM-1 shows.</li>"
+],
+[
+"      <li>No FM-1: a página <strong>SOM</strong> de uma faixa (<kbd>EDIT</kbd>), motor <strong>SAMPLE</strong>, <strong>FONTE</strong> = <strong>MEU 1</strong> a <strong>MEU 4</strong> (ou os presets MEU SAMPLE 1 a 4).</li>",
+"      <li>On the FM-1: a track's <strong>SOUND</strong> page (<kbd>EDIT</kbd>), engine <strong>SAMPLE</strong>, <strong>SOURCE</strong> = <strong>MY 1</strong> to <strong>MY 4</strong>.</li>"
+],
+[
+"      <li>Os samples ficam na flash do FM-1: continuam lá quando ele desliga, e não fazem parte do arquivo de projeto.</li>",
+"      <li>The samples live in the FM-1's flash: they stay when it is switched off, and are not part of a project file.</li>"
+],
+[
+"      <li>Sem navegador: <code>python3 install/baile_samples.py put 1 bumbo.wav</code> faz o mesmo.</li>",
+"      <li>Without a browser: <code>python3 install/baile_samples.py put 1 kick.wav</code> does the same.</li>"
+],
+[
+"  <p>O BAILE é software livre (GPL-3.0), um fork do KAWA de Omnipotard. Esta página não tem servidor: os seus arquivos ficam nesta aba do navegador. <a href=\"index.html\">Início</a> · <a href=\"manual/index.html\">Manual</a></p>",
+"  <p>BAILE is free software (GPL-3.0). This page has no server part: your files stay in this browser tab. <a href=\"index.html\">Home</a> · <a href=\"manual/index.html\">Manual</a></p>"
+],
+[
+"    <button type=\"button\" id=\"confirm-no\">Cancelar</button>",
+"    <button type=\"button\" id=\"confirm-no\">Cancel</button>"
+],
+[
+"<div class=\"overlay\" aria-hidden=\"true\">Solte os sons para acrescentar</div>",
+"<div class=\"overlay\" aria-hidden=\"true\">Drop the sounds to add them</div>"
+],
+[
+"    $(\"nomidi\").textContent = msg(e) + \" Você ainda pode preparar e ouvir os seus sons aqui.\";",
+"    $(\"nomidi\").textContent = e.message + \" You can still prepare and listen to your sounds here.\";"
+],
+[
+"        $(\"confirm-no\").textContent = no || \"Cancelar\";",
+"        $(\"confirm-no\").textContent = no || \"Cancel\";"
+],
+[
+"            li.appendChild(el(\"span\", \"sname\", \"ainda não lido\"));",
+"            li.appendChild(el(\"span\", \"sname\", \"not read yet\"));"
+],
+[
+"            li.appendChild(el(\"span\", \"sname\", \"não existe neste FM-1\"));",
+"            li.appendChild(el(\"span\", \"sname\", \"not on this FM-1\"));"
+],
+[
+"            li.appendChild(el(\"span\", \"sname\", \"desconhecido\"));",
+"            li.appendChild(el(\"span\", \"sname\", \"unknown\"));"
+],
+[
+"            li.appendChild(el(\"span\", \"sname\", st.name || \"(sem nome)\"));",
+"            li.appendChild(el(\"span\", \"sname\", st.name || \"(no name)\"));"
+],
+[
+"            li.appendChild(el(\"span\", \"sname\", \"vazio\"));",
+"            li.appendChild(el(\"span\", \"sname\", \"empty\"));"
+],
+[
+"            li.appendChild(el(\"span\", \"snext\" + (rep ? \" rep\" : \"\"), (it.state === \"sent\" ? \"mandado: \" : \"a seguir: \") + (K.cleanName(it.name) || \"SAMPLE\") + (rep && it.state !== \"sent\" ? \" (substitui)\" : \"\")));",
+"            li.appendChild(el(\"span\", \"snext\" + (rep ? \" rep\" : \"\"), (it.state === \"sent\" ? \"sent: \" : \"next: \") + (K.cleanName(it.name) || \"SAMPLE\") + (rep && it.state !== \"sent\" ? \" (replaces it)\" : \"\")));"
+],
+[
+"            const b = el(\"button\", \"small danger\", \"Apagar\");",
+"            const b = el(\"button\", \"small danger\", \"Erase\");"
+],
+[
+"            b.setAttribute(\"aria-label\", \"Apagar \" + slotLabel(k) + \" no FM-1\");",
+"            b.setAttribute(\"aria-label\", \"Erase \" + slotLabel(k) + \" on the FM-1\");"
+],
+[
+"    devStatus(\"Procurando o FM-1…\", false);",
+"    devStatus(\"Looking for the FM-1…\", false);"
+],
+[
+"                devStatus(\"O FM-1 foi desconectado.\", false);",
+"                devStatus(\"The FM-1 was unplugged.\", false);"
+],
+[
+"        devStatus(\"Conectado a \" + fm1.name + \": BAILE \" + (fm1.info.version || \"\") + \", \" + fm1.limits.slots + \" espaços de \" + fm1.limits.cap + \" bytes.\", true);",
+"        devStatus(\"Connected to \" + fm1.name + \": BAILE \" + (fm1.info.version || \"\") + \", \" + fm1.limits.slots + \" slots of \" + fm1.limits.cap + \" bytes.\", true);"
+],
+[
+"        try { await readSlots(); } catch (e) { say($(\"devmsg\"), \"Conectado, mas os espaços não puderam ser lidos: \" + msg(e), \"err\"); renderSlots(); }",
+"        try { await readSlots(); } catch (e) { say($(\"devmsg\"), \"Connected, but the slots could not be read: \" + e.message, \"err\"); renderSlots(); }"
+],
+[
+"        devStatus(\"Não conectado.\", false);",
+"        devStatus(\"Not connected.\", false);"
+],
+[
+"        say($(\"devmsg\"), msg(e), \"err\");",
+"        say($(\"devmsg\"), e.message || String(e), \"err\");"
+],
+[
+"    const yes = await ask(\"Apagar \" + slotLabel(k) + \"?\", b => {",
+"    const yes = await ask(\"Erase \" + slotLabel(k) + \"?\", b => {"
+],
+[
+"        b.appendChild(el(\"p\", \"\", (st && st.name ? st.name : \"O som\") + \" vai sair do FM-1 de vez.\"));",
+"        b.appendChild(el(\"p\", \"\", (st && st.name ? st.name : \"The sound\") + \" will be removed from the FM-1 for good.\"));"
+],
+[
+"        b.appendChild(el(\"p\", \"strong\", \"Aperte PLAY no FM-1 antes, se ele estiver tocando.\"));",
+"        b.appendChild(el(\"p\", \"strong\", \"Press PLAY on the FM-1 first if it is playing.\"));"
+],
+[
+"    }, \"Apagar\", \"Manter\");",
+"    }, \"Erase\", \"Keep it\");"
+],
+[
+"    } catch (e) { say($(\"devmsg\"), msg(e), \"err\"); }",
+"    } catch (e) { say($(\"devmsg\"), e.message, \"err\"); }"
+],
+[
+"    try { await readSlots(); } catch (e) { say($(\"devmsg\"), msg(e), \"err\"); }",
+"    try { await readSlots(); } catch (e) { say($(\"devmsg\"), e.message, \"err\"); }"
+],
+[
+"    if (sending) { say($(\"summary\"), \"Espere a transferência acabar antes de acrescentar sons.\", \"keep\"); return; }",
+"    if (sending) { say($(\"summary\"), \"Wait for the transfer to end before adding sounds.\", \"keep\"); return; }"
+],
+[
+"        '<div class=\"ctl\"><label>Espaço<select class=\"slot\"></select></label>' +",
+"        '<div class=\"ctl\"><label>Slot<select class=\"slot\"></select></label>' +"
+],
+[
+"        '<label>Nome<input class=\"name\" type=\"text\" maxlength=\"11\" autocomplete=\"off\" autocapitalize=\"characters\" spellcheck=\"false\"></label>' +",
+"        '<label>Name<input class=\"name\" type=\"text\" maxlength=\"11\" autocomplete=\"off\" autocapitalize=\"characters\" spellcheck=\"false\"></label>' +"
+],
+[
+"        '<label>Duração<select class=\"rate\"></select></label>' +",
+"        '<label>Length<select class=\"rate\"></select></label>' +"
+],
+[
+"        '<div class=\"btns\"><button type=\"button\" class=\"play small\"></button><button type=\"button\" class=\"rm small danger\">Tirar</button></div></div></div>' +",
+"        '<div class=\"btns\"><button type=\"button\" class=\"play small\"></button><button type=\"button\" class=\"rm small danger\">Remove</button></div></div></div>' +"
+],
+[
+"const STATE_TEXT = { loading: \"Lendo…\", ready: \"Pronto\", error: \"Não dá para mandar\", sending: \"Mandando\", sent: \"Mandado\", failed: \"Falhou\" };",
+"const STATE_TEXT = { loading: \"Reading…\", ready: \"Ready\", error: \"Cannot send\", sending: \"Sending\", sent: \"Sent\", failed: \"Failed\" };"
+],
+[
+"    const none = el(\"option\", \"\", \"Não mandar\"); none.value = \"-1\"; e.slot.appendChild(none);",
+"    const none = el(\"option\", \"\", \"Don't send\"); none.value = \"-1\"; e.slot.appendChild(none);"
+],
+[
+"    [[22050, \"Normal: 22 kHz, até \" + (r1 / 22050).toFixed(2) + \" s\"], [11025, \"Mais longo: 11 kHz, até \" + (r1 / 11025).toFixed(1) + \" s, mais abafado\"]].forEach(([v, t]) => {",
+"    [[22050, \"Normal: 22 kHz, up to \" + (r1 / 22050).toFixed(2) + \" s\"], [11025, \"Longer: 11 kHz, up to \" + (r1 / 11025).toFixed(1) + \" s, duller\"]].forEach(([v, t]) => {"
+],
+[
+"    e.play.textContent = playing && playing.item === it ? \"Parar\" : \"Ouvir\";",
+"    e.play.textContent = playing && playing.item === it ? \"Stop\" : \"Play\";"
+],
+[
+"    e.play.setAttribute(\"aria-label\", (playing && playing.item === it ? \"Parar a prévia de \" : \"Ouvir o convertido de \") + it.fileName);",
+"    e.play.setAttribute(\"aria-label\", (playing && playing.item === it ? \"Stop the preview of \" : \"Play the converted \") + it.fileName);"
+],
+[
+"    e.rm.setAttribute(\"aria-label\", \"Tirar \" + it.fileName);",
+"    e.rm.setAttribute(\"aria-label\", \"Remove \" + it.fileName);"
+],
+[
+"    e.name.setAttribute(\"aria-label\", \"Nome de \" + it.fileName + \" no FM-1, até 11 caracteres\");",
+"    e.name.setAttribute(\"aria-label\", \"Name of \" + it.fileName + \" on the FM-1, 11 characters at most\");"
+],
+[
+"    e.slot.setAttribute(\"aria-label\", \"Espaço para \" + it.fileName);",
+"    e.slot.setAttribute(\"aria-label\", \"Slot for \" + it.fileName);"
+],
+[
+"    e.rate.setAttribute(\"aria-label\", \"Duração de \" + it.fileName);",
+"    e.rate.setAttribute(\"aria-label\", \"Length of \" + it.fileName);"
+],
+[
+"        if (p.silent) parts.push(\"Nada acima do limite de silêncio neste arquivo.\");",
+"        if (p.silent) parts.push(\"Nothing above the silence threshold in this file.\");"
+],
+[
+"            if (p.start / p.rate >= 0.005) parts.push(\"Silêncio antes do som retirado: \" + secs(p.start, p.rate) + \" s.\");",
+"            if (p.start / p.rate >= 0.005) parts.push(\"Silence before the sound removed: \" + secs(p.start, p.rate) + \" s.\");"
+],
+[
+"            if (p.cut) { const lost = (p.total - p.start - p.kept) / p.rate; parts.push(\"Cortado para caber no espaço: os últimos \" + lost.toFixed(2) + \" s ficam de fora.\"); e.keptnote.classList.add(\"cutnote\"); }",
+"            if (p.cut) { const lost = (p.total - p.start - p.kept) / p.rate; parts.push(\"Cut to fit the slot: the last \" + lost.toFixed(2) + \" s are left out.\"); e.keptnote.classList.add(\"cutnote\"); }"
+],
+[
+"            if (!parts.length) parts.push(\"O som inteiro é usado.\");",
+"            if (!parts.length) parts.push(\"The whole sound is used.\");"
+],
+[
+"        e.canvas.setAttribute(\"aria-label\", \"Forma de onda de \" + it.fileName + \" como vai ser mandada, \" + secs(p.data.length, p.rate) + \" segundos\");",
+"        e.canvas.setAttribute(\"aria-label\", \"Waveform of \" + it.fileName + \" as it will be sent, \" + secs(p.data.length, p.rate) + \" seconds\");"
+],
+[
+"    if (!text && it.error) { text = msg(it.error); cls = \"err\"; }",
+"    if (!text && it.error) { text = it.error.message; cls = \"err\"; }"
+],
+[
+"    if (!text && it.state === \"ready\" && it.slot < 0) { text = \"Escolha um espaço para mandar.\"; cls = \"keep\"; }",
+"    if (!text && it.state === \"ready\" && it.slot < 0) { text = \"Choose a slot to send it.\"; cls = \"keep\"; }"
+],
+[
+"    if (!text && it.state === \"ready\" && it.slot >= 0 && known(it.slot) && known(it.slot).used) { text = \"Substitui \" + known(it.slot).name + \" em \" + slotLabel(it.slot) + \".\"; cls = \"keep\"; }",
+"    if (!text && it.state === \"ready\" && it.slot >= 0 && known(it.slot) && known(it.slot).used) { text = \"Replaces \" + known(it.slot).name + \" in \" + slotLabel(it.slot) + \".\"; cls = \"keep\"; }"
+],
+[
+"    g.fillStyle = \"#0D0B09\"; g.fillRect(0, 0, w, h);",
+"    g.fillStyle = \"#0e0820\"; g.fillRect(0, 0, w, h);"
+],
+[
+"    g.strokeStyle = cssVar(\"--rule\") || \"#3A332B\"; g.lineWidth = 2;",
+"    g.strokeStyle = cssVar(\"--rule\") || \"#3b2e69\"; g.lineWidth = 2;"
+],
+[
+"    g.fillStyle = cssVar(\"--pink\") || \"#FFCF1F\";",
+"    g.fillStyle = cssVar(\"--pink\") || \"#ff5fb4\";"
+],
+[
+"        it.msg = \"Este navegador não conseguiu tocar a prévia.\";",
+"        it.msg = \"This browser could not play the preview.\";"
+],
+[
+"    else if (noMidi) why = \"Este navegador não tem Web MIDI: use o Chrome ou o Edge num computador.\";",
+"    else if (noMidi) why = \"This browser has no Web MIDI: use Chrome or Edge on a computer.\";"
+],
+[
+"    else if (!items.length) why = \"Acrescente um som antes (passo 2).\";",
+"    else if (!items.length) why = \"Add a sound first (step 2).\";"
+],
+[
+"    else if (items.some(i => i.state === \"loading\")) why = \"Lendo os seus arquivos…\";",
+"    else if (items.some(i => i.state === \"loading\")) why = \"Reading your files…\";"
+],
+[
+"    else if (!jobs.length) why = bad.length ? \"Os sons em vermelho não podem ser mandados: tire-os, ou acrescente outros.\" : \"Nada para mandar: todos já foram, ou estão em Não mandar.\";",
+"    else if (!jobs.length) why = bad.length ? \"The sounds marked in red cannot be sent: remove them, or add other ones.\" : \"Nothing to send: every sound is sent, or set to Don't send.\";"
+],
+[
+"    if (!dev || dev.fm1.gone) { if (!(await connect())) { say($(\"summary\"), \"Não mandado: o FM-1 não foi encontrado (veja o passo 1).\", \"err\"); return; } }",
+"    if (!dev || dev.fm1.gone) { if (!(await connect())) { say($(\"summary\"), \"Not sent: the FM-1 could not be reached (see step 1).\", \"err\"); return; } }"
+],
+[
+"    if (!jobs.length) { say($(\"summary\"), \"Nada pôde ser mandado.\", \"err\"); return; }",
+"    if (!jobs.length) { say($(\"summary\"), \"Nothing could be sent.\", \"err\"); return; }"
+],
+[
+"        const yes = await ask(\"Substituir \" + (replaced.length === 1 ? \"um som\" : replaced.length + \" sons\") + \" no FM-1?\", b => {",
+"        const yes = await ask(\"Replace \" + (replaced.length === 1 ? \"a sound\" : replaced.length + \" sounds\") + \" on the FM-1?\", b => {"
+],
+[
+"            b.appendChild(el(\"p\", \"\", \"Se a transferência cair, o espaço fica vazio: o som antigo não é mantido.\"));",
+"            b.appendChild(el(\"p\", \"\", \"If the transfer is cut, the slot stays empty: the old sound is not kept.\"));"
+],
+[
+"        }, \"Substituir e mandar\", \"Cancelar\");",
+"        }, \"Replace and send\", \"Cancel\");"
+],
+[
+"    jobs.forEach(i => { i.state = \"ready\"; i.msg = \"Esperando…\"; i.msgCls = \"\"; i.progress = 0; });",
+"    jobs.forEach(i => { i.state = \"ready\"; i.msg = \"Waiting…\"; i.msgCls = \"\"; i.progress = 0; });"
+],
+[
+"        start: n => { const i = jobs[n]; i.state = \"sending\"; i.msg = \"Mandando para \" + slotLabel(i.slot) + \"…\"; i.msgCls = \"\"; updateItem(i); },",
+"        start: n => { const i = jobs[n]; i.state = \"sending\"; i.msg = \"Sending to \" + slotLabel(i.slot) + \"…\"; i.msgCls = \"\"; updateItem(i); },"
+],
+[
+"            i.msg = \"Mandando para \" + slotLabel(i.slot) + \"… \" + Math.round(100 * i.progress) + \" %\";",
+"            i.msg = \"Sending to \" + slotLabel(i.slot) + \"… \" + Math.round(100 * i.progress) + \" %\";"
+],
+[
+"        done: n => { const i = jobs[n]; before += i.prep.data.length; i.state = \"sent\"; i.progress = 1; i.msg = \"Pronto: em \" + slotLabel(i.slot) + \" no seu FM-1.\"; i.msgCls = \"ok\"; updateItem(i); },",
+"        done: n => { const i = jobs[n]; before += i.prep.data.length; i.state = \"sent\"; i.progress = 1; i.msg = \"Done: in \" + slotLabel(i.slot) + \" on your FM-1.\"; i.msgCls = \"ok\"; updateItem(i); },"
+],
+[
+"        fail: (n, e) => { const i = jobs[n]; i.state = \"failed\"; i.msg = msg(e); i.msgCls = \"err\"; updateItem(i); },",
+"        fail: (n, e) => { const i = jobs[n]; i.state = \"failed\"; i.msg = e.message; i.msgCls = \"err\"; updateItem(i); },"
+],
+[
+"    jobs.forEach((i, n) => { if (!results[n]) { i.state = \"ready\"; i.msg = \"Não mandado (a transferência parou antes).\"; i.msgCls = \"keep\"; } });",
+"    jobs.forEach((i, n) => { if (!results[n]) { i.state = \"ready\"; i.msg = \"Not sent (the transfer stopped before it).\"; i.msgCls = \"keep\"; } });"
+],
+[
+"        say($(\"summary\"), ok.length === 1 ? \"Pronto. No FM-1: página SOM de uma faixa, motor SAMPLE, FONTE = \" + slotLabel(ok[0].result.slot) + \".\"",
+"        say($(\"summary\"), ok.length === 1 ? \"Done. On the FM-1: a track's SOUND page, engine SAMPLE, SOURCE = \" + slotLabel(ok[0].result.slot) + \".\""
+],
+[
+"            : \"Pronto: \" + ok.length + \" sons mandados. No FM-1: página SOM de uma faixa, motor SAMPLE, FONTE = \" + ok.map(r => slotLabel(r.result.slot)).join(\", \") + \".\", \"ok\");",
+"            : \"Done: \" + ok.length + \" sounds sent. On the FM-1: a track's SOUND page, engine SAMPLE, SOURCE = \" + ok.map(r => slotLabel(r.result.slot)).join(\", \") + \".\", \"ok\");"
+],
+[
+"        say($(\"summary\"), (ok.length ? ok.length + \" de \" + jobs.length + \" mandados. \" : \"Nada foi mandado. \") + (first ? msg(first.error) : \"\") + \" Aperte Mandar de novo para o que faltou.\", \"err\");",
+"        say($(\"summary\"), (ok.length ? ok.length + \" of \" + jobs.length + \" sent. \" : \"Nothing was sent. \") + (first ? first.error.message : \"\") + \" Press Send again to retry what is left.\", \"err\");"
+],
+[
+"<html lang=\"pt-BR\">",
+"<html lang=\"en\">"
+],
+[
+"<title>BAILE — samples</title>",
+"<title>BAILE — your sounds</title>"
+],
+[
+"const slotLabel = k => \"MEU \" + (k + 1);",
+"const slotLabel = k => \"MY \" + (k + 1);"
+],
+[
+"function msg(e) {\n    if (!e) return \"\";",
+"function msg(e) {\n    return e ? (e.message || String(e)) : \"\";   /* (English: install/websamples.js says it) */\n    if (!e) return \"\";"
+],
+[
+"<a href=\"index.html\">Home</a> · <a href=\"manual/index.html\">Manual</a>",
+"<a href=\"en/index.html\">Home</a> · <a href=\"manual/en.html\">Manual</a>"
+]
+]

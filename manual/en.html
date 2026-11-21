@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23141210'/%3E%3Crect x='4' y='4' width='11' height='11' rx='2' fill='%23E3212B'/%3E%3Crect x='17' y='4' width='11' height='11' rx='2' fill='%23FFCF1F'/%3E%3Crect x='4' y='17' width='11' height='11' rx='2' fill='%235AAE3A'/%3E%3Crect x='17' y='17' width='11' height='11' rx='2' fill='%231F5BD6'/%3E%3C/svg%3E">
+<title>BAILE — the manual</title>
+<meta name="description" content="The manual of BAILE, the Brazilian funk tracker for the M-VAVE FM-1.">
+<link rel="stylesheet" href="../site.css">
+<style>
+/* the manual in the hub's look (lamannabakery.com's layout, BAILE's colours): cream, heavy type, framed screens */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--creme);color:var(--preto);font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--vermelho);font-weight:700}
+.hero{background:var(--vermelho);color:var(--amarelo);text-align:center;padding:7vw 6vw 6vw;border-bottom:4px solid var(--preto)}
+.hero h1{font:900 clamp(52px,12vw,150px)/.85 var(--heavy);letter-spacing:-.04em;margin:0;text-transform:uppercase}
+.hero p{max-width:720px;margin:20px auto 0;color:var(--creme);font-size:19px}
+main{max-width:980px;margin:0 auto;padding:40px 20px 80px}
+.toc{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:0 0 20px}
+.toc a{font:900 14px/1 var(--heavy);text-transform:uppercase;text-decoration:none;color:var(--preto);background:var(--amarelo);border:3px solid var(--preto);
+  border-radius:110px;padding:10px 16px;box-shadow:4px 4px 0 var(--preto)}
+.toc a:nth-child(3n+2){background:var(--turquesa)}.toc a:nth-child(3n){background:var(--laranja)}
+.toc a:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--preto)}
+h2{font:900 clamp(34px,6vw,64px)/.95 var(--heavy);letter-spacing:-.03em;margin:80px 0 22px;color:var(--amarelo);-webkit-text-stroke:2px var(--preto);paint-order:stroke fill;
+  text-shadow:1px 1px 0 var(--vermelho),2px 2px 0 var(--vermelho),3px 3px 0 var(--vermelho),4px 4px 0 var(--vermelho),5px 5px 0 var(--vermelho),6px 6px 0 var(--vermelho),7px 7px 0 var(--preto)}
+h3{font:900 22px/1.2 var(--heavy);margin:30px 0 8px;text-transform:uppercase}
+figure{margin:26px 0;display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap}
+figure img{width:260px;height:260px;image-rendering:pixelated;border:10px solid var(--preto);border-radius:6px;box-shadow:8px 8px 0 var(--preto);transform:rotate(-2deg)}
+figure:nth-of-type(even) img{transform:rotate(2deg)}
+figcaption{flex:1;min-width:240px;font-size:16px}
+table{width:100%;border-collapse:collapse;font-size:15.5px;margin:14px 0;background:#fff;border:3px solid var(--preto)}
+th,td{text-align:left;padding:10px 12px;border-bottom:2px solid var(--preto);vertical-align:top}
+th{background:var(--preto);color:var(--amarelo);font:900 13px var(--heavy);text-transform:uppercase;letter-spacing:.04em}
+td:first-child{font-weight:900;white-space:nowrap}
+.tbl{overflow-x:auto}
+kbd,.b{font:800 13px ui-monospace,Menlo,monospace;background:var(--preto);color:var(--amarelo);padding:2px 8px;border-radius:5px;white-space:nowrap}
+.box{background:var(--c,var(--amarelo));color:var(--preto);padding:16px 20px;border:3px solid var(--preto);box-shadow:6px 6px 0 var(--preto);margin:20px 0;font-weight:700}
+ol li,ul li{margin-bottom:8px}
+footer{background:var(--preto);color:var(--cinza);padding:40px 6vw;text-align:center;font-size:14px}
+</style>
+</head>
+<body>
+<!-- bar -->
+<header class="sbar">
+  <nav aria-label="BAILE"><a href="../en/index.html#install">Install</a><a href="../manual/en.html" aria-current="page">Manual</a></nav>
+  <a class="slogo" href="../en/index.html" aria-label="BAILE"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23141210'/%3E%3Crect x='4' y='4' width='11' height='11' rx='2' fill='%23E3212B'/%3E%3Crect x='17' y='4' width='11' height='11' rx='2' fill='%23FFCF1F'/%3E%3Crect x='4' y='17' width='11' height='11' rx='2' fill='%235AAE3A'/%3E%3Crect x='17' y='17' width='11' height='11' rx='2' fill='%231F5BD6'/%3E%3C/svg%3E" alt="">BAILE</a>
+  <nav class="r" aria-label="BAILE"><a href="../emulator/index.html#en">Emulator</a><a href="../samples.en.html">Samples</a><span class="langs"><a href="../manual/index.html" hreflang="pt-BR">PT</a><a href="#" aria-current="page">EN</a></span></nav>
+</header>
+<nav class="smnav" aria-label="BAILE"><a href="../en/index.html#install">Install</a><a href="../emulator/index.html#en">Emulator</a><a href="../manual/en.html" aria-current="page">Manual</a><a href="../samples.en.html">Samples</a></nav>
+<!-- /bar -->
+<header class="hero">
+  <h1>The BAILE manual</h1>
+  <p>A Brazilian funk tracker for the M-VAVE FM-1. This manual goes from the first button to a whole baile. Every
+screen here is the firmware's own, in the simulator. The pictures show the screen in Portuguese, BAILE's first
+language; switch the FM-1 to English in OPTIONS (GLO three times, KNOB 2) and the names below are what you see.</p>
+</header>
+<main>
+<div class="toc">
+  <a href="#start">1. Start</a>
+  <a href="#buttons">2. The buttons</a>
+  <a href="#tracks">3. Tracks, cells and patterns</a>
+  <a href="#sounds">4. The sounds: 808, FM, kits, breaks</a>
+  <a href="#kits">5. The 8 kits</a>
+  <a href="#magic">6. MAGIC</a>
+  <a href="#groove">7. The groove</a>
+  <a href="#live">8. Live effects</a>
+  <a href="#song">9. The song and the projects</a>
+  <a href="#first">10. A first tamborzão</a>
+  <a href="#help">11. Help and safety</a>
+</div>
+
+<h2 id="start">1. Start</h2>
+<figure><img src="img/m01-boot.png" alt="The boot: the mosaic of tiles lights up from the middle out">
+<figcaption>At power-on the mosaic lights up from the middle out. <b>Press any key.</b> The FM-1 starts on an empty
+song: press <span class="b">REC</span>, play the keys, press <span class="b">PLAY</span>. To hear a demo: <span class="b">SAVE</span>,
+go down to <b>DEMO</b> with <span class="b">SELECT</span>, <span class="b">OCT+</span> twice, <span class="b">PLAY</span>.</figcaption></figure>
+<p>Hold <span class="b">HOME</span> on any page for its help. A yellow bar fills at the bottom of the screen when holding a
+button is about to open something (HELP, LIVE, TOOLS).</p>
+
+<h2 id="buttons">2. The buttons</h2>
+<div class="tbl"><table>
+<thead><tr><th>Button</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>HOME</td><td>The tracks. Held: the help of the page. <b>HOME + PLAY</b>: panic, everything stops.</td></tr>
+<tr><td>SEQ</td><td>The step grid. <span class="b">OCT−</span> / <span class="b">OCT+</span>: 16, 32 or 64 steps.</td></tr>
+<tr><td>EDIT</td><td>The track's sound: SOUND, SOUND 2, (FM operators / sample edit), EFFECT, TABLE. Again: the next page.</td></tr>
+<tr><td>LFO</td><td>The LFO, then MODULATION.</td></tr>
+<tr><td>ENV</td><td>The ENVELOPE, then MIX (levels, pan, sends, master).</td></tr>
+<tr><td>FX</td><td>SENDS (drive, echo, reverb per track), LIVE, FILTER, FX SEQ. Held: LIVE while you hold it.</td></tr>
+<tr><td>SCL</td><td>The SCALE, then MAGIC, then back.</td></tr>
+<tr><td>GLO</td><td>The SONG (the chain), the GROOVE, the OPTIONS (theme, language, MIDI clock, font, metronome).</td></tr>
+<tr><td>SAVE</td><td>PROJECTS (it blinks while there are unsaved changes). Held: the tools. <span class="b">OCT−</span> / <span class="b">OCT+</span> while held: undo / redo.</td></tr>
+<tr><td>PLAY, REC</td><td>Play and stop; record (the keys write at the cursor, or on the beat while it plays).</td></tr>
+<tr><td>ARP</td><td>Not an arpeggiator: the <b>clear</b> and <b>shift</b> key. A tap clears the cell. Held: + SELECT inserts or removes a row, + KNOB 3 / 4 the cell's second effect, + PRESETS the track's engine.</td></tr>
+</tbody></table></div>
+<div class="tbl"><table>
+<thead><tr><th>Encoder</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>SELECT</td><td>The row; on the EDIT, LFO, ENV, FX and GLO pages, the page.</td></tr>
+<tr><td>ALGORITHM</td><td>The track. On SONG the entry, on GROOVE the step.</td></tr>
+<tr><td>PRESETS</td><td>The factory sound (on the first SOUND page), or the pattern on the others.</td></tr>
+<tr><td>KNOB 1–4</td><td>The bottom line of the screen says what each does: 1 red, 2 yellow, 3 green, 4 blue.</td></tr>
+</tbody></table></div>
+
+<h2 id="tracks">3. Tracks, cells and patterns</h2>
+<figure><img src="img/m02-faixas.png" alt="The TRACKS page with the demo: notes, the 808, the kit and the break">
+<figcaption>On <b>TRACKS</b> time runs down: each row is a 16th, each column a track. The cursor's track is wide and
+shows the note, the volume and the effect. The tracks' colours go from red to blue, as the macaw's feathers do.</figcaption></figure>
+<p>Each <b>cell</b> holds a note, a volume and up to <b>two effects</b>: ARP (a chord), GLI (glide), VIB, ROL (roll), BND,
+CHN (chance), DLY (delay), CUT, REV (reverse), PIT (pitch), HOP (to a row), END (ends the pattern)… <b>KNOB 3 and 4</b>
+choose the effect and its value; with <span class="b">ARP</span> held, the second effect.</p>
+<figure><img src="img/m03-grade.png" alt="The GRID: a kit's 16 steps on the white keys">
+<figcaption>On the <b>GRID</b> (<span class="b">SEQ</span>) the track's 16 steps sit on the 16 white keys: tap to turn them on
+and off. On a kit track each step shows its drum. <span class="b">OCT+</span> takes the pattern to 32 and 64 steps.</figcaption></figure>
+
+<h2 id="sounds">4. The sounds</h2>
+<p>Each track has an <b>engine</b>: PULSE, WAVE, NOISE, FM (6 operators, one track only), KIT or SAMPLE. On the first
+<span class="b">EDIT</span> page, <span class="b">PRESETS</span> picks the factory sound; <span class="b">ARP</span> held +
+<span class="b">PRESETS</span> changes the engine.</p>
+<figure><img src="img/m04-som-808.png" alt="808 BASS on the SOUND page">
+<figcaption><b>808 BASS</b> (the WAVE engine): an attack that punches (SWEEP) and a glide (the GLI effect in the cell,
+or the sound's GLIDE). Other basses: BENT 808 (driven, for mandelão) and SUB. A new project starts with the 808.</figcaption></figure>
+<div class="tbl"><table>
+<thead><tr><th>BAILE's sounds</th><th>What for</th></tr></thead>
+<tbody>
+<tr><td>808 BASS</td><td>Funk's bass, with punch and glide.</td></tr>
+<tr><td>BENT 808</td><td>A sawtooth 808, crushed: mandelão.</td></tr>
+<tr><td>SUB</td><td>Only the sub, round.</td></tr>
+<tr><td>MELODY LEAD</td><td>Funk melody's lead, with vibrato and glide.</td></tr>
+<tr><td>MELODY PIANO</td><td>A bright FM piano, for the chords (the ARP effect plays a chord from one note).</td></tr>
+<tr><td>STAB</td><td>A short brass stab.</td></tr>
+<tr><td>SIREN</td><td>A siren on the PULSE engine: hold the note.</td></tr>
+</tbody></table></div>
+<h3>The breaks</h3>
+<p>A SAMPLE track plays a <b>break</b> cut in 16 slices, one a key: <b>TAMBORZAO</b>, <b>VOLT</b>, <b>FUNK 150</b>,
+<b>MANDELAO</b>, <b>BREGA FUNK</b> and <b>MONTAGEM</b> (a different sound every 16th, to cut up). All synthesised, none
+taken from a record. Your own sounds go into <b>MY 1 to 4</b> with the <a href="../samples.en.html">importer</a>.</p>
+
+<h2 id="kits">5. The 8 kits</h2>
+<figure><img src="img/m05-som-kit.png" alt="The TAMBORZAO KIT on the SOUND page: its 16 drums">
+<figcaption>On a KIT track the 16 white keys are 16 drums. In every kit key <b>1</b> is the kick, <b>2</b> a second kick,
+<b>3</b> the snare, <b>5</b> and <b>6</b> the closed and open hat: a beat stands up when you change kits. The knobs:
+KIT, TUNE, DECAY, DRIVE.</figcaption></figure>
+<div class="tbl"><table>
+<thead><tr><th>Kit</th><th>The drums that make it</th></tr></thead>
+<tbody>
+<tr><td>VOLT</td><td>Miami bass's 808: kick, a long BOOM, snare and clap, cowbell, clave, conga, maracas, an orchestra stab.</td></tr>
+<tr><td>TAMBOR</td><td>The tamborzão: a dry kick, the TUM, a dry snare, palms, atabaques low, middle, high, slap and muted, a snare shot.</td></tr>
+<tr><td>150</td><td>Short and hard: a dry kick, a distorted PUNCH, a cracking snare, metal, a zap, a snare roll.</td></tr>
+<tr><td>MANDELA</td><td>Blown out: a driven kick, a sub, anvils, the BRUXARIA (a noise that swells), a sweep, crackle, glitch, laser.</td></tr>
+<tr><td>BREGA</td><td>A dry kick and a round one, doubled palms, low and high timbales, cowbell, tambourine.</td></tr>
+<tr><td>MELODY</td><td>The clean drum machine of the 2000s: ride, crash, clave, bell.</td></tr>
+<tr><td>TUIN</td><td>The baile's effects: two sirens, a whistle, the falling TUIN, laser, shot, explosion, vinyl, scratch, the noise that RISES.</td></tr>
+<tr><td>PERCUS</td><td>Brazilian percussion: atabaques, slap, surdo, chocalho, pandeiro, tamborim, snare, agogô, cuíca, reco-reco, triangle, whistle, ganzá.</td></tr>
+</tbody></table></div>
+
+<h2 id="magic">6. MAGIC</h2>
+<figure><img src="img/m06-magica.png" alt="The MAGIC page: the 16 tools">
+<figcaption><span class="b">SCL</span> twice. Each white key is a tool that writes into the pattern; KNOB 1 is the
+strength, KNOB 3 chooses the track or the whole pattern. Each one is an undo step.</figcaption></figure>
+<div class="tbl"><table>
+<thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>BEAT FUNK</td><td>On a kit track, writes that kit's funk (the tamborzão on TAMBOR, the anvil off the beat on MANDELA, doubled palms on BREGA…). Strength adds percussion, hats, ghosts and a roll at the end.</td></tr>
+<tr><td>BASS 808</td><td>The bassline in funk's 3-3-2, mostly on the root, with octave jumps and glides.</td></tr>
+<tr><td>CHOPPER</td><td>Chops the break: kicks on the beats, the snare on 2 and 4, the rest shuffled.</td></tr>
+<tr><td>MONTAGE</td><td>The montagem: 2 to 4 pieces of the break (or of the kit) repeating in groups, some reversed or pitched.</td></tr>
+<tr><td>FILL</td><td>Rolls at the ends of the beats and, on a kit, a snare fill that speeds up at the end of the bar.</td></tr>
+<tr><td>MELODY, EUCLID, VARY, ACCENTS</td><td>A melody in the scale, a Euclidean rhythm, variations, accents.</td></tr>
+<tr><td>DOUBLE, SHIFT, CLONE, TRANSP</td><td>Doubles the pattern, shifts it a step, clones it into the song, transposes.</td></tr>
+<tr><td>COPY, PASTE, CLEAR</td><td>The track or the whole pattern.</td></tr>
+</tbody></table></div>
+
+<h2 id="groove">7. The groove</h2>
+<figure><img src="img/m07-groove.png" alt="The TAMBOR groove: 6 7 5 6">
+<figcaption><span class="b">GLO</span> twice. Each step lasts a number of <i>ticks</i> (6 is a straight 16th). KNOB 3
+picks a preset, KNOB 4 turns it on and off.</figcaption></figure>
+<div class="tbl"><table>
+<thead><tr><th>Preset</th><th>Ticks</th><th>The feel</th></tr></thead>
+<tbody>
+<tr><td>STRAIGHT</td><td>6 6</td><td>no swing</td></tr>
+<tr><td>TAMBOR</td><td>6 7 5 6</td><td>the tamborzão's late second 16th</td></tr>
+<tr><td>BREGA</td><td>7 5</td><td>brega funk's swing</td></tr>
+<tr><td>150</td><td>6 5 7 6</td><td>pushes the second</td></tr>
+<tr><td>MANDELA</td><td>7 5 6 6</td><td>dragging</td></tr>
+<tr><td>TRIPLET</td><td>4 4 4</td><td>triplets</td></tr>
+</tbody></table></div>
+
+<h2 id="live">8. Live effects</h2>
+<figure><img src="img/m08-live.png" alt="The LIVE page, the BAILE bank">
+<figcaption>Hold <span class="b">FX</span> and play the white keys: the effect plays while the key is down. There are 64 in
+four banks (<span class="b">OCT−</span> / <span class="b">OCT+</span>): <b>BAILE</b>, <b>PAREDAO</b>, and K-GLITCH's <b>DESTROY</b> and
+<b>BEAT</b>. KNOB 4 picks the target (the master or a track); with REC, the effect is recorded into the pattern.</figcaption></figure>
+<ul>
+<li><b>STUTTER</b> repeats a sliver (x3, x4) · <b>SCRATCH</b> · <b>BUILDUP</b> the roll that speeds up · <b>REVERSE</b> · <b>LOOP</b> 1/16 to 1/64.</li>
+<li><b>GATE</b> cuts the sound in rhythm · <b>LOWPASS</b> / <b>HIPASS</b> sweep · <b>TAPE STOP</b> · <b>DIVE</b> · <b>FREEZE</b>.</li>
+<li><b>BASS+</b> doubles the lows · <b>ECHO</b> the dotted-8th echo · <b>SIREN</b> a siren over everything · <b>NO MELODY</b>, <b>NO BEAT</b>.</li>
+</ul>
+
+<h2 id="song">9. The song and the projects</h2>
+<p><span class="b">GLO</span> opens the <b>SONG</b>: a list of patterns, each played N times. A white key picks the pattern,
+KNOB 3 the times, <span class="b">OCT+</span> adds, <span class="b">OCT−</span> removes. <span class="b">ARP</span> switches LOOP (the
+pattern on the screen again and again) and SONG (the list).</p>
+<figure><img src="img/m09-projetos.png" alt="The PROJECTS page">
+<figcaption><span class="b">SAVE</span> opens the <b>PROJECTS</b>: new song, save, save as, load, rename and the DEMO.
+<span class="b">OCT+</span> confirms, <span class="b">OCT−</span> goes back. There is a <b>DEMO</b> for each style: each time you load
+it, the next one comes: <b>BAILE</b> (tamborzão, 130), <b>VOLT</b> (Miami bass, 128), <b>MANDELAO</b> (F Phrygian, 130) and
+<b>BREGA FUNK</b> (150, with the BREGA groove). The song also saves itself, and there are three project slots. BAILE
+does not read KAWA's projects, nor any other firmware's.</figcaption></figure>
+
+<h2 id="first">10. A first tamborzão</h2>
+<ol>
+<li>In a new project (<span class="b">SAVE</span>, NEW SONG), track 5 is already the <b>TAMBORZAO KIT</b> and track 3 the <b>808 BASS</b>.</li>
+<li>Go to track 5 (<span class="b">ALGORITHM</span>), open MAGIC (<span class="b">SCL</span> twice) and tap <b>BEAT FUNK</b> (key 2). Turn KNOB 1 up for more and tap it again.</li>
+<li>Track 3: tap <b>BASS 808</b> (key 4). The bass comes on the kick's beat.</li>
+<li>Open the GROOVE (<span class="b">GLO</span> twice), pick <b>TAMBOR</b> with KNOB 3 and turn it on with KNOB 4.</li>
+<li><span class="b">PLAY</span>. Hold <span class="b">FX</span> and play <b>STUTTER</b>, <b>SCRATCH</b>, <b>SIREN</b>.</li>
+<li>On track 5, tap <b>FILL</b> to end the bar. Like it? <span class="b">SAVE</span>, SAVE, <span class="b">OCT+</span>.</li>
+</ol>
+<figure><img src="img/m10-tocando.png" alt="The demo playing"><figcaption>The demo playing: the green cursor on the row that sounds.</figcaption></figure>
+
+<h2 id="help">11. Help and safety</h2>
+<div class="box" style="--c:var(--vermelho)">BAILE is a beta (0.2), tested on a real FM-1. It is an unofficial firmware: install it at your own risk.</div>
+<ul>
+<li><b>Install:</b> from the <a href="../en/index.html#install">hub</a> (Chrome, Edge, Opera), with a USB data cable and every other MIDI program closed. Do not unplug during the write; if it is cut, plug the FM-1 back in and click again: it resumes.</li>
+<li><b>Rescue:</b> if BAILE fails to start twice in a row, the FM-1 opens the USB rescue by itself (or hold <span class="b">OCT−</span> while switching on). Then run the installer again.</li>
+<li><b>Silence?</b> BAILE starts on an empty song: write notes (REC and the keys) or load a DEMO.</li>
+<li><b>PRESETS does not change the sound?</b> You edited it (*): the next one is shown in gold, <span class="b">OCT+</span> loads it.</li>
+<li><b>A mistake:</b> hold <span class="b">SAVE</span> and press <span class="b">OCT−</span> (undo).</li>
+<li><b>The click in your recording:</b> the metronome goes into the USB audio too; turn it off in OPTIONS.</li>
+<li><b>Back to the official firmware:</b> M-VAVE's M-UPGRADE, firmware V15. BAILE's projects are lost. <a href="https://github.com/saulofilho/baile-fm1#voltar-ao-firmware-oficial">The steps</a>.</li>
+</ul>
+
+</main>
+<footer>BAILE by saulofilho, GPL-3.0-only, on KAWA by Omnipotard. Not made or endorsed by M-VAVE.</footer>
+</body>
+</html>
