@@ -12,15 +12,18 @@ O que foi feito num M-VAVE FM-1 real, e o que ainda falta. O que não está marc
 
 ## No aparelho
 
-| O quê | Resultado |
+| O quê | Resultado (BAILE 0.2, 2026-11-21, conferido pelo autor no aparelho) |
 | --- | --- |
-| Boot (mosaico, BAILE, BETA, V0.1), uma tecla abre FAIXAS, a arara | a testar |
-| A DEMO (SAVE › DEMO › OCT+ OCT+ › PLAY): tamborzão, 808, refrão, virada | a testar |
-| Volume e distorção do 808 e do bumbo do VOLT (alto-falante e fone) | a testar |
-| Os 8 kits (KNOB KIT, as 16 teclas brancas) | a testar |
-| MÁGICA: BEAT FUNK, GRAVE 808, VIRADA | a testar |
-| Efeitos ao vivo: SEGURA, PUXA, SOBE; GRAVE+ e SIRENE (banco PAREDAO) | a testar |
-| Salvar, desligar, ligar: a música volta | a testar |
-| Resgate USB (OCT− segurado ao ligar) | a testar |
-| Voltar ao oficial (M-UPGRADE, V15) e reinstalar o BAILE | a testar |
-| Uma instalação interrompida (cabo puxado) que retoma | a testar (testado só no simulador do loader) |
+| Boot (mosaico, BAILE, BETA, V0.2), uma tecla abre FAIXAS, a arara | ok |
+| As DEMOS (SAVE › DEMO › OCT+ › PLAY, uma por estilo: BAILE, VOLT, MANDELAO, BREGA FUNK) | ok |
+| Volume e distorção do 808 e do bumbo do VOLT (alto-falante e fone) | ok |
+| Os 8 kits (KNOB KIT, as 16 teclas brancas) | ok |
+| MÁGICA: BEAT FUNK, GRAVE 808, VIRADA | ok |
+| Efeitos ao vivo: SEGURA, PUXA, SOBE; GRAVE+ e SIRENE (banco PAREDAO) | ok |
+| Salvar, desligar, ligar: a música volta | ok |
+| Resgate USB (OCT− segurado ao ligar) | ok |
+| Voltar ao oficial (M-UPGRADE, V15) e reinstalar o BAILE | ok |
+| Uma instalação interrompida (cabo puxado) que retoma | ok |
+
+
+Todo o roteiro acima passou na 0.2 (relato do autor, 2026-11-21). Nada para ajustar nos sons por enquanto.

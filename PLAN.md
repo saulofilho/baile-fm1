@@ -153,8 +153,18 @@ Opcional, depois da 1.0: vocais sintéticos por formantes; modo LIVE do KAWA (la
   (dó menor, 150, groove BREGA). `features_test` 11 carrega e toca as quatro. Áudio de cada uma no hub. A tag `v0.9`
   herdada do KAWA saiu (dispararia uma release). `source/BUILDING.md` com o BAILE e as notas do macOS. A 0.1 (a
   instalada no aparelho) foi para `install/older/`.
-- **Falta:** o roteiro no aparelho (`docs/TEST-RESULTS.md`), ouvir e ajustar os timbres, a tag `v0.2` e o envio
-  ao FM-1 Firmware Hub; opcional: vocais de MC por formantes, um modo LIVE de lançar trechos, hub e manual em EN/ES.
+- **2026-11-21, 0.2 no aparelho:** instalada por cima da 0.1; todo o roteiro de `docs/TEST-RESULTS.md` passou (relato
+  do autor). Os dois chips de flash são aceitos (`FL_CHIP_OK`). Tag `v0.2` criada (local); rascunho do e-mail ao
+  Hub em `docs/HUB-EMAIL.md`.
+
+## TODO
+
+- [ ] **Refazer a diagramação do site** (hub, manual, emulador, samples) tendo como referência
+  <https://www.lamannabakery.com/>, mantendo a paleta e os ladrilhos do mood board.
+- [ ] **Versão em inglês do site:** hub, manual e importador de samples (o emulador já tem EN), com a troca de idioma
+  em todas as páginas.
+- [ ] Publicar a release `v0.2` (push da tag) e mandar o e-mail ao FM-1 Firmware Hub (`docs/HUB-EMAIL.md`).
+- [ ] Opcionais: vocais de MC por formantes; um modo LIVE de lançar trechos ao vivo.
 
 ## Mood
 
