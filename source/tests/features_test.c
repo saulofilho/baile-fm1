@@ -385,6 +385,33 @@ int main(void)
         CHECK(p->c[0][2].note && p->c[0][2].note != NOTE_OFF, "10. GRAVE 808: nothing on the 1");
         printf("10. BEAT funk on TAMBOR, VIRADA, GRAVE 808: ok\n");
     }
+    /* 11. BAILE's demos, one a style: each loads its name, tempo and song, every pattern of its song has notes,
+     * and it sounds (a bar played: a peak well above silence, no clip) */
+    {
+        static const uint16_t BPM[NDEMO] = {130, 128, 130, 150};
+        uint32_t k, e, r, t, peak, notes;
+        for (k = 0; k < NDEMO; k++) {
+            sq_req = 2;
+            block();
+            prj_demo_n(k);
+            CHECK(!strcmp(prj.name, DEMO_NAME[k]) && prj.bpm == BPM[k] && prj.song_len > 0u && prj.mode == 1u,
+                  "11. demo %u: name \"%s\", %u BPM, %u entries", k, prj.name, prj.bpm, prj.song_len);
+            for (e = 0; e < prj.song_len; e++) {
+                for (notes = 0, r = 0; r < prj.pat[prj.song[e].pat].len; r++)
+                    for (t = 0; t < NTRK; t++) notes += prj.pat[prj.song[e].pat].c[r][t].note != 0;
+                CHECK(notes >= 16u, "11. demo %u, entry %u: pattern %u nearly empty (%u notes)", k, e, prj.song[e].pat, notes);
+            }
+            sq_req = 1;
+            for (peak = 0, r = 0; r < 400u; r++) {      /* ~2.3 s */
+                block();
+                for (t = 0; t < 2u * BLK; t++) { int32_t a = out[t] < 0 ? -out[t] : out[t]; if ((uint32_t)a > peak) peak = (uint32_t)a; }
+            }
+            CHECK(peak > 3000u && peak <= 32767u, "11. demo %u (%s): peak %u", k, DEMO_NAME[k], peak);
+            printf("11. demo %u %-10s %3u BPM, %u entries, peak %u\n", k, DEMO_NAME[k], prj.bpm, prj.song_len, peak);
+        }
+        sq_req = 2;
+        block();
+    }
     if (fails) { printf("features_test: %d failures\n", fails); return 1; }
     printf("features_test: passed\n");
     return 0;

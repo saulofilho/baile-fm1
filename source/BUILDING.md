@@ -1,9 +1,23 @@
-# Building BAILE (KAWA's build)
+# Building BAILE
 
 [README](../README.md)
 
-Everything here is for changing KAWA itself. To put KAWA on an FM-1, see the README: the ready package is in
+Everything here is for changing BAILE itself (a fork of KAWA, by Omnipotard: the build, the tests and most of this
+page are KAWA's). To put BAILE on an FM-1, see the README: the ready package is in
 [`../install/`](../install/). Run every command below from this `source/` folder.
+
+## BAILE on macOS
+
+- The simulator and the tests run with the system clang (two small changes for Mach-O and clang's bounds checks:
+  see `PLAN.md`). Pillow and numpy go in a virtual environment at the top of the repository:
+  `python3 -m venv ../.venv && ../.venv/bin/pip install pillow numpy mido python-rtmidi`, then
+  `PATH="$PWD/../.venv/bin:$PATH"` before the commands below.
+- The FM-1 package: start Docker Desktop, then `PYTHON=../.venv/bin/python ./build.sh` (the JieLi toolchain is
+  Linux x86-64: `build.py` runs it in a container).
+- The emulator, without `wasm-ld` on the Mac: from the top of the repository,
+  `docker run --rm -v "$PWD":/repo -w /repo/source debian:bookworm-slim sh -c "apt-get update -qq && apt-get install -y -qq clang lld python3 && APP_VER=0.1 sh web/make_emulator.sh"`.
+- Tests of BAILE's own: `tests/demo_baile.txt` (the demo, played), `tests/manual_pt.txt` (the manual's screens),
+  `features_test` 10 and 11 (the magic tools of funk, the four demos).
 
 ## On a computer, no FM-1: the simulator
 
@@ -46,9 +60,9 @@ embedded in the page, so `../emulator/index.html` stands alone.
   checks their SHA-256 values and stops if one differs.
 
 ```sh
-./build.sh                  # -> build/kawa.fwsc, identity FM-1_957 (KAWA's, every version)
-./build.sh --release 0.10   # -> build/kawa-0.10.fwsc, identity FM-1_957, version "0.10" on the screen
-# a release is then copied twice: install/kawa-X.Y.fwsc (what the installers use, listed in install/SHA256SUMS) and kawa-X.Y.fwsc
+./build.sh                  # -> build/baile.fwsc, identity FM-1_971 (BAILE's, every version)
+./build.sh --release 0.1    # -> build/baile-0.1.fwsc, identity FM-1_971, version "0.1" on the screen
+# a release is then copied twice: install/baile-X.Y.fwsc (what the installers use, listed in install/SHA256SUMS) and baile-X.Y.fwsc
 # at the top of the repository (the file people download); source/tests/release_check.sh checks that both are the same
 ```
 
@@ -58,8 +72,8 @@ outside `hal/`, or a call from code that runs while the flash is busy. It also c
 area ends at or below `0x93000` (all that the update loader writes), the store stays inside `0x97000..0xE0000`,
 clear of the update staging `0xE0000..0xE5000` and the settings `0xFC000`, the app cannot write the flash head
 or its own code, the loader cannot write the head, the store or the settings, and the loader's `ota.bin` stays
-within 19456 bytes (the most the stock firmware stages, for a first install from it). A release `X.Y` is
-`FM-1_95Y` for 0.Y and `FM-1_96Y` for 1.Y; a major 2 is refused until there is a new scheme. The chip has no
+within 19456 bytes (the most the stock firmware stages, for a first install from it). Every release is
+`FM-1_971`, BAILE's own identity (KAWA is `FM-1_957`). The chip has no
 FPU, so the code uses integers only and no 64-bit division. See Dinghy's `docs/RULES.md` for the details.
 
 The update loader (`firmware/loader/`, Felucca's) reads the package's whole `flash.bin` once and checks it
@@ -73,7 +87,7 @@ On an unknown flash chip it writes nothing and the old firmware starts again. Af
 `AC79_SDK` too).
 
 The audio interrupt works in integers, and a number that wraps is a full-scale click on the FM-1.
-`tests/run_stress_test.sh` builds KAWA on the computer under UBSan and plays every factory sound with every
+`tests/run_stress_test.sh` builds BAILE on the computer under UBSan and plays every factory sound with every
 track effect, every master effect and every live effect at the ends of their knobs, the kits at DECAY +8 and
 DRIVE 15, FM loud and panned, then 0.3's features at theirs: two tricks in every cell, HOP and END on every
 row, tables a tick a step with HITs, the groove at 1 and 12 ticks at 40 and 300 BPM, sample edits of no width
@@ -100,7 +114,7 @@ bytes) and a damaged pad loading safely.
 
 `node tests/webinstall_test.js` tests the web installer (`../install/webinstall.js`, used by the Install button
 of `../index.html`) against a simulated FM-1 on a simulated Web MIDI (`tests/fm1_mock.js`): plain Node 18+, no
-hardware and no browser. It installs the newest `../install/kawa-*.fwsc` that `../install/SHA256SUMS` names,
+hardware and no browser. It installs the newest `../install/baile-*.fwsc` that `../install/SHA256SUMS` names,
 so build the package first. It covers a good install (with MIDI noise, SysEx cut in pieces, a device that
 re-enumerates), damaged and wrong packages (refused before any port is opened), the wrong model, an FM-1 found
 in update mode, a cable cut mid-write and the resume, and a missing, silent or busy port. With `python3` on the
@@ -109,20 +123,20 @@ CRC16 and the same verdict for every damaged package.
 
 ## Safety: rescue, and back to the official firmware
 
-- **Rescue.** Hold OCT- while switching on, or let KAWA fail to start twice within 30 s: the screen shows
-  `KAWA USB RESCUE`. Audio, projects and the editor stay off; only USB and the same checked updater run, so
+- **Rescue.** Hold OCT- while switching on, or let BAILE fail to start twice within 30 s: the screen shows
+  `BAILE USB RESCUE`. Audio, projects and the editor stay off; only USB and the same checked updater run, so
   a package can be installed from there (`../install/fm1_install.py`, or M-UPGRADE for the official firmware).
 - **A cut install.** The update record stays until the host says "success": switched on again, the FM-1
   starts in the loader (`ota-FM-1_900`) and `../install/fm1_install.py` finishes the write.
 - **Back to the official firmware.** M-UPGRADE with the official V15 package (identity `FM-1_015`, SHA-256
-  `db1642b2b6fa5c2cccb11ffd13878068bb28601678d3644049f99dc40e7edb8a`). KAWA hands over to the official
+  `db1642b2b6fa5c2cccb11ffd13878068bb28601678d3644049f99dc40e7edb8a`). BAILE hands over to the official
   updater only if it is M-VAVE's own loader (its CRCs are known, `firmware/src/ota.c`) and only if the
   package's flash head `0..0x4000` is byte for byte the one already on this FM-1: the official loader
   rewrites the head, so it can only write back the same bytes. If either check fails, nothing is written
-  and KAWA keeps running. This step is the riskiest one (the official loader is not ours): a stable power
-  supply, a data cable, and no unplugging while it runs. The KAWA projects and samples are not kept.
+  and BAILE keeps running. This step is the riskiest one (the official loader is not ours): a stable power
+  supply, a data cable, and no unplugging while it runs. The BAILE projects and samples are not kept.
 - **Not proven.** The chip's mask-ROM USB mode (WL80UBOOT, the FM-1 Transporter) is documented by
-  [fm-1-re](https://github.com/al-255/fm-1-re) but not tested here; KAWA never relies on it.
+  [fm-1-re](https://github.com/al-255/fm-1-re) but not tested here; BAILE never relies on it.
 
 ## Generated files
 
@@ -178,7 +192,7 @@ sh tests/run_ui_test.sh            # the panel: pages, SELECT, protected sounds,
 sh tests/run_stress_test.sh        # every sound and effect at the ends of the knobs (about 18 minutes of sound)
 AC79_SDK=~/fw-AC79_AIoT_SDK sh tests/run_loader_tests.sh    # the install path on the package in build/ (after ./build.sh)
 node tests/webinstall_test.js      # the web installer (Install button) against a simulated FM-1
-node tests/websamples_test.js      # the web sample importer, byte for byte against install/kawa_samples.py
+node tests/websamples_test.js      # the web sample importer, byte for byte against install/baile_samples.py
 NODE_PATH=$(npm root -g) node tests/webinstall_ui_test.js    # the same pages in a real Chromium (Playwright)
 NODE_PATH=$(npm root -g) node tests/websamples_ui_test.js
 sh tests/release_check.sh          # install/SHA256SUMS and the package at the top of the repository agree

@@ -386,6 +386,114 @@ static void prj_demo(void)
     brushes_reset();
 }
 
+/* the other demos, one a style (PROJECTS › DEMO again: the next one). Two patterns of two bars each */
+static void demo_base(const char *name, uint32_t n, uint32_t bpm, uint32_t root, uint32_t scale)
+{
+    uint32_t p, i;
+    prj_new();
+    memset(prj.name, 0, sizeof prj.name);
+    for (i = 0; i < n && i < 15u; i++)
+        prj.name[i] = name[i];
+    prj.bpm = (uint16_t)bpm;
+    prj.root = (uint8_t)root;
+    prj.scale = (uint8_t)scale;
+    for (p = 0; p < 2u; p++)
+        prj.pat[p].len = 32;
+    {
+        static const song_t SONG[2] = {{0, 2}, {1, 2}};
+        memcpy(prj.song, SONG, sizeof SONG);
+        prj.song_len = 2;
+    }
+    prj.mode = 1;
+}
+/* VOLT: the funk's root, Miami bass at 128 in E minor: the 808 boom, snare and clap, 16th hats, the cowbell,
+ * the orchestra stab; then the hook on the lead and the Volt break under it */
+static void demo_volt(void)
+{
+    uint32_t p;
+    demo_base("VOLT", 4, 128, 4, 2);
+    sound_preset(T1, preset_by_name("MELODY LEAD"));
+    sound_preset(T2, preset_by_name("STAB"));
+    sound_preset(T3, preset_by_name("808 BASS"));
+    sound_preset(T5, preset_named(E_KIT, 0));
+    sound_preset(T6, preset_named(E_SAMPLE, 1));
+    prj.snd[T1].p[P_ECHO] = 5;
+    prj.snd[T2].p[P_VERB] = 7;
+    prj.snd[T6].p[P_VOL] = 9;
+    for (p = 0; p < 2u; p++) {
+        lane(p, T5, "1 5 9 5 3 5 1 5 5 5 1 5 3 5 6 5 1 5 9 5 3 5 1 5 5 9 1 5 3 5 16 6", 13);
+        lane(p, T3, "E2 . . . . . E2 . . . G2 . . . . . E2 . . . . . E2 . . . B1 . . . D2 x", 14);
+        fx_at(p, 26, T3, FX_GLIDE, 8);
+        put(p, 0, T2, 64, 10, FX_ARP, 1);           /* the stab: E minor, then C */
+        put(p, 22, T2, 60, 9, FX_ARP, 0);
+    }
+    lane(1, T6, "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16", 9);
+    lane(1, T1, "B4 . . B4 . . A4 . G4 . . E4 . . G4 . A4 . . A4 . . B4 . G4 . F#4 . E4 . . x", 12);
+    fx_at(1, 22, T1, FX_VIB, 6);
+    brushes_reset();
+}
+/* MANDELAO: Sao Paulo, bare and blown at 130 in F Phrygian: the blown kick, the anvil off the beat, one snare,
+ * the bent 808; then the Mandela break cut up, GRAVE+ and DISTOR recorded on the live lane */
+static void demo_mandela(void)
+{
+    uint32_t r;
+    demo_base("MANDELAO", 8, 130, 5, 7);
+    sound_preset(T3, preset_by_name("BENT 808"));
+    sound_preset(T5, preset_named(E_KIT, 3));
+    sound_preset(T6, preset_named(E_SAMPLE, 3));
+    prj.snd[T6].p[P_VOL] = 10;
+    for (r = 0; r < 2u; r++) {
+        lane(r, T5, "1 7 7 . 7 7 . 1 . 7 1 7 3 7 . 7 1 7 7 . 7 7 . 1 . 7 1 7 3 7 9 7", 13);
+        lane(r, T3, "F2 . . . . . . F2 . . F2 . . . F#2 . F2 . . . . . . F2 . . F2 . . . E2 x", 14);
+        fx_at(r, 14, T3, FX_GLIDE, 6);
+    }
+    lane(1, T6, "1 . . 1 . . 7 . 9 . 9 . 13 . 13 13 1 . . 1 . . 7 . 9 9 11 . 13 . 15 16", 10);
+    fx_at(1, 29, T6, FX_REV, 0);
+    for (r = 0; r < 8u; r++) prj.pat[1].live[r] = LF_BASS + 1u;          /* live effects, recorded */
+    for (r = 24; r < 28u; r++) prj.pat[1].live[r] = LF_DIST + 1u;
+    brushes_reset();
+}
+/* BREGA FUNK: Recife at 150 in C minor, with the BREGA groove: the dancing kick, palms right after the snare,
+ * the timbales, the 808, the piano's chords; then the hook on the lead */
+static void demo_brega(void)
+{
+    uint32_t p, r;
+    demo_base("BREGA FUNK", 10, 150, 0, 2);
+    sound_preset(T1, preset_by_name("MELODY LEAD"));
+    sound_preset(T2, preset_by_name("MELODY PIANO"));
+    sound_preset(T3, preset_by_name("808 BASS"));
+    sound_preset(T5, preset_named(E_KIT, 4));
+    groove_preset(2);
+    prj.grv.on = 1;
+    prj.snd[T2].p[P_VOL] = 10;
+    prj.snd[T2].p[P_VERB] = 5;
+    for (p = 0; p < 2u; p++) {
+        static const uint8_t ROOT[4] = {60, 56, 63, 58};                  /* Cm Ab Eb Bb */
+        static const uint8_t MIN[4] = {1, 0, 0, 0};
+        lane(p, T5, "1 5 7 5 3 4 1 8 1 5 7 5 3 4 1 8 1 5 7 5 3 4 1 8 1 5 7 8 3 7 8 4", 13);
+        lane(p, T3, "C2 . . . . . C2 . C2 . . . . . G1 . G#1 . . . . . G#1 . D#2 . . . . . A#1 x", 14);
+        for (r = 0; r < 32u; r += 8u) {
+            put(p, r, T2, ROOT[r / 8u], 10, FX_ARP, MIN[r / 8u]);
+            put(p, r + 3u, T2, ROOT[r / 8u], 8, FX_ARP, MIN[r / 8u]);
+            put(p, r + 6u, T2, ROOT[r / 8u], 9, FX_ARP, MIN[r / 8u]);
+        }
+    }
+    lane(1, T1, "G5 . . G5 . . F5 . D#5 . . C5 . . D#5 . F5 . . F5 . . G5 . D#5 . D5 . C5 . . x", 12);
+    fx_at(1, 21, T1, FX_GLIDE, 4);
+    brushes_reset();
+}
+#define NDEMO 4u
+static const char *const DEMO_NAME[NDEMO] = {"BAILE", "VOLT", "MANDELAO", "BREGA FUNK"};
+static void prj_demo_n(uint32_t k)              /* PROJECTS › DEMO: 0 BAILE (the tamborzao), 1 VOLT, 2 MANDELAO, 3 BREGA */
+{
+    switch (k % NDEMO) {
+    case 1: demo_volt(); break;
+    case 2: demo_mandela(); break;
+    case 3: demo_brega(); break;
+    default: prj_demo(); break;
+    }
+}
+
 /* ---- undo and redo: the last edits of patterns (SAVE held: OCT- undo, OCT+ redo; SAVE held alone: undo) */
 #define NUNDO 10u
 /* a sound as it was (UNDO and REDO cover the sounds too, a factory sound loaded by mistake comes back): its engine, parameters

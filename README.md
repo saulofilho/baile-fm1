@@ -9,9 +9,10 @@ por passo e um drive em cada faixa. A tela fala **português**, inglês ou espan
 
 É um fork do [KAWA](https://github.com/Guizmoh/Kawa-Tracker-Fm1), de Omnipotard, e herda dele o motor inteiro.
 
-> **Em desenvolvimento.** A identidade, o visual e a interface em português estão prontos; os kits, os breaks e os
-> grooves de funk vêm nas próximas fases ([PLAN.md](PLAN.md)). Ainda não foi testado num FM-1. Firmware não oficial,
-> não feito nem endossado pela M-VAVE: instale por sua conta e risco.
+> **Beta 0.2.** Kits, breaks, sons, grooves, ferramentas MÁGICA e efeitos de funk prontos, quatro demos (uma por
+> estilo), interface em português. A 0.1 já foi instalada num FM-1 de verdade; o resto do teste no aparelho está em
+> andamento ([docs/TEST-RESULTS-0.1.md](docs/TEST-RESULTS-0.1.md), [PLAN.md](PLAN.md)). Firmware não oficial, não
+> feito nem endossado pela M-VAVE: instale por sua conta e risco.
 
 ## O visual
 

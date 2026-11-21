@@ -747,9 +747,9 @@ int main(void)
     CHECK(sq_start_pos == 0 && prj.song[sq_start_pos].pat == 0 && ui_pat == prj.song[prj.song_len - 1u].pat,
           "18. demo: the screen shows pattern %u of %u, the first PLAY starts song entry %u", ui_pat + 1u, prj.song_len, sq_start_pos);
     sq_play = 0; sq_req = 0;
-    ui_pat = 3; song_cur = 3;
+    ui_pat = prj.song[1].pat; song_cur = 1;     /* (BAILE: each DEMO is the next style; every one has 2 entries or more) */
     play_toggle();
-    CHECK(sq_start_pos == 3, "18. demo: PLAY again follows the screen (entry %u, want 3)", sq_start_pos);
+    CHECK(sq_start_pos == 1, "18. demo: PLAY again follows the screen (entry %u, want 1)", sq_start_pos);
     sq_play = 0; sq_req = 0;
 
     /* 19. a tap that closes the boot screen, pressed and let go in one scan: the next tap of that button is a tap

@@ -2720,12 +2720,17 @@ static void pm_do(uint32_t act)                 /* the action, its questions ans
     switch (act) {
     case PM_NEW: case PM_DEMO:
         ev_push(EV_KILL, NTRK, 0, 0, 0, 0);     /* (every voice of the old song goes) */
-        if (act == PM_NEW) prj_new(); else prj_demo();
+        if (act == PM_NEW) prj_new();
+        else {                                  /* BAILE: one demo a style, the next one each time */
+            static uint8_t demo_k;
+            prj_demo_n(demo_k);
+            demo_k = (uint8_t)((demo_k + 1u) % NDEMO);
+        }
         proj_cur = 0xFF;
         dirty = 0;                              /* nothing to lose yet; the autosave takes it */
         auto_due = 1;
-        song_fresh(act == PM_NEW ? prj.name : "DEMO !");
-        if (act == PM_DEMO) {                   /* the demo opens on its last step (7/7), pattern on the screen */
+        song_fresh(prj.name);
+        if (act == PM_DEMO) {                   /* the demo opens on its last step, its pattern on the screen */
             song_cur = (uint8_t)(prj.song_len - 1u);
             ui_pat = prj.song[song_cur].pat;
             play_from_top = 1;                  /* but PLAY, the first time, still starts the song at P01 */
