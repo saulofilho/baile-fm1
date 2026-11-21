@@ -11,7 +11,7 @@ por passo e um drive em cada faixa. A tela fala **português**, inglês ou espan
 
 > **Beta 0.2.** Kits, breaks, sons, grooves, ferramentas MÁGICA e efeitos de funk prontos, quatro demos (uma por
 > estilo), interface em português. A 0.1 já foi instalada num FM-1 de verdade; o resto do teste no aparelho está em
-> andamento ([docs/TEST-RESULTS-0.1.md](docs/TEST-RESULTS-0.1.md), [PLAN.md](PLAN.md)). Firmware não oficial, não
+> andamento ([docs/TEST-RESULTS.md](docs/TEST-RESULTS.md), [PLAN.md](PLAN.md)). Firmware não oficial, não
 > feito nem endossado pela M-VAVE: instale por sua conta e risco.
 
 ## O visual

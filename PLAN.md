@@ -144,7 +144,7 @@ Opcional, depois da 1.0: vocais sintéticos por formantes; modo LIVE do KAWA (la
   (`manual/index.html`) com telas do simulador (`source/tests/manual_pt.txt`); o manual, o cheat sheet e o card do
   KAWA saíram. Importador de samples renomeado. `fmhub.json` do BAILE.
 - **2026-11-18, Fase 8 (começo):** a 0.1 instalada num FM-1 de verdade a partir de `FM-1_966`: "done: the FM-1 runs
-  FM-1_971" (`docs/TEST-RESULTS-0.1.md`; o resto do roteiro no aparelho está por fazer).
+  FM-1_971" (`docs/TEST-RESULTS.md`; o resto do roteiro no aparelho está por fazer).
 - **2026-11-18, o site todo no BAILE:** menu único em PT em todas as páginas, GitHub do `baile-fm1`, importador de
   samples em PT (erros traduzidos na página pelo código), cores do BAILE no emulador e no importador, projetos
   `.baile`, favicon de ladrilhos.
@@ -153,7 +153,7 @@ Opcional, depois da 1.0: vocais sintéticos por formantes; modo LIVE do KAWA (la
   (dó menor, 150, groove BREGA). `features_test` 11 carrega e toca as quatro. Áudio de cada uma no hub. A tag `v0.9`
   herdada do KAWA saiu (dispararia uma release). `source/BUILDING.md` com o BAILE e as notas do macOS. A 0.1 (a
   instalada no aparelho) foi para `install/older/`.
-- **Falta:** o roteiro no aparelho (`docs/TEST-RESULTS-0.1.md`), ouvir e ajustar os timbres, a tag `v0.2` e o envio
+- **Falta:** o roteiro no aparelho (`docs/TEST-RESULTS.md`), ouvir e ajustar os timbres, a tag `v0.2` e o envio
   ao FM-1 Firmware Hub; opcional: vocais de MC por formantes, um modo LIVE de lançar trechos, hub e manual em EN/ES.
 
 ## Mood
