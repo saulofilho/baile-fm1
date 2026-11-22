@@ -1,4 +1,4 @@
-# BAILE — testes num FM-1 de verdade (0.1, 0.2)
+# BAILE — testes num FM-1 de verdade (0.1, 0.2, 0.3)
 
 O que foi feito num M-VAVE FM-1 real, e o que ainda falta. O que não está marcado aqui não foi testado no aparelho
 (só no simulador e nos testes automáticos de `source/tests/`).
@@ -9,6 +9,23 @@ O que foi feito num M-VAVE FM-1 real, e o que ainda falta. O que não está marc
 | --- | --- | --- | --- |
 | 2026-11-18 | `FM-1_966` (outro firmware da comunidade, na porta "Felucca") | `install/fm1_install.py install/baile-0.1.fwsc` (macOS, Python 3.13 na `.venv` do projeto, mido + python-rtmidi) | Pacote conferido (18 leituras), modo de atualização, gravação 0–100% (uns 25 minutos), reinício: **"done: the FM-1 runs FM-1_971"**. Depois, `fm1_install.py --info`: `FM-1_971 [running]` |
 | 2026-11-21 | `FM-1_971` (BAILE 0.1) | o mesmo, com `install/baile-0.2.fwsc` | Conferido (18 leituras), gravação 0–100%, reinício: **"done: the FM-1 runs FM-1_971"**; `--info`: `FM-1_971 [running]`. Uma atualização de BAILE para BAILE |
+| 2026-11-21 | `FM-1_971` (BAILE 0.2) | o mesmo, com `baile-0.3.fwsc` (SHA-256 `fd0c26fc…eb966`) | Conferido (18 leituras), gravação 0–100% em cerca de 1 minuto, reinício: **"done: the FM-1 runs FM-1_808130"**; depois, lido por USB: `FM-1_808130 [running]`, versão `0.3` |
+
+## No aparelho (BAILE 0.3)
+
+A instalação acima foi conferida por USB. O resto espera o relato do autor, item por item.
+
+| Roteiro | Confirmado item a item |
+| --- | --- |
+| O boot mostra V0.3 | a confirmar |
+| As músicas da 0.2 continuam lá | a confirmar |
+| Em MÚSICA (GLO) o BPM aparece com três dígitos na linha de baixo | a confirmar |
+| Os 4 bancos de efeitos em português | a confirmar |
+| O tema CLARO legível | a confirmar |
+| A demo toca | a confirmar |
+| Instalar a partir do V15 oficial | a confirmar |
+| Instalar a partir de outro firmware | a confirmar |
+| Sair do BAILE para outro firmware | a confirmar |
 
 ## No aparelho (BAILE 0.2, 2026-11-21)
 

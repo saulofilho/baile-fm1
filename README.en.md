@@ -25,7 +25,7 @@ the screen. It is a fork of [KAWA](https://github.com/Guizmoh/Kawa-Tracker-Fm1),
 
 ## See it
 
-Screens of the 0.3 firmware (not released yet), taken in the simulator with the BAILE demo.
+Screens of the 0.3 firmware, taken in the simulator with the BAILE demo.
 
 ### Build the beat
 
@@ -91,11 +91,11 @@ Screens of the 0.3 firmware (not released yet), taken in the simulator with the 
 
 | | |
 | --- | --- |
-| Released version | **0.2 beta** |
+| Version | **0.3 beta** |
 | Identity | `FM-1_808130` from 0.3 on. 0.1 and 0.2 answer `FM-1_971` |
-| On a real FM-1 | 0.1 was installed from another firmware (`FM-1_966`), then 0.2 over it. What was and was not confirmed: [results](docs/TEST-RESULTS.md) (in Portuguese) |
-| In this repository | Heading for 0.3: tested on a computer only |
-| Defects in 0.2 | With the language set to Portuguese, the DESTROY and BEAT banks and the language's own name show in French, and a few labels are wrong. Fixed in the source, due in 0.3 |
+| On a real FM-1 | 0.1 was installed from another firmware (`FM-1_966`), 0.2 over it, then 0.3 over 0.2. The test list for 0.3 is open: [results](docs/TEST-RESULTS.md) (in Portuguese) |
+| Not confirmed yet | Installing from the official V15 and going back to it |
+| New in 0.3 | A new identity, no French left in the Portuguese interface, whole values on the bottom line (BPM 130), a readable CLARO theme |
 
 An unofficial firmware, not made or endorsed by M-VAVE. Install it at your own risk.
 
@@ -240,10 +240,10 @@ FM-1 in over USB and click the install button.
 ```bash
 python3 -m venv .venv
 .venv/bin/pip install mido python-rtmidi
-.venv/bin/python install/fm1_install.py install/baile-0.2.fwsc
+.venv/bin/python install/fm1_install.py install/baile-0.3.fwsc
 ```
 
-The whole package is checked before anything is erased. The write can be slow (25 minutes in one of our tests). Do
+The whole package is checked before anything is erased. The write took 1 to 25 minutes in our tests. Do
 not switch off. If the cable drops, plug it back in and run it again: the install resumes. To see what is installed,
 without writing anything:
 

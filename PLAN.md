@@ -168,6 +168,8 @@ Opcional, depois da 1.0: vocais sintéticos por formantes; modo LIVE do KAWA (la
   nos três idiomas, MAGICA, DOBRA, DESCE, BATIDAS, POUCO, 1 PASSO, RETRIG. No tema CLARO o texto sem contraste escurece
   sozinho (`g_readable`, `kawa_gfx.c`). Ficam: valores de 7 letras cortados na linha de baixo (o nome inteiro está na
   página) e ícones e faders pálidos no CLARO. Candidato novo em `source/build/baile-0.3.fwsc`, sem teste no aparelho.
+- **2026-11-21, 0.3:** instalada por cima da 0.2 (`FM-1_808130`, versão lida por USB). O roteiro no aparelho está aberto
+  (`docs/TEST-RESULTS.md`). `install/`, site, manual e emulador na 0.3; a release sai com o push da tag `v0.3`.
 
 ## TODO
 
@@ -183,11 +185,21 @@ Opcional, depois da 1.0: vocais sintéticos por formantes; modo LIVE do KAWA (la
   PT/EN na barra de todas as páginas.
 - [x] Publicar a release `v0.2` (2026-11-21).
 - [ ] GitHub › Settings › Pages › Source: **GitHub Actions** (hoje dois deploys correm a cada push).
-- [ ] Release 0.3 com as correções: instalar e testar no FM-1 antes da tag; `source/VERSION` = 0.3.
+- [ ] Release 0.3: push do `main` e da tag `v0.3` (o autor), depois **Check again** no Hub.
 - [ ] Confirmar o roteiro item por item (`docs/TEST-RESULTS.md`) e só então enviar o formulário do Hub (`docs/HUB-SUBMIT.md`).
 - [x] Identidade `FM-1_808130` e linha `sounds` no formato do Hub (2026-11-21; vale no Hub com a release 0.3).
-- [ ] Som, das referências (`docs/REFERENCES.md`): harmônicos do 808, ducking do bumbo, grave em mono.
-- [ ] Opcionais: vocais de MC por formantes; um modo LIVE de lançar trechos ao vivo.
+
+### Som, depois da 0.3
+
+Ordem pedida pelo autor em 2026-11-21, referências em `docs/REFERENCES.md`. Nada disso começa antes da release 0.3.
+Cada item: teste no simulador, stress sem estouro, CPU medida e audição no FM-1.
+
+- [ ] **1. Harmônicos do 808** para alto-falante pequeno (GRAVE+). Pronto: sobe a energia de 120–500 Hz sem subir o pico.
+- [ ] **2. Ducking:** o bumbo abaixa o baixo. Pronto: ajuste por projeto, projetos da 0.3 ainda abrem.
+- [ ] **3. Grave em mono.** Pronto: abaixo de ~120 Hz esquerda = direita, os agudos continuam abertos.
+- [ ] **4. Montagem por frase, THROW e DROP ao vivo.** Os 64 efeitos estão ocupados: decidir o que sai ou onde entram.
+- [ ] **5. Modo LIVE de lançar patterns:** entra no fim do compasso, piscando até entrar.
+- [ ] **6. Voz por formantes**, por último. Medir a CPU antes.
 
 ## Mood
 

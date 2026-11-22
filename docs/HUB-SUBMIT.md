@@ -8,8 +8,7 @@ formulário substitui o rascunho de e-mail que ficava aqui. Quem preenche e envi
 - [x] **Identidade:** `FM-1_808130` no código (livre na regra do Hub em 2026-11-21). O ✗ do Hub só some com a
       **release 0.3**, porque a checagem lê o pacote da release mais nova.
 - [x] **`sounds`:** no formato aceito. É a declaração do autor: conferir antes de marcar a caixa dos sons.
-- [ ] **Push**, para o emulador do link `play` e o README valerem.
-- [ ] **Release 0.3** com as correções e a identidade nova.
+- [ ] **Push** do `main` e da tag `v0.3`; esperar a release; **Check again** na página de status.
 - [ ] **No FM-1, com a release 0.3:** instalar a partir do **V15 oficial**; instalar a partir de **outro firmware**;
       do BAILE, instalar outro firmware. Só então marcar a caixa de testado.
 - [ ] Conferir o arquivo em <https://thefirmwarehub.com/kb/#fmhub>.
@@ -44,7 +43,7 @@ formulário substitui o rascunho de e-mail que ficava aqui. Quem preenche e envi
 
 O que está registrado hoje (a caixa de testado fica desmarcada):
 
-    So far, on a real FM-1: BAILE 0.1 installed from another community firmware (FM-1_966), then 0.2 installed over it, both with the project's installer, the identity FM-1_971 checked over USB each time.
+    On a real FM-1: BAILE 0.1 installed from another community firmware (FM-1_966), 0.2 installed over it, then 0.3 installed over 0.2, all with the project's installer. After the last one the FM-1 answered FM-1_808130, version 0.3, over USB. Installing from the official V15 and leaving BAILE again are not confirmed yet: I will test both and update this submission.
 
 Depois dos testes da lista acima, preencher as lacunas e apagar o que não tiver sido feito:
 

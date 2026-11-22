@@ -63,7 +63,7 @@ T = {
     ticker2="".join(f"<span>{w}</span><i>✺</i>" for w in ["BOTA PRA TOCAR", "SEGURA", "PUXA", "SOBE", "GRAVE+", "SIRENE"]),
     made_h="Feito sobre:", hall_h="Ouça", prev="Anterior", next="Próximo",
     install_h="Instalar o BAILE",
-    beta="BETA 0.2 · TESTADO NUM FM-1 DE VERDADE",
+    beta="BETA 0.3 · RODA NUM FM-1 DE VERDADE",
     install_steps="<li>Ligue o FM-1 e conecte-o a este computador com um cabo USB <em>de dados</em>.</li>"
                   "<li>Feche qualquer outro programa que use MIDI.</li>"
                   "<li>Clique no botão e permita o acesso MIDI com SysEx quando o navegador pedir.</li>",
@@ -138,7 +138,7 @@ T = {
     ticker2="".join(f"<span>{w}</span><i>✺</i>" for w in ["DROP IT", "STUTTER", "SCRATCH", "BUILD UP", "BASS+", "SIREN"]),
     made_h="Made on:", hall_h="Listen", prev="Previous", next="Next",
     install_h="Install BAILE",
-    beta="BETA 0.2 · TESTED ON A REAL FM-1",
+    beta="BETA 0.3 · RUNS ON A REAL FM-1",
     install_steps="<li>Switch the FM-1 on and plug it into this computer with a USB <em>data</em> cable.</li>"
                   "<li>Close every other program that uses MIDI.</li>"
                   "<li>Click the button, and allow MIDI access with SysEx when the browser asks.</li>",

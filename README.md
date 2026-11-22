@@ -25,7 +25,7 @@ tela. É um fork do [KAWA](https://github.com/Guizmoh/Kawa-Tracker-Fm1), de Omni
 
 ## Veja na tela
 
-Telas do firmware da 0.3 (ainda não lançada), tiradas no simulador com a demo BAILE.
+Telas do firmware da 0.3, tiradas no simulador com a demo BAILE.
 
 ### Montar a batida
 
@@ -91,11 +91,11 @@ Telas do firmware da 0.3 (ainda não lançada), tiradas no simulador com a demo 
 
 | | |
 | --- | --- |
-| Versão publicada | **0.2 beta** |
+| Versão | **0.3 beta** |
 | Identidade | `FM-1_808130` a partir da 0.3. A 0.1 e a 0.2 respondem `FM-1_971` |
-| No FM-1 de verdade | A 0.1 foi instalada a partir de outro firmware (`FM-1_966`) e a 0.2 por cima dela. O que foi e o que não foi confirmado: [resultados](docs/TEST-RESULTS.md) |
-| No repositório | Rumo à 0.3: só testado no computador |
-| Defeitos da 0.2 | Com o idioma em português, os bancos DESTROI e BEAT e o nome do idioma aparecem em francês, e alguns textos estão errados. Já corrigido no código, entra na 0.3 |
+| No FM-1 de verdade | A 0.1 foi instalada a partir de outro firmware (`FM-1_966`), a 0.2 por cima dela e a 0.3 por cima da 0.2. O roteiro de testes da 0.3 está aberto: [resultados](docs/TEST-RESULTS.md) |
+| Ainda não confirmado | Instalar a partir do V15 oficial e voltar para ele |
+| Mudou na 0.3 | Identidade nova, interface em português sem francês, valores inteiros na linha de baixo (BPM 130), tema CLARO legível |
 
 Firmware não oficial, não feito nem endossado pela M-VAVE. Instale por sua conta e risco.
 
@@ -237,11 +237,11 @@ e clique em *Instalar o BAILE*.
 ```bash
 python3 -m venv .venv
 .venv/bin/pip install mido python-rtmidi
-.venv/bin/python install/fm1_install.py install/baile-0.2.fwsc
+.venv/bin/python install/fm1_install.py install/baile-0.3.fwsc
 ```
 
-O pacote é conferido inteiro antes de apagar qualquer coisa. A gravação pode demorar (25 minutos num dos nossos
-testes). Não desligue. Se o cabo cair, ligue de novo e repita: a instalação continua. Para ver o que está instalado,
+O pacote é conferido inteiro antes de apagar qualquer coisa. A gravação levou de 1 a 25 minutos nos nossos
+testes. Não desligue. Se o cabo cair, ligue de novo e repita: a instalação continua. Para ver o que está instalado,
 sem gravar nada:
 
 ```bash
