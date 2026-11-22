@@ -277,6 +277,18 @@ def bars():
         print("-> the bar of", f)
 
 
+def stamp_css():
+    """site.css?v=<its hash> in the pages that use it: a page never meets another version's stylesheet in a cache"""
+    import hashlib
+    import re
+    v = hashlib.sha256((ROOT / "site.css").read_bytes()).hexdigest()[:10]
+    for f, *_ in PAGES:
+        p = ROOT / f
+        if p.exists():
+            p.write_text(re.sub(r'(href="(?:\.\./)?site\.css)(?:\?v=[0-9a-f]+)?"', rf'\g<1>?v={v}"', p.read_text()))
+    print("-> site.css?v=" + v)
+
+
 def samples_en():
     """samples.en.html: samples.html with its Portuguese lines put back into English (tools/samples_en.json)"""
     s = (ROOT / "samples.html").read_text()
@@ -284,11 +296,13 @@ def samples_en():
         if pt not in s:
             print("   (samples_en.json: not in samples.html:", pt[:60] + ")")
         s = s.replace(pt, en)
+    s = s.replace('class="slogo" href="index.html">BAILE</a>', 'class="slogo" href="en/index.html">BAILE</a>')     # the foot's
     (ROOT / "samples.en.html").write_text(s)
     print("-> samples.en.html")
 
 
 def main():
+    stamp_css()
     samples_en()
     (ROOT / "index.html").write_text(render("pt", ""))
     (ROOT / "en").mkdir(exist_ok=True)

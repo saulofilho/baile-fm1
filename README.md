@@ -101,8 +101,8 @@ Firmware não oficial, não feito nem endossado pela M-VAVE. Instale por sua con
 
 ## Próxima versão (0.4)
 
-**Ainda não lançada, e não testada no FM-1:** está no código do branch `som-808`. O instalador e a release continuam
-na 0.3. Cada melhoria entra aqui quando é feita.
+**Ainda não lançada, e não testada no FM-1:** está no código. O instalador e a release continuam na 0.3. Cada
+melhoria entra aqui quando é feita. O que vem depois está no [roteiro](PLAN.md#roteiro).
 
 ### GRAVE+ que se ouve no celular
 
@@ -136,6 +136,25 @@ Cada faixa pode **recuar quando o bumbo bate**, e o 808 para de brigar com ele.
 - Desce em 3 ms, segura 25 ms e volta em uns 90 ms. Uma batida fraca recua menos.
 - O valor é salvo no projeto. **Músicas da 0.3 abrem com DUCK 0**, e com 0 o DUCK não muda um sample. A 0.3 também
   abre projetos salvos com DUCK, só não o aplica.
+
+### Site: emulador e importador no desenho novo
+
+O [emulador](https://saulofilho.github.io/baile-fm1/emulator/) e o
+[importador de samples](https://saulofilho.github.io/baile-fm1/samples.html) ficam com a cara do site: título gigante,
+letreiro, blocos de cor e rodapé.
+
+- No emulador, o FM-1 continua escuro, como o de verdade, e a barra segue o idioma escolhido.
+- O aviso do emulador agora diz o que foi instalado num FM-1 e que ele pode estar à frente da release.
+- No importador em inglês, a onda voltou às cores do BAILE. O seletor de espaço voltou ao tamanho normal.
+
+### O que vem
+
+| Versão | O quê |
+| --- | --- |
+| 0.4 | Falta o grave em mono |
+| 0.5 | Montagem por frase, THROW e DROP ao vivo, modo LIVE de lançar patterns |
+| 0.6 | Voz sintética por formantes |
+| 1.0 | Tudo testado no FM-1 e listado no Hub |
 
 ## O que tem
 

@@ -7,6 +7,121 @@ Felucca → SLOOP → Dinghy.
 **Mood board:** [`docs/moodboard/index.html`](docs/moodboard/index.html) (abra no navegador). O resumo está na seção
 [Mood](#mood) abaixo.
 
+## Roteiro
+
+Organizado em 2026-11-22. **É a lista que vale:** tudo o que vamos fazer está aqui, com um código para citar ("faz o
+S3"). O que já foi feito, dia a dia, está em [Andamento](#andamento); as fases da criação, em [Fases](#fases).
+
+Estados: **lançado** · **pronto** (no código, sem release) · **a fazer** · **pausado** · **do autor** (só o autor pode
+fazer) · **a decidir**.
+
+### Visão geral
+
+| Versão | Tema | Itens | Estado |
+| --- | --- | --- | --- |
+| **0.3** | Identidade, português, telas legíveis | H1 a H7 | lançada em 2026-11-21, validação aberta |
+| **0.4** | Grave de paredão | S1, S2, S3, W1 | S1, S2 e W1 prontos; S3 pausado |
+| **0.5** | Baile ao vivo | S4, S5, S6, S7 | a fazer |
+| **0.6** | Voz | S8 | a fazer, por último |
+| **1.0** | Firmware validado e listado | critérios abaixo | a fazer |
+
+A ordem dos itens de som é a do autor. A divisão em versões é proposta e pode mudar.
+
+### Agora, nesta ordem
+
+1. Push do `som-808` e merge no `main` (do autor).
+2. **S3**, grave em mono (pausado a pedido, para arrumar o site).
+3. Pacote 0.4 candidato no FM-1, com o roteiro de teste.
+4. **H1 a H4**: o que destrava a listagem no Hub.
+
+### 0.3: validação e Hub
+
+| Código | O quê | Pronto quando | Estado |
+| --- | --- | --- | --- |
+| H1 | Roteiro de 10 itens no aparelho | cada item relatado em `docs/TEST-RESULTS.md` | do autor |
+| H2 | Instalar a partir do V15 oficial e voltar para ele | os dois sentidos relatados (apaga projetos e samples) | do autor |
+| H3 | Instalar a partir de outro firmware, e outro a partir do BAILE | os dois sentidos relatados | do autor |
+| H4 | Formulário do Hub | Check again verde, texto de teste verdadeiro, caixa de testado marcada só depois de H2 e H3 | do autor |
+| H5 | Licença dos sons `licensed` | o Sven aprova | esperando o Hub |
+| H6 | Pages com um deploy só | Settings › Pages › Source: GitHub Actions | do autor |
+| H7 | Estalo do GRAVE+ na 0.3 | sai uma 0.3.1 a partir da tag, ou espera a 0.4 | a decidir |
+
+### 0.4: grave de paredão
+
+| Código | O quê | Pronto quando | Estado |
+| --- | --- | --- | --- |
+| S1 | GRAVE+ com harmônicos para alto-falante pequeno, sem estalo | 120–500 Hz sobe sem subir o pico do master | pronto, aprovado de ouvido; falta o FM-1 |
+| S2 | DUCK: o bumbo abaixa o baixo, por faixa | salvo no projeto, 0.3 compatível | pronto, aprovado de ouvido; falta o FM-1 |
+| S3 | Grave em mono | abaixo de ~120 Hz esquerda = direita, agudos abertos, opcional por projeto | pausado |
+| W1 | Emulador e importador no desenho novo | iguais ao hub no desktop e no celular, PT e EN | pronto; vai ao ar com o merge |
+| R4 | Release 0.4 | roteiro no FM-1, CPU anotada, áudios do hub e telas do manual refeitos, tag | a fazer |
+
+Medidas e preço do S1: nas 4 demos +1,0 a +1,5 dB em 120–500 Hz com pico igual; no 808 sozinho +5 a +19 dB em
+200–1000 Hz, **pico +1,0 dB** (9872 de 32767) e **fundamental ~2 dB menor**; +18% do motor no computador enquanto
+ligado. Músicas com GRAVE+ gravado (a demo MANDELAO) mudam de som.
+
+S2: DUCK em ENVIOS (KNOB 4), no byte que era folga (`sound_t.duck`): mesmo formato, idêntico byte a byte com 0.
+
+### 0.5: baile ao vivo
+
+| Código | O quê | Pronto quando | Antes de começar |
+| --- | --- | --- | --- |
+| S4 | Montagem por frase | ÂNCORA mantém 1, 2 e 4; a virada cai só no fim da frase de 2 a 16 compassos | onde entra o controle |
+| S5 | THROW: tudo para o eco ou reverb enquanto segura | rampa de ~12 ms, a cauda continua ao soltar, grava com REC | os 64 efeitos estão ocupados: o que sai |
+| S6 | DROP: corta tudo e volta no tempo forte | volta no compasso, sem estalo | o mesmo |
+| S7 | Modo LIVE de lançar patterns | a tecla pisca na fila e o pattern entra no fim do compasso | página e teclas |
+
+### 0.6: voz
+
+| Código | O quê | Pronto quando | Antes de começar |
+| --- | --- | --- | --- |
+| S8 | Voz por formantes ("ô", "ai", "ei"), toda sintética | vogal por passo, sem voz gravada, cabe na CPU do aparelho | medir a CPU no FM-1 |
+
+### 1.0: critérios
+
+- [ ] S1 a S8 lançados, cada um testado no FM-1.
+- [ ] H1 a H5 fechados e o BAILE listado no Hub.
+- [ ] Update interrompido retomado no aparelho (T6).
+- [ ] Dívidas marcadas "antes da 1.0" resolvidas.
+- [ ] Manual, READMEs e site conferidos em PT e EN.
+
+### Dívidas técnicas
+
+| Código | O quê | Quando |
+| --- | --- | --- |
+| T1 | CI roda os testes antes de publicar o Pages e a release (hoje nenhum roda) | antes da 0.4 |
+| T2 | O Pages publica o repositório inteiro (PLAN, rascunhos, fontes): publicar só o site | com T1 |
+| T3 | O emulador do site (o link `play` do Hub) segue o `main` e fica à frente da release: separar ou avisar | aviso feito; separar a decidir |
+| T4 | Testes de interface com Playwright nunca rodaram e esperam textos antigos | antes da 1.0 |
+| T5 | CPU medida no FM-1 (OPÇÕES: CPU e MAX) com GRAVE+, DUCK e 6 faixas | na 0.4 |
+| T6 | Instalação interrompida e retomada, confirmada no aparelho | antes da 1.0 |
+| T7 | Ícones e faders pálidos no tema CLARO | antes da 1.0 |
+| T8 | 11 valores de 7 letras cortados na linha de baixo | antes da 1.0 |
+| T9 | Manual: telas e textos do DUCK e do GRAVE+, cheat sheet (campo `cheat` do Hub) | na 0.4; cheat sheet antes da 1.0 |
+| T10 | `source/BUILDING.md` com trechos do KAWA (inglês e 100 BPM na partida, roteiros em francês) | antes da 1.0 |
+| T11 | `tests/run_stress_test.sh` sem permissão de execução | qualquer hora |
+| T12 | Manual em espanhol (o firmware e o emulador já falam) | a decidir |
+
+### Ideias, sem decisão
+
+Não entram em versão sem o autor aprovar. Origem em [`docs/REFERENCES.md`](docs/REFERENCES.md).
+
+| Código | Ideia | O que pesa |
+| --- | --- | --- |
+| I1 | Variação que evolui: até 4 passos novos por compasso, por mapa de funk | mapas próprios por kit |
+| I2 | Proteção de CPU por etapas | só se T5 mostrar necessidade |
+| I3 | Riff repetível por semente, preso à escala | parecido com a MELODIA de hoje |
+| I4 | DUCK disparado também por bumbo de break | detectar o bumbo na fatia |
+
+### Regras de trabalho
+
+- Cada melhoria entra nos **dois READMEs** e neste roteiro no mesmo commit, dizendo o que foi e o que não foi testado
+  no aparelho.
+- Trabalho no **`main`**, sem criar branch (o `som-808` é o último). O autor faz push, merge e tags.
+- Cada item de som: teste que falha antes, stress sem estouro, projetos antigos abrindo, A/B para ouvir.
+- Uma tag `v*` publica na hora: só depois do candidato instalado no FM-1. Tag publicada não se move.
+- Tudo sintetizado, licença conferida antes de aproveitar código dos outros.
+
 ## Por que o KAWA
 
 O KAWA já tem o que o funk pede, e o GR!MM (base do GL!TCH e do COQUÍ) não tem:
@@ -34,10 +149,12 @@ O KAWA já tem o que o funk pede, e o GR!MM (base do GL!TCH e do COQUÍ) não te
 | Voz de MC | Não haverá voz gravada. Fase opcional: "vocais" sintéticos curtos por formantes ("ô", "vai", "ai") |
 | Visual | Estrutura do Byte Beats com um mosaico de ladrilhos pintados nas cores das penas da arara, sobre preto. Ver [Mood](#mood) |
 | Hardware | Testes no simulador do KAWA (`tests/run_host.sh`) e no emulador web até haver teste no FM-1. Flash `0x856014` e `0xB36014` |
-| Repositório | `projetos-git/baile-fm1`, git local. Publicar no GitHub só quando o usuário mandar |
+| Repositório | `projetos-git/baile-fm1`, git local. Público no GitHub; trabalho no `main`, o autor faz push, merge e tags |
 | Licença | GPL-3.0-only, créditos em `LICENSING.md`: Omnipotard (KAWA e K-GLITCH), Felucca, SLOOP, Dinghy, msfa (Apache-2.0), fontes OFL |
 
 ## Fases
+
+As fases da criação (0 a 7 feitas; a 8 continua no [Roteiro](#roteiro)). Histórico: nomes e números são os de então.
 
 0. **Ambiente.** Rodar os testes do KAWA intacto: `tests/run_host.sh`, `run_stress_test.sh`, `run_kits_test.sh`, o
    emulador (`web/make_emulator.sh`) e o pacote (`./build.sh`, toolchain JieLi + SDK AC79 em Docker, como no COQUÍ).
@@ -74,8 +191,7 @@ O KAWA já tem o que o funk pede, e o GR!MM (base do GL!TCH e do COQUÍ) não te
 8. **Release.** `./build.sh --release 1.0`, teste no FM-1 (instalar a partir do oficial V15 e de outro firmware,
    sair, voltar, update interrompido), `docs/TEST-RESULTS-1.0.md`, envio ao FM-1 Firmware Hub com `fmhub.json`.
 
-Opcional, depois da 1.0: vocais sintéticos por formantes; modo LIVE do KAWA (lançador de chains, ideia 3 de
-`source/docs/IDEES-M8-POLYEND.md`) para o DJ montar o set ao vivo.
+O que era opcional (vocais por formantes, modo LIVE) virou S8 e S7 no Roteiro.
 
 ## Andamento
 
@@ -171,42 +287,14 @@ Opcional, depois da 1.0: vocais sintéticos por formantes; modo LIVE do KAWA (la
 - **2026-11-21, 0.3:** instalada por cima da 0.2 (`FM-1_808130`, versão lida por USB). O roteiro no aparelho está aberto
   (`docs/TEST-RESULTS.md`). `install/`, site, manual e emulador na 0.3; a release sai com o push da tag `v0.3`.
 
-## TODO
-
-- [x] **Refazer a diagramação do site** (2026-11-21) com a diagramação de <https://www.lamannabakery.com/> e as cores do
-  BAILE: barra fixa amarela com a logo no meio, hero vermelho com tipografia gigante e a tela do FM-1 por cima, títulos
-  com sombra em camadas, selo-estrela girando, letreiros correndo, blobs, "Feito sobre" (os créditos), "Ouça" (um
-  carrossel de estrelas que tocam as demos e os breaks), blocos chapados com ladrilhos nas laterais. O hub é gerado
-  por `source/tools/gen_site.py` a partir de `source/web/hub.html`; a barra das outras páginas vem do mesmo script
-  (`site.css`, entre `<!-- bar -->` e `<!-- /bar -->`). O manual ganhou o mesmo visual (creme, títulos pesados, telas
-  com moldura); o emulador e o importador ficam escuros (a mesa), com a barra amarela em cima.
-- [x] **Versão em inglês do site** (2026-11-21): `en/index.html` (do mesmo modelo do hub), `manual/en.html`,
-  `samples.en.html` (gerado do `samples.html` com `source/tools/samples_en.json`); o emulador já tinha EN (`#en`).
-  PT/EN na barra de todas as páginas.
-- [x] **Regra do autor:** cada melhoria entra nos dois READMEs no mesmo commit (2026-11-21).
-- [x] Publicar a release `v0.2` (2026-11-21).
-- [ ] GitHub › Settings › Pages › Source: **GitHub Actions** (hoje dois deploys correm a cada push).
-- [ ] Release 0.3: push do `main` e da tag `v0.3` (o autor), depois **Check again** no Hub.
-- [ ] Confirmar o roteiro item por item (`docs/TEST-RESULTS.md`) e só então enviar o formulário do Hub (`docs/HUB-SUBMIT.md`).
-- [x] Identidade `FM-1_808130` e linha `sounds` no formato do Hub (2026-11-21; vale no Hub com a release 0.3).
-
-### Som, depois da 0.3
-
-Ordem pedida pelo autor em 2026-11-21, referências em `docs/REFERENCES.md`. Nada disso começa antes da release 0.3.
-Cada item: teste no simulador, stress sem estouro, CPU medida e audição no FM-1.
-
-- [ ] **1. Harmônicos do 808** para alto-falante pequeno (GRAVE+). Pronto: sobe a energia de 120–500 Hz sem subir o pico.
-      *Feito no branch `som-808`; aprovado de ouvido nos A/B pelo autor (2026-11-21); falta o FM-1.* Contra a 0.3, com o efeito ligado: nas 4 demos
-      +1,0 a +1,5 dB em 120–500 Hz e pico igual; no 808 sozinho +5 a +19 dB em 200–1000 Hz, mas **pico +1,0 dB** (longe
-      do clip: 9872 de 32767) e **fundamental ~2 dB menor**. Custo no computador: +18% do motor enquanto segurado.
-      O estalo ao apertar e soltar (defeito da 0.3) saiu. Músicas com GRAVE+ gravado (a demo MANDELAO) mudam de som.
-- [ ] **2. Ducking:** o bumbo abaixa o baixo. Pronto: ajuste por projeto, projetos da 0.3 ainda abrem.
-      *Feito no branch `som-808`, falta ouvir e testar no FM-1.* DUCK por faixa em ENVIOS (KNOB 4), salvo no byte que
-      era folga (`sound_t.duck`): mesmo formato, compatível nos dois sentidos, idêntico byte a byte com 0.
-- [ ] **3. Grave em mono.** Pronto: abaixo de ~120 Hz esquerda = direita, os agudos continuam abertos.
-- [ ] **4. Montagem por frase, THROW e DROP ao vivo.** Os 64 efeitos estão ocupados: decidir o que sai ou onde entram.
-- [ ] **5. Modo LIVE de lançar patterns:** entra no fim do compasso, piscando até entrar.
-- [ ] **6. Voz por formantes**, por último. Medir a CPU antes.
+- **2026-11-21, som (`som-808`):** S1 (GRAVE+ com harmônicos) e S2 (DUCK), os dois aprovados de ouvido pelo autor nos
+  A/B, sem teste no FM-1.
+- **Site, 2026-11-21:** a diagramação de <https://www.lamannabakery.com/> com as cores do BAILE (hub gerado por
+  `source/tools/gen_site.py` de `source/web/hub.html`; barra comum em `site.css`) e versão em inglês.
+- **2026-11-22, site (W1):** emulador e importador no desenho do hub (hero, letreiro, blocos, rodapé; o aparelho segue
+  escuro). Corrigidos no caminho: o aviso falso de "nunca testado num FM-1", as cores do KAWA na onda do importador em
+  inglês, o seletor de espaço gigante, a barra do emulador sempre em português, o CSS velho no cache (`site.css?v=`
+  pelo hash, em `gen_site.py`). Roteiro reorganizado.
 
 ## Mood
 

@@ -1,18 +1,16 @@
 <title>BAILE — emulador</title>
 <meta name="description" content="BAILE, a Brazilian funk tracker for the M-VAVE FM-1 (on KAWA by Omnipotard), running in the browser.">
-<meta name="theme-color" content="#141210">
-<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#FFCF1F">
+<meta name="color-scheme" content="light">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23141210'/%3E%3Crect x='4' y='4' width='11' height='11' rx='2' fill='%23E3212B'/%3E%3Crect x='17' y='4' width='11' height='11' rx='2' fill='%23FFCF1F'/%3E%3Crect x='4' y='17' width='11' height='11' rx='2' fill='%235AAE3A'/%3E%3Crect x='17' y='17' width='11' height='11' rx='2' fill='%231F5BD6'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Atkinson+Hyperlegible:wght@400;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
-<link rel="stylesheet" href="../site.css">
+<link rel="stylesheet" href="../site.css?v=8cd123b18f">
 <style>
-body > .sbar, body > .smnav { margin-inline: -16px; }
-body > .sbar { margin-top: -20px; margin-bottom: 20px; }
-/* Layout: the FM-1 lies on a dark desk; its panel is laid out as the real one (left knobs, screen,
-   right knobs and buttons, the keybed below) and restacks on a phone, the screen first. One dark look.
-   Below it: the user's samples, the saved projects, the guide, a word from the author. */
+/* Layout: the hub's (site.css): the red hero in giant type, flat colour blocks, layered titles, the black foot. The
+   FM-1 itself stays dark, as the real one: left knobs, screen, right knobs and buttons, the keybed below, and it
+   restacks on a phone, the screen first. Then the user's samples, the saved projects, the guide, the author's word. */
 :root {
   --desk: #141210;
   --desk-2: #1E1A16;
@@ -36,41 +34,41 @@ body > .sbar { margin-top: -20px; margin-bottom: 20px; }
   --display: "Silkscreen", "Courier New", monospace;
   --text: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-  color-scheme: dark;
+  color-scheme: light;
 }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
-html, body { background: var(--desk); color: var(--ink); }
-body { margin: 0; font-family: var(--text); font-size: 15px; line-height: 1.5; padding-inline: 16px; padding-block: 20px 40px; overflow-x: hidden; }
-.wrap { max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
+html, body { background: var(--creme); color: var(--preto); }
+body { margin: 0; font-family: var(--text); font-size: 16px; line-height: 1.5; overflow-x: clip; }
 .vh { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
-a { color: var(--cyan); }
-a:focus-visible, button:focus-visible, select:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visible { outline: 3px solid var(--azul); outline-offset: 2px; }
 
-/* ---- the header, the beta */
-header.top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 18px; }
-.brand { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-h1 { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 6vw, 46px); letter-spacing: 0.04em; margin: 0; line-height: 1; color: var(--ink); }
-h1 span { color: var(--pink); }
-.beta { font-family: var(--mono); font-weight: 600; font-size: 12px; letter-spacing: 0.12em; line-height: 1; color: #141210; background: var(--amber); border-radius: 999px; padding: 6px 10px 5px; white-space: nowrap; }
-.tag { font-family: var(--mono); font-size: 13px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
-.langs { display: flex; gap: 4px; background: var(--desk-2); border-radius: 10px; padding: 3px; }
-.langs button { appearance: none; border: 0; background: none; color: var(--muted); font-family: var(--mono); font-weight: 600; font-size: 13px; letter-spacing: 0.08em; padding: 5px 10px; border-radius: 7px; cursor: pointer; }
-.langs button[aria-pressed="true"] { background: var(--pink); color: #141210; }
-.note { display: flex; gap: 12px; align-items: flex-start; margin: 0; padding: 12px 16px; border-radius: 14px; color: #EFE6D6; font-size: 14.5px;
-  background: linear-gradient(90deg, rgba(255,176,58,.14), rgba(255,176,58,.04)); border: 1px solid rgba(255,176,58,.38); }
-.note svg { flex: none; width: 22px; height: 22px; color: var(--amber); margin-top: 1px; }
-.note b { color: var(--amber); }
-.tip-banner { margin: 0; padding: 7px 12px; border: 1px solid rgba(255,176,58,.24); border-radius: 10px; background: var(--desk-2); color: var(--text-2); text-align: center; font-size: 13.5px; line-height: 1.4; }
-.tip-banner a { color: var(--amber); font-weight: 700; text-underline-offset: 3px; }
+/* ---- the hero, the beta, the languages */
+.shero { padding: 24px 16px 22px; border: 0; }
+.shero h1 { font-size: clamp(48px, 9vw, 124px); }
+.shero h1 .s { display: block; font-size: max(.36em, 24px); letter-spacing: -.01em; margin-bottom: .1em; }
+.meta { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 14px; margin-top: 16px; }
+.beta { background: var(--preto); color: var(--amarelo); font: 900 14px/1 var(--heavy); padding: 7px 12px; transform: rotate(-2deg); white-space: nowrap; }
+.tag { font: 700 13px/1.3 var(--text); color: #fff; letter-spacing: .04em; text-transform: uppercase; }
+.langs { display: inline-flex; border: 3px solid var(--preto); border-radius: 40px; overflow: hidden; background: var(--amarelo); }
+.langs button { appearance: none; border: 0; background: none; color: var(--preto); font: 900 13px/1 var(--heavy); padding: 7px 11px; cursor: pointer; }
+.langs button[aria-pressed="true"] { background: var(--preto); color: var(--amarelo); }
+.stage { background: linear-gradient(var(--vermelho) 0 50%, var(--creme) 50%); padding: 0 16px 44px; }
+.stage > .device { max-width: 1040px; margin: 0 auto; }
+.heads { padding-block: 30px; }
+.note { display: flex; gap: 12px; align-items: flex-start; margin: 0; padding: 14px 18px; background: var(--creme); border: 4px solid var(--preto); box-shadow: 8px 8px 0 var(--preto); font-weight: 700; }
+.note svg { flex: none; width: 24px; height: 24px; margin-top: 1px; }
+.tip-banner { margin: 22px 0 0; text-align: center; font-size: 15px; }
+.tip-banner a { color: inherit; font-weight: 900; text-underline-offset: 3px; }
 
 /* ---- the device */
 .device {
   position: relative;
-  background: linear-gradient(170deg, var(--body-hi), var(--body) 38%, #2b2831);
-  border-radius: 26px;
+  background: var(--carvao);
+  border: 8px solid var(--preto);
+  border-radius: 20px;
   padding: 26px 26px 22px;
-  box-shadow: 0 30px 60px -20px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.08), inset 0 -2px 0 rgba(0,0,0,.35);
+  box-shadow: 14px 14px 0 var(--preto);
   display: grid;
   grid-template-columns: 240px minmax(0, 1fr) 330px;
   grid-template-areas: "left screen right" "keys keys keys";
@@ -172,74 +170,65 @@ h1 span { color: var(--pink); }
 .key.down { filter: brightness(1.25); transform: translateY(2px); }
 .key .kn { position: absolute; bottom: 6px; font-family: var(--mono); font-size: 9px; color: var(--muted); }
 
-/* ---- panels: the samples, the projects */
-.panel { background: var(--desk-2); border-radius: 16px; padding: 18px 20px; min-width: 0; }
-.panel h2, .guide h2 { font-family: var(--display); font-size: 16px; letter-spacing: 0.05em; margin: 0 0 10px; font-weight: 400; }
-.panel p { margin: 0 0 8px; color: var(--text-2); font-size: 14.5px; max-width: 86ch; }
-.samples h2 { color: var(--cyan); }
-.slots { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-.slot { position: relative; background: var(--desk-3); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 8px; min-width: 0; border: 1px dashed transparent; transition: border-color .12s, background .12s; }
-body.dragging .slot { border-color: rgba(47, 198, 203,.45); }
-.slot.over { border-color: var(--cyan); background: #2A2722; }
-.slot .shead { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-.slot .sid { font-family: var(--mono); font-weight: 600; font-size: 12px; letter-spacing: 0.1em; color: var(--pink); }
-.slot .smeta { font-family: var(--mono); font-size: 11px; color: var(--muted); white-space: nowrap; }
-.slot .sname { font-family: var(--display); font-size: 15px; letter-spacing: 0.03em; color: var(--ink); overflow-wrap: anywhere; min-height: 1.5em; line-height: 1.5; }
-.slot.empty .sname { color: var(--muted); }
-.slot .sacts { display: grid; gap: 6px; }
-.sbtn { appearance: none; border: 0; cursor: pointer; font: 600 12px/1.25 var(--mono); letter-spacing: 0.03em; color: var(--ink); background: #3A332B; border-radius: 9px; padding: 8px 10px; text-align: center; display: block; width: 100%; transition: background .12s; }
-.sbtn:hover { background: #443C32; }
-.sbtn.hot { background: var(--cyan); color: #0c1a22; }
-.sbtn.hot:hover { background: #5FE0E4; }
-.sbtn:disabled { opacity: .42; cursor: default; background: #3A332B; color: var(--ink); }
-label.sbtn:focus-within { outline: 2px solid var(--cyan); outline-offset: 2px; }
-.slot progress { width: 100%; height: 6px; appearance: none; -webkit-appearance: none; border: 0; border-radius: 3px; background: #141210; overflow: hidden; }
-.slot progress::-webkit-progress-bar { background: #141210; border-radius: 3px; }
-.slot progress::-webkit-progress-value { background: var(--cyan); border-radius: 3px; }
-.slot progress::-moz-progress-bar { background: var(--cyan); border-radius: 3px; }
-.slot .smsg { font-size: 12.5px; color: #D3C8B6; line-height: 1.35; }
+/* ---- the blocks: the samples, the projects */
+.panel p { margin: 0 0 8px; max-width: 78ch; }
+.panel p a { color: inherit; font-weight: 800; }
+.slots { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.slot { position: relative; background: var(--creme); border: 4px solid var(--preto); box-shadow: 6px 6px 0 var(--preto); padding: 12px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+body.dragging .slot { border-style: dashed; }
+.slot.over { background: var(--amarelo); }
+.slot .shead { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 8px; }
+.slot .sid { font: 900 12px/1 var(--heavy); background: var(--preto); color: var(--amarelo); padding: 4px 7px; }
+.slot .smeta { font: 11px var(--mono); white-space: nowrap; }
+.slot .sname { font: 900 16px/1.5 var(--heavy); overflow-wrap: anywhere; min-height: 1.5em; }
+.slot.empty .sname { color: #5F574D; }
+.slot .sacts { display: grid; gap: 7px; }
+.sbtn { appearance: none; cursor: pointer; font: 900 12px/1.2 var(--heavy); text-transform: uppercase; color: var(--preto); background: var(--creme);
+  border: 3px solid var(--preto); border-radius: 40px; padding: 9px 10px; text-align: center; display: block; width: 100%; }
+.sbtn:hover { background: var(--amarelo); }
+.sbtn.hot { background: var(--vermelho); color: var(--amarelo); }
+.sbtn.hot:hover { background: var(--preto); }
+.sbtn:disabled { cursor: default; background: transparent; color: #5F574D; border-color: var(--cinza); }
+label.sbtn:focus-within { outline: 3px solid var(--azul); outline-offset: 2px; }
+.slot progress { width: 100%; height: 12px; appearance: none; -webkit-appearance: none; border: 3px solid var(--preto); background: var(--creme); }
+.slot progress::-webkit-progress-bar { background: var(--creme); }
+.slot progress::-webkit-progress-value { background: var(--verde); }
+.slot progress::-moz-progress-bar { background: var(--verde); }
+.slot .smsg { font-size: 12.5px; line-height: 1.35; }
 .slot .smsg:empty { display: none; }
-.smsg.err, .pmsg.err { color: var(--amber); }
-.smsg.ok, .pmsg.ok { color: var(--green); }
-.midi-pick { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: end; }
-.midi-pick label { display: flex; flex-direction: column; gap: 4px; font-size: 12.5px; color: var(--label); min-width: 0; max-width: 100%; }
-select { font: 13px var(--mono); background: var(--desk-3); color: var(--ink); border: 1px solid #4A433A; border-radius: 8px; padding: 6px 8px; max-width: 100%; }
-.projects h2 { color: var(--pink); }
-.proj { display: flex; flex-wrap: wrap; gap: 12px 22px; align-items: center; justify-content: space-between; }
+.smsg.err, .pmsg.err, .smsg.ok, .pmsg.ok { border: 2px solid var(--preto); padding: 5px 8px; color: var(--preto); }
+.smsg.err, .pmsg.err { background: var(--vermelho); color: #fff; }
+.smsg.ok, .pmsg.ok { background: var(--verde); }
+.midi-pick { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: end; }
+.midi-pick label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; font-weight: 800; min-width: 0; max-width: 100%; }
+select { font: 13px var(--mono); background: var(--creme); color: var(--preto); border: 3px solid var(--preto); padding: 7px 8px; max-width: 100%; }
+.proj { display: flex; flex-wrap: wrap; gap: 22px; align-items: center; justify-content: space-between; }
 .proj > div:first-child { flex: 1 1 380px; min-width: 0; }
-.proj .acts { display: flex; gap: 10px; flex-wrap: wrap; }
-.proj .sbtn { width: auto; padding: 9px 14px; }
-.pmsg { font-size: 13px; color: var(--muted); margin: 6px 0 0; }
+.proj .acts { display: flex; gap: 14px; flex-wrap: wrap; }
+.proj .sbtn { width: auto; font-size: 16px; padding: 15px 22px; box-shadow: 5px 5px 0 var(--preto); }
+.pmsg { font-size: 14px; font-weight: 800; margin: 8px 0 0; display: inline-block; }
 .pmsg:empty { display: none; }
 
 /* ---- the guide */
-.guide { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-.guide section { background: var(--desk-2); border-radius: 16px; padding: 18px 20px; min-width: 0; }
-.guide h2 { color: var(--pink); }
-.guide section:nth-child(2) h2 { color: var(--amber); }
-.guide section:nth-child(3) h2 { color: var(--cyan); }
-.guide li { color: var(--text-2); font-size: 14.5px; }
-.guide ul { margin: 0; padding-left: 18px; display: grid; gap: 7px; }
-.guide b { color: var(--ink); }
-kbd { font-family: var(--mono); font-size: 12px; background: #2F2A24; border-radius: 5px; padding: 1px 6px; color: var(--ink); white-space: nowrap; }
+.guide { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 22px; }
+.guide section { background: var(--amarelo); border: 4px solid var(--preto); box-shadow: 8px 8px 0 var(--preto); padding: 20px; min-width: 0; }
+.guide section:nth-child(2) { background: var(--turquesa); }
+.guide section:nth-child(3) { background: var(--laranja); }
+.guide h2 { font: 900 24px/1.05 var(--heavy); color: var(--preto) !important; -webkit-text-stroke: 0; text-shadow: none !important; margin: 0 0 12px; }
+.guide ul { margin: 0; padding-left: 18px; display: grid; gap: 8px; font-size: 14.5px; }
+kbd { font: 700 12px var(--mono); background: var(--preto); color: var(--amarelo); border-radius: 5px; padding: 1px 6px; white-space: nowrap; }
+.guide .k1, .guide .k2, .guide .k3, .guide .k4 { background: var(--preto); border-radius: 4px; padding: 0 4px; }
 .k1 { color: var(--k1); } .k2 { color: var(--k2); } .k3 { color: var(--k3); } .k4 { color: var(--k4); }
 
 /* ---- a word from the author */
-.donate {
-  border-radius: 12px; padding: 10px 14px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px;
-  background: var(--desk-2);
-  border: 1px solid rgba(255,176,58,.16);
-}
-.donate > div { flex: 1 1 260px; min-width: 0; }
-.donate h2 { font-family: var(--display); font-weight: 400; font-size: 15px; letter-spacing: 0.04em; margin: 0 0 2px; color: var(--amber); }
-.donate p { margin: 0; color: #EFE6D6; font-size: 13px; max-width: 70ch; }
-.donate .sig { color: var(--muted); font-size: 11.5px; margin-top: 2px; }
-.kofi { display: inline-flex; align-items: center; gap: 7px; background: var(--amber); color: #141210; font: 700 13px/1.2 var(--text); text-decoration: none; padding: 7px 12px; border-radius: 999px; box-shadow: 0 2px 0 #a5660c; transition: filter .12s; }
-.kofi:hover { filter: brightness(1.07); }
-.kofi:active { transform: translateY(2px); box-shadow: 0 2px 0 #a5660c; }
-.kofi:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+.donate { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
+.donate > div { flex: 1 1 300px; min-width: 0; }
+.donate p { margin: 0; max-width: 70ch; }
+.donate .sig { font-size: 12.5px; margin-top: 4px; }
+.kofi { display: inline-flex; align-items: center; gap: 8px; background: var(--creme); color: var(--preto); font: 900 15px/1.2 var(--heavy); text-transform: uppercase; text-decoration: none;
+  padding: 14px 22px; border: 4px solid var(--preto); border-radius: 110px; box-shadow: 5px 5px 0 var(--preto); }
+.kofi:hover { transform: translate(2px, 2px); box-shadow: 3px 3px 0 var(--preto); }
 .kofi svg { width: 18px; height: 18px; flex: none; }
-.foot { color: var(--muted); font-size: 13.5px; max-width: 86ch; margin: 0; }
 
 @media (max-width: 940px) {
   .device { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "screen screen" "right right" "left left" "keys keys"; padding: 18px; }
@@ -249,7 +238,10 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2F2A24; border-rad
   .slots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 520px) {
-  body { padding-block: 14px 32px; }
+  .stage { padding-inline: 8px; }
+  .stage > .device { border-width: 5px; box-shadow: none; }
+  .shero { padding-block: 20px 16px; }
+  .tag { display: none; }
   .device { padding: 14px; border-radius: 20px; gap: 16px; }
   .ring { width: 52px; height: 52px; }
   .cap { width: 42px; height: 42px; }
@@ -265,23 +257,12 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2F2A24; border-rad
   .key.w { top: 44px; }
   .key.b { height: 54px; }
   .key .kn { display: none; }
-  .panel, .guide section { padding: 16px; }
+  .guide section { padding: 16px; }
   .slots { gap: 10px; }
   .slot { padding: 10px; }
-  .donate { padding: 18px; }
 }
 @media (prefers-reduced-motion: reduce) { .cap, .btn .face, .key::before, .ring, .slot, .sbtn { transition: none; } }
 
-/* the site menu, the same on every page */
-.ksite { margin: -20px -16px 20px; }
-.ksite { position: sticky; top: 0; z-index: 50; display: flex; flex-wrap: wrap; align-items: center; gap: 2px 4px; padding: 6px 16px; background: rgba(20, 18, 16, .94); border-bottom: 1px solid #3A332B; font: 600 15px/1 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
-.ksite .ksb { margin-right: auto; padding-right: 12px; font: 800 20px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .08em; color: #F3EBDD; text-decoration: none; }
-.ksite .ksb span { color: #FFCF1F; }
-.ksite a.ksl { display: inline-flex; align-items: center; min-height: 40px; padding: 0 13px; border: 1px solid transparent; border-radius: 999px; color: #F3EBDD; text-decoration: none; }
-.ksite a.ksl:hover { border-color: #2FC6CB; color: #FFCF1F; }
-.ksite a.ksl[aria-current="page"] { background: #2A241E; border-color: #5A4A36; color: #FFCF1F; }
-.ksite a:focus-visible { outline: 3px solid #FFCF1F; outline-offset: 2px; }
-@media (max-width: 640px) { .ksite { position: static; padding: 6px 8px; } .ksite .ksb { flex-basis: 100%; padding: 4px 8px 6px; } .ksite a.ksl { padding: 0 11px; } }
 </style>
 
 <!-- bar -->
@@ -292,7 +273,18 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2F2A24; border-rad
 </header>
 <nav class="smnav" aria-label="BAILE"><a href="../index.html#install">Instalar</a><a href="../emulator/index.html" aria-current="page">Emulador</a><a href="../manual/index.html">Manual</a><a href="../samples.html">Samples</a></nav>
 <!-- /bar -->
-<div class="wrap">
+<header class="shero">
+  <h1><span class="s" data-t="h.s"></span>BAILE</h1>
+  <div class="meta">
+    <span class="beta" id="beta-badge">__KAWA_VER__ BETA</span>
+    <span class="tag" data-t="tag"></span>
+    <span class="langs" role="group" data-ta="langs" aria-label="Language">
+      <button type="button" data-lang="pt" lang="pt">PT</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="es" lang="es">ES</button>
+    </span>
+  </div>
+</header>
+<main>
+<div class="stage">
   <div class="device" id="device" data-page="-1">
     <div class="zone-left">
       <div class="knobs" id="knobs-left"></div>
@@ -315,25 +307,16 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2F2A24; border-rad
     </div>
     <div class="zone-keys"><div class="keybed"><div class="keys" id="keys"></div></div></div>
   </div>
-
-  <header class="top">
-    <div class="brand">
-      <h1>BAI<span>LE</span></h1>
-      <span class="beta" id="beta-badge">__KAWA_VER__ BETA</span>
-    </div>
-    <div class="tag" data-t="tag"></div>
-    <div class="langs" role="group" data-ta="langs" aria-label="Language">
-      <button type="button" data-lang="pt" lang="pt">PT</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="es" lang="es">ES</button>
-    </div>
-  </header>
-
+</div>
+<div class="sticker" aria-hidden="true"><div><span>TAMBORZÃO</span><i>✺</i><span>VOLT MIX</span><i>✺</i><span>150</span><i>✺</i><span>MANDELÃO</span><i>✺</i><span>BREGA FUNK</span><i>✺</i><span>MONTAGEM</span><i>✺</i><span>TAMBORZÃO</span><i>✺</i><span>VOLT MIX</span><i>✺</i><span>150</span><i>✺</i><span>MANDELÃO</span><i>✺</i><span>BREGA FUNK</span><i>✺</i><span>MONTAGEM</span><i>✺</i></div></div>
+<div class="heads sblock am">
   <p class="note" role="note">
     <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M12 3 2.5 20h19L12 3Z"/><path d="M12 10v4.5"/><path d="M12 17.4v.1"/></svg>
     <span data-t="beta"></span>
   </p>
   <p class="tip-banner"><span data-t="tip"></span></p>
-
-  <section class="panel samples" id="samples" aria-labelledby="smp-h">
+</div>
+  <section class="panel samples sblock tu" id="samples" aria-labelledby="smp-h">
     <h2 id="smp-h" data-t="s.h"></h2>
     <p data-t="s.how"></p>
     <p data-t="s.fm1"></p>
@@ -343,8 +326,7 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2F2A24; border-rad
       <label><span data-t="s.in"></span><select id="midi-in"></select></label>
     </div>
   </section>
-
-  <section class="panel projects" aria-labelledby="prj-h">
+  <section class="panel projects sblock la" aria-labelledby="prj-h">
     <div class="proj">
       <div>
         <h2 id="prj-h" data-t="p.h"></h2>
@@ -357,14 +339,14 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2F2A24; border-rad
       </div>
     </div>
   </section>
-
+<div class="sblock cr">
   <div class="guide">
     <section><h2 data-t="g1"></h2><ul data-t="g1l"></ul></section>
     <section><h2 data-t="g2"></h2><ul data-t="g2l"></ul></section>
     <section><h2 data-t="g3"></h2><ul data-t="g3l"></ul></section>
   </div>
-
-  <section class="donate" aria-labelledby="don-h">
+</div>
+  <section class="donate sblock ve" aria-labelledby="don-h">
     <div>
       <h2 id="don-h" data-t="d.h"></h2>
       <p data-t="d.p"></p>
@@ -375,8 +357,12 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2F2A24; border-rad
       <span data-t="d.btn"></span><span class="vh" data-t="d.new"></span>
     </a>
   </section>
-  <p class="foot" data-t="foot"></p>
-</div>
+</main>
+<footer class="sfoot">
+  <a class="slogo" href="../index.html">BAILE</a>
+  <p data-t="foot"></p>
+  <p><a href="https://github.com/saulofilho/baile-fm1">GitHub</a></p>
+</footer>
 
 <script>
 (() => {
@@ -523,9 +509,10 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2F2A24; border-rad
   /* ---- the page in three languages (the FM-1's screen follows: kawa_lang) */
   const I18N = {
     en: {
+      "h.s": "Play",
       tag: "Funk tracker · firmware for the M-VAVE FM-1 · on KAWA by Omnipotard",
       langs: "Language",
-      beta: "<b>This is a beta.</b> BAILE has not been tested on a real FM-1 yet. Read the safety section of the manual before you install it. The official firmware can always be reinstalled with M-UPGRADE; that is the risky step, so never unplug the FM-1 while it runs.",
+      beta: "<b>This is a beta.</b> BAILE 0.3 was installed on a real FM-1 and its test list is still open. This emulator may be ahead of the release: what is new here has not been tested on an FM-1. Read the safety section of the manual before you install it. The official firmware can always be reinstalled with M-UPGRADE; that is the risky step, so never unplug the FM-1 while it runs.",
       tip: "BAILE is a fork of KAWA, by Omnipotard. If you enjoy it, support the author of KAWA on <a href=\"https://ko-fi.com/omnipotard\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>.",
       screen: "The FM-1's screen",
       power: "The firmware runs here as it is, compiled to WebAssembly. Turn the sound on, power up, then press any key.",
@@ -627,9 +614,10 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2F2A24; border-rad
       foot: "BAILE is free software (GPL-3.0), a fork of KAWA (Omnipotard), built on Dinghy, Felucca and SLOOP, the open platform of the FM-1 community. The breaks are entirely synthesised. The firmware installs on the FM-1 over USB at your own risk: keep the official V15 firmware and M-UPGRADE at hand to go back."
     },
     pt: {
+      "h.s": "Toque o",
       tag: "Tracker de funk · firmware para o M-VAVE FM-1 · sobre o KAWA de Omnipotard",
       langs: "Idioma",
-      beta: "<b>Isto é um beta.</b> O BAILE ainda não foi testado num FM-1 de verdade. Leia a parte de segurança do manual antes de instalar. O firmware oficial sempre pode ser reinstalado com o M-UPGRADE; esse é o passo arriscado, então nunca desconecte o FM-1 enquanto ele roda.",
+      beta: "<b>Isto é um beta.</b> O BAILE 0.3 foi instalado num FM-1 de verdade e o roteiro de testes ainda está aberto. Este emulador pode estar à frente da release: o que é novo aqui não foi testado num FM-1. Leia a parte de segurança do manual antes de instalar. O firmware oficial sempre pode ser reinstalado com o M-UPGRADE; esse é o passo arriscado, então nunca desconecte o FM-1 enquanto ele roda.",
       tip: "O BAILE é um fork do KAWA, de Omnipotard. Se você curtir, apoie o autor do KAWA no <a href=\"https://ko-fi.com/omnipotard\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>.",
       screen: "A tela do FM-1",
       power: "O firmware roda aqui do jeito que é, compilado para WebAssembly. Ligue o som, ligue o aparelho e aperte qualquer tecla.",
@@ -731,9 +719,10 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2F2A24; border-rad
       foot: "O BAILE é software livre (GPL-3.0), um fork do KAWA (Omnipotard), construído sobre Dinghy, Felucca e SLOOP, a plataforma aberta da comunidade FM-1. Os kits e os breaks são todos sintetizados. O firmware se instala no FM-1 pelo USB por sua conta e risco: tenha à mão o firmware oficial V15 e o M-UPGRADE para voltar."
     },
     es: {
+      "h.s": "Toca",
       tag: "Tracker de funk · firmware para el M-VAVE FM-1 · sobre KAWA de Omnipotard",
       langs: "Idioma",
-      beta: "<b>Esto es una beta.</b> BAILE aún no se ha probado en un FM-1 real. Lee la sección de seguridad del manual antes de instalarlo. El firmware oficial siempre se puede reinstalar con M-UPGRADE; es el paso delicado: nunca desconectes el FM-1 mientras se ejecuta.",
+      beta: "<b>Esto es una beta.</b> BAILE 0.3 se instaló en un FM-1 real y su lista de pruebas sigue abierta. Este emulador puede ir por delante de la versión publicada: lo nuevo de aquí no se ha probado en un FM-1. Lee la sección de seguridad del manual antes de instalarlo. El firmware oficial siempre se puede reinstalar con M-UPGRADE; es el paso delicado: nunca desconectes el FM-1 mientras se ejecuta.",
       tip: "BAILE es un fork de KAWA, de Omnipotard. Si te gusta, apoya al autor de KAWA en <a href=\"https://ko-fi.com/omnipotard\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>.",
       screen: "La pantalla del FM-1",
       power: "El firmware funciona aquí tal cual, compilado a WebAssembly. Sube el sonido, enciende y luego pulsa una tecla.",
@@ -1504,6 +1493,15 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2F2A24; border-rad
     document.querySelectorAll("[data-t]").forEach((el) => { el.innerHTML = T(el.dataset.t); });
     document.querySelectorAll("[data-ta]").forEach((el) => el.setAttribute("aria-label", T(el.dataset.ta)));
     document.querySelectorAll(".langs button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.lang === l ? "true" : "false"));
+    document.querySelectorAll(".slangs a").forEach((a) => { if (a.dataset.langLink === l) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); });
+    {                                           /* the bar and the foot in the page's language (Spanish has the English site) */
+      const en = l !== "pt", W = en ? ["Install", "Manual", "Emulator", "Samples"] : ["Instalar", "Manual", "Emulador", "Samples"];
+      const U = en ? ["../en/index.html#install", "../manual/en.html", "../emulator/index.html#" + l, "../samples.en.html"] : ["../index.html#install", "../manual/index.html", "../emulator/index.html", "../samples.html"];
+      const set = (a, k) => { a.textContent = W[k]; a.setAttribute("href", U[k]); };
+      document.querySelectorAll(".sbar nav > a").forEach(set);
+      document.querySelectorAll(".smnav a").forEach((a, i) => set(a, [0, 2, 1, 3][i]));
+      document.querySelectorAll("a.slogo").forEach((a) => a.setAttribute("href", en ? "../en/index.html" : "../index.html"));
+    }
     ["MASTER", "SELECT", "PRESETS", "ALGORITHM"].forEach((e) => {
       knobEls[e].title = T("tt." + e);
       if (e !== "MASTER") knobEls[e].setAttribute("aria-valuetext", T(FN_KEY[e]));

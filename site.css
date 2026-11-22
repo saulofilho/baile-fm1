@@ -11,7 +11,7 @@
 .sbar nav.r{justify-content:flex-end}
 .sbar a{font:900 15px/1 var(--heavy);text-transform:uppercase;text-decoration:none;color:var(--preto);letter-spacing:.02em}
 .sbar a:hover,.sbar a:focus-visible{color:var(--vermelho)}
-.sbar a[aria-current="page"]:not(.slangs a){color:var(--vermelho)}
+.sbar a[aria-current="page"]:not(.slangs a){color:var(--preto);text-decoration:underline;text-decoration-color:var(--vermelho);text-decoration-thickness:4px;text-underline-offset:6px}
 .sbar .slogo{font:900 40px/1 var(--heavy);letter-spacing:-.02em;color:var(--vermelho);display:inline-flex;align-items:center;gap:10px;
   -webkit-text-stroke:2px var(--preto);paint-order:stroke fill;text-shadow:3px 3px 0 var(--preto),5px 5px 0 var(--preto)}
 .sbar .slogo img{width:36px;height:36px;transform:rotate(-8deg)}
@@ -28,3 +28,26 @@
   .sbar .slogo{font-size:28px}.sbar .slogo img{width:26px;height:26px}
   .smnav{display:flex}
 }
+
+/* ---- what the tool pages (the emulator, the sample importer) share with the hub's look: the red hero in giant
+   type, the ticker, layered titles, flat blocks, the black foot */
+.shero{background:var(--vermelho);color:var(--amarelo);text-align:center;padding:36px 20px;border-bottom:4px solid var(--preto);margin:0}
+.shero h1{font:900 clamp(50px,11vw,144px)/.85 var(--heavy);letter-spacing:-.04em;margin:0;text-transform:uppercase;color:var(--amarelo)}
+.shero p{max-width:720px;margin:18px auto 0;color:var(--creme);font-size:19px;font-weight:700;line-height:1.45}
+.sticker{background:var(--preto);color:var(--amarelo);border-block:4px solid var(--preto);overflow:hidden;white-space:nowrap;margin:0}
+.sticker div{display:inline-block;padding:12px 0;font:900 20px/1 var(--heavy);text-transform:uppercase;animation:srun 32s linear infinite}
+.sticker span,.sticker i{margin:0 16px;font-style:normal}
+@keyframes srun{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.sticker div{animation:none}}
+.sblock{margin:0;padding:56px max(16px,calc((100% - 1040px)/2));border-top:4px solid var(--preto);color:var(--preto)}
+.sblock.am{background:var(--amarelo)}.sblock.tu{background:var(--turquesa)}.sblock.la{background:var(--laranja)}
+.sblock.ve{background:var(--verde)}.sblock.cr{background:var(--creme)}
+.sblock h2{font:900 clamp(32px,6vw,68px)/.95 var(--heavy);letter-spacing:-.03em;text-transform:uppercase;margin:0 0 22px;color:var(--amarelo);
+  -webkit-text-stroke:2px var(--preto);paint-order:stroke fill;overflow-wrap:break-word;
+  text-shadow:1px 1px 0 var(--vermelho),2px 2px 0 var(--vermelho),3px 3px 0 var(--vermelho),4px 4px 0 var(--vermelho),5px 5px 0 var(--vermelho),6px 6px 0 var(--vermelho),7px 7px 0 var(--preto)}
+.sblock.tu h2{color:var(--creme);text-shadow:1px 1px 0 var(--azul),2px 2px 0 var(--azul),3px 3px 0 var(--azul),4px 4px 0 var(--azul),5px 5px 0 var(--azul),6px 6px 0 var(--azul),7px 7px 0 var(--preto)}
+.sfoot{background:var(--preto);color:var(--cinza);margin:0;padding:52px 20px 40px;text-align:center;font-size:14px}
+.sfoot .slogo{display:inline-block;font:900 56px/1 var(--heavy);color:var(--amarelo);text-decoration:none;margin-bottom:14px;
+  -webkit-text-stroke:2px var(--preto);paint-order:stroke fill;text-shadow:3px 3px 0 var(--vermelho),6px 6px 0 var(--vermelho)}
+.sfoot p{max-width:760px;margin:8px auto 0}
+.sfoot p a{color:var(--amarelo)}

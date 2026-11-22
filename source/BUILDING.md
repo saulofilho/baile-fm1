@@ -20,6 +20,8 @@ page are KAWA's). To put BAILE on an FM-1, see the README: the ready package is 
   Then `node tests/emulator_test.js`: saving, export and import, the sample magic, the version.
 - `tests/run_duck_test.sh`: DUCK measured, and a project saved by 0.3 itself (`tests/fixtures/volt-0.3.baile`).
 - `tests/run_bass_test.sh`: GRAVE+ measured (harmonics over 200 Hz, peak, DC, stereo, no click).
+- After changing `site.css`, `samples.html` or a bar: `python3 tools/gen_site.py` (it stamps `site.css?v=` and makes
+  the English importer), then `web/make_emulator.sh`.
 - Tests of BAILE's own: `tests/demo_baile.txt` (the demo, played), `tests/manual_pt.txt` (the manual's screens),
   `features_test` 10 and 11 (the magic tools of funk, the four demos).
 

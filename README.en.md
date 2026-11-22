@@ -101,8 +101,8 @@ An unofficial firmware, not made or endorsed by M-VAVE. Install it at your own r
 
 ## Next version (0.4)
 
-**Not released yet, and not tested on an FM-1:** it is in the source of the `som-808` branch. The installer and the
-release stay at 0.3. Each improvement is listed here as it is made.
+**Not released yet, and not tested on an FM-1:** it is in the source. The installer and the release stay at 0.3. Each
+improvement is listed here as it is made. What comes after is in the [roadmap](PLAN.md#roteiro) (in Portuguese).
 
 ### A BASS+ you hear on a phone
 
@@ -136,6 +136,25 @@ Any track can **step back when the kick hits**, so the 808 stops fighting it.
 - Down in 3 ms, held 25 ms, back over about 90 ms. A soft hit steps back less.
 - The value is saved with the project. **0.3's songs open with DUCK 0**, and at 0 DUCK changes not one sample. 0.3
   also opens projects saved with DUCK, it just does not apply it.
+
+### Site: the emulator and the importer in the new design
+
+The [emulator](https://saulofilho.github.io/baile-fm1/emulator/#en) and the
+[sample importer](https://saulofilho.github.io/baile-fm1/samples.en.html) get the site's look: giant title, ticker,
+colour blocks and foot.
+
+- In the emulator the FM-1 stays dark, as the real one, and the bar follows the language you pick.
+- The emulator's notice now says what was installed on an FM-1 and that it may be ahead of the release.
+- In the English importer the waveform is back in BAILE's colours. The slot picker is back to a normal size.
+
+### What comes next
+
+| Version | What |
+| --- | --- |
+| 0.4 | Mono bass is still to do |
+| 0.5 | Montagem by phrase, THROW and DROP live, a LIVE mode to launch patterns |
+| 0.6 | A synthetic formant voice |
+| 1.0 | Everything tested on the FM-1 and listed on the Hub |
 
 ## Features
 

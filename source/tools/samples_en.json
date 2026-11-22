@@ -312,18 +312,6 @@
 "    if (!text && it.state === \"ready\" && it.slot >= 0 && known(it.slot) && known(it.slot).used) { text = \"Replaces \" + known(it.slot).name + \" in \" + slotLabel(it.slot) + \".\"; cls = \"keep\"; }"
 ],
 [
-"    g.fillStyle = \"#0D0B09\"; g.fillRect(0, 0, w, h);",
-"    g.fillStyle = \"#0e0820\"; g.fillRect(0, 0, w, h);"
-],
-[
-"    g.strokeStyle = cssVar(\"--rule\") || \"#3A332B\"; g.lineWidth = 2;",
-"    g.strokeStyle = cssVar(\"--rule\") || \"#3b2e69\"; g.lineWidth = 2;"
-],
-[
-"    g.fillStyle = cssVar(\"--pink\") || \"#FFCF1F\";",
-"    g.fillStyle = cssVar(\"--pink\") || \"#ff5fb4\";"
-],
-[
 "        it.msg = \"Este navegador não conseguiu tocar a prévia.\";",
 "        it.msg = \"This browser could not play the preview.\";"
 ],
