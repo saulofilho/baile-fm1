@@ -32,7 +32,63 @@ static uint32_t lfx_prev;
 static uint8_t lpf_note = 127, hpf_note = 0;    /* the sweeps, MIDI note of the cutoff (the FX page draws them) */
 static int32_t svf_lp[2], svf_bp[2];
 static uint32_t lfo_ph, sir_ph, sir_lfo;
-static int32_t bass_lo[2];                    /* GRAVE+: the lows, a pole at ~120 Hz */
+/* GRAVE+ (BAILE): a small speaker plays nothing of an 808's fundamental, the ear rebuilds it from its harmonics.
+ * The lows (~120 Hz, a pole; another, higher, for the shaper) go into a cubic knee driven by their own level, so a soft note
+ * gets the same harmonics as a loud one; two poles at 330 Hz take the fundamental and any DC back out, one at 2.5 kHz
+ * the fizz; only that is added, with a little of the lows. The headroom is 0.3's (tests/bass_test.c).
+ * The idea after K-WASUB's SUB HARMONICS (Omnipotard); the code is BAILE's. */
+#define GV_LO 560                               /* Q15 ~120 Hz */
+#define GV_LO2 2200                             /* Q15: open, the knee and the harmonics stay in step */
+#define GV_HP 1541                              /* Q15 330 Hz */
+#define GV_LP 1459                              /* Q12 2.5 kHz */
+#define GV_BOOST 19661                          /* Q15 0.6 of the lows */
+#define GV_HARM 1950                            /* Q10: the harmonics */
+#define GV_DRIVE (57344 << 10)                  /* 3.5 full scales into the knee, whatever the level */
+#define GV_FLOOR 64
+#define GV_RAMP 256                             /* frames in, and out (5.8 ms): no click */
+typedef struct {
+    int32_t lo, lo2, h1, h2, hl;                /* the poles */
+    int32_t env, env0, g;                       /* the lows' level (this chunk's, the last one's), its drive */
+    int32_t pk;
+} grave_t;
+static grave_t grave[2];
+static int32_t grave_w;                         /* 0 dry .. GV_RAMP */
+
+static void grave_chunk(grave_t *g)             /* once a chunk: the level, and one division */
+{
+    int32_t e = g->env - (g->env >> 7);         /* (down in ~50 ms: steady through a cycle of 40 Hz) */
+    if (g->pk > e) e = g->pk;
+    if (e < GV_FLOOR) e = GV_FLOOR;
+    g->env0 = g->env < GV_FLOOR ? GV_FLOOR : g->env;
+    g->env = e;
+    g->g = GV_DRIVE / e;
+    g->pk = 0;
+}
+
+static int32_t grave_one(grave_t *g, int32_t x, uint32_t i)     /* x within two full scales */
+{
+    int32_t u, u3, y, a, env = g->env0 + (g->env - g->env0) * (int32_t)(i + 1u) / (int32_t)CHUNK;
+    g->lo += ((x - g->lo) * GV_LO) >> 15;
+    g->lo2 += ((g->lo - g->lo2) * GV_LO2) >> 15;
+    a = g->lo2 < 0 ? -g->lo2 : g->lo2;
+    if (a > g->pk) g->pk = a;
+    u = (int32_t)clampi((int32_t)(((int64_t)g->lo2 * g->g) >> 10), -16384, 16384);
+    u3 = (((u * u) >> 14) * u) >> 14;
+    y = (((3 * u - u3) >> 1) * env) >> 14;      /* the knee, at the lows' own level */
+    g->h1 += ((y - g->h1) * GV_HP) >> 15;
+    a = y - g->h1;
+    g->h2 += ((a - g->h2) * GV_HP) >> 15;
+    a -= g->h2;
+    g->hl += ((a - g->hl) * GV_LP) >> 12;
+    return sat(x + ((g->lo * GV_BOOST) >> 15) + ((g->hl * GV_HARM) >> 10));
+}
+
+static void grave_reset(void)
+{
+    static const grave_t none;
+    grave[0] = grave[1] = none;
+    grave_w = 0;
+}
 static int32_t hold_l, hold_r, gate_g = 32767;
 static uint32_t hold_n;
 static uint8_t lv_target;                       /* the bus the live effects play on now: 0 the mix, 1..8 a track */
@@ -98,6 +154,7 @@ static void fx_block(uint32_t on)
         bf.act = 0;
         bf.mix = bf.mix_to = 0;
         svf_lp[0] = svf_lp[1] = svf_bp[0] = svf_bp[1] = 0;
+        grave_reset();
     }
     lfx_on = on;
     lv_mask = (uint8_t)(lv_target ? 1u << (lv_target - 1u) : 0xFFu);
@@ -236,6 +293,10 @@ static void fx_live(int32_t *L, int32_t *R, int32_t *E)
     else if (hpf_note) { mode = 2; f = SVF_F[hpf_note + 20u]; q = 12000; }
     else if (on >> LF_WOB & 1u) { mode = 1; f = SVF_F[64 + (sine(lfo_ph) * 28 >> 15)]; q = 7000; }
     kg_begin(kg_want_blk, kg_sint_blk, afr);
+    if (grave_w || (on >> LF_BASS & 1u)) {
+        grave_chunk(&grave[0]);
+        grave_chunk(&grave[1]);
+    }
     for (i = 0; i < CHUNK; i++) {
         int32_t l = clampi(L[i], -65535, 65535), r = clampi(R[i], -65535, 65535);   /* (two full scales: the
                                                  * products below stay inside 32 bits) */
@@ -280,13 +341,14 @@ static void fx_live(int32_t *L, int32_t *R, int32_t *E)
             r = clampi(r, -65535, 65535);
         } else
             svf_lp[0] = svf_lp[1] = svf_bp[0] = svf_bp[1] = 0;
-        if (on >> LF_BASS & 1u) {              /* GRAVE+ (BAILE): the lows twice as loud, then the soft knee */
-            bass_lo[0] += ((l - bass_lo[0]) * 560) >> 15;
-            bass_lo[1] += ((r - bass_lo[1]) * 560) >> 15;
-            l = sat(l + bass_lo[0]);
-            r = sat(r + bass_lo[1]);
-        } else
-            bass_lo[0] = bass_lo[1] = 0;
+        if (grave_w || (on >> LF_BASS & 1u)) {  /* GRAVE+: faded in and out, it runs until it is out */
+            int32_t wl = grave_one(&grave[0], clampi(l, -65535, 65535), i), wr = grave_one(&grave[1], clampi(r, -65535, 65535), i);
+            if (on >> LF_BASS & 1u) { if (grave_w < GV_RAMP) grave_w++; }
+            else grave_w--;
+            l += ((wl - l) * grave_w) >> 8;
+            r += ((wr - r) * grave_w) >> 8;
+            if (!grave_w) grave_reset();
+        }
         if (on & ((1u << LF_GATE16) | (1u << LF_GATE32))) {
             uint32_t g = on >> LF_GATE16 & 1u ? g_rowlen : g_rowlen / 2u, ph = since_grid(g);
             int32_t tgt = ph < (g * 3u) / 5u ? 32767 : 0;

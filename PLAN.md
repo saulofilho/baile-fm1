@@ -195,6 +195,10 @@ Ordem pedida pelo autor em 2026-11-21, referências em `docs/REFERENCES.md`. Nad
 Cada item: teste no simulador, stress sem estouro, CPU medida e audição no FM-1.
 
 - [ ] **1. Harmônicos do 808** para alto-falante pequeno (GRAVE+). Pronto: sobe a energia de 120–500 Hz sem subir o pico.
+      *Feito no branch `som-808`, falta ouvir e medir a CPU no FM-1.* Contra a 0.3, com o efeito ligado: nas 4 demos
+      +1,0 a +1,5 dB em 120–500 Hz e pico igual; no 808 sozinho +5 a +19 dB em 200–1000 Hz, mas **pico +1,0 dB** (longe
+      do clip: 9872 de 32767) e **fundamental ~2 dB menor**. Custo no computador: +18% do motor enquanto segurado.
+      O estalo ao apertar e soltar (defeito da 0.3) saiu. Músicas com GRAVE+ gravado (a demo MANDELAO) mudam de som.
 - [ ] **2. Ducking:** o bumbo abaixa o baixo. Pronto: ajuste por projeto, projetos da 0.3 ainda abrem.
 - [ ] **3. Grave em mono.** Pronto: abaixo de ~120 Hz esquerda = direita, os agudos continuam abertos.
 - [ ] **4. Montagem por frase, THROW e DROP ao vivo.** Os 64 efeitos estão ocupados: decidir o que sai ou onde entram.
