@@ -42,9 +42,15 @@ formulário substitui o rascunho de e-mail que ficava aqui. Quem preenche e envi
 
 **Which device?**, **VIBE features**, **VIBE Box Challenge:** em branco.
 
-**How you tested it** (até 600; só depois dos testes acima, tirando o que não tiver sido feito)
+**How you tested it** (até 600)
 
-    On a real FM-1, with this release: installed from the official V15 and from GR!MM, left to V15 with M-UPGRADE and installed BAILE again. Installed another community firmware from BAILE too. Checked the identity over USB, the demos, the kits, the live effects, saving through a power cycle and the USB rescue.
+O que está registrado hoje (a caixa de testado fica desmarcada):
+
+    So far, on a real FM-1: BAILE 0.1 installed from another community firmware (FM-1_966), then 0.2 installed over it, both with the project's installer, the identity FM-1_971 checked over USB each time.
+
+Depois dos testes da lista acima, preencher as lacunas e apagar o que não tiver sido feito:
+
+    On a real FM-1, with BAILE [version]: installed from the official V15 and from [firmware], left to [firmware] and installed BAILE again. Identity checked over USB. Also checked: [only what you checked].
 
 **Anything Sven should know** (até 2000)
 
