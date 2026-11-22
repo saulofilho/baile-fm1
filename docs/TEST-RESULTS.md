@@ -34,3 +34,6 @@ relato item por item; a coluna da direita é para o autor preencher.
 - Em OPCOES, o português se chama "FRANCAIS".
 - Textos errados em português: "FINO" no lugar de "FIM", "SEGURO" no lugar de "SEGURE", "LONGO" no lugar de "TAM"
   (o comprimento), "PULSO" para a onda quadrada do LFO.
+- A linha de baixo corta valores de 3 caracteres: BPM 130 aparece "13" e NAO aparece "NA".
+- No tema CLARO muitos textos coloridos ficam ilegíveis.
+- Em inglês e espanhol os bancos de efeitos ainda têm os nomes do KAWA (POCKET, WRECK, BOLSA, ROTO).

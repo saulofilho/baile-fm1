@@ -17,7 +17,7 @@
  * the cell, OCT-/OCT+ the keyboard's octave. */
 
 static const char *const PAGE_NAMES[LANG_N][PG_N] = {
-    {"FAIXAS", "GRADE", "SOM", "ENVELOPE", "MIX", "MAGIA", "ESCALA", "MUSICA", "PROJETOS", "OPCOES", "EFEITOS", "AJUDA", "",
+    {"FAIXAS", "GRADE", "SOM", "ENVELOPE", "MIX", "MAGICA", "ESCALA", "MUSICA", "PROJETOS", "OPCOES", "EFEITOS", "AJUDA", "",
      "GROOVE", "ENVIOS", "FILTRO", "SEQ FX"},
     {"TRACKS", "GRID", "SOUND", "ENVELOPE", "MIX", "MAGIC", "SCALE", "SONG", "PROJECTS", "OPTIONS", "EFFECTS", "HELP", "",
      "GROOVE", "SENDS", "FILTER", "FX SEQ"},
@@ -429,7 +429,7 @@ static void hint(uint32_t k, const char *name, const char *label, const char *va
         x = g_text(x, 226, label, hot ? C_WHITE : c, T_CROP) + 2;
     if (val) {                                  /* (cut to its tile: the next one, or BETA, stays clear) */
         char v[12];
-        int32_t room = ((int32_t)k + 1) * HINT_W - 2 - x;
+        int32_t room = ((int32_t)k + 1) * HINT_W - 1 - x;     /* (up to the rule: BPM 130 keeps its 0) */
         uint32_t n = room > 0 ? (uint32_t)room / 8u : 0u;
         for (i = 0; i < n && i < 11u && val[i]; i++) v[i] = val[i];
         v[i] = 0;
@@ -453,6 +453,10 @@ static void card(uint32_t i, int32_t x, int32_t y, int32_t h, const char *name, 
 {
     uint16_t c = KNOB_COL[i];
     uint32_t j, n, hot = fm1_ms - knob_ms[i] < 700u;
+    char v[8];                                  /* (seven characters are the card's width) */
+    for (j = 0; j < 7u && val && val[j]; j++) v[j] = val[j];
+    v[j] = 0;
+    val = v;
     if (!g_vis(y, h)) return;
     g_rrect(x, y, 58, h, hot ? g_mix(C_BG2, c, 70) : C_BG2);
     g_rect(x + 1, y, 56, 3, c);
@@ -1781,7 +1785,7 @@ static void draw_song(void)
  * it there again, SAVE AS picks a slot and a name; slot 0 is the autosave */
 enum { PM_NEW, PM_SAVE, PM_SAVEAS, PM_LOAD, PM_RENAME, PM_DEMO, PM_N };
 static const char *const PM_NAMES[LANG_N][PM_N] = {
-    {"NOVA MUSICA", "SALVAR", "SALVAR COMO...", "CARREGA...", "RENOMEAR...", "DEMO"},
+    {"NOVA MUSICA", "SALVAR", "SALVAR COMO...", "CARREGAR...", "RENOMEAR...", "DEMO"},
     {"NEW SONG", "SAVE", "SAVE AS...", "LOAD...", "RENAME...", "DEMO"},
     {"NUEVA CANCION", "GUARDAR", "GUARDAR COMO...", "CARGAR...", "RENOMBRAR...", "DEMO"}};
 static const uint8_t PM_ICON[PM_N] = {ICO_NOTE, ICO_DOWN, ICO_COPY, ICO_UP, ICO_SHAPE, ICO_PLAY};
@@ -2006,7 +2010,7 @@ static void draw_opt(void)
         s[0] = 0;
         g_text(8, 151, TR("METRONOMO", "METRONOME", "METRONOMO"), C_MID, T_CROP | T_BOLD);
         g_text(86, 151, "ALGO", C_FAINT, T_CROP);
-        g_text(124, 151, TR("VOLUME", "VOLUME", "VOLUMEN"), C_MID, T_CROP | T_BOLD);
+        g_text(124, 151, TR("VOLUME", "VOLUME", "VOL."), C_MID, T_CROP | T_BOLD);
         g_text(180, 151, "PRESETS", C_FAINT, T_CROP);
         for (k = 0; k < 3u; k++) {
             int32_t x = 6 + (int32_t)k * 38, y = 164;
@@ -2025,7 +2029,8 @@ static void draw_opt(void)
         if (clk_in && clk_in_tick) { str_cat(c, " "); fmt_u(c + str_len(c), bpm_now(), 0); }
         g_text_c(120, 184, c, set.clock ? KNOB_COL[2] : C_FAINT, T_CROP);
     }
-    g_text_c(120, 197, "BAILE " APP_VER " - KAWA by Omnipotard", C_MID, T_CROP);
+    g_text_c(120, 197, sizeof(APP_VER) > 4u ? APP_VER " - KAWA by Omnipotard" : "BAILE " APP_VER " - KAWA by Omnipotard",
+             C_MID, T_CROP);                        /* (30 characters a line: X.Y with the name, a longer version without) */
     {                                           /* the audio interrupt's load (for the beta's testers) */
         char c[32];
         c[0] = 0;
@@ -2049,8 +2054,8 @@ static const help_t HELP[LANG_N][PG_HELP] = {
      {{"PROXIMA PAG.", "FAIXA", "FABRICA / CURSOR"}, {"EDITADO: PRESETS E OCT+", "ARP+PRESETS: O MOTOR", "DESFAZER: SAVE+OCT- VOLTA"}},
      {{"ENV / MIX", "FAIXA", "-"}, {"ENV DE NOVO: O MIX", "TECLAS: OUVIR"}},
      {{"ENV / MIX", "FAIXA/MASTER", "-"}, {"PRETAS: MUDO  ARP+PRETA: SOLO", "DEPOIS DA 6: O MASTER"}},
-     {{"-", "FAIXA", "PADRAO"}, {"BRANCA: UMA FERRAMENTA", "SCL: ESCALA, E MAGIA", "SEGURE SAVE: FERRAMENTAS"}},
-     {{"-", "FAIXA", "PADRAO"}, {"UMA TECLA: A TONICA", "TRAVA: NOTAS DA ESCALA", "SCL DE NOVO: MAGIA"}},
+     {{"-", "FAIXA", "PADRAO"}, {"BRANCA: UMA FERRAMENTA", "SCL: ESCALA, E MAGICA", "SEGURE SAVE: FERRAMENTAS"}},
+     {{"-", "FAIXA", "PADRAO"}, {"UMA TECLA: A TONICA", "TRAVA: NOTAS DA ESCALA", "SCL DE NOVO: MAGICA"}},
      {{"GROOVE, OPCOES", "ENTRADA", "SEU PADRAO"}, {"BRANCA: PADRAO  K3: VEZES", "OCT+ POE  OCT- TIRA", "GLO: GROOVE, OPCOES"}},
      {{"ESCOLHA", "-", "-"}, {"OCT+: OK   OCT-: VOLTA", "SAVE E OCT+: SALVAR RAPIDO"}},
      {{"MUSICA / GROOVE", "METRONOMO", "VOL. CLIQUE"}, {"K1-K4: TEMA IDIOMA RELOG FONTE", "TUDO FICA GUARDADO", "GLO: VOLTA PARA A MUSICA"}},
@@ -2094,7 +2099,7 @@ static const help_t HELP_GROOVE[LANG_N] = {   /* GROOVE, and two pages of SOUND 
     {{"SONG / OPTIONS", "GROOVE STEP", "-"}, {"WHITE KEY: A STEP K1: TICKS", "6 TICKS: A STRAIGHT ROW", "GLO: THE OPTIONS"}},
     {{"CANCION / OPCIONES", "PASO DEL GROOVE", "-"}, {"BLANCA: UN PASO  K1: TICKS", "6 TICKS: UNA FILA RECTA", "GLO: LAS OPCIONES"}}};
 static const help_t HELP_TABLE[LANG_N] = {
-    {{"PROXIMA PAG.", "FAIXA", "LINHA TABEL"}, {"LINHA 0: VELOC TAMANHO LOOP", "K4 NA LINHA 0: LIGA", "ARP: APAGA O PASSO"}},
+    {{"PROXIMA PAG.", "FAIXA", "LINHA TAB."}, {"LINHA 0: VELOC TAMANHO LOOP", "K4 NA LINHA 0: LIGA", "ARP: APAGA O PASSO"}},
     {{"NEXT PAGE", "TRACK", "TABLE ROW"}, {"ROW 0: SPEED LENGTH LOOP", "K4 ON ROW 0: ON / OFF", "ARP: CLEARS THE STEP"}},
     {{"PAG. SIGUIENTE", "PISTA", "FILA TABLA"}, {"FILA 0: VELOC LARGO BUCLE", "K4 EN LA FILA 0: ACTIVA", "ARP: BORRA EL PASO"}}};
 static const help_t HELP_SMP[LANG_N] = {

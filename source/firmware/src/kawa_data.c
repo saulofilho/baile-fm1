@@ -38,6 +38,7 @@ static const theme_t THEMES[3] = {
      {RGB(255, 40, 40), RGB(255, 120, 30), RGB(255, 215, 40), RGB(110, 220, 70), RGB(30, 210, 215), RGB(80, 140, 255)}},
 };
 #define NTHEME 3u
+#define THEME_LIGHT 1u                          /* CLARO (kawa_gfx.c: g_readable) */
 static uint8_t theme;
 static uint16_t C_BG, C_BG2, C_BEAT, C_RULE, C_FAINT, C_MID, C_TXT, C_GOLD, C_REC, C_GO, C_INK;
 static uint16_t TRK_COL[NTRK];

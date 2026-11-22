@@ -5,7 +5,7 @@
 <p align="center">
   <img src="docs/screens/en/boot.png" width="220" height="220" alt="Boot: the mosaic">
   <img src="docs/screens/en/tracks.png" width="220" height="220" alt="TRACKS: the song runs down the screen">
-  <img src="docs/screens/en/live-baile.png" width="220" height="220" alt="POCKET bank">
+  <img src="docs/screens/en/live-baile.png" width="220" height="220" alt="BAILE bank">
 </p>
 
 **BAILE** is a free firmware for the **M-VAVE FM-1**, made for **Brazilian funk**: tamborzão, Volt Mix, funk 150,
@@ -61,8 +61,8 @@ Screens of the 0.3 firmware (not released yet), taken in the simulator with the 
 
 <table>
   <tr>
-    <td align="center"><img src="docs/screens/en/live-baile.png" width="240" height="240" alt="POCKET bank"><br>POCKET bank</td>
-    <td align="center"><img src="docs/screens/en/live-paredao.png" width="240" height="240" alt="WRECK bank"><br>WRECK bank</td>
+    <td align="center"><img src="docs/screens/en/live-baile.png" width="240" height="240" alt="BAILE bank"><br>BAILE bank</td>
+    <td align="center"><img src="docs/screens/en/live-paredao.png" width="240" height="240" alt="PAREDAO bank"><br>PAREDAO bank</td>
     <td align="center"><img src="docs/screens/en/playing.png" width="240" height="240" alt="Playing"><br>Playing</td>
   </tr>
 </table>
@@ -164,7 +164,7 @@ and open hat.
 
 ### 64 live effects
 
-Hold **FX** and play the white keys. There are four banks (OCT− and OCT+): two of baile effects, and K-GLITCH's
+Hold **FX** and play the white keys. There are four banks (OCT− and OCT+): **BAILE** and **PAREDAO**, and K-GLITCH's
 **DESTROY** and **BEAT**. Stutter, scratch, buildup, gate, reverse, tape stop, bass+, echo, siren and many more, on
 the master or on one track. With REC, the effect is recorded into the pattern.
 

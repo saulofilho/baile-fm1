@@ -106,6 +106,27 @@ static void g_font_set(uint32_t k)
     g_fl = FONTS_L[g_font];
 }
 
+/* the light theme (CLARO): a colour made for the dark ones is darkened toward the ink where it would vanish on the
+ * paper (or on a pale tile): its hue stays. Read from the pixel under the text, before the text is drawn. */
+static int32_t g_luma(uint16_t c)               /* 0..63 */
+{
+    return (int32_t)((2u * ((c >> 10) & 62u) + 5u * ((c >> 5) & 63u) + ((c << 1) & 62u)) >> 3);
+}
+static uint16_t g_readable(int32_t x, int32_t y, uint16_t c)
+{
+    int32_t py = y - g_y0, lb, over;
+    if (theme != THEME_LIGHT) return c;
+    if (py < 0) py = 0;
+    if (py >= (int32_t)BAND_H) py = (int32_t)BAND_H - 1;
+    if (x < 0) x = 0;
+    if (x > 239) x = 239;
+    lb = g_luma(g_buf[(uint32_t)py * 240u + (uint32_t)x]);
+    over = g_luma(c) - (lb - 24);
+    if (lb > 24 && lb <= 38 && g_luma(c) > lb - 14 && g_luma(c) < lb + 14) return C_INK;   /* (the same grey on a lit tile) */
+    if (lb <= 38 || over <= 0) return c;        /* a dark ground, or dark enough already */
+    return g_mix(c, C_INK, (uint32_t)(over > 32 ? 206 : 110 + 3 * over));
+}
+
 /* text in the small font (8 x 16): T_CROP draws rows 2..13 only (12 px: capitals, digits), T_BOLD doubles the
  * strokes; the glyph's grey levels blend into what is under it. Returns the x after the text. */
 enum { T_CROP = 1, T_BOLD = 2 };
@@ -117,6 +138,7 @@ static int32_t g_text(int32_t x, int32_t y, const char *s, uint16_t c, uint32_t 
         while (*s) { x += 8; s++; }
         return x;
     }
+    if (*s) c = g_readable(x, y + 6, c);
     for (; *s; s++) {
         uint32_t gi = glyph(f, (uint8_t)*s), w = f->bw[gi], bpr = (w + 1u) / 2u, gx;
         const uint8_t *gd = f->data + f->off[gi];
@@ -157,6 +179,7 @@ static int32_t g_text_l(int32_t x, int32_t y, const char *s, uint16_t c)
         while (*s) { x += 16; s++; }
         return x;
     }
+    if (*s) c = g_readable(x, y + 12, c);
     for (; *s; s++) {
         uint32_t gi = glyph(f, (uint8_t)*s), w = f->bw[gi], bpr = (w + 1u) / 2u, gx, gy;
         const uint8_t *gd = f->data + f->off[gi];

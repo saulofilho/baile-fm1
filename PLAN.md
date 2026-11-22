@@ -163,6 +163,11 @@ Opcional, depois da 1.0: vocais sintéticos por formantes; modo LIVE do KAWA (la
   FRANCAIS, e cinco traduções saíram erradas. **`i18n_slots.py`:** o `apply` quebrava e não lia o `kawa_kg.c`; a chave
   de cada texto agora é arquivo + EN + ES + ordem. **Manual:** a DEMO pede um OCT+, não dois. Teste novo:
   `source/tests/emulator_test.js`. O pacote em `install/` continua a 0.2, com esses defeitos de texto.
+- **2026-11-21, telas da 0.3 (antes de instalar):** medidas no simulador em todas as páginas, 3 idiomas e 3 temas. A
+  linha de baixo cortava valores de 3 caracteres (BPM 130 aparecia 13, NAO aparecia NA). Nomes: bancos BAILE e PAREDAO
+  nos três idiomas, MAGICA, DOBRA, DESCE, BATIDAS, POUCO, 1 PASSO, RETRIG. No tema CLARO o texto sem contraste escurece
+  sozinho (`g_readable`, `kawa_gfx.c`). Ficam: valores de 7 letras cortados na linha de baixo (o nome inteiro está na
+  página) e ícones e faders pálidos no CLARO. Candidato novo em `source/build/baile-0.3.fwsc`, sem teste no aparelho.
 
 ## TODO
 
