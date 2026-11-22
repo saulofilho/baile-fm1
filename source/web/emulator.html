@@ -1121,7 +1121,7 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2F2A24; border-rad
 
   /* ---- the saved projects: the four slots of the store, kept in localStorage (each slot without its
      trailing zeros), exported and imported as the raw bytes (.baile) */
-  const hasProject = (u8) => { for (let o = 0; o + 4 <= u8.length; o += SLOT) if (u8[o] === 0x4B && u8[o + 1] === 0x41 && u8[o + 2] === 0x57 && u8[o + 3] === 0x41) return true; return false; };
+  const hasProject = (u8) => { for (let o = 0; o + 4 <= u8.length; o += SLOT) if (u8[o] === 0x42 && u8[o + 1] === 0x50 && u8[o + 2] === 0x52 && u8[o + 3] === 0x4A) return true; return false; };
   function saveStore(u8) {
     const parts = [];
     for (let o = 0; o < u8.length; o += SLOT) {
@@ -1405,7 +1405,7 @@ kbd { font-family: var(--mono); font-size: 12px; background: #2F2A24; border-rad
   }
   function sampleHeader(data, rate, name) {          /* usr_hdr_t: magic, len, rate, name[12], crc, rsv[2] (36 B, LE) */
     const h = new Uint8Array(36), dv = new DataView(h.buffer);
-    dv.setUint32(0, 0x504D534B, true);
+    dv.setUint32(0, 0x504D5342, true);          /* "BSMP": USR_MAGIC in kawa_core.c */
     dv.setUint32(4, data.length, true);
     dv.setUint32(8, rate, true);
     for (let i = 0; i < 11 && i < name.length; i++) h[12 + i] = name.charCodeAt(i) & 0x7F;

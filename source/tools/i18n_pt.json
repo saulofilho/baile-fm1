@@ -1,4750 +1,804 @@
-{
- "FR": {
-  "en": "EN",
-  "es": "ES",
-  "pt": "PT",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "CARRE": {
-  "en": "PULSE",
-  "es": "PULSO",
-  "pt": "PULSO",
-  "n": 2,
-  "kinds": [
-   "table",
-   "list:L_LFOW"
-  ]
- },
- "ONDE": {
-  "en": "WAVE",
-  "es": "ONDA",
-  "pt": "ONDA",
-  "n": 2,
-  "kinds": [
-   "table",
-   "PDN"
-  ]
- },
- "BRUIT": {
-  "en": "NOISE",
-  "es": "RUIDO",
-  "pt": "RUIDO",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "FM": {
-  "en": "FM",
-  "es": "FM",
-  "pt": "FM",
-  "n": 3,
-  "kinds": [
-   "table",
-   "list:L_WAVE"
-  ]
- },
- "KIT": {
-  "en": "KIT",
-  "es": "KIT",
-  "pt": "KIT",
-  "n": 3,
-  "kinds": [
-   "table",
-   "PDN"
-  ]
- },
- "SAMPLE": {
-  "en": "SAMPLE",
-  "es": "SAMPLE",
-  "pt": "SAMPLE",
-  "n": 2,
-  "kinds": [
-   "table"
-  ]
- },
- "A": {
-  "en": "A",
-  "es": "A",
-  "pt": "A",
-  "n": 2,
-  "kinds": [
-   "table",
-   "PDN"
-  ]
- },
- "COUPURE": {
-  "en": "CUTOFF",
-  "es": "CORTE",
-  "pt": "CORTE",
-  "n": 2,
-  "kinds": [
-   "table"
-  ]
- },
- "CENTRE": {
-  "en": "CENTER",
-  "es": "CENTRO",
-  "pt": "CENTRO",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "GAIN": {
-  "en": "GAIN",
-  "es": "GANANC",
-  "pt": "GANHO",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "BITS": {
-  "en": "BITS",
-  "es": "BITS",
-  "pt": "BITS",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "TAUX": {
-  "en": "RATE",
-  "es": "TASA",
-  "pt": "TAXA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "FREQ": {
-  "en": "FREQ",
-  "es": "FREC",
-  "pt": "FREQ",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "VITESSE": {
-  "en": "RATE",
-  "es": "VELOC",
-  "pt": "VELOC",
-  "n": 4,
-  "kinds": [
-   "table",
-   "PDN",
-   "TR"
-  ]
- },
- "B": {
-  "en": "B",
-  "es": "B",
-  "pt": "B",
-  "n": 2,
-  "kinds": [
-   "table",
-   "PDN"
-  ]
- },
- "RESO": {
-  "en": "RESO",
-  "es": "RESO",
-  "pt": "RESO",
-  "n": 3,
-  "kinds": [
-   "table"
-  ]
- },
- "TON": {
-  "en": "TONE",
-  "es": "TONO",
-  "pt": "TOM",
-  "n": 5,
-  "kinds": [
-   "table",
-   "PDN",
-   "TR"
-  ]
- },
- "-": {
-  "en": "-",
-  "es": "-",
-  "pt": "-",
-  "n": 14,
-  "kinds": [
-   "table"
-  ]
- },
- "PROFOND": {
-  "en": "DEPTH",
-  "es": "PROFUND",
-  "pt": "PROFUND",
-  "n": 3,
-  "kinds": [
-   "table",
-   "PDN"
-  ]
- },
- "SON": {
-  "en": "SOUND",
-  "es": "SONIDO",
-  "pt": "SOM",
-  "n": 3,
-  "kinds": [
-   "table",
-   "list:L_ALG"
-  ]
- },
- "SON 2": {
-  "en": "SOUND 2",
-  "es": "SONIDO 2",
-  "pt": "SOM 2",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "OPERATEUR": {
-  "en": "OPERATOR",
-  "es": "OPERADOR",
-  "pt": "OPERADOR",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "ENV OPERAT": {
-  "en": "OP ENVELOPE",
-  "es": "ENV OPERAD",
-  "pt": "ENV OPERAD",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "EFFET": {
-  "en": "EFFECT",
-  "es": "EFECTO",
-  "pt": "EFEITO",
-  "n": 4,
-  "kinds": [
-   "table",
-   "PDN",
-   "TR"
-  ]
- },
- "LFO": {
-  "en": "LFO",
-  "es": "LFO",
-  "pt": "LFO",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "MODULATION": {
-  "en": "MODULATION",
-  "es": "MODULACION",
-  "pt": "MODULACAO",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "TABLE": {
-  "en": "TABLE",
-  "es": "TABLA",
-  "pt": "TABEL",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "NIVEAU": {
-  "en": "LEVEL",
-  "es": "NIVEL",
-  "pt": "NIVEL",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "RATIO": {
-  "en": "RATIO",
-  "es": "RATIO",
-  "pt": "RATIO",
-  "n": 2,
-  "kinds": [
-   "table",
-   "PDN"
-  ]
- },
- "FIN": {
-  "en": "FINE",
-  "es": "FINO",
-  "pt": "FINO",
-  "n": 3,
-  "kinds": [
-   "table",
-   "triple",
-   "TR"
-  ]
- },
- "DESACC": {
-  "en": "DETUNE",
-  "es": "DESAFIN",
-  "pt": "DESAFIN",
-  "n": 3,
-  "kinds": [
-   "table",
-   "PDN"
-  ]
- },
- "ATTAQUE": {
-  "en": "ATTACK",
-  "es": "ATAQUE",
-  "pt": "ATAQUE",
-  "n": 2,
-  "kinds": [
-   "table",
-   "PDN"
-  ]
- },
- "DECLIN": {
-  "en": "DECAY",
-  "es": "CAIDA",
-  "pt": "QUEDA",
-  "n": 3,
-  "kinds": [
-   "table",
-   "PDN"
-  ]
- },
- "TENUE": {
-  "en": "SUSTAIN",
-  "es": "SOSTEN",
-  "pt": "SUSTENT",
-  "n": 2,
-  "kinds": [
-   "table",
-   "PDN"
-  ]
- },
- "RELACHE": {
-  "en": "RELEASE",
-  "es": "SUELTA",
-  "pt": "SOLTURA",
-  "n": 2,
-  "kinds": [
-   "table",
-   "PDN"
-  ]
- },
- "DROIT": {
-  "en": "STRAIGHT",
-  "es": "RECTO",
-  "pt": "RETO",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "SWING 58": {
-  "en": "SWING 58",
-  "es": "SWING 58",
-  "pt": "SWING 58",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "SWING 67": {
-  "en": "SWING 67",
-  "es": "SWING 67",
-  "pt": "SWING 67",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "TRIOLET": {
-  "en": "TRIPLET",
-  "es": "TRESILLO",
-  "pt": "TERCINA",
-  "n": 2,
-  "kinds": [
-   "table",
-   "triple"
-  ]
- },
- "DECALE": {
-  "en": "LAZY",
-  "es": "PEREZOSO",
-  "pt": "ATRASADO",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "SHUFFLE": {
-  "en": "SHUFFLE",
-  "es": "SHUFFLE",
-  "pt": "SHUFFLE",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "POCHE": {
-  "en": "POCKET",
-  "es": "BOLSA",
-  "pt": "BOLSO",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "CASSE": {
-  "en": "WRECK",
-  "es": "ROTO",
-  "pt": "RACHA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "DETRUIT": {
-  "en": "DESTROY",
-  "es": "DESTRUYE",
-  "pt": "DESTROI",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "BEAT": {
-  "en": "BEAT",
-  "es": "BEAT",
-  "pt": "BEAT",
-  "n": 3,
-  "kinds": [
-   "table",
-   "triple"
-  ]
- },
- "PISTE": {
-  "en": "TRACK",
-  "es": "PISTA",
-  "pt": "FAIXA",
-  "n": 11,
-  "kinds": [
-   "table"
-  ]
- },
- "MOTIF": {
-  "en": "PATTERN",
-  "es": "PATRON",
-  "pt": "PADRAO",
-  "n": 8,
-  "kinds": [
-   "table",
-   "triple"
-  ]
- },
- "VOLUME": {
-  "en": "VOLUME",
-  "es": "VOLUMEN",
-  "pt": "VOLUME",
-  "n": 7,
-  "kinds": [
-   "PDN",
-   "list:L_LFOD",
-   "TR"
-  ]
- },
- "PANO": {
-  "en": "PAN",
-  "es": "PANEO",
-  "pt": "PAN",
-  "n": 3,
-  "kinds": [
-   "PDN",
-   "list:L_LFOD",
-   "TR"
-  ]
- },
- "ECHO": {
-  "en": "ECHO",
-  "es": "ECO",
-  "pt": "ECO",
-  "n": 3,
-  "kinds": [
-   "PDN",
-   "triple",
-   "table"
-  ]
- },
- "REVERB": {
-  "en": "REVERB",
-  "es": "REVERB",
-  "pt": "REVERB",
-  "n": 2,
-  "kinds": [
-   "PDN",
-   "table"
-  ]
- },
- "DOSAGE": {
-  "en": "MIX",
-  "es": "MEZCLA",
-  "pt": "MIX",
-  "n": 2,
-  "kinds": [
-   "PDN",
-   "TR"
-  ]
- },
- "CIBLE": {
-  "en": "TARGET",
-  "es": "DESTINO",
-  "pt": "ALVO",
-  "n": 2,
-  "kinds": [
-   "PDN",
-   "TR"
-  ]
- },
- "ENV>EFF": {
-  "en": "ENV>FX",
-  "es": "ENV>EFE",
-  "pt": "ENV>EFE",
-  "n": 1,
-  "kinds": [
-   "PDN"
-  ]
- },
- "VEL>EFF": {
-  "en": "VEL>FX",
-  "es": "VEL>EFE",
-  "pt": "VEL>EFE",
-  "n": 1,
-  "kinds": [
-   "PDN"
-  ]
- },
- "ENV>HAUT": {
-  "en": "ENV>PIT",
-  "es": "ENV>ALT",
-  "pt": "ENV>ALT",
-  "n": 1,
-  "kinds": [
-   "PDN"
-  ]
- },
- "LFO NOTE": {
-  "en": "LFO KEY",
-  "es": "LFO NOTA",
-  "pt": "LFO NOTA",
-  "n": 1,
-  "kinds": [
-   "PDN"
-  ]
- },
- "BALAYE": {
-  "en": "SWEEP",
-  "es": "BARRIDO",
-  "pt": "VARRE",
-  "n": 1,
-  "kinds": [
-   "PDN"
-  ]
- },
- "VIBRATO": {
-  "en": "VIBRATO",
-  "es": "VIBRATO",
-  "pt": "VIBRATO",
-  "n": 2,
-  "kinds": [
-   "PDN"
-  ]
- },
- "ECRASE": {
-  "en": "CRUSH",
-  "es": "TRITURA",
-  "pt": "ESMAGA",
-  "n": 5,
-  "kinds": [
-   "PDN",
-   "list:L_FXT",
-   "triple"
-  ]
- },
- "ARP VIT": {
-  "en": "ARP SPD",
-  "es": "ARP VEL",
-  "pt": "ARP VEL",
-  "n": 1,
-  "kinds": [
-   "PDN"
-  ]
- },
- "GLISSE": {
-  "en": "GLIDE",
-  "es": "GLISA",
-  "pt": "DESLIZ",
-  "n": 1,
-  "kinds": [
-   "PDN"
-  ]
- },
- "FORME": {
-  "en": "SHAPE",
-  "es": "FORMA",
-  "pt": "FORMA",
-  "n": 2,
-  "kinds": [
-   "PDN",
-   "list:L_LFOD"
-  ]
- },
- "SON FM": {
-  "en": "PATCH",
-  "es": "SONIDO",
-  "pt": "SOM FM",
-  "n": 1,
-  "kinds": [
-   "PDN"
-  ]
- },
- "ALGO": {
-  "en": "ALGO",
-  "es": "ALGO",
-  "pt": "ALGO",
-  "n": 1,
-  "kinds": [
-   "PDN"
-  ]
- },
- "RETOUR": {
-  "en": "FEEDBK",
-  "es": "RETORNO",
-  "pt": "RETORNO",
-  "n": 1,
-  "kinds": [
-   "PDN"
-  ]
- },
- "BRILLE": {
-  "en": "BRIGHT",
-  "es": "BRILLO",
-  "pt": "BRILHO",
-  "n": 1,
-  "kinds": [
-   "PDN"
-  ]
- },
- "MOD ENV": {
-  "en": "MOD ENV",
-  "es": "MOD ENV",
-  "pt": "MOD ENV",
-  "n": 1,
-  "kinds": [
-   "PDN"
-  ]
- },
- "ACCORD": {
-  "en": "TUNE",
-  "es": "AFINA",
-  "pt": "AFINA",
-  "n": 2,
-  "kinds": [
-   "PDN"
-  ]
- },
- "SATURE": {
-  "en": "DRIVE",
-  "es": "SATURA",
-  "pt": "SATURA",
-  "n": 3,
-  "kinds": [
-   "PDN",
-   "table"
-  ]
- },
- "SOURCE": {
-  "en": "SOURCE",
-  "es": "FUENTE",
-  "pt": "FONTE",
-  "n": 1,
-  "kinds": [
-   "PDN"
-  ]
- },
- "MODE": {
-  "en": "MODE",
-  "es": "MODO",
-  "pt": "MODO",
-  "n": 1,
-  "kinds": [
-   "PDN"
-  ]
- },
- "CALE": {
-  "en": "FIT",
-  "es": "AJUSTE",
-  "pt": "AJUSTE",
-  "n": 1,
-  "kinds": [
-   "PDN"
-  ]
- },
- "DUREE": {
-  "en": "LENGTH",
-  "es": "LARGO",
-  "pt": "DURAC",
-  "n": 1,
-  "kinds": [
-   "PDN"
-  ]
- },
- "TRI": {
-  "en": "TRI",
-  "es": "TRI",
-  "pt": "TRI",
-  "n": 2,
-  "kinds": [
-   "list:L_WAVE",
-   "triple"
-  ]
- },
- "SCIE": {
-  "en": "SAW",
-  "es": "SIERRA",
-  "pt": "SERRA",
-  "n": 3,
-  "kinds": [
-   "list:L_WAVE",
-   "list:L_LFOW",
-   "triple"
-  ]
- },
- "SINUS": {
-  "en": "SINE",
-  "es": "SENO",
-  "pt": "SENO",
-  "n": 2,
-  "kinds": [
-   "list:L_WAVE",
-   "list:L_LFOW"
-  ]
- },
- "DOUX": {
-  "en": "SOFT",
-  "es": "SUAVE",
-  "pt": "SUAVE",
-  "n": 1,
-  "kinds": [
-   "list:L_WAVE"
-  ]
- },
- "GB": {
-  "en": "GB",
-  "es": "GB",
-  "pt": "GB",
-  "n": 1,
-  "kinds": [
-   "list:L_WAVE"
-  ]
- },
- "ORGUE": {
-  "en": "ORGAN",
-  "es": "ORGANO",
-  "pt": "ORGAO",
-  "n": 2,
-  "kinds": [
-   "list:L_WAVE",
-   "triple"
-  ]
- },
- "VOIX": {
-  "en": "VOICE",
-  "es": "VOZ",
-  "pt": "VOZ",
-  "n": 2,
-  "kinds": [
-   "list:L_WAVE",
-   "triple"
-  ]
- },
- "LONG": {
-  "en": "LONG",
-  "es": "LARGO",
-  "pt": "LONGO",
-  "n": 2,
-  "kinds": [
-   "list:L_NOISE",
-   "table"
-  ]
- },
- "METAL": {
-  "en": "METAL",
-  "es": "METAL",
-  "pt": "METAL",
-  "n": 2,
-  "kinds": [
-   "list:L_NOISE",
-   "triple"
-  ]
- },
- "1/4": {
-  "en": "1/4",
-  "es": "1/4",
-  "pt": "1/4",
-  "n": 2,
-  "kinds": [
-   "list:L_DUR",
-   "list:L_LFOR"
-  ]
- },
- "1/2": {
-  "en": "1/2",
-  "es": "1/2",
-  "pt": "1/2",
-  "n": 2,
-  "kinds": [
-   "list:L_DUR",
-   "list:L_LFOR"
-  ]
- },
- "3/4": {
-  "en": "3/4",
-  "es": "3/4",
-  "pt": "3/4",
-  "n": 1,
-  "kinds": [
-   "list:L_DUR"
-  ]
- },
- "1": {
-  "en": "1",
-  "es": "1",
-  "pt": "1",
-  "n": 2,
-  "kinds": [
-   "list:L_DUR",
-   "list:L_ALG"
-  ]
- },
- "1.5": {
-  "en": "1.5",
-  "es": "1.5",
-  "pt": "1.5",
-  "n": 1,
-  "kinds": [
-   "list:L_DUR"
-  ]
- },
- "2": {
-  "en": "2",
-  "es": "2",
-  "pt": "2",
-  "n": 2,
-  "kinds": [
-   "list:L_DUR",
-   "list:L_ALG"
-  ]
- },
- "3": {
-  "en": "3",
-  "es": "3",
-  "pt": "3",
-  "n": 2,
-  "kinds": [
-   "list:L_DUR",
-   "list:L_ALG"
-  ]
- },
- "4": {
-  "en": "4",
-  "es": "4",
-  "pt": "4",
-  "n": 2,
-  "kinds": [
-   "list:L_DUR",
-   "list:L_ALG"
-  ]
- },
- "6": {
-  "en": "6",
-  "es": "6",
-  "pt": "6",
-  "n": 2,
-  "kinds": [
-   "list:L_DUR",
-   "list:L_ALG"
-  ]
- },
- "8": {
-  "en": "8",
-  "es": "8",
-  "pt": "8",
-  "n": 2,
-  "kinds": [
-   "list:L_DUR",
-   "list:L_ALG"
-  ]
- },
- "12": {
-  "en": "12",
-  "es": "12",
-  "pt": "12",
-  "n": 2,
-  "kinds": [
-   "list:L_DUR",
-   "list:L_ALG"
-  ]
- },
- "TOUT": {
-  "en": "ALL",
-  "es": "TODO",
-  "pt": "TUDO",
-  "n": 1,
-  "kinds": [
-   "list:L_DUR"
-  ]
- },
- "NON": {
-  "en": "NO",
-  "es": "NO",
-  "pt": "NAO",
-  "n": 11,
-  "kinds": [
-   "list:L_ONOFF",
-   "table",
-   "TR"
-  ]
- },
- "OUI": {
-  "en": "YES",
-  "es": "SI",
-  "pt": "SIM",
-  "n": 8,
-  "kinds": [
-   "list:L_ONOFF",
-   "table",
-   "TR"
-  ]
- },
- "TRANCHE": {
-  "en": "SLICES",
-  "es": "CORTES",
-  "pt": "FATIAS",
-  "n": 1,
-  "kinds": [
-   "list:L_SMODE"
-  ]
- },
- "NOTES": {
-  "en": "NOTES",
-  "es": "NOTAS",
-  "pt": "NOTAS",
-  "n": 1,
-  "kinds": [
-   "list:L_SMODE"
-  ]
- },
- "5": {
-  "en": "5",
-  "es": "5",
-  "pt": "5",
-  "n": 1,
-  "kinds": [
-   "list:L_ALG"
-  ]
- },
- "7": {
-  "en": "7",
-  "es": "7",
-  "pt": "7",
-  "n": 2,
-  "kinds": [
-   "list:L_ALG",
-   "triple"
-  ]
- },
- "9": {
-  "en": "9",
-  "es": "9",
-  "pt": "9",
-  "n": 1,
-  "kinds": [
-   "list:L_ALG"
-  ]
- },
- "10": {
-  "en": "10",
-  "es": "10",
-  "pt": "10",
-  "n": 1,
-  "kinds": [
-   "list:L_ALG"
-  ]
- },
- "11": {
-  "en": "11",
-  "es": "11",
-  "pt": "11",
-  "n": 1,
-  "kinds": [
-   "list:L_ALG"
-  ]
- },
- "13": {
-  "en": "13",
-  "es": "13",
-  "pt": "13",
-  "n": 1,
-  "kinds": [
-   "list:L_ALG"
-  ]
- },
- "14": {
-  "en": "14",
-  "es": "14",
-  "pt": "14",
-  "n": 1,
-  "kinds": [
-   "list:L_ALG"
-  ]
- },
- "15": {
-  "en": "15",
-  "es": "15",
-  "pt": "15",
-  "n": 1,
-  "kinds": [
-   "list:L_ALG"
-  ]
- },
- "16": {
-  "en": "16",
-  "es": "16",
-  "pt": "16",
-  "n": 1,
-  "kinds": [
-   "list:L_ALG"
-  ]
- },
- "17": {
-  "en": "17",
-  "es": "17",
-  "pt": "17",
-  "n": 1,
-  "kinds": [
-   "list:L_ALG"
-  ]
- },
- "18": {
-  "en": "18",
-  "es": "18",
-  "pt": "18",
-  "n": 1,
-  "kinds": [
-   "list:L_ALG"
-  ]
- },
- "19": {
-  "en": "19",
-  "es": "19",
-  "pt": "19",
-  "n": 1,
-  "kinds": [
-   "list:L_ALG"
-  ]
- },
- "20": {
-  "en": "20",
-  "es": "20",
-  "pt": "20",
-  "n": 1,
-  "kinds": [
-   "list:L_ALG"
-  ]
- },
- "21": {
-  "en": "21",
-  "es": "21",
-  "pt": "21",
-  "n": 1,
-  "kinds": [
-   "list:L_ALG"
-  ]
- },
- "22": {
-  "en": "22",
-  "es": "22",
-  "pt": "22",
-  "n": 1,
-  "kinds": [
-   "list:L_ALG"
-  ]
- },
- "23": {
-  "en": "23",
-  "es": "23",
-  "pt": "23",
-  "n": 1,
-  "kinds": [
-   "list:L_ALG"
-  ]
- },
- "24": {
-  "en": "24",
-  "es": "24",
-  "pt": "24",
-  "n": 1,
-  "kinds": [
-   "list:L_ALG"
-  ]
- },
- "25": {
-  "en": "25",
-  "es": "25",
-  "pt": "25",
-  "n": 1,
-  "kinds": [
-   "list:L_ALG"
-  ]
- },
- "26": {
-  "en": "26",
-  "es": "26",
-  "pt": "26",
-  "n": 1,
-  "kinds": [
-   "list:L_ALG"
-  ]
- },
- "27": {
-  "en": "27",
-  "es": "27",
-  "pt": "27",
-  "n": 1,
-  "kinds": [
-   "list:L_ALG"
-  ]
- },
- "28": {
-  "en": "28",
-  "es": "28",
-  "pt": "28",
-  "n": 1,
-  "kinds": [
-   "list:L_ALG"
-  ]
- },
- "29": {
-  "en": "29",
-  "es": "29",
-  "pt": "29",
-  "n": 1,
-  "kinds": [
-   "list:L_ALG"
-  ]
- },
- "30": {
-  "en": "30",
-  "es": "30",
-  "pt": "30",
-  "n": 1,
-  "kinds": [
-   "list:L_ALG"
-  ]
- },
- "31": {
-  "en": "31",
-  "es": "31",
-  "pt": "31",
-  "n": 1,
-  "kinds": [
-   "list:L_ALG"
-  ]
- },
- "32": {
-  "en": "32",
-  "es": "32",
-  "pt": "32",
-  "n": 1,
-  "kinds": [
-   "list:L_ALG"
-  ]
- },
- "AUCUN": {
-  "en": "NONE",
-  "es": "NADA",
-  "pt": "NADA",
-  "n": 2,
-  "kinds": [
-   "list:L_FXT",
-   "list:L_LFOD"
-  ]
- },
- "FILT BAS": {
-  "en": "LOWPASS",
-  "es": "FILT BAJ",
-  "pt": "FILT GRV",
-  "n": 1,
-  "kinds": [
-   "list:L_FXT"
-  ]
- },
- "FILT HAU": {
-  "en": "HIPASS",
-  "es": "FILT ALT",
-  "pt": "FILT AGU",
-  "n": 1,
-  "kinds": [
-   "list:L_FXT"
-  ]
- },
- "PASS BND": {
-  "en": "BANDPASS",
-  "es": "PASA BND",
-  "pt": "PASSA BD",
-  "n": 1,
-  "kinds": [
-   "list:L_FXT"
-  ]
- },
- "DISTO": {
-  "en": "DRIVE",
-  "es": "DISTOR",
-  "pt": "DISTOR",
-  "n": 2,
-  "kinds": [
-   "list:L_FXT",
-   "triple"
-  ]
- },
- "DECIME": {
-  "en": "LO-FI",
-  "es": "DIEZMA",
-  "pt": "DIZIMA",
-  "n": 2,
-  "kinds": [
-   "list:L_FXT",
-   "triple"
-  ]
- },
- "ANNEAU": {
-  "en": "RING",
-  "es": "ANILLO",
-  "pt": "ANEL",
-  "n": 2,
-  "kinds": [
-   "list:L_FXT",
-   "triple"
-  ]
- },
- "TREMOLO": {
-  "en": "TREMOLO",
-  "es": "TREMOLO",
-  "pt": "TREMOLO",
-  "n": 1,
-  "kinds": [
-   "list:L_FXT"
-  ]
- },
- "WAH": {
-  "en": "WAH",
-  "es": "WAH",
-  "pt": "WAH",
-  "n": 1,
-  "kinds": [
-   "list:L_FXT"
-  ]
- },
- "HAUTEUR": {
-  "en": "PITCH",
-  "es": "ALTURA",
-  "pt": "ALTURA",
-  "n": 1,
-  "kinds": [
-   "list:L_LFOD"
-  ]
- },
- "EFFET A": {
-  "en": "EFFECT A",
-  "es": "EFECTO A",
-  "pt": "EFEITO A",
-  "n": 1,
-  "kinds": [
-   "list:L_LFOD"
-  ]
- },
- "4 MES": {
-  "en": "4 BARS",
-  "es": "4 COMP",
-  "pt": "4 COMP",
-  "n": 1,
-  "kinds": [
-   "list:L_LFOR"
-  ]
- },
- "2 MES": {
-  "en": "2 BARS",
-  "es": "2 COMP",
-  "pt": "2 COMP",
-  "n": 1,
-  "kinds": [
-   "list:L_LFOR"
-  ]
- },
- "1 MES": {
-  "en": "1 BAR",
-  "es": "1 COMP",
-  "pt": "1 COMP",
-  "n": 1,
-  "kinds": [
-   "list:L_LFOR"
-  ]
- },
- "1/8": {
-  "en": "1/8",
-  "es": "1/8",
-  "pt": "1/8",
-  "n": 1,
-  "kinds": [
-   "list:L_LFOR"
-  ]
- },
- "1/16": {
-  "en": "1/16",
-  "es": "1/16",
-  "pt": "1/16",
-  "n": 3,
-  "kinds": [
-   "list:L_LFOR",
-   "triple"
-  ]
- },
- "1/32": {
-  "en": "1/32",
-  "es": "1/32",
-  "pt": "1/32",
-  "n": 3,
-  "kinds": [
-   "list:L_LFOR",
-   "triple"
-  ]
- },
- "LENT": {
-  "en": "SLOW",
-  "es": "LENTO",
-  "pt": "LENTO",
-  "n": 1,
-  "kinds": [
-   "list:L_LFOR"
-  ]
- },
- "MOYEN": {
-  "en": "MEDIUM",
-  "es": "MEDIO",
-  "pt": "MEDIO",
-  "n": 1,
-  "kinds": [
-   "list:L_LFOR"
-  ]
- },
- "VITE": {
-  "en": "FAST",
-  "es": "RAPIDO",
-  "pt": "RAPIDO",
-  "n": 2,
-  "kinds": [
-   "list:L_LFOR",
-   "triple"
-  ]
- },
- "TRIANGLE": {
-  "en": "TRIANGLE",
-  "es": "TRIANG",
-  "pt": "TRIANG",
-  "n": 1,
-  "kinds": [
-   "list:L_LFOW"
-  ]
- },
- "HASARD": {
-  "en": "RANDOM",
-  "es": "AZAR",
-  "pt": "ACASO",
-  "n": 4,
-  "kinds": [
-   "list:L_LFOW",
-   "triple",
-   "table",
-   "TR"
-  ]
- },
- "LEAD 25": {
-  "en": "LEAD 25",
-  "es": "LEAD 25",
-  "pt": "LEAD 25",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "BIP 12": {
-  "en": "BEEP 12",
-  "es": "BIP 12",
-  "pt": "BIP 12",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "CARRE 50": {
-  "en": "SQUARE 50",
-  "es": "CUADRADA 50",
-  "pt": "QUADRADA 50",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "SUPER CARRE": {
-  "en": "SUPER PULSE",
-  "es": "SUPER PULSO",
-  "pt": "SUPER PULSO",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "PLUCK": {
-  "en": "PLUCK",
-  "es": "PLUCK",
-  "pt": "PLUCK",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "LASER": {
-  "en": "LASER",
-  "es": "LASER",
-  "pt": "LASER",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "PWM PAD": {
-  "en": "PWM PAD",
-  "es": "PWM PAD",
-  "pt": "PWM PAD",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "BASSE": {
-  "en": "BASS",
-  "es": "BAJO",
-  "pt": "BAIXO",
-  "n": 2,
-  "kinds": [
-   "triple"
-  ]
- },
- "SALE": {
-  "en": "DIRTY",
-  "es": "SUCIO",
-  "pt": "SUJO",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "BASSE NES": {
-  "en": "NES BASS",
-  "es": "BAJO NES",
-  "pt": "BAIXO NES",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "BASSE GB": {
-  "en": "GB BASS",
-  "es": "BAJO GB",
-  "pt": "BAIXO GB",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "FLUTE": {
-  "en": "FLUTE",
-  "es": "FLAUTA",
-  "pt": "FLAUTA",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "KICK TRI": {
-  "en": "KICK TRI",
-  "es": "KICK TRI",
-  "pt": "KICK TRI",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "CHARLEY": {
-  "en": "HI-HAT",
-  "es": "CHARLES",
-  "pt": "CHIMBAL",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "CAISSE": {
-  "en": "SNARE",
-  "es": "CAJA",
-  "pt": "CAIXA",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "VAPEUR": {
-  "en": "STEAM",
-  "es": "VAPOR",
-  "pt": "VAPOR",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "EXPLOSION": {
-  "en": "EXPLOSION",
-  "es": "EXPLOSION",
-  "pt": "EXPLOSAO",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "CRASH": {
-  "en": "CRASH",
-  "es": "CRASH",
-  "pt": "CRASH",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "PIANO TINE": {
-  "en": "TINE EP",
-  "es": "PIANO TINE",
-  "pt": "PIANO TINE",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "CLOCHE": {
-  "en": "BELL",
-  "es": "CAMPANA",
-  "pt": "SINO",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "BASSE FM": {
-  "en": "FM BASS",
-  "es": "BAJO FM",
-  "pt": "BAIXO FM",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "CUIVRES": {
-  "en": "BRASS",
-  "es": "METALES",
-  "pt": "METAIS",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "NAPPE": {
-  "en": "PAD",
-  "es": "COLCHON",
-  "pt": "PAD",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "MARIMBA": {
-  "en": "MARIMBA",
-  "es": "MARIMBA",
-  "pt": "MARIMBA",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "ORGUE FM": {
-  "en": "FM ORGAN",
-  "es": "ORGANO FM",
-  "pt": "ORGAO FM",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "GUITARE": {
-  "en": "PLUCK",
-  "es": "PUNTEO",
-  "pt": "VIOLAO",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "LEAD CHIP": {
-  "en": "CHIP LEAD",
-  "es": "LEAD CHIP",
-  "pt": "LEAD CHIP",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "BASSE ACIDE": {
-  "en": "ACID BASS",
-  "es": "BAJO ACIDO",
-  "pt": "BAIXO ACIDO",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "HOOVER": {
-  "en": "HOOVER",
-  "es": "HOOVER",
-  "pt": "HOOVER",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "KALIMBA": {
-  "en": "KALIMBA",
-  "es": "KALIMBA",
-  "pt": "KALIMBA",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "KIT ACOUSTIQUE": {
-  "en": "ACOUSTIC KIT",
-  "es": "KIT ACUSTICO",
-  "pt": "KIT ACUSTICO",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "KIT HIP HOP": {
-  "en": "HIP HOP KIT",
-  "es": "KIT HIP HOP",
-  "pt": "KIT HIP HOP",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "KIT TECHNO": {
-  "en": "TECHNO KIT",
-  "es": "KIT TECHNO",
-  "pt": "KIT TECHNO",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "KIT DUB REGGAE": {
-  "en": "DUB REGGAE KIT",
-  "es": "KIT DUB REGGAE",
-  "pt": "KIT DUB REGGAE",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "KIT LO-FI": {
-  "en": "LO-FI KIT",
-  "es": "KIT LO-FI",
-  "pt": "KIT LO-FI",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "KIT GAME BOY": {
-  "en": "GAME BOY KIT",
-  "es": "KIT GAME BOY",
-  "pt": "KIT GAME BOY",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "KIT SNES": {
-  "en": "SNES KIT",
-  "es": "KIT SNES",
-  "pt": "KIT SNES",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "KIT PERCUS": {
-  "en": "PERCUSSION KIT",
-  "es": "KIT PERCUSION",
-  "pt": "KIT PERCUSSAO",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "KIT GABBER": {
-  "en": "GABBER KIT",
-  "es": "KIT GABBER",
-  "pt": "KIT GABBER",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "SOLEIL": {
-  "en": "SOLEIL",
-  "es": "SOLEIL",
-  "pt": "SOLEIL",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "GRELOT": {
-  "en": "GRELOT",
-  "es": "GRELOT",
-  "pt": "GRELOT",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "TENDU": {
-  "en": "TENDU",
-  "es": "TENDU",
-  "pt": "TENDU",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "ABYSSE": {
-  "en": "ABYSSE",
-  "es": "ABYSSE",
-  "pt": "ABYSSE",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "MAMBO": {
-  "en": "MAMBO",
-  "es": "MAMBO",
-  "pt": "MAMBO",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "GRENIER": {
-  "en": "GRENIER",
-  "es": "GRENIER",
-  "pt": "GRENIER",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "ABYSSE SALE": {
-  "en": "ABYSSE DIRTY",
-  "es": "ABYSSE SUCIO",
-  "pt": "ABYSSE SUJO",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "TENDU COURT": {
-  "en": "TENDU SHORT",
-  "es": "TENDU CORTO",
-  "pt": "TENDU CURTO",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "MON SAMPLE 1": {
-  "en": "MY SAMPLE 1",
-  "es": "MI SAMPLE 1",
-  "pt": "MEU SAMPLE 1",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "MON SAMPLE 2": {
-  "en": "MY SAMPLE 2",
-  "es": "MI SAMPLE 2",
-  "pt": "MEU SAMPLE 2",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "MON SAMPLE 3": {
-  "en": "MY SAMPLE 3",
-  "es": "MI SAMPLE 3",
-  "pt": "MEU SAMPLE 3",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "MON SAMPLE 4": {
-  "en": "MY SAMPLE 4",
-  "es": "MI SAMPLE 4",
-  "pt": "MEU SAMPLE 4",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "---": {
-  "en": "---",
-  "es": "---",
-  "pt": "---",
-  "n": 2,
-  "kinds": [
-   "triple"
-  ]
- },
- "ARP": {
-  "en": "ARP",
-  "es": "ARP",
-  "pt": "ARP",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "GLI": {
-  "en": "GLI",
-  "es": "GLI",
-  "pt": "GLI",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "VIB": {
-  "en": "VIB",
-  "es": "VIB",
-  "pt": "VIB",
-  "n": 2,
-  "kinds": [
-   "triple"
-  ]
- },
- "ROL": {
-  "en": "ROL",
-  "es": "RED",
-  "pt": "ROL",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "BND": {
-  "en": "BND",
-  "es": "BND",
-  "pt": "BND",
-  "n": 2,
-  "kinds": [
-   "triple"
-  ]
- },
- "CHN": {
-  "en": "CHN",
-  "es": "AZR",
-  "pt": "CHN",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "RET": {
-  "en": "DLY",
-  "es": "RET",
-  "pt": "ATR",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "CUT": {
-  "en": "CUT",
-  "es": "CRT",
-  "pt": "CRT",
-  "n": 2,
-  "kinds": [
-   "triple"
-  ]
- },
- "ENV": {
-  "en": "REV",
-  "es": "REV",
-  "pt": "INV",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "HAU": {
-  "en": "PIT",
-  "es": "ALT",
-  "pt": "ALT",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "FOR": {
-  "en": "SHP",
-  "es": "FOR",
-  "pt": "FOR",
-  "n": 3,
-  "kinds": [
-   "triple",
-   "TR"
-  ]
- },
- "ECR": {
-  "en": "CRU",
-  "es": "TRI",
-  "pt": "ESM",
-  "n": 2,
-  "kinds": [
-   "triple"
-  ]
- },
- "VOL": {
-  "en": "VSL",
-  "es": "VOL",
-  "pt": "VOL",
-  "n": 2,
-  "kinds": [
-   "triple"
-  ]
- },
- "PAN": {
-  "en": "PAN",
-  "es": "PAN",
-  "pt": "PAN",
-  "n": 2,
-  "kinds": [
-   "triple"
-  ]
- },
- "DEP": {
-  "en": "OFS",
-  "es": "INI",
-  "pt": "INI",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "SAU": {
-  "en": "HOP",
-  "es": "SAL",
-  "pt": "PUL",
-  "n": 2,
-  "kinds": [
-   "triple"
-  ]
- },
- "FRP": {
-  "en": "HIT",
-  "es": "GOL",
-  "pt": "BAT",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "MAJ": {
-  "en": "MAJ",
-  "es": "MAY",
-  "pt": "MAI",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "MIN": {
-  "en": "MIN",
-  "es": "MEN",
-  "pt": "MEN",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "OCT": {
-  "en": "OCT",
-  "es": "OCT",
-  "pt": "OCT",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "5TE": {
-  "en": "5TH",
-  "es": "5TA",
-  "pt": "5TA",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "SUS": {
-  "en": "SUS",
-  "es": "SUS",
-  "pt": "SUS",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "MA7": {
-  "en": "MA7",
-  "es": "MA7",
-  "pt": "MA7",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "MI7": {
-  "en": "MI7",
-  "es": "ME7",
-  "pt": "ME7",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "DIM": {
-  "en": "DIM",
-  "es": "DIS",
-  "pt": "DIM",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "AUG": {
-  "en": "AUG",
-  "es": "AUM",
-  "pt": "AUM",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "2OC": {
-  "en": "2OC",
-  "es": "2OC",
-  "pt": "2OC",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "AD9": {
-  "en": "AD9",
-  "es": "AD9",
-  "pt": "AD9",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "BAS": {
-  "en": "LOW",
-  "es": "BAJ",
-  "pt": "GRV",
-  "n": 3,
-  "kinds": [
-   "triple"
-  ]
- },
- "CHROMA": {
-  "en": "CHROMATIC",
-  "es": "CROMATICA",
-  "pt": "CROMATICA",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "MAJEUR": {
-  "en": "MAJOR",
-  "es": "MAYOR",
-  "pt": "MAIOR",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "MINEUR": {
-  "en": "MINOR",
-  "es": "MENOR",
-  "pt": "MENOR",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "PENTA": {
-  "en": "PENTA",
-  "es": "PENTA",
-  "pt": "PENTA",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "PENTA MIN": {
-  "en": "PENTA MIN",
-  "es": "PENTA MEN",
-  "pt": "PENTA MEN",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "BLUES": {
-  "en": "BLUES",
-  "es": "BLUES",
-  "pt": "BLUES",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "DORIEN": {
-  "en": "DORIAN",
-  "es": "DORICA",
-  "pt": "DORICA",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "PHRYGIEN": {
-  "en": "PHRYGIAN",
-  "es": "FRIGIA",
-  "pt": "FRIGIA",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "HARMONIQ": {
-  "en": "HARMONIC",
-  "es": "ARMONICA",
-  "pt": "HARMONIC",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "JAPON": {
-  "en": "JAPANESE",
-  "es": "JAPONESA",
-  "pt": "JAPONESA",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "ARABE": {
-  "en": "ARABIC",
-  "es": "ARABE",
-  "pt": "ARABE",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "PAR TONS": {
-  "en": "WHOLE TONE",
-  "es": "TONOS",
-  "pt": "TONS INTEI",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "BOUCLE": {
-  "en": "LOOP",
-  "es": "BUCLE",
-  "pt": "LOOP",
-  "n": 6,
-  "kinds": [
-   "triple",
-   "TR"
-  ]
- },
- "1/12": {
-  "en": "1/12",
-  "es": "1/12",
-  "pt": "1/12",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "1/64": {
-  "en": "1/64",
-  "es": "1/64",
-  "pt": "1/64",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "UNISSON": {
-  "en": "UNISON",
-  "es": "UNISONO",
-  "pt": "UNISSON",
-  "n": 2,
-  "kinds": [
-   "triple"
-  ]
- },
- "": {
-  "en": "",
-  "es": "",
-  "pt": "",
-  "n": 16,
-  "kinds": [
-   "triple",
-   "table"
-  ]
- },
- "OCTAVE": {
-  "en": "OCTAVE",
-  "es": "OCTAVA",
-  "pt": "OITAVA",
-  "n": 2,
-  "kinds": [
-   "triple"
-  ]
- },
- "+1": {
-  "en": "+1",
-  "es": "+1",
-  "pt": "+1",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "-1": {
-  "en": "-1",
-  "es": "-1",
-  "pt": "-1",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "BEGAIE": {
-  "en": "STUTTER",
-  "es": "TARTAMU",
-  "pt": "GAGUEJA",
-  "n": 2,
-  "kinds": [
-   "triple"
-  ]
- },
- "X4": {
-  "en": "X4",
-  "es": "X4",
-  "pt": "X4",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "X3": {
-  "en": "X3",
-  "es": "X3",
-  "pt": "X3",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "SCRATCH": {
-  "en": "SCRATCH",
-  "es": "SCRATCH",
-  "pt": "SCRATCH",
-  "n": 2,
-  "kinds": [
-   "triple"
-  ]
- },
- "6/8": {
-  "en": "6/8",
-  "es": "6/8",
-  "pt": "6/8",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "RELANCE": {
-  "en": "RETRIG",
-  "es": "REPITE",
-  "pt": "REPETE",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "1 TEMPS": {
-  "en": "1 BEAT",
-  "es": "1 PULSO",
-  "pt": "1 TEMPO",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "ENVERS": {
-  "en": "REVERSE",
-  "es": "REVES",
-  "pt": "AVESSO",
-  "n": 2,
-  "kinds": [
-   "triple",
-   "TR"
-  ]
- },
- "ROULEAU": {
-  "en": "BUILDUP",
-  "es": "REDOBLE",
-  "pt": "VIRADA",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "ACCEL": {
-  "en": "ROLL",
-  "es": "ACELERA",
-  "pt": "ACELERA",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "4 BITS": {
-  "en": "4 BITS",
-  "es": "4 BITS",
-  "pt": "4 BITS",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "FILTRE": {
-  "en": "LOWPASS",
-  "es": "FILTRO",
-  "pt": "FILTRO",
-  "n": 3,
-  "kinds": [
-   "triple",
-   "table"
-  ]
- },
- "HAUT": {
-  "en": "SWEEP",
-  "es": "AGUDOS",
-  "pt": "AGUDOS",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "STOP": {
-  "en": "TAPE",
-  "es": "CINTA",
-  "pt": "FITA",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "K7": {
-  "en": "STOP",
-  "es": "PARADA",
-  "pt": "PARA",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "PLONGEE": {
-  "en": "DIVE",
-  "es": "PICADO",
-  "pt": "MERGULH",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "HACHE": {
-  "en": "GATE",
-  "es": "GATE",
-  "pt": "GATE",
-  "n": 2,
-  "kinds": [
-   "triple"
-  ]
- },
- "GEL": {
-  "en": "FREEZE",
-  "es": "CONGELA",
-  "pt": "CONGELA",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "WOBBLE": {
-  "en": "WOBBLE",
-  "es": "WOBBLE",
-  "pt": "WOBBLE",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "VINYLE": {
-  "en": "VINYL",
-  "es": "VINILO",
-  "pt": "VINIL",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "SANS": {
-  "en": "NO",
-  "es": "SIN",
-  "pt": "SEM",
-  "n": 2,
-  "kinds": [
-   "triple"
-  ]
- },
- "MELO": {
-  "en": "MELODY",
-  "es": "MELODIA",
-  "pt": "MELODIA",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "HACHOIR": {
-  "en": "CHOPPER",
-  "es": "PICADOR",
-  "pt": "PICADOR",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "BREAK": {
-  "en": "BREAK",
-  "es": "BREAK",
-  "pt": "BREAK",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "MELODIE": {
-  "en": "MELODY",
-  "es": "MELODIA",
-  "pt": "MELODIA",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "GAMME": {
-  "en": "SCALE",
-  "es": "ESCALA",
-  "pt": "ESCALA",
-  "n": 4,
-  "kinds": [
-   "triple",
-   "table",
-   "TR"
-  ]
- },
- "ARPEGE": {
-  "en": "ARP",
-  "es": "ARPEGIO",
-  "pt": "ARPEJO",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "ACCORDS": {
-  "en": "CHORDS",
-  "es": "ACORDES",
-  "pt": "ACORDES",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "EUCLIDE": {
-  "en": "EUCLID",
-  "es": "EUCLIDE",
-  "pt": "EUCLID",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "N COUPS": {
-  "en": "N HITS",
-  "es": "GOLPES",
-  "pt": "N BATID",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "VARIER": {
-  "en": "VARY",
-  "es": "VARIAR",
-  "pt": "VARIAR",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "UN PEU": {
-  "en": "A BIT",
-  "es": "UN POCO",
-  "pt": "UM POUC",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "ROULES": {
-  "en": "ROLLS",
-  "es": "REDOBLE",
-  "pt": "RUFOS",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "FINS": {
-  "en": "ENDS",
-  "es": "FINAL",
-  "pt": "FINAL",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "NUANCES": {
-  "en": "ACCENTS",
-  "es": "MATICES",
-  "pt": "ACENTOS",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "VOLUMES": {
-  "en": "VOLUMES",
-  "es": "VOLUMEN",
-  "pt": "VOLUMES",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "DOUBLER": {
-  "en": "DOUBLE",
-  "es": "DUPLICA",
-  "pt": "DOBRAR",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "X2": {
-  "en": "X2",
-  "es": "X2",
-  "pt": "X2",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "DECALER": {
-  "en": "SHIFT",
-  "es": "MOVER",
-  "pt": "DESLOCA",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "1 PAS": {
-  "en": "1 STEP",
-  "es": "1 PASO",
-  "pt": "1 PASS",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "CLONER": {
-  "en": "CLONE",
-  "es": "CLONAR",
-  "pt": "CLONAR",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "TRANSPO": {
-  "en": "TRANSP",
-  "es": "TRANSP",
-  "pt": "TRANSP",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "+1 NOTE": {
-  "en": "+1 NOTE",
-  "es": "+1 NOTA",
-  "pt": "+1 NOTA",
-  "n": 1,
-  "kinds": [
-   "triple"
-  ]
- },
- "COPIER": {
-  "en": "COPY",
-  "es": "COPIAR",
-  "pt": "COPIAR",
-  "n": 2,
-  "kinds": [
-   "triple",
-   "table"
-  ]
- },
- "COLLER": {
-  "en": "PASTE",
-  "es": "PEGAR",
-  "pt": "COLAR",
-  "n": 2,
-  "kinds": [
-   "triple",
-   "table"
-  ]
- },
- "EFFACER": {
-  "en": "CLEAR",
-  "es": "BORRAR",
-  "pt": "APAGAR",
-  "n": 3,
-  "kinds": [
-   "triple",
-   "table",
-   "TR"
-  ]
- },
- "PISTES": {
-  "en": "TRACKS",
-  "es": "PISTAS",
-  "pt": "FAIXAS",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "GRILLE": {
-  "en": "GRID",
-  "es": "REJILLA",
-  "pt": "GRADE",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "ENVELOPPE": {
-  "en": "ENVELOPE",
-  "es": "ENVOLVENTE",
-  "pt": "ENVELOPE",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "MIX": {
-  "en": "MIX",
-  "es": "MEZCLA",
-  "pt": "MIX",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "MAGIE": {
-  "en": "MAGIC",
-  "es": "MAGIA",
-  "pt": "MAGIA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "CHAINE": {
-  "en": "SONG",
-  "es": "CANCION",
-  "pt": "MUSICA",
-  "n": 2,
-  "kinds": [
-   "table",
-   "TR"
-  ]
- },
- "PROJETS": {
-  "en": "PROJECTS",
-  "es": "PROYECTOS",
-  "pt": "PROJETOS",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "OPTIONS": {
-  "en": "OPTIONS",
-  "es": "OPCIONES",
-  "pt": "OPCOES",
-  "n": 2,
-  "kinds": [
-   "table"
-  ]
- },
- "EFFETS": {
-  "en": "EFFECTS",
-  "es": "EFECTOS",
-  "pt": "EFEITOS",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "AIDE": {
-  "en": "HELP",
-  "es": "AYUDA",
-  "pt": "AJUDA",
-  "n": 2,
-  "kinds": [
-   "table",
-   "TR"
-  ]
- },
- "GROOVE": {
-  "en": "GROOVE",
-  "es": "GROOVE",
-  "pt": "GROOVE",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "ENVOIS": {
-  "en": "SENDS",
-  "es": "ENVIOS",
-  "pt": "ENVIOS",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "SEQ FX": {
-  "en": "FX SEQ",
-  "es": "SEC FX",
-  "pt": "SEQ FX",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "ANNULER": {
-  "en": "UNDO",
-  "es": "DESHACER",
-  "pt": "DESFAZER",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "REFAIRE": {
-  "en": "REDO",
-  "es": "REHACER",
-  "pt": "REFAZER",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "VIT": {
-  "en": "SPD",
-  "es": "VEL",
-  "pt": "VEL",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "BOUC": {
-  "en": "LOOP",
-  "es": "BUCL",
-  "pt": "LOOP",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "CAR": {
-  "en": "PUL",
-  "es": "PUL",
-  "pt": "PUL",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "OND": {
-  "en": "WAV",
-  "es": "OND",
-  "pt": "OND",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "BRU": {
-  "en": "NOI",
-  "es": "RUI",
-  "pt": "RUI",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "SMP": {
-  "en": "SMP",
-  "es": "SMP",
-  "pt": "SMP",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "ENVELOPPE > EFFET A": {
-  "en": "ENVELOPE > EFFECT A",
-  "es": "ENVOLVENTE > EFECTO A",
-  "pt": "ENVELOPE > EFEITO A",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "VELOCITE > EFFET A": {
-  "en": "VELOCITY > EFFECT A",
-  "es": "VELOCIDAD > EFECTO A",
-  "pt": "VELOC. > EFEITO A",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "ENVELOPPE > HAUTEUR": {
-  "en": "ENVELOPE > PITCH",
-  "es": "ENVOLVENTE > ALTURA",
-  "pt": "ENVELOPE > ALTURA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "BAILE - MORCEAU VIDE": {
-  "en": "BAILE - EMPTY SONG",
-  "es": "BAILE - CANCION VACIA",
-  "pt": "BAILE - MUSICA VAZIA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "1. REC  2. JOUE LES TOUCHES": {
-  "en": "1. REC  2. PLAY THE KEYS",
-  "es": "1. REC  2. TOCA LAS TECLAS",
-  "pt": "1. REC  2. TOQUE AS TECLAS",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "3. PLAY POUR ECOUTER": {
-  "en": "3. PLAY TO LISTEN",
-  "es": "3. PLAY PARA ESCUCHAR",
-  "pt": "3. PLAY PARA OUVIR",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "HOME TENU: AIDE": {
-  "en": "HOME HELD: HELP",
-  "es": "HOME PULSADO: AYUDA",
-  "pt": "HOME SEGURO: AJUDA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "NOUVEAU MORCEAU": {
-  "en": "NEW SONG",
-  "es": "NUEVA CANCION",
-  "pt": "NOVA MUSICA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "SAUVER": {
-  "en": "SAVE",
-  "es": "GUARDAR",
-  "pt": "SALVAR",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "SAUVER SOUS...": {
-  "en": "SAVE AS...",
-  "es": "GUARDAR COMO...",
-  "pt": "SALVAR COMO...",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "CHARGER...": {
-  "en": "LOAD...",
-  "es": "CARGAR...",
-  "pt": "CARREGA...",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "RENOMMER...": {
-  "en": "RENAME...",
-  "es": "RENOMBRAR...",
-  "pt": "RENOMEAR...",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "DEMO": {
-  "en": "DEMO",
-  "es": "DEMO",
-  "pt": "DEMO",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "BASE": {
-  "en": "BASIC",
-  "es": "BASE",
-  "pt": "BASE",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "DOUCE": {
-  "en": "SMOOTH",
-  "es": "SUAVE",
-  "pt": "SUAVE",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "CLAIRE": {
-  "en": "CLEAR",
-  "es": "CLARA",
-  "pt": "CLARA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "8-BIT": {
-  "en": "8-BIT",
-  "es": "8-BIT",
-  "pt": "8-BIT",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "REC": {
-  "en": "REC",
-  "es": "REC",
-  "pt": "REC",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "FAI": {
-  "en": "LOW",
-  "es": "BAJ",
-  "pt": "BAI",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "MOY": {
-  "en": "MED",
-  "es": "MED",
-  "pt": "MED",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "FORT": {
-  "en": "HIGH",
-  "es": "ALT",
-  "pt": "ALTO",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "LIGNE": {
-  "en": "ROW",
-  "es": "FILA",
-  "pt": "LINHA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "REC+SEL: SAUT  ARP+SEL: LIGNE": {
-  "en": "REC+SEL: STEP  ARP+SEL: ROW",
-  "es": "REC+SEL: SALTO  ARP+SEL: FILA",
-  "pt": "REC+SEL: PULO  ARP+SEL: LINHA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "SAVE TENU: LES OUTILS": {
-  "en": "SAVE HELD: THE TOOLS",
-  "es": "SAVE PULSADO: HERRAMIENTAS",
-  "pt": "SAVE SEGURO: FERRAMENTAS",
-  "n": 2,
-  "kinds": [
-   "table"
-  ]
- },
- "ARP + K3 K4: LE 2E EFFET": {
-  "en": "ARP + K3 K4: THE 2ND FX",
-  "es": "ARP + K3 K4: EL 2O EFECTO",
-  "pt": "ARP + K3 K4: O 2O EFEITO",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "PAGE DE 16 PAS": {
-  "en": "16 STEPS PAGE",
-  "es": "PAGINA DE 16",
-  "pt": "PAGINA DE 16",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "BLANCHES: PAS OUI/NON": {
-  "en": "WHITE KEYS: STEPS ON/OFF",
-  "es": "BLANCAS: PASOS SI/NO",
-  "pt": "BRANCAS: PASSOS SIM/NAO",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "NOIRES: LA PISTE": {
-  "en": "BLACK KEYS: THE TRACK",
-  "es": "NEGRAS: LA PISTA",
-  "pt": "PRETAS: A FAIXA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "OCT-/OCT+: 16, 32, 64 PAS": {
-  "en": "OCT-/OCT+: 16, 32, 64 STEPS",
-  "es": "OCT-/OCT+: 16, 32, 64 PASOS",
-  "pt": "OCT-/OCT+: 16, 32, 64 PASS.",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "PAGE SUIVANTE": {
-  "en": "NEXT PAGE",
-  "es": "PAG. SIGUIENTE",
-  "pt": "PROXIMA PAG.",
-  "n": 3,
-  "kinds": [
-   "table"
-  ]
- },
- "USINE / CURSEUR": {
-  "en": "FACTORY / CURSOR",
-  "es": "FABRICA / CURSOR",
-  "pt": "FABRICA / CURSOR",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "MODIFIE: PRESETS PUIS OCT+": {
-  "en": "EDITED: PRESETS, THEN OCT+",
-  "es": "EDITADO: PRESETS Y OCT+",
-  "pt": "EDITADO: PRESETS E OCT+",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "ARP+PRESETS: LE MOTEUR": {
-  "en": "ARP+PRESETS: THE ENGINE",
-  "es": "ARP+PRESETS: EL MOTOR",
-  "pt": "ARP+PRESETS: O MOTOR",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "ANNULER: SAVE+OCT- LE RAMENE": {
-  "en": "UNDO: SAVE+OCT- BRINGS IT BACK",
-  "es": "DESHACER: SAVE+OCT- LO VUELVE",
-  "pt": "DESFAZER: SAVE+OCT- VOLTA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "ENV / MIX": {
-  "en": "ENV / MIX",
-  "es": "ENV / MEZCLA",
-  "pt": "ENV / MIX",
-  "n": 2,
-  "kinds": [
-   "table"
-  ]
- },
- "ENV ENCORE: LE MIX": {
-  "en": "ENV AGAIN: THE MIX",
-  "es": "ENV OTRA VEZ: LA MEZCLA",
-  "pt": "ENV DE NOVO: O MIX",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "TOUCHES: ECOUTER": {
-  "en": "KEYS: LISTEN",
-  "es": "TECLAS: ESCUCHAR",
-  "pt": "TECLAS: OUVIR",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "PISTE / MASTER": {
-  "en": "TRACK / MASTER",
-  "es": "PISTA / MASTER",
-  "pt": "FAIXA/MASTER",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "NOIRES: MUET  ARP+NOIRE: SOLO": {
-  "en": "BLACK: MUTE  ARP+BLACK: SOLO",
-  "es": "NEGRAS: MUTE  ARP+NEGRA: SOLO",
-  "pt": "PRETAS: MUDO  ARP+PRETA: SOLO",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "APRES LA 6: LE MASTER": {
-  "en": "PAST TRACK 6: MASTER",
-  "es": "TRAS LA 6: EL MASTER",
-  "pt": "DEPOIS DA 6: O MASTER",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "BLANCHE: UN OUTIL": {
-  "en": "WHITE KEY: A TOOL",
-  "es": "BLANCA: UNA HERRAMIENTA",
-  "pt": "BRANCA: UMA FERRAMENTA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "SCL: GAMME, PUIS MAGIE": {
-  "en": "SCL: SCALE, THEN MAGIC",
-  "es": "SCL: ESCALA, LUEGO MAGIA",
-  "pt": "SCL: ESCALA, E MAGIA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "UNE TOUCHE: LA TONIQUE": {
-  "en": "A KEY: THE ROOT",
-  "es": "UNA TECLA: LA TONICA",
-  "pt": "UMA TECLA: A TONICA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "VERROU: NOTES DE LA GAMME": {
-  "en": "LOCK: NOTES OF THE SCALE",
-  "es": "FIJA: NOTAS DE LA ESCALA",
-  "pt": "TRAVA: NOTAS DA ESCALA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "SCL ENCORE: MAGIE": {
-  "en": "SCL AGAIN: MAGIC",
-  "es": "SCL OTRA VEZ: MAGIA",
-  "pt": "SCL DE NOVO: MAGIA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "GROOVE, OPTIONS": {
-  "en": "GROOVE, OPTIONS",
-  "es": "GROOVE, OPCIONES",
-  "pt": "GROOVE, OPCOES",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "ENTREE": {
-  "en": "ENTRY",
-  "es": "ENTRADA",
-  "pt": "ENTRADA",
-  "n": 2,
-  "kinds": [
-   "table",
-   "TR"
-  ]
- },
- "SON MOTIF": {
-  "en": "ITS PATTERN",
-  "es": "SU PATRON",
-  "pt": "SEU PADRAO",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "BLANCHE: MOTIF  K3: X FOIS": {
-  "en": "WHITE KEY: PATTERN K3: TIMES",
-  "es": "BLANCA: PATRON  K3: VECES",
-  "pt": "BRANCA: PADRAO  K3: VEZES",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "OCT+ AJOUTE  OCT- ENLEVE": {
-  "en": "OCT+ ADD  OCT- DELETE",
-  "es": "OCT+ ANADE  OCT- QUITA",
-  "pt": "OCT+ POE  OCT- TIRA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "GLO: GROOVE, OPTIONS": {
-  "en": "GLO: GROOVE, OPTIONS",
-  "es": "GLO: GROOVE, OPCIONES",
-  "pt": "GLO: GROOVE, OPCOES",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "CHOIX": {
-  "en": "CHOICE",
-  "es": "ELECCION",
-  "pt": "ESCOLHA",
-  "n": 2,
-  "kinds": [
-   "table",
-   "TR"
-  ]
- },
- "OCT+: OK   OCT-: RETOUR": {
-  "en": "OCT+: OK   OCT-: BACK",
-  "es": "OCT+: OK   OCT-: VOLVER",
-  "pt": "OCT+: OK   OCT-: VOLTA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "SAVE PUIS OCT+: SAUVER VITE": {
-  "en": "SAVE THEN OCT+: QUICK SAVE",
-  "es": "SAVE Y OCT+: GUARDAR RAPIDO",
-  "pt": "SAVE E OCT+: SALVAR RAPIDO",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "CHAINE / GROOVE": {
-  "en": "SONG / GROOVE",
-  "es": "CANCION / GROOVE",
-  "pt": "MUSICA / GROOVE",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "METRONOME": {
-  "en": "METRONOME",
-  "es": "METRONOMO",
-  "pt": "METRONOMO",
-  "n": 2,
-  "kinds": [
-   "table",
-   "TR"
-  ]
- },
- "VOLUME CLIC": {
-  "en": "CLICK VOLUME",
-  "es": "VOLUMEN CLIC",
-  "pt": "VOL. CLIQUE",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "K1-K4: THEME LANGUE HORLOGE": {
-  "en": "K1-K4: THEME LANG CLOCK FONT",
-  "es": "K1-K4: TEMA IDIOMA RELOJ FUENTE",
-  "pt": "K1-K4: TEMA IDIOMA RELOG FONTE",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "POLICE: TOUS GARDES": {
-  "en": "ALL OF THEM ARE KEPT",
-  "es": "TODO SE GUARDA",
-  "pt": "TUDO FICA GUARDADO",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "GLO: RETOUR A LA CHAINE": {
-  "en": "GLO: BACK TO THE SONG",
-  "es": "GLO: VOLVER A LA CANCION",
-  "pt": "GLO: VOLTA PARA A MUSICA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "ENVOIS/LIVE/FILTRE": {
-  "en": "SENDS/LIVE/FILTER",
-  "es": "ENVIOS/LIVE/FILTRO",
-  "pt": "ENVIOS/LIVE/FILTRO",
-  "n": 3,
-  "kinds": [
-   "table"
-  ]
- },
- "FX TENU + BLANCHES": {
-  "en": "HOLD FX + WHITE KEYS",
-  "es": "FX PULSADO + BLANCAS",
-  "pt": "FX SEGURO + BRANCAS",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "OCT: 4 BANQUES  NOIRES: MUETS": {
-  "en": "OCT: 4 BANKS  BLACK: MUTES",
-  "es": "OCT: 4 BANCOS  NEGRAS: MUTE",
-  "pt": "OCT: 4 BANCOS  PRETAS: MUDO",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "DETRUIT, BEAT: K2 INTENSITE": {
-  "en": "DESTROY, BEAT: K2 INTENSITY",
-  "es": "DESTRUYE, BEAT: K2 INTENSIDAD",
-  "pt": "DESTROI, BEAT: K2 INTENSIDADE",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "ENVOIS / LIVE": {
-  "en": "SENDS / LIVE",
-  "es": "ENVIOS / LIVE",
-  "pt": "ENVIOS / LIVE",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "K1 SATURE  K2 ECHO  K3 REVERB": {
-  "en": "K1 DRIVE  K2 ECHO  K3 REVERB",
-  "es": "K1 SATURA  K2 ECO  K3 REVERB",
-  "pt": "K1 SATURA  K2 ECO  K3 REVERB",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "0: RIEN, PAR PISTE": {
-  "en": "0: NOTHING, PER TRACK",
-  "es": "0: NADA, POR PISTA",
-  "pt": "0: NADA, POR FAIXA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "FX ENCORE: LES EFFETS LIVE": {
-  "en": "FX AGAIN: THE LIVE EFFECTS",
-  "es": "FX OTRA VEZ: EFECTOS LIVE",
-  "pt": "FX DE NOVO: EFEITOS LIVE",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "K1 TYPE K2 FREQ K3 RESO K4 MOUV": {
-  "en": "K1 TYPE K2 FREQ K3 RESO K4 MOVE",
-  "es": "K1 TIPO K2 FREC K3 RESO K4 MOV",
-  "pt": "K1 TIPO K2 FREQ K3 RESO K4 MOV",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "TOUCHES: ACCORDENT, OCT: 8VE": {
-  "en": "KEYS: TUNE IT  OCT: OCTAVE",
-  "es": "TECLAS: AFINAN  OCT: OCTAVA",
-  "pt": "TECLAS: AFINAM  OCT: OITAVA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "FX: LA SEQ FX": {
-  "en": "FX: THE FX SEQ",
-  "es": "FX: LA SEC FX",
-  "pt": "FX: A SEQ FX",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "K1: L'EFFET  BLANCHE: UN PAS": {
-  "en": "K1: THE FX  WHITE KEY: A STEP",
-  "es": "K1: EL EFECTO  BLANCA: UN PASO",
-  "pt": "K1: O EFEITO  BRANCA: UM PASSO",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "OCT: PAS 1-16 / 17-32": {
-  "en": "OCT: STEPS 1-16 / 17-32",
-  "es": "OCT: PASOS 1-16 / 17-32",
-  "pt": "OCT: PASSO 1-16 / 17-32",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "ARP: EFFACE  FX: RETOUR": {
-  "en": "ARP: CLEARS  FX: BACK",
-  "es": "ARP: BORRA  FX: VOLVER",
-  "pt": "ARP: APAGA  FX: VOLTA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "CHAINE / OPTIONS": {
-  "en": "SONG / OPTIONS",
-  "es": "CANCION / OPCIONES",
-  "pt": "MUSICA / OPCOES",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "PAS DU GROOVE": {
-  "en": "GROOVE STEP",
-  "es": "PASO DEL GROOVE",
-  "pt": "PASSO DO GROOVE",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "BLANCHE: UN PAS  K1: TICKS": {
-  "en": "WHITE KEY: A STEP K1: TICKS",
-  "es": "BLANCA: UN PASO  K1: TICKS",
-  "pt": "BRANCA: UM PASSO  K1: TICKS",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "6 TICKS: UNE LIGNE DROITE": {
-  "en": "6 TICKS: A STRAIGHT ROW",
-  "es": "6 TICKS: UNA FILA RECTA",
-  "pt": "6 TICKS: UMA LINHA RETA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "GLO: LES OPTIONS": {
-  "en": "GLO: THE OPTIONS",
-  "es": "GLO: LAS OPCIONES",
-  "pt": "GLO: AS OPCOES",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "LIGNE TABLE": {
-  "en": "TABLE ROW",
-  "es": "FILA TABLA",
-  "pt": "LINHA TABEL",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "LIGNE 0: VITESSE LONG BOUCLE": {
-  "en": "ROW 0: SPEED LENGTH LOOP",
-  "es": "FILA 0: VELOC LARGO BUCLE",
-  "pt": "LINHA 0: VELOC TAMANHO LOOP",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "K4 SUR LA LIGNE 0: ACTIVE": {
-  "en": "K4 ON ROW 0: ON / OFF",
-  "es": "K4 EN LA FILA 0: ACTIVA",
-  "pt": "K4 NA LINHA 0: LIGA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "ARP: EFFACE LE PAS": {
-  "en": "ARP: CLEARS THE STEP",
-  "es": "ARP: BORRA EL PASO",
-  "pt": "ARP: APAGA O PASSO",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "DEBUT FIN TRANCHE": {
-  "en": "START END SLICE",
-  "es": "INICIO FIN CORTE",
-  "pt": "INICIO FIM FATIA",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "K1: DEPLACE  K2: PRECIS": {
-  "en": "K1: MOVE  K2: FINE",
-  "es": "K1: MOVER  K2: FINO",
-  "pt": "K1: MOVE  K2: FINO",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "K3 NORMALISE  K4 A L'ENVERS": {
-  "en": "K3 NORMALISE  K4 REVERSE",
-  "es": "K3 NORMALIZA  K4 AL REVES",
-  "pt": "K3 NORMALIZA  K4 AO AVESSO",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "ARP: TRANCHES EGALES": {
-  "en": "ARP: EVEN SLICES",
-  "es": "ARP: CORTES IGUALES",
-  "pt": "ARP: FATIAS IGUAIS",
-  "n": 1,
-  "kinds": [
-   "table"
-  ]
- },
- "MON ": {
-  "en": "MY ",
-  "es": "MI ",
-  "pt": "MEU ",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "NOTE": {
-  "en": "NOTE",
-  "es": "NOTA",
-  "pt": "NOTA",
-  "n": 2,
-  "kinds": [
-   "TR"
-  ]
- },
- "EFFET 2": {
-  "en": "CELL FX 2",
-  "es": "EFECTO 2",
-  "pt": "EFEITO 2",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "VALEUR 2": {
-  "en": "VALUE 2",
-  "es": "VALOR 2",
-  "pt": "VALOR 2",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "EFFET CASE": {
-  "en": "CELL FX",
-  "es": "EFECTO",
-  "pt": "EFEITO",
-  "n": 2,
-  "kinds": [
-   "TR"
-  ]
- },
- "VALEUR": {
-  "en": "VALUE",
-  "es": "VALOR",
-  "pt": "VALOR",
-  "n": 3,
-  "kinds": [
-   "TR"
-  ]
- },
- "PORTEUSE": {
-  "en": "CARRIER",
-  "es": "PORTADORA",
-  "pt": "PORTADORA",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "EMPLACEMENT VIDE": {
-  "en": "EMPTY SLOT",
-  "es": "RANURA VACIA",
-  "pt": "ESPACO VAZIO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "GLISSE UN SON DANS": {
-  "en": "DROP A SOUND ON THE",
-  "es": "SUELTA UN SONIDO EN",
-  "pt": "SOLTE UM SOM NO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "L'EMULATEUR": {
-  "en": "EMULATOR",
-  "es": "EL EMULADOR",
-  "pt": "EMULADOR",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "DEBUT": {
-  "en": "START",
-  "es": "INICIO",
-  "pt": "INICIO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "TR ": {
-  "en": "SL ",
-  "es": "CR ",
-  "pt": "FT ",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "DEPLACE": {
-  "en": "MOVE",
-  "es": "MOVER",
-  "pt": "MOVE",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "PRECIS": {
-  "en": "FINE",
-  "es": "FINO",
-  "pt": "FINO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "TABLE ARRETEE: K4 SUR LA LIGNE 0": {
-  "en": "TABLE OFF: K4 ON ROW 0",
-  "es": "TABLA APAGADA: K4 EN FILA 0",
-  "pt": "TABELA PARADA: K4 NA LINHA 0",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "LONGUEUR": {
-  "en": "LENGTH",
-  "es": "LARGO",
-  "pt": "TAMANHO",
-  "n": 2,
-  "kinds": [
-   "TR"
-  ]
- },
- "TRANSPOSE": {
-  "en": "TRANSPOSE",
-  "es": "TRANSPONE",
-  "pt": "TRANSPOE",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "SUR CETTE PISTE": {
-  "en": "ON THIS TRACK",
-  "es": "EN ESTA PISTA",
-  "pt": "NESTA FAIXA",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "LE MASTER: ENV, ENV": {
-  "en": "THE MASTER: ENV, ENV",
-  "es": "EL MASTER: ENV, ENV",
-  "pt": "O MASTER: ENV, ENV",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "PUIS ALGO SUR M": {
-  "en": "THEN ALGO TO M",
-  "es": "LUEGO ALGO A M",
-  "pt": "DEPOIS ALGO M",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "(CHOISIS UN EFFET: EDIT)": {
-  "en": "(PICK AN EFFECT: EDIT)",
-  "es": "(ELIGE UN EFECTO: EDIT)",
-  "pt": "(ESCOLHA EFEITO: EDIT)",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "ENV: ADSR": {
-  "en": "ENV: ADSR",
-  "es": "ENV: ADSR",
-  "pt": "ENV: ADSR",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "+ OPERATEURS": {
-  "en": "+ OPERATORS",
-  "es": "+ OPERADORES",
-  "pt": "+ OPERADORES",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "COUPE LES COUPS": {
-  "en": "SHAPES THE HITS",
-  "es": "CORTA GOLPES",
-  "pt": "CORTA BATIDAS",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "EFFET MASTER": {
-  "en": "MASTER FX",
-  "es": "EFECTO MASTER",
-  "pt": "EFEITO MASTER",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "ECH": {
-  "en": "ECH",
-  "es": "ECO",
-  "pt": "ECO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "TOUT LE MOTIF": {
-  "en": "WHOLE PATTERN",
-  "es": "TODO EL PATRON",
-  "pt": "TODO O PADRAO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "FORCE": {
-  "en": "AMOUNT",
-  "es": "FUERZA",
-  "pt": "FORCA",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "DE": {
-  "en": "DIE",
-  "es": "DADO",
-  "pt": "DADO",
-  "n": 2,
-  "kinds": [
-   "TR"
-  ]
- },
- "PORTEE": {
-  "en": "SCOPE",
-  "es": "ALCANCE",
-  "pt": "ALCANCE",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "BANQUE": {
-  "en": "BANK",
-  "es": "BANCO",
-  "pt": "BANCO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "INTENSITE": {
-  "en": "INTENSITY",
-  "es": "INTENSIDAD",
-  "pt": "INTENSID.",
-  "n": 2,
-  "kinds": [
-   "TR"
-  ]
- },
- "ENREG. LIVE": {
-  "en": "REC LIVE",
-  "es": "GRABAR LIVE",
-  "pt": "GRAVA LIVE",
-  "n": 2,
-  "kinds": [
-   "TR"
-  ]
- },
- "TOUCHES: ACCORDENT LE FILTRE": {
-  "en": "KEYS: TUNE THE FILTER",
-  "es": "TECLAS: AFINAN EL FILTRO",
-  "pt": "TECLAS: AFINAM O FILTRO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "SUR LA CIBLE DE LIVE (K4 DE LIVE)": {
-  "en": "ON LIVE'S TARGET (LIVE'S K4)",
-  "es": "EN EL DESTINO DE LIVE (K4)",
-  "pt": "NO ALVO DO LIVE (K4 DO LIVE)",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "FX: SEQ FX": {
-  "en": "FX: FX SEQ",
-  "es": "FX: SEC FX",
-  "pt": "FX: SEQ FX",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "TYPE": {
-  "en": "TYPE",
-  "es": "TIPO",
-  "pt": "TIPO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "FREQUENCE": {
-  "en": "FREQ",
-  "es": "FRECUENCIA",
-  "pt": "FREQUENCIA",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "RESONANCE": {
-  "en": "RESO",
-  "es": "RESONANCIA",
-  "pt": "RESSONAN.",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "MOUVEMENT": {
-  "en": "MOVE",
-  "es": "MOVIMIENTO",
-  "pt": "MOVIMENTO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "SUR ": {
-  "en": "ON ",
-  "es": "EN ",
-  "pt": "EM ",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "OUTILS": {
-  "en": "TOOLS",
-  "es": "HERRAM.",
-  "pt": "FERRAM.",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "VERROU: LES TOUCHES": {
-  "en": "LOCKED: THE KEYS",
-  "es": "FIJA: LAS TECLAS",
-  "pt": "TRAVA: AS TECLAS",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "LIBRE: CHROMATIQUE": {
-  "en": "FREE: CHROMATIC",
-  "es": "LIBRE: CROMATICA",
-  "pt": "LIVRE: CROMATICA",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "RESTENT DANS LA GAMME": {
-  "en": "STAY IN THE SCALE",
-  "es": "QUEDAN EN LA ESCALA",
-  "pt": "FICAM NA ESCALA",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "TOUTES LES NOTES": {
-  "en": "ALL THE NOTES",
-  "es": "TODAS LAS NOTAS",
-  "pt": "TODAS AS NOTAS",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "UNE TOUCHE = TONIQUE": {
-  "en": "A KEY = THE ROOT",
-  "es": "UNA TECLA = TONICA",
-  "pt": "UMA TECLA = TONICA",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "TONIQUE": {
-  "en": "ROOT",
-  "es": "TONICA",
-  "pt": "TONICA",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "VERROU": {
-  "en": "LOCK",
-  "es": "FIJAR",
-  "pt": "TRAVA",
-  "n": 2,
-  "kinds": [
-   "TR"
-  ]
- },
- "LIBRE": {
-  "en": "FREE",
-  "es": "LIBRE",
-  "pt": "LIVRE",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "PAS DU CURSEUR": {
-  "en": "CURSOR STEP",
-  "es": "PASO CURSOR",
-  "pt": "PASSO CURSOR",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "PAS": {
-  "en": "STP",
-  "es": "PAS",
-  "pt": "PAS",
-  "n": 2,
-  "kinds": [
-   "TR"
-  ]
- },
- "ARP: MODE": {
-  "en": "ARP: MODE",
-  "es": "ARP: MODO",
-  "pt": "ARP: MODO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "REPETER": {
-  "en": "REPEAT",
-  "es": "REPETIR",
-  "pt": "REPETIR",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "REP": {
-  "en": "REP",
-  "es": "REP",
-  "pt": "REP",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "PAS DU MOTIF": {
-  "en": "PATTERN STEPS",
-  "es": "PASOS PATRON",
-  "pt": "PASSOS PADRAO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "CHARGER DE :": {
-  "en": "LOAD FROM:",
-  "es": "CARGAR DE:",
-  "pt": "CARREGAR DE:",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "SAUVER DANS :": {
-  "en": "SAVE INTO:",
-  "es": "GUARDAR EN:",
-  "pt": "SALVAR EM:",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "- VIDE -": {
-  "en": "- EMPTY -",
-  "es": "- VACIO -",
-  "pt": "- VAZIO -",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "LE NOM :": {
-  "en": "THE NAME:",
-  "es": "EL NOMBRE:",
-  "pt": "O NOME:",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "SELECT: LA PLACE": {
-  "en": "SELECT: THE PLACE",
-  "es": "SELECT: EL SITIO",
-  "pt": "SELECT: O LUGAR",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "K1: LA LETTRE": {
-  "en": "K1: THE LETTER",
-  "es": "K1: LA LETRA",
-  "pt": "K1: A LETRA",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "K2: UN NOM AU HASARD": {
-  "en": "K2: A RANDOM NAME",
-  "es": "K2: UN NOMBRE AL AZAR",
-  "pt": "K2: UM NOME AO ACASO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "K3: TOUT EFFACER": {
-  "en": "K3: CLEAR IT",
-  "es": "K3: BORRARLO",
-  "pt": "K3: APAGAR TUDO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "CET EMPLACEMENT EST PRIS": {
-  "en": "THIS SLOT IS TAKEN",
-  "es": "ESTA RANURA ESTA USADA",
-  "pt": "ESTE ESPACO ESTA OCUPADO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "LE MORCEAU N'EST PAS SAUVE": {
-  "en": "THE SONG IS NOT SAVED",
-  "es": "LA CANCION NO ESTA GUARDADA",
-  "pt": "A MUSICA NAO FOI SALVA",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "L'ECRASER ?": {
-  "en": "WRITE OVER IT?",
-  "es": "SOBREESCRIBIR?",
-  "pt": "SOBRESCREVER?",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "CONTINUER QUAND MEME ?": {
-  "en": "GO ON ANYWAY?",
-  "es": "SEGUIR DE TODOS MODOS?",
-  "pt": "CONTINUAR MESMO ASSIM?",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "OCT+ OUI     OCT- NON": {
-  "en": "OCT+ YES     OCT- NO",
-  "es": "OCT+ SI     OCT- NO",
-  "pt": "OCT+ SIM     OCT- NAO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "OCT+ : OK": {
-  "en": "OCT+ : OK",
-  "es": "OCT+ : OK",
-  "pt": "OCT+ : OK",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "OCT- : RETOUR": {
-  "en": "OCT- : BACK",
-  "es": "OCT- : VOLVER",
-  "pt": "OCT- : VOLTA",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "LETTRE": {
-  "en": "LETTER",
-  "es": "LETRA",
-  "pt": "LETRA",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "EMPLACEMENT": {
-  "en": "SLOT",
-  "es": "RANURA",
-  "pt": "ESPACO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "ACTIF": {
-  "en": "ON",
-  "es": "ACTIVO",
-  "pt": "LIGADO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "ARRETE": {
-  "en": "OFF",
-  "es": "APAGADO",
-  "pt": "PARADO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- " TICKS EN ": {
-  "en": " TICKS IN ",
-  "es": " TICKS EN ",
-  "pt": " TICKS EM ",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- " LIGNES": {
-  "en": " ROWS",
-  "es": " FILAS",
-  "pt": " LINHAS",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "UN TOUR:": {
-  "en": "ONE TURN:",
-  "es": "UNA VUELTA:",
-  "pt": "UMA VOLTA:",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "MODELE": {
-  "en": "PRESET",
-  "es": "MODELO",
-  "pt": "MODELO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "SORTIE": {
-  "en": "OUT",
-  "es": "SALIDA",
-  "pt": "SAIDA",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "THEME": {
-  "en": "THEME",
-  "es": "TEMA",
-  "pt": "TEMA",
-  "n": 2,
-  "kinds": [
-   "TR"
-  ]
- },
- "LANGUE": {
-  "en": "LANGUAGE",
-  "es": "IDIOMA",
-  "pt": "IDIOMA",
-  "n": 2,
-  "kinds": [
-   "TR"
-  ]
- },
- "POLICE: ": {
-  "en": "FONT: ",
-  "es": "FUENTE: ",
-  "pt": "FONTE: ",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "HORLOGE MIDI: ": {
-  "en": "MIDI CLOCK: ",
-  "es": "RELOJ MIDI: ",
-  "pt": "RELOGIO MIDI: ",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "HORLOGE MIDI": {
-  "en": "MIDI CLOCK",
-  "es": "RELOJ MIDI",
-  "pt": "RELOGIO MIDI",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "POLICE": {
-  "en": "FONT",
-  "es": "FUENTE",
-  "pt": "FONTE",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "APPUIE SUR UNE TOUCHE": {
-  "en": "PRESS ANY KEY",
-  "es": "PULSA UNA TECLA",
-  "pt": "APERTE UMA TECLA",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "LIGNE INSEREE": {
-  "en": "ROW IN",
-  "es": "FILA INSERTADA",
-  "pt": "LINHA INSERIDA",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "LIGNE OTEE": {
-  "en": "ROW OUT",
-  "es": "FILA QUITADA",
-  "pt": "LINHA TIRADA",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "RIEN ICI": {
-  "en": "NOTHING HERE",
-  "es": "NADA AQUI",
-  "pt": "NADA AQUI",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "CHARGE !": {
-  "en": "LOADED !",
-  "es": "CARGADO !",
-  "pt": "CARREGA!",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "ERREUR !": {
-  "en": "ERROR !",
-  "es": "ERROR !",
-  "pt": "ERRO !",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "SAUVE !": {
-  "en": "SAVED !",
-  "es": "GUARDADO !",
-  "pt": "SALVO !",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "DERNIER MOTIF": {
-  "en": "LAST PATTERN",
-  "es": "ULTIMO PATRON",
-  "pt": "ULTIMO PADRAO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "MOTIF DEJA LIE": {
-  "en": "PATTERN ALREADY LINKED",
-  "es": "PATRON YA ENLAZADO",
-  "pt": "PADRAO JA LIGADO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "PAS ": {
-  "en": "STEPS ",
-  "es": "PASOS ",
-  "pt": "PASS. ",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "REFAIT: SON ": {
-  "en": "REDONE: SOUND ",
-  "es": "REHECHO: SONIDO ",
-  "pt": "REFEITO: SOM ",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "ANNULE: SON ": {
-  "en": "UNDONE: SOUND ",
-  "es": "DESHECHO: SONIDO ",
-  "pt": "DESFEITO: SOM ",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "FM: UNE SEULE PISTE": {
-  "en": "FM: ONE TRACK ONLY",
-  "es": "FM: UNA SOLA PISTA",
-  "pt": "FM: SO UMA FAIXA",
-  "n": 3,
-  "kinds": [
-   "TR"
-  ]
- },
- "RIEN A REFAIRE": {
-  "en": "NOTHING TO REDO",
-  "es": "NADA QUE REHACER",
-  "pt": "NADA A REFAZER",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "RIEN A ANNULER": {
-  "en": "NOTHING TO UNDO",
-  "es": "NADA QUE DESHACER",
-  "pt": "NADA A DESFAZER",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "REFAIT": {
-  "en": "REDONE",
-  "es": "REHECHO",
-  "pt": "REFEITO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "ANNULE": {
-  "en": "UNDONE",
-  "es": "DESHECHO",
-  "pt": "DESFEITO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "LIVE EFFACE": {
-  "en": "LIVE CLEARED",
-  "es": "LIVE BORRADO",
-  "pt": "LIVE APAGADO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "TRANCHES EGALES": {
-  "en": "EVEN SLICES",
-  "es": "CORTES IGUALES",
-  "pt": "FATIAS IGUAIS",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "GARDE": {
-  "en": "KEPT",
-  "es": "CONSERVADO",
-  "pt": "GUARDADO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "CHARGE": {
-  "en": "LOADED",
-  "es": "CARGADO",
-  "pt": "CARREG.",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "OCT+: CHARGER": {
-  "en": "OCT+: LOAD IT",
-  "es": "OCT+: CARGAR",
-  "pt": "OCT+: CARREGA",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "SAUT ": {
-  "en": "STEP ",
-  "es": "SALTO ",
-  "pt": "PULO ",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "ATTEND L'HORLOGE MIDI": {
-  "en": "WAITING FOR MIDI CLOCK",
-  "es": "ESPERA EL RELOJ MIDI",
-  "pt": "ESPERANDO RELOGIO MIDI",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "SAMPLE PRET !": {
-  "en": "SAMPLE READY !",
-  "es": "SAMPLE LISTO !",
-  "pt": "SAMPLE PRONTO!",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "MOTIF LIE": {
-  "en": "LINKED",
-  "es": "ENLAZADO",
-  "pt": "LIGADO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "PLUS DE PLACE": {
-  "en": "NO ROOM",
-  "es": "SIN ESPACIO",
-  "pt": "SEM ESPACO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "COPIE": {
-  "en": "COPIED",
-  "es": "COPIADO",
-  "pt": "COPIADO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "VIDE": {
-  "en": "EMPTY",
-  "es": "VACIO",
-  "pt": "VAZIO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- },
- "COLLE": {
-  "en": "PASTED",
-  "es": "PEGADO",
-  "pt": "COLADO",
-  "n": 1,
-  "kinds": [
-   "TR"
-  ]
- }
-}
+[
+{"file": "kawa_data.c", "en": "EN", "es": "ES", "nth": 1, "pt": "PT", "max": 2},
+{"file": "kawa_data.c", "en": "PULSE", "es": "PULSO", "nth": 1, "pt": "PULSO", "max": 5},
+{"file": "kawa_data.c", "en": "WAVE", "es": "ONDA", "nth": 1, "pt": "ONDA", "max": 4},
+{"file": "kawa_data.c", "en": "NOISE", "es": "RUIDO", "nth": 1, "pt": "RUIDO", "max": 5},
+{"file": "kawa_data.c", "en": "FM", "es": "FM", "nth": 1, "pt": "FM", "max": 2},
+{"file": "kawa_data.c", "en": "KIT", "es": "KIT", "nth": 1, "pt": "KIT", "max": 3},
+{"file": "kawa_data.c", "en": "SAMPLE", "es": "SAMPLE", "nth": 1, "pt": "SAMPLE", "max": 6},
+{"file": "kawa_data.c", "en": "TRI", "es": "TRI", "nth": 1, "pt": "TRI", "max": 3},
+{"file": "kawa_data.c", "en": "SAW", "es": "SIERRA", "nth": 1, "pt": "SERRA", "max": 6},
+{"file": "kawa_data.c", "en": "SINE", "es": "SENO", "nth": 1, "pt": "SENO", "max": 4},
+{"file": "kawa_data.c", "en": "SOFT", "es": "SUAVE", "nth": 1, "pt": "SUAVE", "max": 5},
+{"file": "kawa_data.c", "en": "GB", "es": "GB", "nth": 1, "pt": "GB", "max": 2},
+{"file": "kawa_data.c", "en": "ORGAN", "es": "ORGANO", "nth": 1, "pt": "ORGAO", "max": 6},
+{"file": "kawa_data.c", "en": "VOICE", "es": "VOZ", "nth": 1, "pt": "VOZ", "max": 5},
+{"file": "kawa_data.c", "en": "FM", "es": "FM", "nth": 2, "pt": "FM", "max": 2},
+{"file": "kawa_data.c", "en": "LONG", "es": "LARGO", "nth": 1, "pt": "LONGO", "max": 5},
+{"file": "kawa_data.c", "en": "METAL", "es": "METAL", "nth": 1, "pt": "METAL", "max": 5},
+{"file": "kawa_data.c", "en": "1/4", "es": "1/4", "nth": 1, "pt": "1/4", "max": 3},
+{"file": "kawa_data.c", "en": "1/2", "es": "1/2", "nth": 1, "pt": "1/2", "max": 3},
+{"file": "kawa_data.c", "en": "3/4", "es": "3/4", "nth": 1, "pt": "3/4", "max": 3},
+{"file": "kawa_data.c", "en": "1", "es": "1", "nth": 1, "pt": "1", "max": 1},
+{"file": "kawa_data.c", "en": "1.5", "es": "1.5", "nth": 1, "pt": "1.5", "max": 3},
+{"file": "kawa_data.c", "en": "2", "es": "2", "nth": 1, "pt": "2", "max": 1},
+{"file": "kawa_data.c", "en": "3", "es": "3", "nth": 1, "pt": "3", "max": 1},
+{"file": "kawa_data.c", "en": "4", "es": "4", "nth": 1, "pt": "4", "max": 1},
+{"file": "kawa_data.c", "en": "6", "es": "6", "nth": 1, "pt": "6", "max": 1},
+{"file": "kawa_data.c", "en": "8", "es": "8", "nth": 1, "pt": "8", "max": 1},
+{"file": "kawa_data.c", "en": "12", "es": "12", "nth": 1, "pt": "12", "max": 2},
+{"file": "kawa_data.c", "en": "ALL", "es": "TODO", "nth": 1, "pt": "TUDO", "max": 4},
+{"file": "kawa_data.c", "en": "NO", "es": "NO", "nth": 1, "pt": "NAO", "max": 3},
+{"file": "kawa_data.c", "en": "YES", "es": "SI", "nth": 1, "pt": "SIM", "max": 3},
+{"file": "kawa_data.c", "en": "SLICES", "es": "CORTES", "nth": 1, "pt": "FATIAS", "max": 6},
+{"file": "kawa_data.c", "en": "NOTES", "es": "NOTAS", "nth": 1, "pt": "NOTAS", "max": 5},
+{"file": "kawa_data.c", "en": "SOUND", "es": "SONIDO", "nth": 1, "pt": "SOM", "max": 6},
+{"file": "kawa_data.c", "en": "1", "es": "1", "nth": 2, "pt": "1", "max": 1},
+{"file": "kawa_data.c", "en": "2", "es": "2", "nth": 2, "pt": "2", "max": 1},
+{"file": "kawa_data.c", "en": "3", "es": "3", "nth": 2, "pt": "3", "max": 1},
+{"file": "kawa_data.c", "en": "4", "es": "4", "nth": 2, "pt": "4", "max": 1},
+{"file": "kawa_data.c", "en": "5", "es": "5", "nth": 1, "pt": "5", "max": 1},
+{"file": "kawa_data.c", "en": "6", "es": "6", "nth": 2, "pt": "6", "max": 1},
+{"file": "kawa_data.c", "en": "7", "es": "7", "nth": 1, "pt": "7", "max": 1},
+{"file": "kawa_data.c", "en": "8", "es": "8", "nth": 2, "pt": "8", "max": 1},
+{"file": "kawa_data.c", "en": "9", "es": "9", "nth": 1, "pt": "9", "max": 1},
+{"file": "kawa_data.c", "en": "10", "es": "10", "nth": 1, "pt": "10", "max": 2},
+{"file": "kawa_data.c", "en": "11", "es": "11", "nth": 1, "pt": "11", "max": 2},
+{"file": "kawa_data.c", "en": "12", "es": "12", "nth": 2, "pt": "12", "max": 2},
+{"file": "kawa_data.c", "en": "13", "es": "13", "nth": 1, "pt": "13", "max": 2},
+{"file": "kawa_data.c", "en": "14", "es": "14", "nth": 1, "pt": "14", "max": 2},
+{"file": "kawa_data.c", "en": "15", "es": "15", "nth": 1, "pt": "15", "max": 2},
+{"file": "kawa_data.c", "en": "16", "es": "16", "nth": 1, "pt": "16", "max": 2},
+{"file": "kawa_data.c", "en": "17", "es": "17", "nth": 1, "pt": "17", "max": 2},
+{"file": "kawa_data.c", "en": "18", "es": "18", "nth": 1, "pt": "18", "max": 2},
+{"file": "kawa_data.c", "en": "19", "es": "19", "nth": 1, "pt": "19", "max": 2},
+{"file": "kawa_data.c", "en": "20", "es": "20", "nth": 1, "pt": "20", "max": 2},
+{"file": "kawa_data.c", "en": "21", "es": "21", "nth": 1, "pt": "21", "max": 2},
+{"file": "kawa_data.c", "en": "22", "es": "22", "nth": 1, "pt": "22", "max": 2},
+{"file": "kawa_data.c", "en": "23", "es": "23", "nth": 1, "pt": "23", "max": 2},
+{"file": "kawa_data.c", "en": "24", "es": "24", "nth": 1, "pt": "24", "max": 2},
+{"file": "kawa_data.c", "en": "25", "es": "25", "nth": 1, "pt": "25", "max": 2},
+{"file": "kawa_data.c", "en": "26", "es": "26", "nth": 1, "pt": "26", "max": 2},
+{"file": "kawa_data.c", "en": "27", "es": "27", "nth": 1, "pt": "27", "max": 2},
+{"file": "kawa_data.c", "en": "28", "es": "28", "nth": 1, "pt": "28", "max": 2},
+{"file": "kawa_data.c", "en": "29", "es": "29", "nth": 1, "pt": "29", "max": 2},
+{"file": "kawa_data.c", "en": "30", "es": "30", "nth": 1, "pt": "30", "max": 2},
+{"file": "kawa_data.c", "en": "31", "es": "31", "nth": 1, "pt": "31", "max": 2},
+{"file": "kawa_data.c", "en": "32", "es": "32", "nth": 1, "pt": "32", "max": 2},
+{"file": "kawa_data.c", "en": "NONE", "es": "NADA", "nth": 1, "pt": "NADA", "max": 4},
+{"file": "kawa_data.c", "en": "LOWPASS", "es": "FILT BAJ", "nth": 1, "pt": "FILT GRV", "max": 8},
+{"file": "kawa_data.c", "en": "HIPASS", "es": "FILT ALT", "nth": 1, "pt": "FILT AGU", "max": 8},
+{"file": "kawa_data.c", "en": "BANDPASS", "es": "PASA BND", "nth": 1, "pt": "PASSA BD", "max": 8},
+{"file": "kawa_data.c", "en": "DRIVE", "es": "DISTOR", "nth": 1, "pt": "DISTOR", "max": 6},
+{"file": "kawa_data.c", "en": "CRUSH", "es": "TRITURA", "nth": 1, "pt": "ESMAGA", "max": 7},
+{"file": "kawa_data.c", "en": "LO-FI", "es": "DIEZMA", "nth": 1, "pt": "DIZIMA", "max": 6},
+{"file": "kawa_data.c", "en": "RING", "es": "ANILLO", "nth": 1, "pt": "ANEL", "max": 6},
+{"file": "kawa_data.c", "en": "TREMOLO", "es": "TREMOLO", "nth": 1, "pt": "TREMOLO", "max": 7},
+{"file": "kawa_data.c", "en": "WAH", "es": "WAH", "nth": 1, "pt": "WAH", "max": 3},
+{"file": "kawa_data.c", "en": "A", "es": "A", "nth": 1, "pt": "A", "max": 1},
+{"file": "kawa_data.c", "en": "CUTOFF", "es": "CORTE", "nth": 1, "pt": "CORTE", "max": 6},
+{"file": "kawa_data.c", "en": "CUTOFF", "es": "CORTE", "nth": 2, "pt": "CORTE", "max": 6},
+{"file": "kawa_data.c", "en": "CENTER", "es": "CENTRO", "nth": 1, "pt": "CENTRO", "max": 6},
+{"file": "kawa_data.c", "en": "GAIN", "es": "GANANC", "nth": 1, "pt": "GANHO", "max": 6},
+{"file": "kawa_data.c", "en": "BITS", "es": "BITS", "nth": 1, "pt": "BITS", "max": 4},
+{"file": "kawa_data.c", "en": "RATE", "es": "TASA", "nth": 1, "pt": "TAXA", "max": 4},
+{"file": "kawa_data.c", "en": "FREQ", "es": "FREC", "nth": 1, "pt": "FREQ", "max": 4},
+{"file": "kawa_data.c", "en": "RATE", "es": "VELOC", "nth": 1, "pt": "VELOC", "max": 5},
+{"file": "kawa_data.c", "en": "RATE", "es": "VELOC", "nth": 2, "pt": "VELOC", "max": 5},
+{"file": "kawa_data.c", "en": "B", "es": "B", "nth": 1, "pt": "B", "max": 1},
+{"file": "kawa_data.c", "en": "RESO", "es": "RESO", "nth": 1, "pt": "RESO", "max": 4},
+{"file": "kawa_data.c", "en": "RESO", "es": "RESO", "nth": 2, "pt": "RESO", "max": 4},
+{"file": "kawa_data.c", "en": "RESO", "es": "RESO", "nth": 3, "pt": "RESO", "max": 4},
+{"file": "kawa_data.c", "en": "TONE", "es": "TONO", "nth": 1, "pt": "TOM", "max": 4},
+{"file": "kawa_data.c", "en": "-", "es": "-", "nth": 1, "pt": "-", "max": 1},
+{"file": "kawa_data.c", "en": "-", "es": "-", "nth": 2, "pt": "-", "max": 1},
+{"file": "kawa_data.c", "en": "-", "es": "-", "nth": 3, "pt": "-", "max": 1},
+{"file": "kawa_data.c", "en": "DEPTH", "es": "PROFUND", "nth": 1, "pt": "PROFUND", "max": 7},
+{"file": "kawa_data.c", "en": "DEPTH", "es": "PROFUND", "nth": 2, "pt": "PROFUND", "max": 7},
+{"file": "kawa_data.c", "en": "NONE", "es": "NADA", "nth": 2, "pt": "NADA", "max": 4},
+{"file": "kawa_data.c", "en": "PITCH", "es": "ALTURA", "nth": 1, "pt": "ALTURA", "max": 6},
+{"file": "kawa_data.c", "en": "VOLUME", "es": "VOLUMEN", "nth": 1, "pt": "VOLUME", "max": 7},
+{"file": "kawa_data.c", "en": "EFFECT A", "es": "EFECTO A", "nth": 1, "pt": "EFEITO A", "max": 8},
+{"file": "kawa_data.c", "en": "PAN", "es": "PANEO", "nth": 1, "pt": "PAN", "max": 5},
+{"file": "kawa_data.c", "en": "SHAPE", "es": "FORMA", "nth": 1, "pt": "FORMA", "max": 5},
+{"file": "kawa_data.c", "en": "4 BARS", "es": "4 COMP", "nth": 1, "pt": "4 COMP", "max": 6},
+{"file": "kawa_data.c", "en": "2 BARS", "es": "2 COMP", "nth": 1, "pt": "2 COMP", "max": 6},
+{"file": "kawa_data.c", "en": "1 BAR", "es": "1 COMP", "nth": 1, "pt": "1 COMP", "max": 6},
+{"file": "kawa_data.c", "en": "1/2", "es": "1/2", "nth": 2, "pt": "1/2", "max": 3},
+{"file": "kawa_data.c", "en": "1/4", "es": "1/4", "nth": 2, "pt": "1/4", "max": 3},
+{"file": "kawa_data.c", "en": "1/8", "es": "1/8", "nth": 1, "pt": "1/8", "max": 3},
+{"file": "kawa_data.c", "en": "1/16", "es": "1/16", "nth": 1, "pt": "1/16", "max": 4},
+{"file": "kawa_data.c", "en": "1/32", "es": "1/32", "nth": 1, "pt": "1/32", "max": 4},
+{"file": "kawa_data.c", "en": "SLOW", "es": "LENTO", "nth": 1, "pt": "LENTO", "max": 5},
+{"file": "kawa_data.c", "en": "MEDIUM", "es": "MEDIO", "nth": 1, "pt": "MEDIO", "max": 6},
+{"file": "kawa_data.c", "en": "FAST", "es": "RAPIDO", "nth": 1, "pt": "RAPIDO", "max": 6},
+{"file": "kawa_data.c", "en": "SINE", "es": "SENO", "nth": 2, "pt": "SENO", "max": 4},
+{"file": "kawa_data.c", "en": "TRIANGLE", "es": "TRIANG", "nth": 1, "pt": "TRIANG", "max": 8},
+{"file": "kawa_data.c", "en": "SQUARE", "es": "CUADRADA", "nth": 1, "pt": "QUADRADA", "max": 8},
+{"file": "kawa_data.c", "en": "SAW", "es": "SIERRA", "nth": 2, "pt": "SERRA", "max": 6},
+{"file": "kawa_data.c", "en": "RANDOM", "es": "AZAR", "nth": 1, "pt": "ACASO", "max": 6},
+{"file": "kawa_data.c", "en": "ATTACK", "es": "ATAQUE", "nth": 1, "pt": "ATAQUE", "max": 6},
+{"file": "kawa_data.c", "en": "DECAY", "es": "CAIDA", "nth": 1, "pt": "QUEDA", "max": 5},
+{"file": "kawa_data.c", "en": "SUSTAIN", "es": "SOSTEN", "nth": 1, "pt": "SUSTENT", "max": 7},
+{"file": "kawa_data.c", "en": "RELEASE", "es": "SUELTA", "nth": 1, "pt": "SOLTURA", "max": 7},
+{"file": "kawa_data.c", "en": "VOLUME", "es": "VOLUMEN", "nth": 2, "pt": "VOLUME", "max": 7},
+{"file": "kawa_data.c", "en": "PAN", "es": "PANEO", "nth": 2, "pt": "PAN", "max": 5},
+{"file": "kawa_data.c", "en": "ECHO", "es": "ECO", "nth": 1, "pt": "ECO", "max": 4},
+{"file": "kawa_data.c", "en": "REVERB", "es": "REVERB", "nth": 1, "pt": "REVERB", "max": 6},
+{"file": "kawa_data.c", "en": "EFFECT", "es": "EFECTO", "nth": 1, "pt": "EFEITO", "max": 6},
+{"file": "kawa_data.c", "en": "A", "es": "A", "nth": 2, "pt": "A", "max": 1},
+{"file": "kawa_data.c", "en": "B", "es": "B", "nth": 2, "pt": "B", "max": 1},
+{"file": "kawa_data.c", "en": "MIX", "es": "MEZCLA", "nth": 1, "pt": "MIX", "max": 6},
+{"file": "kawa_data.c", "en": "TARGET", "es": "DESTINO", "nth": 1, "pt": "ALVO", "max": 7},
+{"file": "kawa_data.c", "en": "RATE", "es": "VELOC", "nth": 3, "pt": "VELOC", "max": 5},
+{"file": "kawa_data.c", "en": "DEPTH", "es": "PROFUND", "nth": 3, "pt": "PROFUND", "max": 7},
+{"file": "kawa_data.c", "en": "WAVE", "es": "ONDA", "nth": 2, "pt": "ONDA", "max": 4},
+{"file": "kawa_data.c", "en": "ENV>FX", "es": "ENV>EFE", "nth": 1, "pt": "ENV>EFE", "max": 7},
+{"file": "kawa_data.c", "en": "VEL>FX", "es": "VEL>EFE", "nth": 1, "pt": "VEL>EFE", "max": 7},
+{"file": "kawa_data.c", "en": "ENV>PIT", "es": "ENV>ALT", "nth": 1, "pt": "ENV>ALT", "max": 7},
+{"file": "kawa_data.c", "en": "LFO KEY", "es": "LFO NOTA", "nth": 1, "pt": "LFO NOTA", "max": 8},
+{"file": "kawa_data.c", "en": "SWEEP", "es": "BARRIDO", "nth": 1, "pt": "VARRE", "max": 7},
+{"file": "kawa_data.c", "en": "VIBRATO", "es": "VIBRATO", "nth": 1, "pt": "VIBRATO", "max": 7},
+{"file": "kawa_data.c", "en": "TONE", "es": "TONO", "nth": 2, "pt": "TOM", "max": 4},
+{"file": "kawa_data.c", "en": "CRUSH", "es": "TRITURA", "nth": 2, "pt": "ESMAGA", "max": 7},
+{"file": "kawa_data.c", "en": "DETUNE", "es": "DESAFIN", "nth": 1, "pt": "DESAFIN", "max": 7},
+{"file": "kawa_data.c", "en": "ARP SPD", "es": "ARP VEL", "nth": 1, "pt": "ARP VEL", "max": 7},
+{"file": "kawa_data.c", "en": "GLIDE", "es": "GLISA", "nth": 1, "pt": "DESLIZ", "max": 6},
+{"file": "kawa_data.c", "en": "SHAPE", "es": "FORMA", "nth": 2, "pt": "FORMA", "max": 5},
+{"file": "kawa_data.c", "en": "PATCH", "es": "SONIDO", "nth": 1, "pt": "SOM FM", "max": 6},
+{"file": "kawa_data.c", "en": "ALGO", "es": "ALGO", "nth": 1, "pt": "ALGO", "max": 4},
+{"file": "kawa_data.c", "en": "RATIO", "es": "RATIO", "nth": 1, "pt": "RATIO", "max": 5},
+{"file": "kawa_data.c", "en": "FEEDBK", "es": "RETORNO", "nth": 1, "pt": "RETORNO", "max": 7},
+{"file": "kawa_data.c", "en": "BRIGHT", "es": "BRILLO", "nth": 1, "pt": "BRILHO", "max": 6},
+{"file": "kawa_data.c", "en": "MOD ENV", "es": "MOD ENV", "nth": 1, "pt": "MOD ENV", "max": 7},
+{"file": "kawa_data.c", "en": "DETUNE", "es": "DESAFIN", "nth": 2, "pt": "DESAFIN", "max": 7},
+{"file": "kawa_data.c", "en": "VIBRATO", "es": "VIBRATO", "nth": 2, "pt": "VIBRATO", "max": 7},
+{"file": "kawa_data.c", "en": "KIT", "es": "KIT", "nth": 2, "pt": "KIT", "max": 3},
+{"file": "kawa_data.c", "en": "TUNE", "es": "AFINA", "nth": 1, "pt": "AFINA", "max": 5},
+{"file": "kawa_data.c", "en": "DECAY", "es": "CAIDA", "nth": 2, "pt": "QUEDA", "max": 5},
+{"file": "kawa_data.c", "en": "DRIVE", "es": "SATURA", "nth": 1, "pt": "SATURA", "max": 6},
+{"file": "kawa_data.c", "en": "CRUSH", "es": "TRITURA", "nth": 3, "pt": "ESMAGA", "max": 7},
+{"file": "kawa_data.c", "en": "TONE", "es": "TONO", "nth": 3, "pt": "TOM", "max": 4},
+{"file": "kawa_data.c", "en": "SOURCE", "es": "FUENTE", "nth": 1, "pt": "FONTE", "max": 6},
+{"file": "kawa_data.c", "en": "MODE", "es": "MODO", "nth": 1, "pt": "MODO", "max": 4},
+{"file": "kawa_data.c", "en": "TUNE", "es": "AFINA", "nth": 2, "pt": "AFINA", "max": 5},
+{"file": "kawa_data.c", "en": "FIT", "es": "AJUSTE", "nth": 1, "pt": "AJUSTE", "max": 6},
+{"file": "kawa_data.c", "en": "LENGTH", "es": "LARGO", "nth": 1, "pt": "DURAC", "max": 6},
+{"file": "kawa_data.c", "en": "DRIVE", "es": "SATURA", "nth": 2, "pt": "SATURA", "max": 6},
+{"file": "kawa_data.c", "en": "CRUSH", "es": "TRITURA", "nth": 4, "pt": "ESMAGA", "max": 7},
+{"file": "kawa_data.c", "en": "TONE", "es": "TONO", "nth": 4, "pt": "TOM", "max": 4},
+{"file": "kawa_data.c", "en": "SOUND", "es": "SONIDO", "nth": 2, "pt": "SOM", "max": 6},
+{"file": "kawa_data.c", "en": "SOUND 2", "es": "SONIDO 2", "nth": 1, "pt": "SOM 2", "max": 8},
+{"file": "kawa_data.c", "en": "OPERATOR", "es": "OPERADOR", "nth": 1, "pt": "OPERADOR", "max": 8},
+{"file": "kawa_data.c", "en": "OP ENVELOPE", "es": "ENV OPERAD", "nth": 1, "pt": "ENV OPERAD", "max": 11},
+{"file": "kawa_data.c", "en": "SAMPLE EDIT", "es": "EDITAR SAMPLE", "nth": 1, "pt": "SAMPLE", "max": 13},
+{"file": "kawa_data.c", "en": "EFFECT", "es": "EFECTO", "nth": 2, "pt": "EFEITO", "max": 6},
+{"file": "kawa_data.c", "en": "LFO", "es": "LFO", "nth": 1, "pt": "LFO", "max": 3},
+{"file": "kawa_data.c", "en": "MODULATION", "es": "MODULACION", "nth": 1, "pt": "MODULACAO", "max": 10},
+{"file": "kawa_data.c", "en": "TABLE", "es": "TABLA", "nth": 1, "pt": "TABEL", "max": 5},
+{"file": "kawa_data.c", "en": "LEVEL", "es": "NIVEL", "nth": 1, "pt": "NIVEL", "max": 5},
+{"file": "kawa_data.c", "en": "RATIO", "es": "RATIO", "nth": 2, "pt": "RATIO", "max": 5},
+{"file": "kawa_data.c", "en": "FINE", "es": "FINO", "nth": 1, "pt": "FINO", "max": 4},
+{"file": "kawa_data.c", "en": "DETUNE", "es": "DESAFIN", "nth": 3, "pt": "DESAFIN", "max": 7},
+{"file": "kawa_data.c", "en": "ATTACK", "es": "ATAQUE", "nth": 2, "pt": "ATAQUE", "max": 6},
+{"file": "kawa_data.c", "en": "DECAY", "es": "CAIDA", "nth": 3, "pt": "QUEDA", "max": 5},
+{"file": "kawa_data.c", "en": "SUSTAIN", "es": "SOSTEN", "nth": 2, "pt": "SUSTENT", "max": 7},
+{"file": "kawa_data.c", "en": "RELEASE", "es": "SUELTA", "nth": 2, "pt": "SOLTURA", "max": 7},
+{"file": "kawa_data.c", "en": "LEAD 25", "es": "LEAD 25", "nth": 1, "pt": "LEAD 25", "max": 7},
+{"file": "kawa_data.c", "en": "BEEP 12", "es": "BIP 12", "nth": 1, "pt": "BIP 12", "max": 7},
+{"file": "kawa_data.c", "en": "SQUARE 50", "es": "CUADRADA 50", "nth": 1, "pt": "QUADRADA 50", "max": 11},
+{"file": "kawa_data.c", "en": "SUPER PULSE", "es": "SUPER PULSO", "nth": 1, "pt": "SUPER PULSO", "max": 11},
+{"file": "kawa_data.c", "en": "PLUCK", "es": "PLUCK", "nth": 1, "pt": "PLUCK", "max": 5},
+{"file": "kawa_data.c", "en": "LASER", "es": "LASER", "nth": 1, "pt": "LASER", "max": 5},
+{"file": "kawa_data.c", "en": "PWM PAD", "es": "PWM PAD", "nth": 1, "pt": "PWM PAD", "max": 7},
+{"file": "kawa_data.c", "en": "BASS", "es": "BAJO", "nth": 1, "pt": "BAIXO", "max": 5},
+{"file": "kawa_data.c", "en": "DIRTY", "es": "SUCIO", "nth": 1, "pt": "SUJO", "max": 5},
+{"file": "kawa_data.c", "en": "NES BASS", "es": "BAJO NES", "nth": 1, "pt": "BAIXO NES", "max": 9},
+{"file": "kawa_data.c", "en": "GB BASS", "es": "BAJO GB", "nth": 1, "pt": "BAIXO GB", "max": 8},
+{"file": "kawa_data.c", "en": "SAW", "es": "SIERRA", "nth": 3, "pt": "SERRA", "max": 6},
+{"file": "kawa_data.c", "en": "FLUTE", "es": "FLAUTA", "nth": 1, "pt": "FLAUTA", "max": 6},
+{"file": "kawa_data.c", "en": "ORGAN", "es": "ORGANO", "nth": 2, "pt": "ORGAO", "max": 6},
+{"file": "kawa_data.c", "en": "VOICE", "es": "VOZ", "nth": 2, "pt": "VOZ", "max": 5},
+{"file": "kawa_data.c", "en": "KICK TRI", "es": "KICK TRI", "nth": 1, "pt": "KICK TRI", "max": 8},
+{"file": "kawa_data.c", "en": "HI-HAT", "es": "CHARLES", "nth": 1, "pt": "CHIMBAL", "max": 7},
+{"file": "kawa_data.c", "en": "SNARE", "es": "CAJA", "nth": 1, "pt": "CAIXA", "max": 5},
+{"file": "kawa_data.c", "en": "METAL", "es": "METAL", "nth": 2, "pt": "METAL", "max": 5},
+{"file": "kawa_data.c", "en": "STEAM", "es": "VAPOR", "nth": 1, "pt": "VAPOR", "max": 5},
+{"file": "kawa_data.c", "en": "EXPLOSION", "es": "EXPLOSION", "nth": 1, "pt": "EXPLOSAO", "max": 9},
+{"file": "kawa_data.c", "en": "CRASH", "es": "CRASH", "nth": 1, "pt": "CRASH", "max": 5},
+{"file": "kawa_data.c", "en": "TINE EP", "es": "PIANO TINE", "nth": 1, "pt": "PIANO TINE", "max": 10},
+{"file": "kawa_data.c", "en": "BELL", "es": "CAMPANA", "nth": 1, "pt": "SINO", "max": 7},
+{"file": "kawa_data.c", "en": "FM BASS", "es": "BAJO FM", "nth": 1, "pt": "BAIXO FM", "max": 8},
+{"file": "kawa_data.c", "en": "BRASS", "es": "METALES", "nth": 1, "pt": "METAIS", "max": 7},
+{"file": "kawa_data.c", "en": "PAD", "es": "COLCHON", "nth": 1, "pt": "PAD", "max": 7},
+{"file": "kawa_data.c", "en": "MARIMBA", "es": "MARIMBA", "nth": 1, "pt": "MARIMBA", "max": 7},
+{"file": "kawa_data.c", "en": "FM ORGAN", "es": "ORGANO FM", "nth": 1, "pt": "ORGAO FM", "max": 9},
+{"file": "kawa_data.c", "en": "PLUCK", "es": "PUNTEO", "nth": 1, "pt": "VIOLAO", "max": 6},
+{"file": "kawa_data.c", "en": "CHIP LEAD", "es": "LEAD CHIP", "nth": 1, "pt": "LEAD CHIP", "max": 9},
+{"file": "kawa_data.c", "en": "ACID BASS", "es": "BAJO ACIDO", "nth": 1, "pt": "BAIXO ACIDO", "max": 11},
+{"file": "kawa_data.c", "en": "HOOVER", "es": "HOOVER", "nth": 1, "pt": "HOOVER", "max": 6},
+{"file": "kawa_data.c", "en": "KALIMBA", "es": "KALIMBA", "nth": 1, "pt": "KALIMBA", "max": 7},
+{"file": "kawa_data.c", "en": "VOLT KIT", "es": "KIT VOLT", "nth": 1, "pt": "KIT VOLT", "max": 8},
+{"file": "kawa_data.c", "en": "TAMBORZAO KIT", "es": "KIT TAMBORZAO", "nth": 1, "pt": "KIT TAMBORZAO", "max": 13},
+{"file": "kawa_data.c", "en": "150 KIT", "es": "KIT 150", "nth": 1, "pt": "KIT 150", "max": 7},
+{"file": "kawa_data.c", "en": "MANDELAO KIT", "es": "KIT MANDELAO", "nth": 1, "pt": "KIT MANDELAO", "max": 12},
+{"file": "kawa_data.c", "en": "BREGA KIT", "es": "KIT BREGA", "nth": 1, "pt": "KIT BREGA", "max": 9},
+{"file": "kawa_data.c", "en": "MELODY KIT", "es": "KIT MELODY", "nth": 1, "pt": "KIT MELODY", "max": 10},
+{"file": "kawa_data.c", "en": "TUIN FX KIT", "es": "KIT TUIN", "nth": 1, "pt": "KIT TUIN", "max": 11},
+{"file": "kawa_data.c", "en": "BR PERC KIT", "es": "KIT PERCUSION", "nth": 1, "pt": "KIT PERCUSSAO", "max": 13},
+{"file": "kawa_data.c", "en": "DIRTY 150 KIT", "es": "KIT 150 SUCIO", "nth": 1, "pt": "KIT 150 SUJO", "max": 13},
+{"file": "kawa_data.c", "en": "TAMBORZAO", "es": "TAMBORZAO", "nth": 1, "pt": "TAMBORZAO", "max": 9},
+{"file": "kawa_data.c", "en": "VOLT", "es": "VOLT", "nth": 1, "pt": "VOLT", "max": 4},
+{"file": "kawa_data.c", "en": "FUNK 150", "es": "FUNK 150", "nth": 1, "pt": "FUNK 150", "max": 8},
+{"file": "kawa_data.c", "en": "MANDELAO", "es": "MANDELAO", "nth": 1, "pt": "MANDELAO", "max": 8},
+{"file": "kawa_data.c", "en": "BREGA FUNK", "es": "BREGA FUNK", "nth": 1, "pt": "BREGA FUNK", "max": 10},
+{"file": "kawa_data.c", "en": "MONTAGEM", "es": "MONTAGEM", "nth": 1, "pt": "MONTAGEM", "max": 8},
+{"file": "kawa_data.c", "en": "DIRTY MANDELAO", "es": "MANDELAO SUCIO", "nth": 1, "pt": "MANDELAO SUJO", "max": 14},
+{"file": "kawa_data.c", "en": "SHORT 150", "es": "150 CORTO", "nth": 1, "pt": "150 CURTO", "max": 9},
+{"file": "kawa_data.c", "en": "MY SAMPLE 1", "es": "MI SAMPLE 1", "nth": 1, "pt": "MEU SAMPLE 1", "max": 12},
+{"file": "kawa_data.c", "en": "MY SAMPLE 2", "es": "MI SAMPLE 2", "nth": 1, "pt": "MEU SAMPLE 2", "max": 12},
+{"file": "kawa_data.c", "en": "MY SAMPLE 3", "es": "MI SAMPLE 3", "nth": 1, "pt": "MEU SAMPLE 3", "max": 12},
+{"file": "kawa_data.c", "en": "MY SAMPLE 4", "es": "MI SAMPLE 4", "nth": 1, "pt": "MEU SAMPLE 4", "max": 12},
+{"file": "kawa_data.c", "en": "808 BASS", "es": "BAJO 808", "nth": 1, "pt": "GRAVE 808", "max": 9},
+{"file": "kawa_data.c", "en": "BENT 808", "es": "808 TORCIDO", "nth": 1, "pt": "GRAVE TORTO", "max": 11},
+{"file": "kawa_data.c", "en": "SUB", "es": "SUB", "nth": 1, "pt": "SUB", "max": 3},
+{"file": "kawa_data.c", "en": "MELODY LEAD", "es": "LEAD MELODY", "nth": 1, "pt": "LEAD MELODY", "max": 11},
+{"file": "kawa_data.c", "en": "SIREN", "es": "SIRENA", "nth": 1, "pt": "SIRENE", "max": 6},
+{"file": "kawa_data.c", "en": "MELODY PIANO", "es": "PIANO MELODY", "nth": 1, "pt": "PIANO MELODY", "max": 12},
+{"file": "kawa_data.c", "en": "STAB", "es": "STAB", "nth": 1, "pt": "STAB", "max": 4},
+{"file": "kawa_data.c", "en": "---", "es": "---", "nth": 1, "pt": "---", "max": 3},
+{"file": "kawa_data.c", "en": "ARP", "es": "ARP", "nth": 1, "pt": "ARP", "max": 3},
+{"file": "kawa_data.c", "en": "GLI", "es": "GLI", "nth": 1, "pt": "GLI", "max": 3},
+{"file": "kawa_data.c", "en": "VIB", "es": "VIB", "nth": 1, "pt": "VIB", "max": 3},
+{"file": "kawa_data.c", "en": "ROL", "es": "RED", "nth": 1, "pt": "ROL", "max": 3},
+{"file": "kawa_data.c", "en": "BND", "es": "BND", "nth": 1, "pt": "BND", "max": 3},
+{"file": "kawa_data.c", "en": "CHN", "es": "AZR", "nth": 1, "pt": "CHN", "max": 3},
+{"file": "kawa_data.c", "en": "DLY", "es": "RET", "nth": 1, "pt": "ATR", "max": 3},
+{"file": "kawa_data.c", "en": "CUT", "es": "CRT", "nth": 1, "pt": "CRT", "max": 3},
+{"file": "kawa_data.c", "en": "REV", "es": "REV", "nth": 1, "pt": "INV", "max": 3},
+{"file": "kawa_data.c", "en": "PIT", "es": "ALT", "nth": 1, "pt": "ALT", "max": 3},
+{"file": "kawa_data.c", "en": "SHP", "es": "FOR", "nth": 1, "pt": "FOR", "max": 3},
+{"file": "kawa_data.c", "en": "CRU", "es": "TRI", "nth": 1, "pt": "ESM", "max": 3},
+{"file": "kawa_data.c", "en": "VSL", "es": "VOL", "nth": 1, "pt": "VOL", "max": 3},
+{"file": "kawa_data.c", "en": "PAN", "es": "PAN", "nth": 1, "pt": "PAN", "max": 3},
+{"file": "kawa_data.c", "en": "OFS", "es": "INI", "nth": 1, "pt": "INI", "max": 3},
+{"file": "kawa_data.c", "en": "HOP", "es": "SAL", "nth": 1, "pt": "PUL", "max": 3},
+{"file": "kawa_data.c", "en": "END", "es": "FIN", "nth": 1, "pt": "FIM", "max": 3},
+{"file": "kawa_data.c", "en": "---", "es": "---", "nth": 2, "pt": "---", "max": 3},
+{"file": "kawa_data.c", "en": "HIT", "es": "GOL", "nth": 1, "pt": "BAT", "max": 3},
+{"file": "kawa_data.c", "en": "CUT", "es": "CRT", "nth": 2, "pt": "CRT", "max": 3},
+{"file": "kawa_data.c", "en": "VIB", "es": "VIB", "nth": 2, "pt": "VIB", "max": 3},
+{"file": "kawa_data.c", "en": "BND", "es": "BND", "nth": 2, "pt": "BND", "max": 3},
+{"file": "kawa_data.c", "en": "SHP", "es": "FOR", "nth": 2, "pt": "FOR", "max": 3},
+{"file": "kawa_data.c", "en": "CRU", "es": "TRI", "nth": 2, "pt": "ESM", "max": 3},
+{"file": "kawa_data.c", "en": "VSL", "es": "VOL", "nth": 2, "pt": "VOL", "max": 3},
+{"file": "kawa_data.c", "en": "PAN", "es": "PAN", "nth": 2, "pt": "PAN", "max": 3},
+{"file": "kawa_data.c", "en": "HOP", "es": "SAL", "nth": 2, "pt": "PUL", "max": 3},
+{"file": "kawa_data.c", "en": "STRAIGHT", "es": "RECTO", "nth": 1, "pt": "RETO", "max": 8},
+{"file": "kawa_data.c", "en": "TAMBOR", "es": "TAMBOR", "nth": 1, "pt": "TAMBOR", "max": 6},
+{"file": "kawa_data.c", "en": "BREGA", "es": "BREGA", "nth": 1, "pt": "BREGA", "max": 5},
+{"file": "kawa_data.c", "en": "150", "es": "150", "nth": 1, "pt": "150", "max": 3},
+{"file": "kawa_data.c", "en": "MANDELA", "es": "MANDELA", "nth": 1, "pt": "MANDELA", "max": 7},
+{"file": "kawa_data.c", "en": "TRIPLET", "es": "TRESILLO", "nth": 1, "pt": "TERCINA", "max": 8},
+{"file": "kawa_data.c", "en": "MAJ", "es": "MAY", "nth": 1, "pt": "MAI", "max": 3},
+{"file": "kawa_data.c", "en": "MIN", "es": "MEN", "nth": 1, "pt": "MEN", "max": 3},
+{"file": "kawa_data.c", "en": "OCT", "es": "OCT", "nth": 1, "pt": "OCT", "max": 3},
+{"file": "kawa_data.c", "en": "5TH", "es": "5TA", "nth": 1, "pt": "5TA", "max": 3},
+{"file": "kawa_data.c", "en": "SUS", "es": "SUS", "nth": 1, "pt": "SUS", "max": 3},
+{"file": "kawa_data.c", "en": "7", "es": "7", "nth": 2, "pt": "7", "max": 1},
+{"file": "kawa_data.c", "en": "MA7", "es": "MA7", "nth": 1, "pt": "MA7", "max": 3},
+{"file": "kawa_data.c", "en": "MI7", "es": "ME7", "nth": 1, "pt": "ME7", "max": 3},
+{"file": "kawa_data.c", "en": "DIM", "es": "DIS", "nth": 1, "pt": "DIM", "max": 3},
+{"file": "kawa_data.c", "en": "AUG", "es": "AUM", "nth": 1, "pt": "AUM", "max": 3},
+{"file": "kawa_data.c", "en": "2OC", "es": "2OC", "nth": 1, "pt": "2OC", "max": 3},
+{"file": "kawa_data.c", "en": "AD9", "es": "AD9", "nth": 1, "pt": "AD9", "max": 3},
+{"file": "kawa_data.c", "en": "TRL", "es": "TRI", "nth": 1, "pt": "TRI", "max": 3},
+{"file": "kawa_data.c", "en": "LOW", "es": "BAJ", "nth": 1, "pt": "GRV", "max": 3},
+{"file": "kawa_data.c", "en": "CHROMATIC", "es": "CROMATICA", "nth": 1, "pt": "CROMATICA", "max": 9},
+{"file": "kawa_data.c", "en": "MAJOR", "es": "MAYOR", "nth": 1, "pt": "MAIOR", "max": 5},
+{"file": "kawa_data.c", "en": "MINOR", "es": "MENOR", "nth": 1, "pt": "MENOR", "max": 5},
+{"file": "kawa_data.c", "en": "PENTA", "es": "PENTA", "nth": 1, "pt": "PENTA", "max": 5},
+{"file": "kawa_data.c", "en": "PENTA MIN", "es": "PENTA MEN", "nth": 1, "pt": "PENTA MEN", "max": 9},
+{"file": "kawa_data.c", "en": "BLUES", "es": "BLUES", "nth": 1, "pt": "BLUES", "max": 5},
+{"file": "kawa_data.c", "en": "DORIAN", "es": "DORICA", "nth": 1, "pt": "DORICA", "max": 6},
+{"file": "kawa_data.c", "en": "PHRYGIAN", "es": "FRIGIA", "nth": 1, "pt": "FRIGIA", "max": 8},
+{"file": "kawa_data.c", "en": "HARMONIC", "es": "ARMONICA", "nth": 1, "pt": "HARMONIC", "max": 8},
+{"file": "kawa_data.c", "en": "JAPANESE", "es": "JAPONESA", "nth": 1, "pt": "JAPONESA", "max": 8},
+{"file": "kawa_data.c", "en": "ARABIC", "es": "ARABE", "nth": 1, "pt": "ARABE", "max": 6},
+{"file": "kawa_data.c", "en": "WHOLE TONE", "es": "TONOS", "nth": 1, "pt": "TONS INTEI", "max": 10},
+{"file": "kawa_data.c", "en": "LOOP", "es": "BUCLE", "nth": 1, "pt": "LOOP", "max": 5},
+{"file": "kawa_data.c", "en": "1/16", "es": "1/16", "nth": 2, "pt": "1/16", "max": 4},
+{"file": "kawa_data.c", "en": "LOOP", "es": "BUCLE", "nth": 2, "pt": "LOOP", "max": 5},
+{"file": "kawa_data.c", "en": "1/12", "es": "1/12", "nth": 1, "pt": "1/12", "max": 4},
+{"file": "kawa_data.c", "en": "LOOP", "es": "BUCLE", "nth": 3, "pt": "LOOP", "max": 5},
+{"file": "kawa_data.c", "en": "1/32", "es": "1/32", "nth": 2, "pt": "1/32", "max": 4},
+{"file": "kawa_data.c", "en": "LOOP", "es": "BUCLE", "nth": 4, "pt": "LOOP", "max": 5},
+{"file": "kawa_data.c", "en": "1/64", "es": "1/64", "nth": 1, "pt": "1/64", "max": 4},
+{"file": "kawa_data.c", "en": "UNISON", "es": "UNISONO", "nth": 1, "pt": "UNISSON", "max": 7},
+{"file": "kawa_data.c", "en": "", "es": "", "nth": 1, "pt": "", "max": 0},
+{"file": "kawa_data.c", "en": "UNISON", "es": "UNISONO", "nth": 2, "pt": "UNISSON", "max": 7},
+{"file": "kawa_data.c", "en": "LOW", "es": "GRAVE", "nth": 1, "pt": "GRV", "max": 5},
+{"file": "kawa_data.c", "en": "OCTAVE", "es": "OCTAVA", "nth": 1, "pt": "OITAVA", "max": 6},
+{"file": "kawa_data.c", "en": "+1", "es": "+1", "nth": 1, "pt": "+1", "max": 2},
+{"file": "kawa_data.c", "en": "OCTAVE", "es": "OCTAVA", "nth": 2, "pt": "OITAVA", "max": 6},
+{"file": "kawa_data.c", "en": "-1", "es": "-1", "nth": 1, "pt": "-1", "max": 2},
+{"file": "kawa_data.c", "en": "STUTTER", "es": "TARTAMU", "nth": 1, "pt": "SEGURA", "max": 7},
+{"file": "kawa_data.c", "en": "X4", "es": "X4", "nth": 1, "pt": "X4", "max": 2},
+{"file": "kawa_data.c", "en": "STUTTER", "es": "TARTAMU", "nth": 2, "pt": "SEGURA", "max": 7},
+{"file": "kawa_data.c", "en": "X3", "es": "X3", "nth": 1, "pt": "X3", "max": 2},
+{"file": "kawa_data.c", "en": "SCRATCH", "es": "SCRATCH", "nth": 1, "pt": "PUXA", "max": 7},
+{"file": "kawa_data.c", "en": "", "es": "", "nth": 2, "pt": "", "max": 0},
+{"file": "kawa_data.c", "en": "SCRATCH", "es": "SCRATCH", "nth": 2, "pt": "PUXA", "max": 7},
+{"file": "kawa_data.c", "en": "FAST", "es": "RAPIDO", "nth": 2, "pt": "RAPIDO", "max": 6},
+{"file": "kawa_data.c", "en": "6/8", "es": "6/8", "nth": 1, "pt": "6/8", "max": 3},
+{"file": "kawa_data.c", "en": "TRIPLET", "es": "SWING", "nth": 1, "pt": "TERCINA", "max": 7},
+{"file": "kawa_data.c", "en": "RETRIG", "es": "REPITE", "nth": 1, "pt": "REPETE", "max": 6},
+{"file": "kawa_data.c", "en": "1 BEAT", "es": "1 PULSO", "nth": 1, "pt": "1 TEMPO", "max": 7},
+{"file": "kawa_data.c", "en": "REVERSE", "es": "REVES", "nth": 1, "pt": "AVESSO", "max": 7},
+{"file": "kawa_data.c", "en": "", "es": "", "nth": 3, "pt": "", "max": 0},
+{"file": "kawa_data.c", "en": "BUILDUP", "es": "REDOBLE", "nth": 1, "pt": "SOBE", "max": 7},
+{"file": "kawa_data.c", "en": "ROLL", "es": "ACELERA", "nth": 1, "pt": "ACELERA", "max": 7},
+{"file": "kawa_data.c", "en": "CRUSH", "es": "TRITURA", "nth": 5, "pt": "ESMAGA", "max": 7},
+{"file": "kawa_data.c", "en": "4 BITS", "es": "4 BITS", "nth": 1, "pt": "4 BITS", "max": 6},
+{"file": "kawa_data.c", "en": "LO-FI", "es": "DIEZMA", "nth": 2, "pt": "DIZIMA", "max": 6},
+{"file": "kawa_data.c", "en": "RATE", "es": "", "nth": 1, "pt": "", "max": 4},
+{"file": "kawa_data.c", "en": "LOWPASS", "es": "FILTRO", "nth": 1, "pt": "FILTRO", "max": 7},
+{"file": "kawa_data.c", "en": "SWEEP", "es": "GRAVES", "nth": 1, "pt": "GRV", "max": 6},
+{"file": "kawa_data.c", "en": "HIPASS", "es": "FILTRO", "nth": 1, "pt": "FILTRO", "max": 6},
+{"file": "kawa_data.c", "en": "SWEEP", "es": "AGUDOS", "nth": 1, "pt": "AGUDOS", "max": 6},
+{"file": "kawa_data.c", "en": "TAPE", "es": "CINTA", "nth": 1, "pt": "FITA", "max": 5},
+{"file": "kawa_data.c", "en": "STOP", "es": "PARADA", "nth": 1, "pt": "PARA", "max": 6},
+{"file": "kawa_data.c", "en": "DIVE", "es": "PICADO", "nth": 1, "pt": "MERGULH", "max": 7},
+{"file": "kawa_data.c", "en": "", "es": "", "nth": 4, "pt": "", "max": 0},
+{"file": "kawa_data.c", "en": "GATE", "es": "GATE", "nth": 1, "pt": "CORTA", "max": 5},
+{"file": "kawa_data.c", "en": "1/16", "es": "1/16", "nth": 3, "pt": "1/16", "max": 4},
+{"file": "kawa_data.c", "en": "GATE", "es": "GATE", "nth": 2, "pt": "CORTA", "max": 5},
+{"file": "kawa_data.c", "en": "1/32", "es": "1/32", "nth": 3, "pt": "1/32", "max": 4},
+{"file": "kawa_data.c", "en": "FREEZE", "es": "CONGELA", "nth": 1, "pt": "CONGELA", "max": 7},
+{"file": "kawa_data.c", "en": "", "es": "", "nth": 5, "pt": "", "max": 0},
+{"file": "kawa_data.c", "en": "BASS+", "es": "GRAVES+", "nth": 1, "pt": "GRAVE+", "max": 7},
+{"file": "kawa_data.c", "en": "", "es": "", "nth": 6, "pt": "", "max": 0},
+{"file": "kawa_data.c", "en": "ECHO", "es": "ECO", "nth": 2, "pt": "ECO", "max": 4},
+{"file": "kawa_data.c", "en": "", "es": "", "nth": 7, "pt": "MC", "max": 2},
+{"file": "kawa_data.c", "en": "DISTORT", "es": "DISTOR", "nth": 1, "pt": "DISTOR", "max": 7},
+{"file": "kawa_data.c", "en": "", "es": "", "nth": 8, "pt": "", "max": 0},
+{"file": "kawa_data.c", "en": "WOBBLE", "es": "WOBBLE", "nth": 1, "pt": "WOBBLE", "max": 6},
+{"file": "kawa_data.c", "en": "", "es": "", "nth": 9, "pt": "", "max": 0},
+{"file": "kawa_data.c", "en": "SIREN", "es": "SIRENA", "nth": 2, "pt": "SIRENE", "max": 6},
+{"file": "kawa_data.c", "en": "", "es": "", "nth": 10, "pt": "", "max": 0},
+{"file": "kawa_data.c", "en": "NO", "es": "SIN", "nth": 1, "pt": "SEM", "max": 3},
+{"file": "kawa_data.c", "en": "MELODY", "es": "MELODIA", "nth": 1, "pt": "MELODIA", "max": 7},
+{"file": "kawa_data.c", "en": "NO", "es": "SIN", "nth": 2, "pt": "SEM", "max": 3},
+{"file": "kawa_data.c", "en": "BEAT", "es": "RITMO", "nth": 1, "pt": "BEAT", "max": 5},
+{"file": "kawa_data.c", "en": "POCKET", "es": "BOLSA", "nth": 1, "pt": "BAILE", "max": 6},
+{"file": "kawa_data.c", "en": "WRECK", "es": "ROTO", "nth": 1, "pt": "PAREDAO", "max": 7},
+{"file": "kawa_data.c", "en": "DESTROY", "es": "DESTRUYE", "nth": 1, "pt": "DESTROI", "max": 8},
+{"file": "kawa_data.c", "en": "BEAT", "es": "BEAT", "nth": 1, "pt": "BEAT", "max": 4},
+{"file": "kawa_data.c", "en": "CHOPPER", "es": "PICADOR", "nth": 1, "pt": "PICADOR", "max": 7},
+{"file": "kawa_data.c", "en": "BREAK", "es": "BREAK", "nth": 1, "pt": "BREAK", "max": 5},
+{"file": "kawa_data.c", "en": "BEAT", "es": "RITMO", "nth": 2, "pt": "BEAT", "max": 5},
+{"file": "kawa_data.c", "en": "FUNK", "es": "FUNK", "nth": 1, "pt": "FUNK", "max": 4},
+{"file": "kawa_data.c", "en": "MELODY", "es": "MELODIA", "nth": 2, "pt": "MELODIA", "max": 7},
+{"file": "kawa_data.c", "en": "SCALE", "es": "ESCALA", "nth": 1, "pt": "ESCALA", "max": 6},
+{"file": "kawa_data.c", "en": "BASS", "es": "BAJO", "nth": 2, "pt": "GRAVE", "max": 5},
+{"file": "kawa_data.c", "en": "808", "es": "808", "nth": 1, "pt": "808", "max": 3},
+{"file": "kawa_data.c", "en": "MONTAGE", "es": "MONTAJE", "nth": 1, "pt": "MONTAGE", "max": 7},
+{"file": "kawa_data.c", "en": "SLICES", "es": "CORTES", "nth": 2, "pt": "FATIAS", "max": 6},
+{"file": "kawa_data.c", "en": "EUCLID", "es": "EUCLIDE", "nth": 1, "pt": "EUCLID", "max": 7},
+{"file": "kawa_data.c", "en": "N HITS", "es": "GOLPES", "nth": 1, "pt": "N BATID", "max": 7},
+{"file": "kawa_data.c", "en": "VARY", "es": "VARIAR", "nth": 1, "pt": "VARIAR", "max": 6},
+{"file": "kawa_data.c", "en": "A BIT", "es": "UN POCO", "nth": 1, "pt": "UM POUC", "max": 7},
+{"file": "kawa_data.c", "en": "FILL", "es": "REDOBLE", "nth": 1, "pt": "VIRADA", "max": 7},
+{"file": "kawa_data.c", "en": "ENDS", "es": "FINAL", "nth": 1, "pt": "FINAL", "max": 5},
+{"file": "kawa_data.c", "en": "ACCENTS", "es": "MATICES", "nth": 1, "pt": "ACENTOS", "max": 7},
+{"file": "kawa_data.c", "en": "VOLUMES", "es": "VOLUMEN", "nth": 1, "pt": "VOLUMES", "max": 7},
+{"file": "kawa_data.c", "en": "DOUBLE", "es": "DUPLICA", "nth": 1, "pt": "DOBRAR", "max": 7},
+{"file": "kawa_data.c", "en": "X2", "es": "X2", "nth": 1, "pt": "X2", "max": 2},
+{"file": "kawa_data.c", "en": "SHIFT", "es": "MOVER", "nth": 1, "pt": "DESLOCA", "max": 7},
+{"file": "kawa_data.c", "en": "1 STEP", "es": "1 PASO", "nth": 1, "pt": "1 PASS", "max": 6},
+{"file": "kawa_data.c", "en": "CLONE", "es": "CLONAR", "nth": 1, "pt": "CLONAR", "max": 6},
+{"file": "kawa_data.c", "en": "PATTERN", "es": "PATRON", "nth": 1, "pt": "PADRAO", "max": 7},
+{"file": "kawa_data.c", "en": "TRANSP", "es": "TRANSP", "nth": 1, "pt": "TRANSP", "max": 6},
+{"file": "kawa_data.c", "en": "+1 NOTE", "es": "+1 NOTA", "nth": 1, "pt": "+1 NOTA", "max": 7},
+{"file": "kawa_data.c", "en": "COPY", "es": "COPIAR", "nth": 1, "pt": "COPIAR", "max": 6},
+{"file": "kawa_data.c", "en": "", "es": "", "nth": 11, "pt": "", "max": 0},
+{"file": "kawa_data.c", "en": "PASTE", "es": "PEGAR", "nth": 1, "pt": "COLAR", "max": 5},
+{"file": "kawa_data.c", "en": "", "es": "", "nth": 12, "pt": "", "max": 0},
+{"file": "kawa_data.c", "en": "CLEAR", "es": "BORRAR", "nth": 1, "pt": "APAGAR", "max": 6},
+{"file": "kawa_data.c", "en": "", "es": "", "nth": 13, "pt": "", "max": 0},
+{"file": "kawa_data.c", "en": "TRACK", "es": "PISTA", "nth": 1, "pt": "FAIXA", "max": 5},
+{"file": "kawa_data.c", "en": "PATTERN", "es": "PATRON", "nth": 2, "pt": "PADRAO", "max": 7},
+{"file": "kawa_ui.c", "en": "TRACKS", "es": "PISTAS", "nth": 1, "pt": "FAIXAS", "max": 6},
+{"file": "kawa_ui.c", "en": "GRID", "es": "REJILLA", "nth": 1, "pt": "GRADE", "max": 7},
+{"file": "kawa_ui.c", "en": "SOUND", "es": "SONIDO", "nth": 1, "pt": "SOM", "max": 6},
+{"file": "kawa_ui.c", "en": "ENVELOPE", "es": "ENVOLVENTE", "nth": 1, "pt": "ENVELOPE", "max": 10},
+{"file": "kawa_ui.c", "en": "MIX", "es": "MEZCLA", "nth": 1, "pt": "MIX", "max": 6},
+{"file": "kawa_ui.c", "en": "MAGIC", "es": "MAGIA", "nth": 1, "pt": "MAGIA", "max": 5},
+{"file": "kawa_ui.c", "en": "SCALE", "es": "ESCALA", "nth": 1, "pt": "ESCALA", "max": 6},
+{"file": "kawa_ui.c", "en": "SONG", "es": "CANCION", "nth": 1, "pt": "MUSICA", "max": 7},
+{"file": "kawa_ui.c", "en": "PROJECTS", "es": "PROYECTOS", "nth": 1, "pt": "PROJETOS", "max": 9},
+{"file": "kawa_ui.c", "en": "OPTIONS", "es": "OPCIONES", "nth": 1, "pt": "OPCOES", "max": 8},
+{"file": "kawa_ui.c", "en": "EFFECTS", "es": "EFECTOS", "nth": 1, "pt": "EFEITOS", "max": 7},
+{"file": "kawa_ui.c", "en": "HELP", "es": "AYUDA", "nth": 1, "pt": "AJUDA", "max": 5},
+{"file": "kawa_ui.c", "en": "", "es": "", "nth": 1, "pt": "", "max": 0},
+{"file": "kawa_ui.c", "en": "GROOVE", "es": "GROOVE", "nth": 1, "pt": "GROOVE", "max": 6},
+{"file": "kawa_ui.c", "en": "SENDS", "es": "ENVIOS", "nth": 1, "pt": "ENVIOS", "max": 6},
+{"file": "kawa_ui.c", "en": "FILTER", "es": "FILTRO", "nth": 1, "pt": "FILTRO", "max": 6},
+{"file": "kawa_ui.c", "en": "FX SEQ", "es": "SEC FX", "nth": 1, "pt": "SEQ FX", "max": 6},
+{"file": "kawa_ui.c", "en": "OPTIONS", "es": "OPCIONES", "nth": 2, "pt": "OPCOES", "max": 8},
+{"file": "kawa_ui.c", "en": "UNDO", "es": "DESHACER", "nth": 1, "pt": "DESFAZER", "max": 8},
+{"file": "kawa_ui.c", "en": "REDO", "es": "REHACER", "nth": 1, "pt": "REFAZER", "max": 7},
+{"file": "kawa_ui.c", "en": "CLEAR", "es": "BORRAR", "nth": 1, "pt": "APAGAR", "max": 6},
+{"file": "kawa_ui.c", "en": "COPY", "es": "COPIAR", "nth": 1, "pt": "COPIAR", "max": 6},
+{"file": "kawa_ui.c", "en": "PASTE", "es": "PEGAR", "nth": 1, "pt": "COLAR", "max": 5},
+{"file": "kawa_ui.c", "en": "RANDOM", "es": "AZAR", "nth": 1, "pt": "ACASO", "max": 6},
+{"file": "kawa_ui.c", "en": "MY ", "es": "MI ", "nth": 1, "pt": "MEU ", "max": 4},
+{"file": "kawa_ui.c", "en": "NOTE", "es": "NOTA", "nth": 1, "pt": "NOTA", "max": 4},
+{"file": "kawa_ui.c", "en": "VOLUME", "es": "VOLUMEN", "nth": 1, "pt": "VOLUME", "max": 7},
+{"file": "kawa_ui.c", "en": "CELL FX 2", "es": "EFECTO 2", "nth": 1, "pt": "EFEITO 2", "max": 9},
+{"file": "kawa_ui.c", "en": "VALUE 2", "es": "VALOR 2", "nth": 1, "pt": "VALOR 2", "max": 7},
+{"file": "kawa_ui.c", "en": "CELL FX", "es": "EFECTO", "nth": 1, "pt": "EFEITO", "max": 7},
+{"file": "kawa_ui.c", "en": "VALUE", "es": "VALOR", "nth": 1, "pt": "VALOR", "max": 5},
+{"file": "kawa_ui.c", "en": "NOTE", "es": "NOTA", "nth": 2, "pt": "NOTA", "max": 4},
+{"file": "kawa_ui.c", "en": "VOLUME", "es": "VOLUMEN", "nth": 2, "pt": "VOLUME", "max": 7},
+{"file": "kawa_ui.c", "en": "CELL FX", "es": "EFECTO", "nth": 2, "pt": "EFEITO", "max": 7},
+{"file": "kawa_ui.c", "en": "VALUE", "es": "VALOR", "nth": 2, "pt": "VALOR", "max": 5},
+{"file": "kawa_ui.c", "en": "CARRIER", "es": "PORTADORA", "nth": 1, "pt": "PORTADORA", "max": 9},
+{"file": "kawa_ui.c", "en": "EMPTY SLOT", "es": "RANURA VACIA", "nth": 1, "pt": "ESPACO VAZIO", "max": 12},
+{"file": "kawa_ui.c", "en": "DROP A SOUND ON THE", "es": "SUELTA UN SONIDO EN", "nth": 1, "pt": "SOLTE UM SOM NO", "max": 19},
+{"file": "kawa_ui.c", "en": "EMULATOR", "es": "EL EMULADOR", "nth": 1, "pt": "EMULADOR", "max": 11},
+{"file": "kawa_ui.c", "en": "START", "es": "INICIO", "nth": 1, "pt": "INICIO", "max": 6},
+{"file": "kawa_ui.c", "en": "END", "es": "FIN", "nth": 1, "pt": "FIM", "max": 3},
+{"file": "kawa_ui.c", "en": "SL ", "es": "CR ", "nth": 1, "pt": "FT ", "max": 3},
+{"file": "kawa_ui.c", "en": "OFF", "es": "NO", "nth": 1, "pt": "NAO", "max": 3},
+{"file": "kawa_ui.c", "en": "MOVE", "es": "MOVER", "nth": 1, "pt": "MOVE", "max": 5},
+{"file": "kawa_ui.c", "en": "FINE", "es": "FINO", "nth": 1, "pt": "FINO", "max": 4},
+{"file": "kawa_ui.c", "en": "REVERSE", "es": "REVES", "nth": 1, "pt": "AVESSO", "max": 7},
+{"file": "kawa_ui.c", "en": "ON", "es": "SI", "nth": 1, "pt": "SIM", "max": 3},
+{"file": "kawa_ui.c", "en": "OFF", "es": "NO", "nth": 2, "pt": "NAO", "max": 3},
+{"file": "kawa_ui.c", "en": "OFF", "es": "NO", "nth": 3, "pt": "NAO", "max": 3},
+{"file": "kawa_ui.c", "en": "SPD", "es": "VEL", "nth": 1, "pt": "VEL", "max": 3},
+{"file": "kawa_ui.c", "en": "LEN", "es": "LARG", "nth": 1, "pt": "TAM", "max": 4},
+{"file": "kawa_ui.c", "en": "LOOP", "es": "BUCL", "nth": 1, "pt": "LOOP", "max": 4},
+{"file": "kawa_ui.c", "en": "", "es": "", "nth": 2, "pt": "", "max": 0},
+{"file": "kawa_ui.c", "en": "ON", "es": "SI", "nth": 2, "pt": "SIM", "max": 3},
+{"file": "kawa_ui.c", "en": "OFF", "es": "NO", "nth": 4, "pt": "NAO", "max": 3},
+{"file": "kawa_ui.c", "en": "TABLE OFF: K4 ON ROW 0", "es": "TABLA APAGADA: K4 EN FILA 0", "nth": 1, "pt": "TABELA PARADA: K4 NA LINHA 0", "max": 28},
+{"file": "kawa_ui.c", "en": "SPEED", "es": "VELOCIDAD", "nth": 1, "pt": "VELOC", "max": 9},
+{"file": "kawa_ui.c", "en": "LENGTH", "es": "LARGO", "nth": 1, "pt": "TAMANHO", "max": 7},
+{"file": "kawa_ui.c", "en": "LOOP", "es": "BUCLE", "nth": 1, "pt": "LOOP", "max": 5},
+{"file": "kawa_ui.c", "en": "ON", "es": "SI", "nth": 3, "pt": "SIM", "max": 3},
+{"file": "kawa_ui.c", "en": "OFF", "es": "NO", "nth": 5, "pt": "NAO", "max": 3},
+{"file": "kawa_ui.c", "en": "TRANSPOSE", "es": "TRANSPONE", "nth": 1, "pt": "TRANSPOE", "max": 9},
+{"file": "kawa_ui.c", "en": "VOLUME", "es": "VOLUMEN", "nth": 3, "pt": "VOLUME", "max": 7},
+{"file": "kawa_ui.c", "en": "TRICK", "es": "EFECTO", "nth": 1, "pt": "EFEITO", "max": 6},
+{"file": "kawa_ui.c", "en": "VALUE", "es": "VALOR", "nth": 3, "pt": "VALOR", "max": 5},
+{"file": "kawa_ui.c", "en": "PUL", "es": "PUL", "nth": 1, "pt": "PUL", "max": 3},
+{"file": "kawa_ui.c", "en": "WAV", "es": "OND", "nth": 1, "pt": "OND", "max": 3},
+{"file": "kawa_ui.c", "en": "NOI", "es": "RUI", "nth": 1, "pt": "RUI", "max": 3},
+{"file": "kawa_ui.c", "en": "FM", "es": "FM", "nth": 1, "pt": "FM", "max": 2},
+{"file": "kawa_ui.c", "en": "KIT", "es": "KIT", "nth": 1, "pt": "KIT", "max": 3},
+{"file": "kawa_ui.c", "en": "SMP", "es": "SMP", "nth": 1, "pt": "SMP", "max": 3},
+{"file": "kawa_ui.c", "en": "ON THIS TRACK", "es": "EN ESTA PISTA", "nth": 1, "pt": "NESTA FAIXA", "max": 13},
+{"file": "kawa_ui.c", "en": "THE MASTER: ENV, ENV", "es": "EL MASTER: ENV, ENV", "nth": 1, "pt": "O MASTER: ENV, ENV", "max": 20},
+{"file": "kawa_ui.c", "en": "THEN ALGO TO M", "es": "LUEGO ALGO A M", "nth": 1, "pt": "DEPOIS ALGO M", "max": 14},
+{"file": "kawa_ui.c", "en": "ENVELOPE > EFFECT A", "es": "ENVOLVENTE > EFECTO A", "nth": 1, "pt": "ENVELOPE > EFEITO A", "max": 21},
+{"file": "kawa_ui.c", "en": "VELOCITY > EFFECT A", "es": "VELOCIDAD > EFECTO A", "nth": 1, "pt": "VELOC. > EFEITO A", "max": 20},
+{"file": "kawa_ui.c", "en": "ENVELOPE > PITCH", "es": "ENVOLVENTE > ALTURA", "nth": 1, "pt": "ENVELOPE > ALTURA", "max": 19},
+{"file": "kawa_ui.c", "en": "(PICK AN EFFECT: EDIT)", "es": "(ELIGE UN EFECTO: EDIT)", "nth": 1, "pt": "(ESCOLHA EFEITO: EDIT)", "max": 23},
+{"file": "kawa_ui.c", "en": "ENV: ADSR", "es": "ENV: ADSR", "nth": 1, "pt": "ENV: ADSR", "max": 9},
+{"file": "kawa_ui.c", "en": "+ OPERATORS", "es": "+ OPERADORES", "nth": 1, "pt": "+ OPERADORES", "max": 12},
+{"file": "kawa_ui.c", "en": "SHAPES THE HITS", "es": "CORTA GOLPES", "nth": 1, "pt": "CORTA BATIDAS", "max": 15},
+{"file": "kawa_ui.c", "en": "MASTER FX", "es": "EFECTO MASTER", "nth": 1, "pt": "EFEITO MASTER", "max": 13},
+{"file": "kawa_ui.c", "en": "MIX", "es": "MEZCLA", "nth": 2, "pt": "MIX", "max": 6},
+{"file": "kawa_ui.c", "en": "VOLUME", "es": "VOLUMEN", "nth": 4, "pt": "VOLUME", "max": 7},
+{"file": "kawa_ui.c", "en": "PAN", "es": "PANEO", "nth": 1, "pt": "PAN", "max": 5},
+{"file": "kawa_ui.c", "en": "ECH", "es": "ECO", "nth": 1, "pt": "ECO", "max": 3},
+{"file": "kawa_ui.c", "en": "WHOLE PATTERN", "es": "TODO EL PATRON", "nth": 1, "pt": "TODO O PADRAO", "max": 14},
+{"file": "kawa_ui.c", "en": "AMOUNT", "es": "FUERZA", "nth": 1, "pt": "FORCA", "max": 6},
+{"file": "kawa_ui.c", "en": "AMT", "es": "FZA", "nth": 1, "pt": "FOR", "max": 3},
+{"file": "kawa_ui.c", "en": "DIE", "es": "DADO", "nth": 1, "pt": "DADO", "max": 4},
+{"file": "kawa_ui.c", "en": "DIE", "es": "DAD", "nth": 1, "pt": "DADO", "max": 4},
+{"file": "kawa_ui.c", "en": "SCOPE", "es": "ALCANCE", "nth": 1, "pt": "ALCANCE", "max": 7},
+{"file": "kawa_ui.c", "en": "BANK", "es": "BANCO", "nth": 1, "pt": "BANCO", "max": 5},
+{"file": "kawa_ui.c", "en": "INTENSITY", "es": "INTENSIDAD", "nth": 1, "pt": "INTENSID.", "max": 10},
+{"file": "kawa_ui.c", "en": "REC LIVE", "es": "GRABAR LIVE", "nth": 1, "pt": "GRAVA LIVE", "max": 11},
+{"file": "kawa_ui.c", "en": "YES", "es": "SI", "nth": 1, "pt": "SIM", "max": 3},
+{"file": "kawa_ui.c", "en": "NO", "es": "NO", "nth": 1, "pt": "NAO", "max": 3},
+{"file": "kawa_ui.c", "en": "TARGET", "es": "DESTINO", "nth": 1, "pt": "ALVO", "max": 7},
+{"file": "kawa_ui.c", "en": "EFFECT", "es": "EFECTO", "nth": 1, "pt": "EFEITO", "max": 6},
+{"file": "kawa_ui.c", "en": "INTENSITY", "es": "INTENSIDAD", "nth": 2, "pt": "INTENSID.", "max": 10},
+{"file": "kawa_ui.c", "en": "REC LIVE", "es": "GRABAR LIVE", "nth": 2, "pt": "GRAVA LIVE", "max": 11},
+{"file": "kawa_ui.c", "en": "YES", "es": "SI", "nth": 2, "pt": "SIM", "max": 3},
+{"file": "kawa_ui.c", "en": "NO", "es": "NO", "nth": 2, "pt": "NAO", "max": 3},
+{"file": "kawa_ui.c", "en": "KEYS: TUNE THE FILTER", "es": "TECLAS: AFINAN EL FILTRO", "nth": 1, "pt": "TECLAS: AFINAM O FILTRO", "max": 24},
+{"file": "kawa_ui.c", "en": "ON LIVE'S TARGET (LIVE'S K4)", "es": "EN EL DESTINO DE LIVE (K4)", "nth": 1, "pt": "NO ALVO DO LIVE (K4 DO LIVE)", "max": 28},
+{"file": "kawa_ui.c", "en": "FX: FX SEQ", "es": "FX: SEC FX", "nth": 1, "pt": "FX: SEQ FX", "max": 10},
+{"file": "kawa_ui.c", "en": "TYPE", "es": "TIPO", "nth": 1, "pt": "TIPO", "max": 4},
+{"file": "kawa_ui.c", "en": "FREQ", "es": "FRECUENCIA", "nth": 1, "pt": "FREQUENCIA", "max": 10},
+{"file": "kawa_ui.c", "en": "RESO", "es": "RESONANCIA", "nth": 1, "pt": "RESSONAN.", "max": 10},
+{"file": "kawa_ui.c", "en": "MOVE", "es": "MOVIMIENTO", "nth": 1, "pt": "MOVIMENTO", "max": 10},
+{"file": "kawa_ui.c", "en": "DRIVE", "es": "SATURA", "nth": 1, "pt": "SATURA", "max": 6},
+{"file": "kawa_ui.c", "en": "ECHO", "es": "ECO", "nth": 1, "pt": "ECO", "max": 4},
+{"file": "kawa_ui.c", "en": "REVERB", "es": "REVERB", "nth": 1, "pt": "REVERB", "max": 6},
+{"file": "kawa_ui.c", "en": "ON ", "es": "EN ", "nth": 1, "pt": "EM ", "max": 3},
+{"file": "kawa_ui.c", "en": "BAILE - EMPTY SONG", "es": "BAILE - CANCION VACIA", "nth": 1, "pt": "BAILE - MUSICA VAZIA", "max": 21},
+{"file": "kawa_ui.c", "en": "1. REC  2. PLAY THE KEYS", "es": "1. REC  2. TOCA LAS TECLAS", "nth": 1, "pt": "1. REC  2. TOQUE AS TECLAS", "max": 26},
+{"file": "kawa_ui.c", "en": "3. PLAY TO LISTEN", "es": "3. PLAY PARA ESCUCHAR", "nth": 1, "pt": "3. PLAY PARA OUVIR", "max": 21},
+{"file": "kawa_ui.c", "en": "HOME HELD: HELP", "es": "HOME PULSADO: AYUDA", "nth": 1, "pt": "SEGURE HOME: AJUDA", "max": 19},
+{"file": "kawa_ui.c", "en": "HELP", "es": "AYUDA", "nth": 2, "pt": "AJUDA", "max": 5},
+{"file": "kawa_ui.c", "en": "TOOLS", "es": "HERRAM.", "nth": 1, "pt": "FERRAM.", "max": 7},
+{"file": "kawa_ui.c", "en": "LOCKED: THE KEYS", "es": "FIJA: LAS TECLAS", "nth": 1, "pt": "TRAVA: AS TECLAS", "max": 16},
+{"file": "kawa_ui.c", "en": "FREE: CHROMATIC", "es": "LIBRE: CROMATICA", "nth": 1, "pt": "LIVRE: CROMATICA", "max": 16},
+{"file": "kawa_ui.c", "en": "STAY IN THE SCALE", "es": "QUEDAN EN LA ESCALA", "nth": 1, "pt": "FICAM NA ESCALA", "max": 19},
+{"file": "kawa_ui.c", "en": "ALL THE NOTES", "es": "TODAS LAS NOTAS", "nth": 1, "pt": "TODAS AS NOTAS", "max": 15},
+{"file": "kawa_ui.c", "en": "A KEY = THE ROOT", "es": "UNA TECLA = TONICA", "nth": 1, "pt": "UMA TECLA = TONICA", "max": 18},
+{"file": "kawa_ui.c", "en": "ROOT", "es": "TONICA", "nth": 1, "pt": "TONICA", "max": 6},
+{"file": "kawa_ui.c", "en": "KEY", "es": "TON", "nth": 1, "pt": "TOM", "max": 3},
+{"file": "kawa_ui.c", "en": "SCALE", "es": "ESCALA", "nth": 2, "pt": "ESCALA", "max": 6},
+{"file": "kawa_ui.c", "en": "LOCK", "es": "FIJAR", "nth": 1, "pt": "TRAVA", "max": 5},
+{"file": "kawa_ui.c", "en": "LOCK", "es": "FIJA", "nth": 1, "pt": "TRAVA", "max": 5},
+{"file": "kawa_ui.c", "en": "FREE", "es": "LIBRE", "nth": 1, "pt": "LIVRE", "max": 5},
+{"file": "kawa_ui.c", "en": "CURSOR STEP", "es": "PASO CURSOR", "nth": 1, "pt": "PASSO CURSOR", "max": 12},
+{"file": "kawa_ui.c", "en": "STP", "es": "PAS", "nth": 1, "pt": "PAS", "max": 3},
+{"file": "kawa_ui.c", "en": "SONG", "es": "CANCION", "nth": 2, "pt": "MUSICA", "max": 7},
+{"file": "kawa_ui.c", "en": "LOOP", "es": "BUCLE", "nth": 2, "pt": "LOOP", "max": 5},
+{"file": "kawa_ui.c", "en": "ARP: MODE", "es": "ARP: MODO", "nth": 1, "pt": "ARP: MODO", "max": 9},
+{"file": "kawa_ui.c", "en": "REPEAT", "es": "REPETIR", "nth": 1, "pt": "REPETIR", "max": 7},
+{"file": "kawa_ui.c", "en": "REP", "es": "REP", "nth": 1, "pt": "REP", "max": 3},
+{"file": "kawa_ui.c", "en": "PATTERN STEPS", "es": "PASOS PATRON", "nth": 1, "pt": "PASSOS PADRAO", "max": 13},
+{"file": "kawa_ui.c", "en": "STP", "es": "PAS", "nth": 2, "pt": "PAS", "max": 3},
+{"file": "kawa_ui.c", "en": "NEW SONG", "es": "NUEVA CANCION", "nth": 1, "pt": "NOVA MUSICA", "max": 13},
+{"file": "kawa_ui.c", "en": "SAVE", "es": "GUARDAR", "nth": 1, "pt": "SALVAR", "max": 7},
+{"file": "kawa_ui.c", "en": "SAVE AS...", "es": "GUARDAR COMO...", "nth": 1, "pt": "SALVAR COMO...", "max": 15},
+{"file": "kawa_ui.c", "en": "LOAD...", "es": "CARGAR...", "nth": 1, "pt": "CARREGA...", "max": 10},
+{"file": "kawa_ui.c", "en": "RENAME...", "es": "RENOMBRAR...", "nth": 1, "pt": "RENOMEAR...", "max": 12},
+{"file": "kawa_ui.c", "en": "DEMO", "es": "DEMO", "nth": 1, "pt": "DEMO", "max": 4},
+{"file": "kawa_ui.c", "en": "LOAD FROM:", "es": "CARGAR DE:", "nth": 1, "pt": "CARREGAR DE:", "max": 12},
+{"file": "kawa_ui.c", "en": "SAVE INTO:", "es": "GUARDAR EN:", "nth": 1, "pt": "SALVAR EM:", "max": 11},
+{"file": "kawa_ui.c", "en": "- EMPTY -", "es": "- VACIO -", "nth": 1, "pt": "- VAZIO -", "max": 9},
+{"file": "kawa_ui.c", "en": "THE NAME:", "es": "EL NOMBRE:", "nth": 1, "pt": "O NOME:", "max": 10},
+{"file": "kawa_ui.c", "en": "SELECT: THE PLACE", "es": "SELECT: EL SITIO", "nth": 1, "pt": "SELECT: O LUGAR", "max": 17},
+{"file": "kawa_ui.c", "en": "K1: THE LETTER", "es": "K1: LA LETRA", "nth": 1, "pt": "K1: A LETRA", "max": 14},
+{"file": "kawa_ui.c", "en": "K2: A RANDOM NAME", "es": "K2: UN NOMBRE AL AZAR", "nth": 1, "pt": "K2: UM NOME AO ACASO", "max": 21},
+{"file": "kawa_ui.c", "en": "K3: CLEAR IT", "es": "K3: BORRARLO", "nth": 1, "pt": "K3: APAGAR TUDO", "max": 15},
+{"file": "kawa_ui.c", "en": "THIS SLOT IS TAKEN", "es": "ESTA RANURA ESTA USADA", "nth": 1, "pt": "ESTE ESPACO ESTA OCUPADO", "max": 24},
+{"file": "kawa_ui.c", "en": "THE SONG IS NOT SAVED", "es": "LA CANCION NO ESTA GUARDADA", "nth": 1, "pt": "A MUSICA NAO FOI SALVA", "max": 27},
+{"file": "kawa_ui.c", "en": "WRITE OVER IT?", "es": "SOBREESCRIBIR?", "nth": 1, "pt": "SOBRESCREVER?", "max": 14},
+{"file": "kawa_ui.c", "en": "GO ON ANYWAY?", "es": "SEGUIR DE TODOS MODOS?", "nth": 1, "pt": "CONTINUAR MESMO ASSIM?", "max": 22},
+{"file": "kawa_ui.c", "en": "OCT+ YES     OCT- NO", "es": "OCT+ SI     OCT- NO", "nth": 1, "pt": "OCT+ SIM     OCT- NAO", "max": 21},
+{"file": "kawa_ui.c", "en": "OCT+ : OK", "es": "OCT+ : OK", "nth": 1, "pt": "OCT+ : OK", "max": 9},
+{"file": "kawa_ui.c", "en": "OCT- : BACK", "es": "OCT- : VOLVER", "nth": 1, "pt": "OCT- : VOLTA", "max": 13},
+{"file": "kawa_ui.c", "en": "LETTER", "es": "LETRA", "nth": 1, "pt": "LETRA", "max": 6},
+{"file": "kawa_ui.c", "en": "RANDOM", "es": "AZAR", "nth": 2, "pt": "ACASO", "max": 6},
+{"file": "kawa_ui.c", "en": "CLEAR", "es": "BORRAR", "nth": 2, "pt": "APAGAR", "max": 6},
+{"file": "kawa_ui.c", "en": "SLOT", "es": "RANURA", "nth": 1, "pt": "ESPACO", "max": 6},
+{"file": "kawa_ui.c", "en": "CHOICE", "es": "ELECCION", "nth": 1, "pt": "ESCOLHA", "max": 8},
+{"file": "kawa_ui.c", "en": "ON", "es": "ACTIVO", "nth": 1, "pt": "LIGADO", "max": 6},
+{"file": "kawa_ui.c", "en": "OFF", "es": "APAGADO", "nth": 1, "pt": "PARADO", "max": 7},
+{"file": "kawa_ui.c", "en": " TICKS IN ", "es": " TICKS EN ", "nth": 1, "pt": " TICKS EM ", "max": 10},
+{"file": "kawa_ui.c", "en": " ROWS", "es": " FILAS", "nth": 1, "pt": " LINHAS", "max": 7},
+{"file": "kawa_ui.c", "en": "ONE TURN:", "es": "UNA VUELTA:", "nth": 1, "pt": "UMA VOLTA:", "max": 11},
+{"file": "kawa_ui.c", "en": "LENGTH", "es": "LARGO", "nth": 2, "pt": "TAMANHO", "max": 7},
+{"file": "kawa_ui.c", "en": "PRESET", "es": "MODELO", "nth": 1, "pt": "MODELO", "max": 6},
+{"file": "kawa_ui.c", "en": "ON", "es": "SI", "nth": 4, "pt": "SIM", "max": 3},
+{"file": "kawa_ui.c", "en": "OFF", "es": "NO", "nth": 6, "pt": "NAO", "max": 3},
+{"file": "kawa_ui.c", "en": "IN", "es": "ENTRADA", "nth": 1, "pt": "ENTRADA", "max": 7},
+{"file": "kawa_ui.c", "en": "OUT", "es": "SALIDA", "nth": 1, "pt": "SAIDA", "max": 6},
+{"file": "kawa_ui.c", "en": "OFF", "es": "NO", "nth": 7, "pt": "NAO", "max": 3},
+{"file": "kawa_ui.c", "en": "BASIC", "es": "BASE", "nth": 1, "pt": "BASE", "max": 5},
+{"file": "kawa_ui.c", "en": "SMOOTH", "es": "SUAVE", "nth": 1, "pt": "SUAVE", "max": 6},
+{"file": "kawa_ui.c", "en": "CLEAR", "es": "CLARA", "nth": 1, "pt": "CLARA", "max": 5},
+{"file": "kawa_ui.c", "en": "8-BIT", "es": "8-BIT", "nth": 1, "pt": "8-BIT", "max": 5},
+{"file": "kawa_ui.c", "en": "THEME", "es": "TEMA", "nth": 1, "pt": "TEMA", "max": 5},
+{"file": "kawa_ui.c", "en": "LANGUAGE", "es": "IDIOMA", "nth": 1, "pt": "IDIOMA", "max": 8},
+{"file": "kawa_ui.c", "en": "FONT: ", "es": "FUENTE: ", "nth": 1, "pt": "FONTE: ", "max": 8},
+{"file": "kawa_ui.c", "en": "OFF", "es": "NO", "nth": 8, "pt": "NAO", "max": 3},
+{"file": "kawa_ui.c", "en": "ON", "es": "SI", "nth": 5, "pt": "SIM", "max": 3},
+{"file": "kawa_ui.c", "en": "REC", "es": "REC", "nth": 1, "pt": "REC", "max": 3},
+{"file": "kawa_ui.c", "en": "LOW", "es": "BAJ", "nth": 1, "pt": "BAI", "max": 3},
+{"file": "kawa_ui.c", "en": "MED", "es": "MED", "nth": 1, "pt": "MED", "max": 3},
+{"file": "kawa_ui.c", "en": "HIGH", "es": "ALT", "nth": 1, "pt": "ALTO", "max": 4},
+{"file": "kawa_ui.c", "en": "METRONOME", "es": "METRONOMO", "nth": 1, "pt": "METRONOMO", "max": 9},
+{"file": "kawa_ui.c", "en": "VOLUME", "es": "VOLUMEN", "nth": 5, "pt": "VOLUME", "max": 7},
+{"file": "kawa_ui.c", "en": "MIDI CLOCK: ", "es": "RELOJ MIDI: ", "nth": 1, "pt": "RELOGIO MIDI: ", "max": 14},
+{"file": "kawa_ui.c", "en": "THEME", "es": "TEMA", "nth": 2, "pt": "TEMA", "max": 5},
+{"file": "kawa_ui.c", "en": "LANGUAGE", "es": "IDIOMA", "nth": 2, "pt": "IDIOMA", "max": 8},
+{"file": "kawa_ui.c", "en": "MIDI CLOCK", "es": "RELOJ MIDI", "nth": 1, "pt": "RELOGIO MIDI", "max": 12},
+{"file": "kawa_ui.c", "en": "FONT", "es": "FUENTE", "nth": 1, "pt": "FONTE", "max": 6},
+{"file": "kawa_ui.c", "en": "ROW", "es": "FILA", "nth": 1, "pt": "LINHA", "max": 5},
+{"file": "kawa_ui.c", "en": "TRACK", "es": "PISTA", "nth": 1, "pt": "FAIXA", "max": 5},
+{"file": "kawa_ui.c", "en": "PATTERN", "es": "PATRON", "nth": 1, "pt": "PADRAO", "max": 7},
+{"file": "kawa_ui.c", "en": "REC+SEL: STEP  ARP+SEL: ROW", "es": "REC+SEL: SALTO  ARP+SEL: FILA", "nth": 1, "pt": "REC+SEL: PULO  ARP+SEL: LINHA", "max": 29},
+{"file": "kawa_ui.c", "en": "SAVE HELD: THE TOOLS", "es": "SAVE PULSADO: HERRAMIENTAS", "nth": 1, "pt": "SEGURE SAVE: FERRAMENTAS", "max": 26},
+{"file": "kawa_ui.c", "en": "ARP + K3 K4: THE 2ND FX", "es": "ARP + K3 K4: EL 2O EFECTO", "nth": 1, "pt": "ARP + K3 K4: O 2O EFEITO", "max": 25},
+{"file": "kawa_ui.c", "en": "16 STEPS PAGE", "es": "PAGINA DE 16", "nth": 1, "pt": "PAGINA DE 16", "max": 13},
+{"file": "kawa_ui.c", "en": "TRACK", "es": "PISTA", "nth": 2, "pt": "FAIXA", "max": 5},
+{"file": "kawa_ui.c", "en": "PATTERN", "es": "PATRON", "nth": 2, "pt": "PADRAO", "max": 7},
+{"file": "kawa_ui.c", "en": "WHITE KEYS: STEPS ON/OFF", "es": "BLANCAS: PASOS SI/NO", "nth": 1, "pt": "BRANCAS: PASSOS SIM/NAO", "max": 24},
+{"file": "kawa_ui.c", "en": "BLACK KEYS: THE TRACK", "es": "NEGRAS: LA PISTA", "nth": 1, "pt": "PRETAS: A FAIXA", "max": 21},
+{"file": "kawa_ui.c", "en": "OCT-/OCT+: 16, 32, 64 STEPS", "es": "OCT-/OCT+: 16, 32, 64 PASOS", "nth": 1, "pt": "OCT-/OCT+: 16, 32, 64 PASS.", "max": 27},
+{"file": "kawa_ui.c", "en": "NEXT PAGE", "es": "PAG. SIGUIENTE", "nth": 1, "pt": "PROXIMA PAG.", "max": 14},
+{"file": "kawa_ui.c", "en": "TRACK", "es": "PISTA", "nth": 3, "pt": "FAIXA", "max": 5},
+{"file": "kawa_ui.c", "en": "FACTORY / CURSOR", "es": "FABRICA / CURSOR", "nth": 1, "pt": "FABRICA / CURSOR", "max": 16},
+{"file": "kawa_ui.c", "en": "EDITED: PRESETS, THEN OCT+", "es": "EDITADO: PRESETS Y OCT+", "nth": 1, "pt": "EDITADO: PRESETS E OCT+", "max": 26},
+{"file": "kawa_ui.c", "en": "ARP+PRESETS: THE ENGINE", "es": "ARP+PRESETS: EL MOTOR", "nth": 1, "pt": "ARP+PRESETS: O MOTOR", "max": 23},
+{"file": "kawa_ui.c", "en": "UNDO: SAVE+OCT- BRINGS IT BACK", "es": "DESHACER: SAVE+OCT- LO VUELVE", "nth": 1, "pt": "DESFAZER: SAVE+OCT- VOLTA", "max": 30},
+{"file": "kawa_ui.c", "en": "ENV / MIX", "es": "ENV / MEZCLA", "nth": 1, "pt": "ENV / MIX", "max": 12},
+{"file": "kawa_ui.c", "en": "TRACK", "es": "PISTA", "nth": 4, "pt": "FAIXA", "max": 5},
+{"file": "kawa_ui.c", "en": "-", "es": "-", "nth": 1, "pt": "-", "max": 1},
+{"file": "kawa_ui.c", "en": "ENV AGAIN: THE MIX", "es": "ENV OTRA VEZ: LA MEZCLA", "nth": 1, "pt": "ENV DE NOVO: O MIX", "max": 23},
+{"file": "kawa_ui.c", "en": "KEYS: LISTEN", "es": "TECLAS: ESCUCHAR", "nth": 1, "pt": "TECLAS: OUVIR", "max": 16},
+{"file": "kawa_ui.c", "en": "ENV / MIX", "es": "ENV / MEZCLA", "nth": 2, "pt": "ENV / MIX", "max": 12},
+{"file": "kawa_ui.c", "en": "TRACK / MASTER", "es": "PISTA / MASTER", "nth": 1, "pt": "FAIXA/MASTER", "max": 14},
+{"file": "kawa_ui.c", "en": "-", "es": "-", "nth": 2, "pt": "-", "max": 1},
+{"file": "kawa_ui.c", "en": "BLACK: MUTE  ARP+BLACK: SOLO", "es": "NEGRAS: MUTE  ARP+NEGRA: SOLO", "nth": 1, "pt": "PRETAS: MUDO  ARP+PRETA: SOLO", "max": 29},
+{"file": "kawa_ui.c", "en": "PAST TRACK 6: MASTER", "es": "TRAS LA 6: EL MASTER", "nth": 1, "pt": "DEPOIS DA 6: O MASTER", "max": 21},
+{"file": "kawa_ui.c", "en": "-", "es": "-", "nth": 3, "pt": "-", "max": 1},
+{"file": "kawa_ui.c", "en": "TRACK", "es": "PISTA", "nth": 5, "pt": "FAIXA", "max": 5},
+{"file": "kawa_ui.c", "en": "PATTERN", "es": "PATRON", "nth": 3, "pt": "PADRAO", "max": 7},
+{"file": "kawa_ui.c", "en": "WHITE KEY: A TOOL", "es": "BLANCA: UNA HERRAMIENTA", "nth": 1, "pt": "BRANCA: UMA FERRAMENTA", "max": 23},
+{"file": "kawa_ui.c", "en": "SCL: SCALE, THEN MAGIC", "es": "SCL: ESCALA, LUEGO MAGIA", "nth": 1, "pt": "SCL: ESCALA, E MAGIA", "max": 24},
+{"file": "kawa_ui.c", "en": "SAVE HELD: THE TOOLS", "es": "SAVE PULSADO: HERRAMIENTAS", "nth": 2, "pt": "SEGURE SAVE: FERRAMENTAS", "max": 26},
+{"file": "kawa_ui.c", "en": "-", "es": "-", "nth": 4, "pt": "-", "max": 1},
+{"file": "kawa_ui.c", "en": "TRACK", "es": "PISTA", "nth": 6, "pt": "FAIXA", "max": 5},
+{"file": "kawa_ui.c", "en": "PATTERN", "es": "PATRON", "nth": 4, "pt": "PADRAO", "max": 7},
+{"file": "kawa_ui.c", "en": "A KEY: THE ROOT", "es": "UNA TECLA: LA TONICA", "nth": 1, "pt": "UMA TECLA: A TONICA", "max": 20},
+{"file": "kawa_ui.c", "en": "LOCK: NOTES OF THE SCALE", "es": "FIJA: NOTAS DE LA ESCALA", "nth": 1, "pt": "TRAVA: NOTAS DA ESCALA", "max": 24},
+{"file": "kawa_ui.c", "en": "SCL AGAIN: MAGIC", "es": "SCL OTRA VEZ: MAGIA", "nth": 1, "pt": "SCL DE NOVO: MAGIA", "max": 19},
+{"file": "kawa_ui.c", "en": "GROOVE, OPTIONS", "es": "GROOVE, OPCIONES", "nth": 1, "pt": "GROOVE, OPCOES", "max": 16},
+{"file": "kawa_ui.c", "en": "ENTRY", "es": "ENTRADA", "nth": 1, "pt": "ENTRADA", "max": 7},
+{"file": "kawa_ui.c", "en": "ITS PATTERN", "es": "SU PATRON", "nth": 1, "pt": "SEU PADRAO", "max": 11},
+{"file": "kawa_ui.c", "en": "WHITE KEY: PATTERN K3: TIMES", "es": "BLANCA: PATRON  K3: VECES", "nth": 1, "pt": "BRANCA: PADRAO  K3: VEZES", "max": 28},
+{"file": "kawa_ui.c", "en": "OCT+ ADD  OCT- DELETE", "es": "OCT+ ANADE  OCT- QUITA", "nth": 1, "pt": "OCT+ POE  OCT- TIRA", "max": 22},
+{"file": "kawa_ui.c", "en": "GLO: GROOVE, OPTIONS", "es": "GLO: GROOVE, OPCIONES", "nth": 1, "pt": "GLO: GROOVE, OPCOES", "max": 21},
+{"file": "kawa_ui.c", "en": "CHOICE", "es": "ELECCION", "nth": 2, "pt": "ESCOLHA", "max": 8},
+{"file": "kawa_ui.c", "en": "-", "es": "-", "nth": 5, "pt": "-", "max": 1},
+{"file": "kawa_ui.c", "en": "-", "es": "-", "nth": 6, "pt": "-", "max": 1},
+{"file": "kawa_ui.c", "en": "OCT+: OK   OCT-: BACK", "es": "OCT+: OK   OCT-: VOLVER", "nth": 1, "pt": "OCT+: OK   OCT-: VOLTA", "max": 23},
+{"file": "kawa_ui.c", "en": "SAVE THEN OCT+: QUICK SAVE", "es": "SAVE Y OCT+: GUARDAR RAPIDO", "nth": 1, "pt": "SAVE E OCT+: SALVAR RAPIDO", "max": 27},
+{"file": "kawa_ui.c", "en": "SONG / GROOVE", "es": "CANCION / GROOVE", "nth": 1, "pt": "MUSICA / GROOVE", "max": 16},
+{"file": "kawa_ui.c", "en": "METRONOME", "es": "METRONOMO", "nth": 2, "pt": "METRONOMO", "max": 9},
+{"file": "kawa_ui.c", "en": "CLICK VOLUME", "es": "VOLUMEN CLIC", "nth": 1, "pt": "VOL. CLIQUE", "max": 12},
+{"file": "kawa_ui.c", "en": "K1-K4: THEME LANG CLOCK FONT", "es": "K1-K4: TEMA IDIOMA RELOJ FUENTE", "nth": 1, "pt": "K1-K4: TEMA IDIOMA RELOG FONTE", "max": 31},
+{"file": "kawa_ui.c", "en": "ALL OF THEM ARE KEPT", "es": "TODO SE GUARDA", "nth": 1, "pt": "TUDO FICA GUARDADO", "max": 20},
+{"file": "kawa_ui.c", "en": "GLO: BACK TO THE SONG", "es": "GLO: VOLVER A LA CANCION", "nth": 1, "pt": "GLO: VOLTA PARA A MUSICA", "max": 24},
+{"file": "kawa_ui.c", "en": "SENDS/LIVE/FILTER", "es": "ENVIOS/LIVE/FILTRO", "nth": 1, "pt": "ENVIOS/LIVE/FILTRO", "max": 18},
+{"file": "kawa_ui.c", "en": "TRACK", "es": "PISTA", "nth": 7, "pt": "FAIXA", "max": 5},
+{"file": "kawa_ui.c", "en": "PATTERN", "es": "PATRON", "nth": 5, "pt": "PADRAO", "max": 7},
+{"file": "kawa_ui.c", "en": "HOLD FX + WHITE KEYS", "es": "FX PULSADO + BLANCAS", "nth": 1, "pt": "SEGURE FX + BRANCAS", "max": 20},
+{"file": "kawa_ui.c", "en": "OCT: 4 BANKS  BLACK: MUTES", "es": "OCT: 4 BANCOS  NEGRAS: MUTE", "nth": 1, "pt": "OCT: 4 BANCOS  PRETAS: MUDO", "max": 27},
+{"file": "kawa_ui.c", "en": "DESTROY, BEAT: K2 INTENSITY", "es": "DESTRUYE, BEAT: K2 INTENSIDAD", "nth": 1, "pt": "DESTROI, BEAT: K2 INTENSIDADE", "max": 29},
+{"file": "kawa_ui.c", "en": "SENDS / LIVE", "es": "ENVIOS / LIVE", "nth": 1, "pt": "ENVIOS / LIVE", "max": 13},
+{"file": "kawa_ui.c", "en": "TRACK", "es": "PISTA", "nth": 8, "pt": "FAIXA", "max": 5},
+{"file": "kawa_ui.c", "en": "-", "es": "-", "nth": 7, "pt": "-", "max": 1},
+{"file": "kawa_ui.c", "en": "K1 DRIVE  K2 ECHO  K3 REVERB", "es": "K1 SATURA  K2 ECO  K3 REVERB", "nth": 1, "pt": "K1 SATURA  K2 ECO  K3 REVERB", "max": 28},
+{"file": "kawa_ui.c", "en": "0: NOTHING, PER TRACK", "es": "0: NADA, POR PISTA", "nth": 1, "pt": "0: NADA, POR FAIXA", "max": 21},
+{"file": "kawa_ui.c", "en": "FX AGAIN: THE LIVE EFFECTS", "es": "FX OTRA VEZ: EFECTOS LIVE", "nth": 1, "pt": "FX DE NOVO: EFEITOS LIVE", "max": 26},
+{"file": "kawa_ui.c", "en": "SENDS/LIVE/FILTER", "es": "ENVIOS/LIVE/FILTRO", "nth": 2, "pt": "ENVIOS/LIVE/FILTRO", "max": 18},
+{"file": "kawa_ui.c", "en": "-", "es": "-", "nth": 8, "pt": "-", "max": 1},
+{"file": "kawa_ui.c", "en": "-", "es": "-", "nth": 9, "pt": "-", "max": 1},
+{"file": "kawa_ui.c", "en": "K1 TYPE K2 FREQ K3 RESO K4 MOVE", "es": "K1 TIPO K2 FREC K3 RESO K4 MOV", "nth": 1, "pt": "K1 TIPO K2 FREQ K3 RESO K4 MOV", "max": 31},
+{"file": "kawa_ui.c", "en": "KEYS: TUNE IT  OCT: OCTAVE", "es": "TECLAS: AFINAN  OCT: OCTAVA", "nth": 1, "pt": "TECLAS: AFINAM  OCT: OITAVA", "max": 27},
+{"file": "kawa_ui.c", "en": "FX: THE FX SEQ", "es": "FX: LA SEC FX", "nth": 1, "pt": "FX: A SEQ FX", "max": 14},
+{"file": "kawa_ui.c", "en": "SENDS/LIVE/FILTER", "es": "ENVIOS/LIVE/FILTRO", "nth": 3, "pt": "ENVIOS/LIVE/FILTRO", "max": 18},
+{"file": "kawa_ui.c", "en": "-", "es": "-", "nth": 10, "pt": "-", "max": 1},
+{"file": "kawa_ui.c", "en": "PATTERN", "es": "PATRON", "nth": 6, "pt": "PADRAO", "max": 7},
+{"file": "kawa_ui.c", "en": "K1: THE FX  WHITE KEY: A STEP", "es": "K1: EL EFECTO  BLANCA: UN PASO", "nth": 1, "pt": "K1: O EFEITO  BRANCA: UM PASSO", "max": 30},
+{"file": "kawa_ui.c", "en": "OCT: STEPS 1-16 / 17-32", "es": "OCT: PASOS 1-16 / 17-32", "nth": 1, "pt": "OCT: PASSO 1-16 / 17-32", "max": 23},
+{"file": "kawa_ui.c", "en": "ARP: CLEARS  FX: BACK", "es": "ARP: BORRA  FX: VOLVER", "nth": 1, "pt": "ARP: APAGA  FX: VOLTA", "max": 22},
+{"file": "kawa_ui.c", "en": "SONG / OPTIONS", "es": "CANCION / OPCIONES", "nth": 1, "pt": "MUSICA / OPCOES", "max": 18},
+{"file": "kawa_ui.c", "en": "GROOVE STEP", "es": "PASO DEL GROOVE", "nth": 1, "pt": "PASSO DO GROOVE", "max": 15},
+{"file": "kawa_ui.c", "en": "-", "es": "-", "nth": 11, "pt": "-", "max": 1},
+{"file": "kawa_ui.c", "en": "WHITE KEY: A STEP K1: TICKS", "es": "BLANCA: UN PASO  K1: TICKS", "nth": 1, "pt": "BRANCA: UM PASSO  K1: TICKS", "max": 27},
+{"file": "kawa_ui.c", "en": "6 TICKS: A STRAIGHT ROW", "es": "6 TICKS: UNA FILA RECTA", "nth": 1, "pt": "6 TICKS: UMA LINHA RETA", "max": 23},
+{"file": "kawa_ui.c", "en": "GLO: THE OPTIONS", "es": "GLO: LAS OPCIONES", "nth": 1, "pt": "GLO: AS OPCOES", "max": 17},
+{"file": "kawa_ui.c", "en": "NEXT PAGE", "es": "PAG. SIGUIENTE", "nth": 2, "pt": "PROXIMA PAG.", "max": 14},
+{"file": "kawa_ui.c", "en": "TRACK", "es": "PISTA", "nth": 9, "pt": "FAIXA", "max": 5},
+{"file": "kawa_ui.c", "en": "TABLE ROW", "es": "FILA TABLA", "nth": 1, "pt": "LINHA TABEL", "max": 11},
+{"file": "kawa_ui.c", "en": "ROW 0: SPEED LENGTH LOOP", "es": "FILA 0: VELOC LARGO BUCLE", "nth": 1, "pt": "LINHA 0: VELOC TAMANHO LOOP", "max": 27},
+{"file": "kawa_ui.c", "en": "K4 ON ROW 0: ON / OFF", "es": "K4 EN LA FILA 0: ACTIVA", "nth": 1, "pt": "K4 NA LINHA 0: LIGA", "max": 23},
+{"file": "kawa_ui.c", "en": "ARP: CLEARS THE STEP", "es": "ARP: BORRA EL PASO", "nth": 1, "pt": "ARP: APAGA O PASSO", "max": 20},
+{"file": "kawa_ui.c", "en": "NEXT PAGE", "es": "PAG. SIGUIENTE", "nth": 3, "pt": "PROXIMA PAG.", "max": 14},
+{"file": "kawa_ui.c", "en": "TRACK", "es": "PISTA", "nth": 10, "pt": "FAIXA", "max": 5},
+{"file": "kawa_ui.c", "en": "START END SLICE", "es": "INICIO FIN CORTE", "nth": 1, "pt": "INICIO FIM FATIA", "max": 16},
+{"file": "kawa_ui.c", "en": "K1: MOVE  K2: FINE", "es": "K1: MOVER  K2: FINO", "nth": 1, "pt": "K1: MOVE  K2: FINO", "max": 19},
+{"file": "kawa_ui.c", "en": "K3 NORMALISE  K4 REVERSE", "es": "K3 NORMALIZA  K4 AL REVES", "nth": 1, "pt": "K3 NORMALIZA  K4 AO AVESSO", "max": 26},
+{"file": "kawa_ui.c", "en": "ARP: EVEN SLICES", "es": "ARP: CORTES IGUALES", "nth": 1, "pt": "ARP: FATIAS IGUAIS", "max": 19},
+{"file": "kawa_ui.c", "en": "PRESS ANY KEY", "es": "PULSA UNA TECLA", "nth": 1, "pt": "APERTE UMA TECLA", "max": 16},
+{"file": "kawa_ui.c", "en": "ROW IN", "es": "FILA INSERTADA", "nth": 1, "pt": "LINHA INSERIDA", "max": 14},
+{"file": "kawa_ui.c", "en": "ROW OUT", "es": "FILA QUITADA", "nth": 1, "pt": "LINHA TIRADA", "max": 12},
+{"file": "kawa_ui.c", "en": "NOTHING HERE", "es": "NADA AQUI", "nth": 1, "pt": "NADA AQUI", "max": 12},
+{"file": "kawa_ui.c", "en": "LOADED !", "es": "CARGADO !", "nth": 1, "pt": "CARREGA!", "max": 9},
+{"file": "kawa_ui.c", "en": "ERROR !", "es": "ERROR !", "nth": 1, "pt": "ERRO !", "max": 7},
+{"file": "kawa_ui.c", "en": "SAVED !", "es": "GUARDADO !", "nth": 1, "pt": "SALVO !", "max": 10},
+{"file": "kawa_ui.c", "en": "LAST PATTERN", "es": "ULTIMO PATRON", "nth": 1, "pt": "ULTIMO PADRAO", "max": 13},
+{"file": "kawa_ui.c", "en": "PATTERN ALREADY LINKED", "es": "PATRON YA ENLAZADO", "nth": 1, "pt": "PADRAO JA LIGADO", "max": 22},
+{"file": "kawa_ui.c", "en": "STEPS ", "es": "PASOS ", "nth": 1, "pt": "PASS. ", "max": 6},
+{"file": "kawa_ui.c", "en": "REDONE: SOUND ", "es": "REHECHO: SONIDO ", "nth": 1, "pt": "REFEITO: SOM ", "max": 16},
+{"file": "kawa_ui.c", "en": "UNDONE: SOUND ", "es": "DESHECHO: SONIDO ", "nth": 1, "pt": "DESFEITO: SOM ", "max": 17},
+{"file": "kawa_ui.c", "en": "FM: ONE TRACK ONLY", "es": "FM: UNA SOLA PISTA", "nth": 1, "pt": "FM: SO UMA FAIXA", "max": 18},
+{"file": "kawa_ui.c", "en": "NOTHING TO REDO", "es": "NADA QUE REHACER", "nth": 1, "pt": "NADA A REFAZER", "max": 16},
+{"file": "kawa_ui.c", "en": "NOTHING TO UNDO", "es": "NADA QUE DESHACER", "nth": 1, "pt": "NADA A DESFAZER", "max": 17},
+{"file": "kawa_ui.c", "en": "REDONE", "es": "REHECHO", "nth": 1, "pt": "REFEITO", "max": 7},
+{"file": "kawa_ui.c", "en": "UNDONE", "es": "DESHECHO", "nth": 1, "pt": "DESFEITO", "max": 8},
+{"file": "kawa_ui.c", "en": "LIVE CLEARED", "es": "LIVE BORRADO", "nth": 1, "pt": "LIVE APAGADO", "max": 12},
+{"file": "kawa_ui.c", "en": "EVEN SLICES", "es": "CORTES IGUALES", "nth": 1, "pt": "FATIAS IGUAIS", "max": 14},
+{"file": "kawa_ui.c", "en": "KEPT", "es": "CONSERVADO", "nth": 1, "pt": "GUARDADO", "max": 10},
+{"file": "kawa_ui.c", "en": "FM: ONE TRACK ONLY", "es": "FM: UNA SOLA PISTA", "nth": 2, "pt": "FM: SO UMA FAIXA", "max": 18},
+{"file": "kawa_ui.c", "en": "LOADED", "es": "CARGADO", "nth": 1, "pt": "CARREG.", "max": 7},
+{"file": "kawa_ui.c", "en": "FM: ONE TRACK ONLY", "es": "FM: UNA SOLA PISTA", "nth": 3, "pt": "FM: SO UMA FAIXA", "max": 18},
+{"file": "kawa_ui.c", "en": "OCT+: LOAD IT", "es": "OCT+: CARGAR", "nth": 1, "pt": "OCT+: CARREGA", "max": 13},
+{"file": "kawa_ui.c", "en": "STEP ", "es": "SALTO ", "nth": 1, "pt": "PULO ", "max": 6},
+{"file": "kawa_ui.c", "en": "WAITING FOR MIDI CLOCK", "es": "ESPERA EL RELOJ MIDI", "nth": 1, "pt": "ESPERANDO RELOGIO MIDI", "max": 22},
+{"file": "kawa_ui.c", "en": "SAMPLE READY !", "es": "SAMPLE LISTO !", "nth": 1, "pt": "SAMPLE PRONTO!", "max": 14},
+{"file": "kawa_edit.c", "en": "LINKED", "es": "ENLAZADO", "nth": 1, "pt": "LIGADO", "max": 8},
+{"file": "kawa_edit.c", "en": "NO ROOM", "es": "SIN ESPACIO", "nth": 1, "pt": "SEM ESPACO", "max": 11},
+{"file": "kawa_edit.c", "en": "COPIED", "es": "COPIADO", "nth": 1, "pt": "COPIADO", "max": 7},
+{"file": "kawa_edit.c", "en": "EMPTY", "es": "VACIO", "nth": 1, "pt": "VAZIO", "max": 5},
+{"file": "kawa_edit.c", "en": "PASTED", "es": "PEGADO", "nth": 1, "pt": "COLADO", "max": 6},
+{"file": "kawa_kg.c", "en": "LOOP", "es": "BUCLE", "nth": 1, "pt": "LOOP", "max": 5},
+{"file": "kawa_kg.c", "en": "DESTROY", "es": "DESTRUYE", "nth": 1, "pt": "DESTROI", "max": 8},
+{"file": "kawa_kg.c", "en": "STUTTER", "es": "TARTAMU", "nth": 1, "pt": "SEGURA", "max": 7},
+{"file": "kawa_kg.c", "en": "X", "es": "X", "nth": 1, "pt": "X", "max": 1},
+{"file": "kawa_kg.c", "en": "GLITCH", "es": "GLITCH", "nth": 1, "pt": "GLITCH", "max": 6},
+{"file": "kawa_kg.c", "en": "", "es": "", "nth": 1, "pt": "", "max": 0},
+{"file": "kawa_kg.c", "en": "SCRATCH", "es": "SCRATCH", "nth": 1, "pt": "PUXA", "max": 7},
+{"file": "kawa_kg.c", "en": "HAND", "es": "MANO", "nth": 1, "pt": "MAO", "max": 4},
+{"file": "kawa_kg.c", "en": "REVERSE", "es": "REVES", "nth": 1, "pt": "AVESSO", "max": 7},
+{"file": "kawa_kg.c", "en": "X", "es": "X", "nth": 2, "pt": "X", "max": 1},
+{"file": "kawa_kg.c", "en": "PITCH", "es": "TONO", "nth": 1, "pt": "TOM", "max": 5},
+{"file": "kawa_kg.c", "en": "MAD", "es": "LOCO", "nth": 1, "pt": "LOUCO", "max": 5},
+{"file": "kawa_kg.c", "en": "GATE", "es": "GATE", "nth": 1, "pt": "CORTA", "max": 5},
+{"file": "kawa_kg.c", "en": "X", "es": "X", "nth": 3, "pt": "X", "max": 1},
+{"file": "kawa_kg.c", "en": "FILTER", "es": "FILTRO", "nth": 1, "pt": "FILTRO", "max": 6},
+{"file": "kawa_kg.c", "en": "CHAOS", "es": "CAOS", "nth": 1, "pt": "CAOS", "max": 5},
+{"file": "kawa_kg.c", "en": "BEAT", "es": "PULSO", "nth": 1, "pt": "TEMPO", "max": 5},
+{"file": "kawa_kg.c", "en": "REPEAT", "es": "REPITE", "nth": 1, "pt": "REPETE", "max": 6},
+{"file": "kawa_kg.c", "en": "BEAT", "es": "PULSO", "nth": 2, "pt": "TEMPO", "max": 5},
+{"file": "kawa_kg.c", "en": "SKIP", "es": "SALTA", "nth": 1, "pt": "PULA", "max": 5},
+{"file": "kawa_kg.c", "en": "MICRO", "es": "MICRO", "nth": 1, "pt": "MICRO", "max": 5},
+{"file": "kawa_kg.c", "en": "STUTTER", "es": "TARTAMU", "nth": 2, "pt": "SEGURA", "max": 7},
+{"file": "kawa_kg.c", "en": "STRETCH", "es": "ESTIRA", "nth": 1, "pt": "ESTICA", "max": 7},
+{"file": "kawa_kg.c", "en": "TIME", "es": "TIEMPO", "nth": 1, "pt": "TEMPO", "max": 6},
+{"file": "kawa_kg.c", "en": "RING", "es": "ANILLO", "nth": 1, "pt": "ANEL", "max": 6},
+{"file": "kawa_kg.c", "en": "MOD", "es": "MOD", "nth": 1, "pt": "MOD", "max": 3},
+{"file": "kawa_kg.c", "en": "FUZZ", "es": "FUZZ", "nth": 1, "pt": "FUZZ", "max": 4},
+{"file": "kawa_kg.c", "en": "", "es": "", "nth": 2, "pt": "", "max": 0},
+{"file": "kawa_kg.c", "en": "RANDOM", "es": "AZAR", "nth": 1, "pt": "ACASO", "max": 6},
+{"file": "kawa_kg.c", "en": "", "es": "", "nth": 3, "pt": "", "max": 0},
+{"file": "kawa_kg.c", "en": "TOTAL", "es": "CAOS", "nth": 1, "pt": "CAOS", "max": 5},
+{"file": "kawa_kg.c", "en": "CHAOS", "es": "TOTAL", "nth": 1, "pt": "TOTAL", "max": 5},
+{"file": "kawa_kg.c", "en": "RANDOM", "es": "AZAR", "nth": 2, "pt": "ACASO", "max": 6},
+{"file": "kawa_kg.c", "en": "STUTTER", "es": "TARTAMU", "nth": 3, "pt": "SEGURA", "max": 7},
+{"file": "kawa_kg.c", "en": "RANDOM", "es": "AZAR", "nth": 3, "pt": "ACASO", "max": 6},
+{"file": "kawa_kg.c", "en": "BAR", "es": "COMPAS", "nth": 1, "pt": "COMPAS", "max": 6},
+{"file": "kawa_kg.c", "en": "RANDOM", "es": "AZAR", "nth": 4, "pt": "ACASO", "max": 6},
+{"file": "kawa_kg.c", "en": "FILL", "es": "RELLENO", "nth": 1, "pt": "VIRADA", "max": 7},
+{"file": "kawa_kg.c", "en": "ROLL", "es": "REDOBLE", "nth": 1, "pt": "RUFO", "max": 7},
+{"file": "kawa_kg.c", "en": "UP", "es": "SUBE", "nth": 1, "pt": "SOBE", "max": 4},
+{"file": "kawa_kg.c", "en": "SKIP", "es": "SALTA", "nth": 2, "pt": "PULA", "max": 5},
+{"file": "kawa_kg.c", "en": "8TH", "es": "CORCHEA", "nth": 1, "pt": "1/8", "max": 7},
+{"file": "kawa_kg.c", "en": "STAMMER", "es": "TITUBEO", "nth": 1, "pt": "TROPECA", "max": 7},
+{"file": "kawa_kg.c", "en": "3-3-2", "es": "3-3-2", "nth": 1, "pt": "3-3-2", "max": 5},
+{"file": "kawa_kg.c", "en": "GATE", "es": "GATE", "nth": 2, "pt": "CORTA", "max": 5},
+{"file": "kawa_kg.c", "en": "1/8", "es": "1/8", "nth": 1, "pt": "1/8", "max": 3},
+{"file": "kawa_kg.c", "en": "GATE", "es": "GATE", "nth": 3, "pt": "CORTA", "max": 5},
+{"file": "kawa_kg.c", "en": "1/16", "es": "1/16", "nth": 1, "pt": "1/16", "max": 4},
+{"file": "kawa_kg.c", "en": "GATE", "es": "GATE", "nth": 4, "pt": "CORTA", "max": 5},
+{"file": "kawa_kg.c", "en": "3-3-2", "es": "3-3-2", "nth": 2, "pt": "3-3-2", "max": 5},
+{"file": "kawa_kg.c", "en": "GATE", "es": "GATE", "nth": 5, "pt": "CORTA", "max": 5},
+{"file": "kawa_kg.c", "en": "RAMP", "es": "RAMPA", "nth": 1, "pt": "RAMPA", "max": 5},
+{"file": "kawa_kg.c", "en": "REVERSE", "es": "REVES", "nth": 2, "pt": "AVESSO", "max": 7},
+{"file": "kawa_kg.c", "en": "BEAT", "es": "PULSO", "nth": 3, "pt": "TEMPO", "max": 5},
+{"file": "kawa_kg.c", "en": "REVERSE", "es": "REVES", "nth": 3, "pt": "AVESSO", "max": 7},
+{"file": "kawa_kg.c", "en": "OFFBEAT", "es": "CONTRA", "nth": 1, "pt": "CONTRA", "max": 7},
+{"file": "kawa_kg.c", "en": "SCRATCH", "es": "SCRATCH", "nth": 2, "pt": "PUXA", "max": 7},
+{"file": "kawa_kg.c", "en": "BAR", "es": "COMPAS", "nth": 2, "pt": "COMPAS", "max": 6},
+{"file": "kawa_kg.c", "en": "SCRATCH", "es": "SCRATCH", "nth": 3, "pt": "PUXA", "max": 7},
+{"file": "kawa_kg.c", "en": "CUT", "es": "CORTE", "nth": 1, "pt": "CORTE", "max": 5},
+{"file": "kawa_kg.c", "en": "TAPE", "es": "CINTA", "nth": 1, "pt": "FITA", "max": 5},
+{"file": "kawa_kg.c", "en": "STOP", "es": "PARADA", "nth": 1, "pt": "PARA", "max": 6},
+{"file": "kawa_kg.c", "en": "HALF", "es": "MEDIO", "nth": 1, "pt": "MEIO", "max": 5},
+{"file": "kawa_kg.c", "en": "TIME", "es": "TIEMPO", "nth": 2, "pt": "TEMPO", "max": 6}
+]

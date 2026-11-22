@@ -94,4 +94,4 @@ o código. Detalhes em [LICENSING.md](LICENSING.md). "M-VAVE" e "FM-1" pertencem
 
 **In English:** BAILE is a free Brazilian funk tracker firmware for the M-VAVE FM-1, forked from Omnipotard's KAWA.
 Its screen speaks Portuguese, English or Spanish; its look is a mosaic of painted tiles in a macaw's colours. Work in
-progress, not yet tested on an FM-1. GPL-3.0-only.
+progress: 0.2 runs on an FM-1 (see docs/TEST-RESULTS.md). GPL-3.0-only.

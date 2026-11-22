@@ -94,7 +94,7 @@ Opcional, depois da 1.0: vocais sintéticos por formantes; modo LIVE do KAWA (la
 - **2026-11-18, interface em PT:** o português ocupa o lugar do francês do KAWA (`LANG_PT`, idiomas PT, EN, ES) e é
   o padrão de um FM-1 novo. 731 posições de texto (518 textos), cada uma no limite de largura do texto original;
   "track" é **FAIXA**. `tools/i18n_slots.py` acha as posições e aplica `tools/i18n_pt.json` (para revisar uma
-  tradução: editar o JSON, `check`, `apply`). Nomes dos patches FM em `tools/gen_fm_patches.py`. Sem acentos: as
+  tradução: editar o JSON, `check`, `apply`; só funciona desde a correção de 2026-11-21, abaixo). Nomes dos patches FM em `tools/gen_fm_patches.py`. Sem acentos: as
   fontes da tela são ASCII.
 - **2026-11-18, Fase 2 (kits):** os 8 kits do KAWA viraram **VOLT, TAMBOR, 150, MANDELA, BREGA, MELODY, TUIN e
   PERCUS** (`source/firmware/src/kawa_kits.h`), 16 peças cada, com as mesmas regras de tecla (1 bumbo, 2 segundo
@@ -153,9 +153,16 @@ Opcional, depois da 1.0: vocais sintéticos por formantes; modo LIVE do KAWA (la
   (dó menor, 150, groove BREGA). `features_test` 11 carrega e toca as quatro. Áudio de cada uma no hub. A tag `v0.9`
   herdada do KAWA saiu (dispararia uma release). `source/BUILDING.md` com o BAILE e as notas do macOS. A 0.1 (a
   instalada no aparelho) foi para `install/older/`.
-- **2026-11-21, 0.2 no aparelho:** instalada por cima da 0.1; todo o roteiro de `docs/TEST-RESULTS.md` passou (relato
-  do autor). Os dois chips de flash são aceitos (`FL_CHIP_OK`). Tag `v0.2` criada (local); rascunho do e-mail ao
+- **2026-11-21, 0.2 no aparelho:** instalada por cima da 0.1; o autor relatou "Testei tudo, ok" sobre o roteiro
+  de `docs/TEST-RESULTS.md` (sem item por item). Os dois chips de flash são aceitos (`FL_CHIP_OK`). Tag `v0.2` criada; rascunho do e-mail ao
   Hub em `docs/HUB-EMAIL.md`.
+- **2026-11-21, auditoria (corrigido no código, rumo à 0.3):** defeitos que estavam publicados como prontos.
+  **Emulador:** procurava o magic de projeto do KAWA (salvar no navegador, exportar e importar `.baile` nunca
+  funcionaram) e mandava samples com o magic do KAWA (o BAILE recusa); o site mostrava 0.10, agora a versão vem de
+  `source/VERSION`. **Firmware 0.2:** os bancos DESTROI e BEAT (`kawa_kg.c`) ficaram em francês, o idioma PT se chamava
+  FRANCAIS, e cinco traduções saíram erradas. **`i18n_slots.py`:** o `apply` quebrava e não lia o `kawa_kg.c`; a chave
+  de cada texto agora é arquivo + EN + ES + ordem. **Manual:** a DEMO pede um OCT+, não dois. Teste novo:
+  `source/tests/emulator_test.js`. O pacote em `install/` continua a 0.2, com esses defeitos de texto.
 
 ## TODO
 
@@ -169,7 +176,10 @@ Opcional, depois da 1.0: vocais sintéticos por formantes; modo LIVE do KAWA (la
 - [x] **Versão em inglês do site** (2026-11-21): `en/index.html` (do mesmo modelo do hub), `manual/en.html`,
   `samples.en.html` (gerado do `samples.html` com `source/tools/samples_en.json`); o emulador já tinha EN (`#en`).
   PT/EN na barra de todas as páginas.
-- [ ] Publicar a release `v0.2` (push da tag) e mandar o e-mail ao FM-1 Firmware Hub (`docs/HUB-EMAIL.md`).
+- [x] Publicar a release `v0.2` (2026-11-21).
+- [ ] GitHub › Settings › Pages › Source: **GitHub Actions** (hoje dois deploys correm a cada push).
+- [ ] Release 0.3 com as correções: instalar e testar no FM-1 antes da tag; `source/VERSION` = 0.3.
+- [ ] Confirmar o roteiro item por item (`docs/TEST-RESULTS.md`) e só então mandar o e-mail ao Hub (`docs/HUB-EMAIL.md`).
 - [ ] Opcionais: vocais de MC por formantes; um modo LIVE de lançar trechos ao vivo.
 
 ## Mood

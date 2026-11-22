@@ -15,7 +15,9 @@ page are KAWA's). To put BAILE on an FM-1, see the README: the ready package is 
 - The FM-1 package: start Docker Desktop, then `PYTHON=../.venv/bin/python ./build.sh` (the JieLi toolchain is
   Linux x86-64: `build.py` runs it in a container).
 - The emulator, without `wasm-ld` on the Mac: from the top of the repository,
-  `docker run --rm -v "$PWD":/repo -w /repo/source debian:bookworm-slim sh -c "apt-get update -qq && apt-get install -y -qq clang lld python3 && APP_VER=0.1 sh web/make_emulator.sh"`.
+  `docker run --rm -v "$PWD":/repo -w /repo/source debian:bookworm-slim sh -c "apt-get update -qq && apt-get install -y -qq clang lld python3 && sh web/make_emulator.sh"`.
+  Its version is the `VERSION` file here (CI reads the same one): set it to X.Y when releasing, to X.Y-DEV after.
+  Then `node tests/emulator_test.js`: saving, export and import, the sample magic, the version.
 - Tests of BAILE's own: `tests/demo_baile.txt` (the demo, played), `tests/manual_pt.txt` (the manual's screens),
   `features_test` 10 and 11 (the magic tools of funk, the four demos).
 

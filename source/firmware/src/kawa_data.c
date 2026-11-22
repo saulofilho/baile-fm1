@@ -126,7 +126,7 @@ static const char *const L_LFOD[] = {"NADA", "ALTURA", "VOLUME", "EFEITO A", "PA
 static const char *const L_LFOR[] = {"4 COMP", "2 COMP", "1 COMP", "1/2", "1/4", "1/8", "1/16", "1/32", "LENTO", "MEDIO", "RAPIDO",
                                      "4 BARS", "2 BARS", "1 BAR", "1/2", "1/4", "1/8", "1/16", "1/32", "SLOW", "MEDIUM", "FAST",
                                      "4 COMP", "2 COMP", "1 COMP", "1/2", "1/4", "1/8", "1/16", "1/32", "LENTO", "MEDIO", "RAPIDO"};
-static const char *const L_LFOW[] = {"SENO", "TRIANG", "PULSO", "SERRA", "ACASO", "SINE", "TRIANGLE", "SQUARE", "SAW", "RANDOM",
+static const char *const L_LFOW[] = {"SENO", "TRIANG", "QUADRADA", "SERRA", "ACASO", "SINE", "TRIANGLE", "SQUARE", "SAW", "RANDOM",
                                      "SENO", "TRIANG", "CUADRADA", "SIERRA", "AZAR"};
 
 #define PDN(pt, en, es) {pt, en, es}
@@ -307,7 +307,7 @@ static const fxdesc_t FXD[FX_N] = {
     {{"PAN", "PAN", "PAN"}, ICO_MIRROR, -7, 7, -5},         /* this note's pan */
     {{"INI", "OFS", "INI"}, ICO_RIGHT, 0, 15, 8},           /* SAMPLE: start further in (n / 16 of the slice; depart, inicio) */
     {{"PUL", "HOP", "SAL"}, ICO_LOOP, 0, 31, 0},            /* after this row, row n + 1 (saut, salto) */
-    {{"FINO", "END", "FIN"}, ICO_STOP, 0, 0, 0},             /* the pattern ends after this row */
+    {{"FIM", "END", "FIN"}, ICO_STOP, 0, 0, 0},             /* the pattern ends after this row */
 };
 /* the tricks of a table's steps (TABLE): each acts on the note playing when its step comes */
 enum { TB_NONE, TB_HIT, TB_CUT, TB_VIB, TB_BEND, TB_SHAPE, TB_CRUSH, TB_VSL, TB_PAN, TB_HOP, TB_N };

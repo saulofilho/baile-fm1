@@ -892,7 +892,7 @@ static void sed_mark_text(uint32_t t, char *n, char *pos)   /* SAMPLE EDIT: the 
     uint32_t len = 1, rate = 22050, v = se_cur == 0u ? se->start : se_cur == 1u ? se->end : se->sl[se_cur - 1u], f;
     n[0] = 0;
     if (se_cur == 0u) str_cat(n, TR("INICIO", "START", "INICIO"));
-    else if (se_cur == 1u) str_cat(n, TR("FINO", "END", "FIN"));
+    else if (se_cur == 1u) str_cat(n, TR("FIM", "END", "FIN"));
     else { str_cat(n, TR("FT ", "SL ", "CR ")); fmt_u(n + str_len(n), se_cur, 0); }
     if (se_cur >= 2u && !se->manual) {          /* (even slices: where they are now) */
         uint32_t b = se->end;
@@ -961,7 +961,7 @@ static void draw_table(uint32_t t, uint16_t col)
     uint32_t i, len = (uint32_t)clampi(tb->len, 1, NTSTEP), now = tb_now[t];
     char s[16];
     if (g_vis(144, 38)) g_rect(0, 144, 240, 38, C_BG);   /* (draw_sound paints to 144: the rest is the table's) */
-    static const char *const SET_L[LANG_N][4] = {{"VEL", "LONGO", "LOOP", ""}, {"SPD", "LEN", "LOOP", ""},
+    static const char *const SET_L[LANG_N][4] = {{"VEL", "TAM", "LOOP", ""}, {"SPD", "LEN", "LOOP", ""},
                                                  {"VEL", "LARG", "BUCL", ""}};
     for (i = 0; i < 4u; i++) {                  /* the settings: four chips in the knobs' colours */
         int32_t x = 4 + (int32_t)i * 58;
@@ -1652,7 +1652,7 @@ static void draw_tools(void)
 static void draw_first(void)                    /* an empty song on TRACKS: three steps, until the first note */
 {
     static const char *const L[LANG_N][4] = {
-        {"BAILE - MUSICA VAZIA", "1. REC  2. TOQUE AS TECLAS", "3. PLAY PARA OUVIR", "HOME SEGURO: AJUDA"},
+        {"BAILE - MUSICA VAZIA", "1. REC  2. TOQUE AS TECLAS", "3. PLAY PARA OUVIR", "SEGURE HOME: AJUDA"},
         {"BAILE - EMPTY SONG", "1. REC  2. PLAY THE KEYS", "3. PLAY TO LISTEN", "HOME HELD: HELP"},
         {"BAILE - CANCION VACIA", "1. REC  2. TOCA LAS TECLAS", "3. PLAY PARA ESCUCHAR", "HOME PULSADO: AYUDA"}};
     uint32_t i;
@@ -1986,7 +1986,7 @@ static void draw_opt(void)
     for (k = 0; k < LANG_N; k++) {
         int32_t x = 8 + (int32_t)k * 76;
         g_rrect(x, 98, 68, 16, k == lang ? KNOB_COL[1] : C_BG2);
-        g_text_c(x + 34, 98, k == 0u ? "FRANCAIS" : k == 1u ? "ENGLISH" : "ESPANOL", k == lang ? C_INK : C_TXT, T_CROP | T_BOLD);
+        g_text_c(x + 34, 98, k == 0u ? "PORTUGUES" : k == 1u ? "ENGLISH" : "ESPANOL", k == lang ? C_INK : C_TXT, T_CROP | T_BOLD);
     }
     s[0] = 0;                                   /* the fonts, each written in itself */
     str_cat(str_cat(s, TR("FONTE: ", "FONT: ", "FUENTE: ")), FONT_NAMES[lang][g_font]);
@@ -2044,17 +2044,17 @@ static void draw_opt(void)
 /* ---- HELP (HOME held): what the knobs, the encoders and the keys do on the page it was held on */
 typedef struct { const char *e[3], *l[3]; } help_t;
 static const help_t HELP[LANG_N][PG_HELP] = {
-    {{{"LINHA", "FAIXA", "PADRAO"}, {"REC+SEL: PULO  ARP+SEL: LINHA", "SAVE SEGURO: FERRAMENTAS", "ARP + K3 K4: O 2O EFEITO"}},
+    {{{"LINHA", "FAIXA", "PADRAO"}, {"REC+SEL: PULO  ARP+SEL: LINHA", "SEGURE SAVE: FERRAMENTAS", "ARP + K3 K4: O 2O EFEITO"}},
      {{"PAGINA DE 16", "FAIXA", "PADRAO"}, {"BRANCAS: PASSOS SIM/NAO", "PRETAS: A FAIXA", "OCT-/OCT+: 16, 32, 64 PASS."}},
      {{"PROXIMA PAG.", "FAIXA", "FABRICA / CURSOR"}, {"EDITADO: PRESETS E OCT+", "ARP+PRESETS: O MOTOR", "DESFAZER: SAVE+OCT- VOLTA"}},
      {{"ENV / MIX", "FAIXA", "-"}, {"ENV DE NOVO: O MIX", "TECLAS: OUVIR"}},
      {{"ENV / MIX", "FAIXA/MASTER", "-"}, {"PRETAS: MUDO  ARP+PRETA: SOLO", "DEPOIS DA 6: O MASTER"}},
-     {{"-", "FAIXA", "PADRAO"}, {"BRANCA: UMA FERRAMENTA", "SCL: ESCALA, E MAGIA", "SAVE SEGURO: FERRAMENTAS"}},
+     {{"-", "FAIXA", "PADRAO"}, {"BRANCA: UMA FERRAMENTA", "SCL: ESCALA, E MAGIA", "SEGURE SAVE: FERRAMENTAS"}},
      {{"-", "FAIXA", "PADRAO"}, {"UMA TECLA: A TONICA", "TRAVA: NOTAS DA ESCALA", "SCL DE NOVO: MAGIA"}},
      {{"GROOVE, OPCOES", "ENTRADA", "SEU PADRAO"}, {"BRANCA: PADRAO  K3: VEZES", "OCT+ POE  OCT- TIRA", "GLO: GROOVE, OPCOES"}},
      {{"ESCOLHA", "-", "-"}, {"OCT+: OK   OCT-: VOLTA", "SAVE E OCT+: SALVAR RAPIDO"}},
      {{"MUSICA / GROOVE", "METRONOMO", "VOL. CLIQUE"}, {"K1-K4: TEMA IDIOMA RELOG FONTE", "TUDO FICA GUARDADO", "GLO: VOLTA PARA A MUSICA"}},
-     {{"ENVIOS/LIVE/FILTRO", "FAIXA", "PADRAO"}, {"FX SEGURO + BRANCAS", "OCT: 4 BANCOS  PRETAS: MUDO", "DESTROI, BEAT: K2 INTENSIDADE"}}},
+     {{"ENVIOS/LIVE/FILTRO", "FAIXA", "PADRAO"}, {"SEGURE FX + BRANCAS", "OCT: 4 BANCOS  PRETAS: MUDO", "DESTROI, BEAT: K2 INTENSIDADE"}}},
     {{{"ROW", "TRACK", "PATTERN"}, {"REC+SEL: STEP  ARP+SEL: ROW", "SAVE HELD: THE TOOLS", "ARP + K3 K4: THE 2ND FX"}},
      {{"16 STEPS PAGE", "TRACK", "PATTERN"}, {"WHITE KEYS: STEPS ON/OFF", "BLACK KEYS: THE TRACK", "OCT-/OCT+: 16, 32, 64 STEPS"}},
      {{"NEXT PAGE", "TRACK", "FACTORY / CURSOR"}, {"EDITED: PRESETS, THEN OCT+", "ARP+PRESETS: THE ENGINE", "UNDO: SAVE+OCT- BRINGS IT BACK"}},

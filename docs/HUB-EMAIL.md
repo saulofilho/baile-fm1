@@ -1,6 +1,9 @@
 # E-mail para o FM-1 Firmware Hub (rascunho)
 
-Mandar só depois do push da tag `v0.2` e de a release aparecer no GitHub com o `baile-0.2.fwsc` anexado (o workflow
+**Esperar antes de mandar:** (1) uma release com as correções de `TEST-RESULTS.md` (a 0.2 tem francês na interface),
+testada no FM-1; (2) o autor confirmar o roteiro item por item e trocar o parágrafo "Tested" pelo que confirmou.
+
+Mandar só depois de a release aparecer no GitHub com o pacote `.fwsc` anexado (o workflow
 `release.yml` compila e assina com `zvenson/fm1-build@v1`). Como no COQUÍ: o Hub pede por e-mail o nome, o autor, o
 repositório, a identidade `FM-1_`, a licença e a declaração de teste num FM-1 de verdade; texto, imagem e links vão
 no `fmhub.json` (na raiz do repositório).
@@ -27,9 +30,8 @@ I'd like to submit BAILE for the FM-1 Firmware Hub.
 - fmhub.json: in the repository root (card: docs/boot.png; play: the web emulator)
 - Sounds: everything is synthesised by the firmware (kits, breaks, factory sounds); no recording is used
 
-Tested on a real FM-1: 0.1 installed from another firmware (FM-1_966), then 0.2 over it; the demos, the kits, the
-magic tools, the live effects, saving and power cycling, the USB rescue (OCT- at power-on), going back to the official
-firmware with M-UPGRADE and installing BAILE again, and an interrupted install resumed by the installer. The results:
+Tested on a real FM-1: 0.1 installed from another firmware (FM-1_966), then 0.2 over it; the author reported the
+test list as passed. The list and what was confirmed:
 https://github.com/saulofilho/baile-fm1/blob/main/docs/TEST-RESULTS.md
 
 Thanks for the hub!

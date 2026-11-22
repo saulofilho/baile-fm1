@@ -29,7 +29,7 @@
 
 const USR_SIZE = 0x9000, USR_DATA = 0x100;
 const CAP = USR_SIZE - USR_DATA;                      // 36608 B of sound: 1.66 s at 22050 Hz, 3.3 s at 11025 Hz
-const MAGIC = 0x504D5342;                             // "BSMP" (usr_hdr_t.magic; BAILE's is "KSMP")
+const MAGIC = 0x504D5342;                             // "BSMP" (usr_hdr_t.magic; KAWA's is "KSMP")
 const RATE = 22050, RATES = [22050, 11025];
 const NSLOTS = 4, NAME_MAX = 11, PACKET = 256, MIN_LEN = 64, HEADER_LEN = 36;
 const SILENCE = 0.003, PEAK = 0.95, FADE = 64;        // baile_samples.py prepare()

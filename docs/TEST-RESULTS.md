@@ -10,20 +10,27 @@ O que foi feito num M-VAVE FM-1 real, e o que ainda falta. O que não está marc
 | 2026-11-18 | `FM-1_966` (outro firmware da comunidade, na porta "Felucca") | `install/fm1_install.py install/baile-0.1.fwsc` (macOS, Python 3.13 na `.venv` do projeto, mido + python-rtmidi) | Pacote conferido (18 leituras), modo de atualização, gravação 0–100% (uns 25 minutos), reinício: **"done: the FM-1 runs FM-1_971"**. Depois, `fm1_install.py --info`: `FM-1_971 [running]` |
 | 2026-11-21 | `FM-1_971` (BAILE 0.1) | o mesmo, com `install/baile-0.2.fwsc` | Conferido (18 leituras), gravação 0–100%, reinício: **"done: the FM-1 runs FM-1_971"**; `--info`: `FM-1_971 [running]`. Uma atualização de BAILE para BAILE |
 
-## No aparelho
+## No aparelho (BAILE 0.2, 2026-11-21)
 
-| O quê | Resultado (BAILE 0.2, 2026-11-21, conferido pelo autor no aparelho) |
+Depois de instalar a 0.2, o autor relatou, sobre o roteiro inteiro e numa frase só: **"Testei tudo, ok"**. Não houve
+relato item por item; a coluna da direita é para o autor preencher.
+
+| Roteiro | Confirmado item a item |
 | --- | --- |
-| Boot (mosaico, BAILE, BETA, V0.2), uma tecla abre FAIXAS, a arara | ok |
-| As DEMOS (SAVE › DEMO › OCT+ › PLAY, uma por estilo: BAILE, VOLT, MANDELAO, BREGA FUNK) | ok |
-| Volume e distorção do 808 e do bumbo do VOLT (alto-falante e fone) | ok |
-| Os 8 kits (KNOB KIT, as 16 teclas brancas) | ok |
-| MÁGICA: BEAT FUNK, GRAVE 808, VIRADA | ok |
-| Efeitos ao vivo: SEGURA, PUXA, SOBE; GRAVE+ e SIRENE (banco PAREDAO) | ok |
-| Salvar, desligar, ligar: a música volta | ok |
-| Resgate USB (OCT− segurado ao ligar) | ok |
-| Voltar ao oficial (M-UPGRADE, V15) e reinstalar o BAILE | ok |
-| Uma instalação interrompida (cabo puxado) que retoma | ok |
+| Boot (mosaico, BAILE, BETA, V0.2), uma tecla abre FAIXAS, a arara | a confirmar |
+| As DEMOS (SAVE › DEMO › OCT+ › PLAY, uma por estilo: BAILE, VOLT, MANDELAO, BREGA FUNK) | a confirmar |
+| Volume e distorção do 808 e do bumbo do VOLT (alto-falante e fone) | a confirmar |
+| Os 8 kits (KNOB KIT, as 16 teclas brancas) | a confirmar |
+| MÁGICA: BEAT FUNK, GRAVE 808, VIRADA | a confirmar |
+| Efeitos ao vivo: SEGURA, PUXA, SOBE; GRAVE+ e SIRENE (banco PAREDAO) | a confirmar |
+| Salvar, desligar, ligar: a música volta | a confirmar |
+| Resgate USB (OCT− segurado ao ligar) | a confirmar |
+| Voltar ao oficial (M-UPGRADE, V15) e reinstalar o BAILE | a confirmar |
+| Uma instalação interrompida (cabo puxado) que retoma | a confirmar |
 
+## Defeitos achados depois, lendo o código da 0.2 (corrigidos no código, não testados no aparelho)
 
-Todo o roteiro acima passou na 0.2 (relato do autor, 2026-11-21). Nada para ajustar nos sons por enquanto.
+- Os 32 efeitos dos bancos DESTROI e BEAT aparecem em francês com o idioma em português.
+- Em OPCOES, o português se chama "FRANCAIS".
+- Textos errados em português: "FINO" no lugar de "FIM", "SEGURO" no lugar de "SEGURE", "LONGO" no lugar de "TAM"
+  (o comprimento), "PULSO" para a onda quadrada do LFO.
