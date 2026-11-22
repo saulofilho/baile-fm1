@@ -140,10 +140,10 @@ static const char *const L_LFOW[] = {"SENO", "TRIANG", "QUADRADA", "SERRA", "ACA
 #define PD_LFO {PDN("ALVO", "TARGET", "DESTINO"), 0, LFD_N - 1, K_LIST, L_LFOD}, {PDN("VELOC", "RATE", "VELOC"), 0, 10, K_LIST, L_LFOR}, \
                {PDN("PROFUND", "DEPTH", "PROFUND"), 0, 15, K_NUM, 0}, {PDN("ONDA", "WAVE", "ONDA"), 0, 4, K_LIST, L_LFOW}
 #define PD_MOD {PDN("ENV>EFE", "ENV>FX", "ENV>EFE"), -15, 15, K_SIGN, 0}, {PDN("VEL>EFE", "VEL>FX", "VEL>EFE"), 0, 15, K_NUM, 0}, \
-               {PDN("ENV>ALT", "ENV>PIT", "ENV>ALT"), -12, 12, K_SIGN, 0}, {PDN("LFO NOTA", "LFO KEY", "LFO NOTA"), 0, 1, K_LIST, L_ONOFF}
+               {PDN("ENV>ALT", "ENV>PIT", "ENV>ALT"), -12, 12, K_SIGN, 0}, {PDN("RETRIG", "LFO KEY", "RETRIG"), 0, 1, K_LIST, L_ONOFF}
 #define PD_TONAL_REST {PDN("VARRE", "SWEEP", "BARRIDO"), -15, 15, K_SIGN, 0}, {PDN("VIBRATO", "VIBRATO", "VIBRATO"), 0, 15, K_NUM, 0}, \
                       {PDN("TOM", "TONE", "TONO"), 0, 15, K_NUM, 0}, {PDN("ESMAGA", "CRUSH", "TRITURA"), 0, 7, K_NUM, 0}, \
-                      {PDN("DESAFIN", "DETUNE", "DESAFIN"), 0, 15, K_NUM, 0}, {PDN("ARP VEL", "ARP SPD", "ARP VEL"), 1, 8, K_NUM, 0}, \
+                      {PDN("DETUNE", "DETUNE", "DESAFIN"), 0, 15, K_NUM, 0}, {PDN("ARP VEL", "ARP SPD", "ARP VEL"), 1, 8, K_NUM, 0}, \
                       {PDN("DESLIZ", "GLIDE", "GLISA"), 0, 15, K_NUM, 0}
 #define PD_SHAPE PDN("FORMA", "SHAPE", "FORMA")
 static const pdesc_t PDESC[E_N][NPARAM] = {
@@ -153,7 +153,7 @@ static const pdesc_t PDESC[E_N][NPARAM] = {
     {{PDN("SOM FM", "PATCH", "SONIDO"), 0, FM_NPATCH - 1, K_NAMES, &FM_PATCH_NAME[0][0]},
      {PDN("ALGO", "ALGO", "ALGO"), 0, 32, K_LIST, L_ALG}, {PDN("RATIO", "RATIO", "RATIO"), -8, 8, K_SIGN, 0},
      {PDN("RETORNO", "FEEDBK", "RETORNO"), -7, 7, K_SIGN, 0}, {PDN("BRILHO", "BRIGHT", "BRILLO"), -15, 15, K_SIGN, 0},
-     {PDN("MOD ENV", "MOD ENV", "MOD ENV"), -8, 8, K_SIGN, 0}, {PDN("DESAFIN", "DETUNE", "DESAFIN"), 0, 15, K_NUM, 0},
+     {PDN("MOD ENV", "MOD ENV", "MOD ENV"), -8, 8, K_SIGN, 0}, {PDN("DETUNE", "DETUNE", "DESAFIN"), 0, 15, K_NUM, 0},
      {PDN("VIBRATO", "VIBRATO", "VIBRATO"), 0, 15, K_NUM, 0}, PD_ENV, PD_MIX, PD_FX, PD_LFO, PD_MOD},
     {{PDN("KIT", "KIT", "KIT"), 0, NKIT - 1, K_LIST, L_KITS}, {PDN("AFINA", "TUNE", "AFINA"), -12, 12, K_SIGN, 0},
      {PDN("QUEDA", "DECAY", "CAIDA"), -8, 8, K_SIGN, 0}, {PDN("SATURA", "DRIVE", "SATURA"), 0, 15, K_NUM, 0},
@@ -170,7 +170,7 @@ static const pdesc_t PDESC[E_N][NPARAM] = {
 enum { SP_SON1, SP_SON2, SP_OP, SP_OPENV, SP_SMP, SP_FX, SP_LFO, SP_MOD, SP_TABLE, SP_N };
 static const uint8_t SP_FIRST[SP_N] = {P_S0, P_S4, 0, 0, 0, P_FXT, P_LFOD, P_MENVA, 0};
 static const char *const SP_NAMES[LANG_N][SP_N] = {
-    {"SOM", "SOM 2", "OPERADOR", "ENV OPERAD", "SAMPLE", "EFEITO", "LFO", "MODULACAO", "TABEL"},
+    {"SOM", "SOM 2", "OPERADOR", "ENV OPER.", "SAMPLE", "EFEITO", "LFO", "MODULACAO", "TABEL"},
     {"SOUND", "SOUND 2", "OPERATOR", "OP ENVELOPE", "SAMPLE EDIT", "EFFECT", "LFO", "MODULATION", "TABLE"},
     {"SONIDO", "SONIDO 2", "OPERADOR", "ENV OPERAD", "EDITAR SAMPLE", "EFECTO", "LFO", "MODULACION", "TABLA"}};
 static const uint8_t SP_LIST_FM[8] = {SP_SON1, SP_SON2, SP_OP, SP_OPENV, SP_FX, SP_LFO, SP_MOD, SP_TABLE};
@@ -179,7 +179,7 @@ static const uint8_t SP_LIST[6] = {SP_SON1, SP_SON2, SP_FX, SP_LFO, SP_MOD, SP_T
 /* an FM operator's knobs (OPERATOR, OP ENV): what they change in the patch is in kawa_edit.c (op_get, op_set) */
 enum { OPK_LEVEL, OPK_RATIO, OPK_FINE, OPK_DET, OPK_ATT, OPK_DEC, OPK_SUS, OPK_REL, OPK_N };
 static const char *const OPK_NAMES[LANG_N][OPK_N] = {
-    {"NIVEL", "RATIO", "FINO", "DESAFIN", "ATAQUE", "QUEDA", "SUSTENT", "SOLTURA"},
+    {"NIVEL", "RATIO", "FINO", "DETUNE", "ATAQUE", "QUEDA", "SUSTENT", "SOLTURA"},
     {"LEVEL", "RATIO", "FINE", "DETUNE", "ATTACK", "DECAY", "SUSTAIN", "RELEASE"},
     {"NIVEL", "RATIO", "FINO", "DESAFIN", "ATAQUE", "CAIDA", "SOSTEN", "SUELTA"}};
 static const int8_t OPK_LO[OPK_N] = {0, 0, 0, -7, 0, 0, 0, 0}, OPK_HI[OPK_N] = {99, 31, 99, 7, 99, 99, 99, 99};
@@ -355,7 +355,7 @@ static const scale_t SCALES[12] = {
     {{"PENTA MEN", "PENTA MIN", "PENTA MEN"}, 0x4A9}, {{"BLUES", "BLUES", "BLUES"}, 0x4E9},
     {{"DORICA", "DORIAN", "DORICA"}, 0x6AD}, {{"FRIGIA", "PHRYGIAN", "FRIGIA"}, 0x5AB},
     {{"HARMONIC", "HARMONIC", "ARMONICA"}, 0x9AD}, {{"JAPONESA", "JAPANESE", "JAPONESA"}, 0x1A3},
-    {{"ARABE", "ARABIC", "ARABE"}, 0x9B3}, {{"TONS INTEI", "WHOLE TONE", "TONOS"}, 0x555},
+    {{"ARABE", "ARABIC", "ARABE"}, 0x9B3}, {{"TONS INT.", "WHOLE TONE", "TONOS"}, 0x555},
 };
 
 /* ---- live effects: hold FX (or tap it to keep the page open), then the white keys. Two banks of 16:
@@ -375,8 +375,8 @@ static const lfx_t LFX[LF_N] = {
     {{"LOOP", "LOOP", "BUCLE"}, {"1/12", "1/12", "1/12"}, ICO_LOOP},
     {{"LOOP", "LOOP", "BUCLE"}, {"1/32", "1/32", "1/32"}, ICO_LOOP},
     {{"LOOP", "LOOP", "BUCLE"}, {"1/64", "1/64", "1/64"}, ICO_LOOP},
-    {{"UNISSON", "UNISON", "UNISONO"}, {"", "", ""}, ICO_UNI},
-    {{"UNISSON", "UNISON", "UNISONO"}, {"GRV", "LOW", "GRAVE"}, ICO_UNI},
+    {{"DOBRA", "UNISON", "UNISONO"}, {"", "", ""}, ICO_UNI},
+    {{"DOBRA", "UNISON", "UNISONO"}, {"GRAVE", "LOW", "GRAVE"}, ICO_UNI},
     {{"OITAVA", "OCTAVE", "OCTAVA"}, {"+1", "+1", "+1"}, ICO_UP},
     {{"OITAVA", "OCTAVE", "OCTAVA"}, {"-1", "-1", "-1"}, ICO_DOWN},
     {{"SEGURA", "STUTTER", "TARTAMU"}, {"X4", "X4", "X4"}, ICO_STUT},
@@ -389,10 +389,10 @@ static const lfx_t LFX[LF_N] = {
     {{"SOBE", "BUILDUP", "REDOBLE"}, {"ACELERA", "ROLL", "ACELERA"}, ICO_ACCEL},
     {{"ESMAGA", "CRUSH", "TRITURA"}, {"4 BITS", "4 BITS", "4 BITS"}, ICO_CRUSH},
     {{"DIZIMA", "LO-FI", "DIEZMA"}, {"", "RATE", ""}, ICO_PIXEL},
-    {{"FILTRO", "LOWPASS", "FILTRO"}, {"GRV", "SWEEP", "GRAVES"}, ICO_LPF},
+    {{"FILTRO", "LOWPASS", "FILTRO"}, {"GRAVE", "SWEEP", "GRAVES"}, ICO_LPF},
     {{"FILTRO", "HIPASS", "FILTRO"}, {"AGUDOS", "SWEEP", "AGUDOS"}, ICO_HPF},
     {{"FITA", "TAPE", "CINTA"}, {"PARA", "STOP", "PARADA"}, ICO_TAPE},
-    {{"MERGULH", "DIVE", "PICADO"}, {"", "", ""}, ICO_DIVE},
+    {{"DESCE", "DIVE", "PICADO"}, {"", "", ""}, ICO_DIVE},
     {{"CORTA", "GATE", "GATE"}, {"1/16", "1/16", "1/16"}, ICO_GATE},
     {{"CORTA", "GATE", "GATE"}, {"1/32", "1/32", "1/32"}, ICO_GATE},
     {{"CONGELA", "FREEZE", "CONGELA"}, {"", "", ""}, ICO_SNOW},
@@ -404,8 +404,8 @@ static const lfx_t LFX[LF_N] = {
     {{"SEM", "NO", "SIN"}, {"MELODIA", "MELODY", "MELODIA"}, ICO_NOMEL},
     {{"SEM", "NO", "SIN"}, {"BEAT", "BEAT", "RITMO"}, ICO_NOBEAT},
 };
-static const char *const LBANK_NAMES[LANG_N][4] = {{"BAILE", "PAREDAO", "DESTROI", "BEAT"}, {"POCKET", "WRECK", "DESTROY", "BEAT"},
-                                                   {"BOLSA", "ROTO", "DESTRUYE", "BEAT"}};   /* (DESTROY, BEAT: K-GLITCH's, kawa_kg.c) */
+static const char *const LBANK_NAMES[LANG_N][4] = {{"BAILE", "PAREDAO", "DESTROI", "BEAT"}, {"BAILE", "PAREDAO", "DESTROY", "BEAT"},
+                                                   {"BAILE", "PAREDAO", "ROMPE", "BEAT"}};   /* (DESTROY, BEAT: K-GLITCH's, kawa_kg.c) */
 #define LBANK_NAME LBANK_NAMES[lang]
 static const uint16_t LBANK_COL[4] = {RGB(255, 120, 200), RGB(255, 110, 70), RGB(255, 70, 90), RGB(90, 200, 255)};
 #define NLBANK 4u
@@ -419,12 +419,12 @@ static const lfx_t MAGIC[MG_N] = {
     {{"MELODIA", "MELODY", "MELODIA"}, {"ESCALA", "SCALE", "ESCALA"}, ICO_NOTE},
     {{"GRAVE", "BASS", "BAJO"}, {"808", "808", "808"}, ICO_BASS},
     {{"MONTAGE", "MONTAGE", "MONTAJE"}, {"FATIAS", "SLICES", "CORTES"}, ICO_KNIFE},
-    {{"EUCLID", "EUCLID", "EUCLIDE"}, {"N BATID", "N HITS", "GOLPES"}, ICO_EUCL},
-    {{"VARIAR", "VARY", "VARIAR"}, {"UM POUC", "A BIT", "UN POCO"}, ICO_DICE},
+    {{"EUCLID", "EUCLID", "EUCLIDE"}, {"BATIDAS", "N HITS", "GOLPES"}, ICO_EUCL},
+    {{"VARIAR", "VARY", "VARIAR"}, {"POUCO", "A BIT", "UN POCO"}, ICO_DICE},
     {{"VIRADA", "FILL", "REDOBLE"}, {"FINAL", "ENDS", "FINAL"}, ICO_ROLL},
     {{"ACENTOS", "ACCENTS", "MATICES"}, {"VOLUMES", "VOLUMES", "VOLUMEN"}, ICO_VOL},
     {{"DOBRAR", "DOUBLE", "DUPLICA"}, {"X2", "X2", "X2"}, ICO_X2},
-    {{"DESLOCA", "SHIFT", "MOVER"}, {"1 PASS", "1 STEP", "1 PASO"}, ICO_RIGHT},
+    {{"DESLOCA", "SHIFT", "MOVER"}, {"1 PASSO", "1 STEP", "1 PASO"}, ICO_RIGHT},
     {{"CLONAR", "CLONE", "CLONAR"}, {"PADRAO", "PATTERN", "PATRON"}, ICO_CLONE},
     {{"TRANSP", "TRANSP", "TRANSP"}, {"+1 NOTA", "+1 NOTE", "+1 NOTA"}, ICO_UPDN},
     {{"COPIAR", "COPY", "COPIAR"}, {"", "", ""}, ICO_COPY},

@@ -1072,7 +1072,7 @@ static void kg_end(void)
 
 /* ---- what the LIVE page shows of them: DESTROY (0..15) and BEAT (16..31), as LFX */
 static const lfx_t KGX[DD_N] = {
-    {{"LOOP", "LOOP", "BUCLE"}, {"DESTROI", "DESTROY", "DESTRUYE"}, ICO_LOOP},
+    {{"LOOP", "LOOP", "BUCLE"}, {"DESTROI", "DESTROY", "ROMPE"}, ICO_LOOP},
     {{"SEGURA", "STUTTER", "TARTAMU"}, {"X", "X", "X"}, ICO_STUT},
     {{"GLITCH", "GLITCH", "GLITCH"}, {"", "", ""}, ICO_PIXEL},
     {{"PUXA", "SCRATCH", "SCRATCH"}, {"MAO", "HAND", "MANO"}, ICO_DISC},
@@ -1089,7 +1089,7 @@ static const lfx_t KGX[DD_N] = {
     {{"ACASO", "RANDOM", "AZAR"}, {"", "", ""}, ICO_DICE},
     {{"CAOS", "TOTAL", "CAOS"}, {"TOTAL", "CHAOS", "TOTAL"}, ICO_CRUSH},
     {{"ACASO", "RANDOM", "AZAR"}, {"SEGURA", "STUTTER", "TARTAMU"}, ICO_STUT},
-    {{"ACASO", "RANDOM", "AZAR"}, {"COMPAS", "BAR", "COMPAS"}, ICO_DICE},
+    {{"ACASO", "RANDOM", "AZAR"}, {"1 COMP.", "BAR", "COMPAS"}, ICO_DICE},
     {{"ACASO", "RANDOM", "AZAR"}, {"VIRADA", "FILL", "RELLENO"}, ICO_ACCEL},
     {{"RUFO", "ROLL", "REDOBLE"}, {"SOBE", "UP", "SUBE"}, ICO_ACCEL},
     {{"PULA", "SKIP", "SALTA"}, {"1/8", "8TH", "CORCHEA"}, ICO_NOBEAT},
@@ -1100,7 +1100,7 @@ static const lfx_t KGX[DD_N] = {
     {{"CORTA", "GATE", "GATE"}, {"RAMPA", "RAMP", "RAMPA"}, ICO_GATE},
     {{"AVESSO", "REVERSE", "REVES"}, {"TEMPO", "BEAT", "PULSO"}, ICO_REV},
     {{"AVESSO", "REVERSE", "REVES"}, {"CONTRA", "OFFBEAT", "CONTRA"}, ICO_REV},
-    {{"PUXA", "SCRATCH", "SCRATCH"}, {"COMPAS", "BAR", "COMPAS"}, ICO_DISC},
+    {{"PUXA", "SCRATCH", "SCRATCH"}, {"1 COMP.", "BAR", "COMPAS"}, ICO_DISC},
     {{"PUXA", "SCRATCH", "SCRATCH"}, {"CORTE", "CUT", "CORTE"}, ICO_DISC},
     {{"FITA", "TAPE", "CINTA"}, {"PARA", "STOP", "PARADA"}, ICO_TAPE},
     {{"MEIO", "HALF", "MEDIO"}, {"TEMPO", "TIME", "TIEMPO"}, ICO_DIVE},
