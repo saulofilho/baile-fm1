@@ -144,6 +144,7 @@ The [emulator](https://saulofilho.github.io/baile-fm1/emulator/#en) and the
 colour blocks and foot.
 
 - In the emulator the FM-1 stays dark, as the real one, and the bar follows the language you pick.
+- Publishing the site waits for its artifact and retries when GitHub has not listed it yet.
 - The emulator's notice now says what was installed on an FM-1 and that it may be ahead of the release.
 - In the English importer the waveform is back in BAILE's colours. The slot picker is back to a normal size.
 

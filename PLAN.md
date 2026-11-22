@@ -42,7 +42,7 @@ A ordem dos itens de som é a do autor. A divisão em versões é proposta e pod
 | H3 | Instalar a partir de outro firmware, e outro a partir do BAILE | os dois sentidos relatados | do autor |
 | H4 | Formulário do Hub | Check again verde, texto de teste verdadeiro, caixa de testado marcada só depois de H2 e H3 | do autor |
 | H5 | Licença dos sons `licensed` | o Sven aprova | esperando o Hub |
-| H6 | Pages com um deploy só | Settings › Pages › Source: GitHub Actions | do autor |
+| H6 | Pages com um deploy só (hoje dois publicam conteúdos diferentes a cada push) | Settings › Pages › Source: GitHub Actions | do autor |
 | H7 | Estalo do GRAVE+ na 0.3 | sai uma 0.3.1 a partir da tag, ou espera a 0.4 | a decidir |
 
 ### 0.4: grave de paredão
@@ -294,6 +294,11 @@ O que era opcional (vocais por formantes, modo LIVE) virou S8 e S7 no Roteiro.
   escuro). Corrigidos no caminho: o aviso falso de "nunca testado num FM-1", as cores antigas na onda do importador em
   inglês, o seletor de espaço gigante, a barra do emulador sempre em português, o CSS velho no cache (`site.css?v=`
   pelo hash, em `gen_site.py`). Roteiro reorganizado.
+
+- **2026-11-22, deploy do Pages:** falhou duas vezes com "No artifacts named github-pages" (runs 44901375266 e
+  45052566204). Não era a disputa entre os dois deploys, como se disse antes: o `deploy-pages` lista os artefatos uma
+  vez, logo depois do upload. O workflow agora espera 10 s e tenta de novo se falhar. H6 continua valendo, por outro
+  motivo.
 
 ## Mood
 

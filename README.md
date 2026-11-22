@@ -144,6 +144,7 @@ O [emulador](https://saulofilho.github.io/baile-fm1/emulator/) e o
 letreiro, blocos de cor e rodapé.
 
 - No emulador, o FM-1 continua escuro, como o de verdade, e a barra segue o idioma escolhido.
+- A publicação do site espera o artefato e tenta de novo quando o GitHub ainda não o listou.
 - O aviso do emulador agora diz o que foi instalado num FM-1 e que ele pode estar à frente da release.
 - No importador em inglês, a onda voltou às cores do BAILE. O seletor de espaço voltou ao tamanho normal.
 

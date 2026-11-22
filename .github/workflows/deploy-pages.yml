@@ -18,7 +18,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url }}
     runs-on: ubuntu-latest
     permissions:
       pages: write
@@ -37,6 +37,18 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: .
+      # deploy-pages lists this run's artifacts once, with no retry, and the one just uploaded is not always in that
+      # list yet: "No artifacts named github-pages were found" (runs 44901375266, 45052566204). So: wait, then one retry.
+      - name: Let the artifact reach the list
+        run: sleep 10
       - name: Deploy to GitHub Pages
         id: deployment
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+      - name: Wait before the retry
+        if: steps.deployment.outcome == 'failure'
+        run: sleep 30
+      - name: Deploy to GitHub Pages (retry)
+        id: deployment_retry
+        if: steps.deployment.outcome == 'failure'
         uses: actions/deploy-pages@v4
