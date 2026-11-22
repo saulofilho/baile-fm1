@@ -83,15 +83,6 @@ img{max-width:100%}
 /* ---- the mosaic band (the "photo" band) */
 #band{display:block;width:100%;height:auto;background:var(--preto)}
 
-/* ---- made on */
-.made{background:var(--amarelo);border-block:4px solid var(--preto);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 34px;padding:26px 4vw}
-.made h2{font:900 clamp(30px,5vw,56px)/1 var(--heavy);margin:0;color:var(--vermelho);-webkit-text-stroke:2px var(--preto);paint-order:stroke fill;
-  text-shadow:3px 3px 0 var(--preto),5px 5px 0 var(--preto)}
-.made ul{display:flex;flex-wrap:wrap;gap:8px 26px;list-style:none;margin:0;padding:0}
-.made li{font:900 20px/1 var(--heavy);text-transform:uppercase}
-.made li a{text-decoration:none}
-.made li a:hover{color:var(--vermelho)}
-
 /* ---- the hall: stars that play */
 .hall{background:var(--turquesa);padding:9vw 0 8vw;text-align:center;position:relative}
 .hall .stack{margin:0 4vw 5vw}
@@ -174,6 +165,7 @@ footer{background:var(--preto);color:var(--creme);padding:60px 6vw 40px;display:
 footer .logo{font-size:56px;color:var(--amarelo)!important;text-shadow:3px 3px 0 var(--vermelho),6px 6px 0 var(--vermelho)}
 footer nav{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:center}
 footer nav a{font:900 15px/1 var(--heavy);text-transform:uppercase;text-decoration:none;color:var(--amarelo)}
+footer p a{color:var(--amarelo)}
 footer p{max-width:760px;margin:0;color:var(--cinza);font-size:14px}
 dialog{background:var(--creme);color:var(--preto);border:4px solid var(--preto);box-shadow:10px 10px 0 var(--preto);max-width:520px;padding:26px}
 dialog::backdrop{background:rgba(20,18,16,.75)}
@@ -225,17 +217,6 @@ body.writing .ticker div{animation-play-state:paused}
 
 <div class="ticker" aria-hidden="true"><div><span>TAMBORZÃO</span><i>✺</i><span>VOLT MIX</span><i>✺</i><span>150</span><i>✺</i><span>MANDELÃO</span><i>✺</i><span>BREGA FUNK</span><i>✺</i><span>MONTAGEM</span><i>✺</i><span>TAMBORZÃO</span><i>✺</i><span>VOLT MIX</span><i>✺</i><span>150</span><i>✺</i><span>MANDELÃO</span><i>✺</i><span>BREGA FUNK</span><i>✺</i><span>MONTAGEM</span><i>✺</i></div></div>
 <canvas id="band" width="1440" height="216" aria-hidden="true"></canvas>
-
-<section class="made" aria-labelledby="made-h">
-  <h2 id="made-h">Feito sobre:</h2>
-  <ul>
-    <li><a href="https://github.com/Guizmoh/Kawa-Tracker-Fm1">KAWA</a></li>
-    <li><a href="https://github.com/Guizmoh/K-Glitch">K-GLITCH</a></li>
-    <li><a href="https://github.com/hugelton/Felucca">Felucca</a></li>
-    <li><a href="https://github.com/isod89/sloop-fm1">SLOOP</a></li>
-    <li><a href="https://github.com/zvenson/dinghy">Dinghy</a></li>
-  </ul>
-</section>
 
 <section class="hall" id="ouca" aria-labelledby="hall-h">
   <h2 class="stack b" id="hall-h">Ouça</h2>
@@ -294,7 +275,7 @@ body.writing .ticker div{animation-play-state:paused}
   </svg>
   <div class="in">
     <div class="head"><h2 class="stack" id="feat-h">O que tem</h2></div>
-    <div class="feat"><div><canvas data-m="2" width="168" height="168"></canvas><h3>8 kits de baile</h3><p>VOLT, TAMBOR, 150, MANDELA, BREGA, MELODY, TUIN (sirenes, apito, tiro, o "tuin") e PERCUS (atabaques, surdo, cuíca, pandeiro, agogô…). Tudo sintetizado.</p></div><div><canvas data-m="3" width="168" height="168"></canvas><h3>6 breaks</h3><p>Tamborzão, Volt, 150, mandelão, brega e montagem, cada um fatiado em 16: o picador, rolos, avesso e tom em cada célula.</p></div><div><canvas data-m="4" width="168" height="168"></canvas><h3>Grave 808</h3><p>GRAVE 808 com glide, GRAVE TORTO, SUB, LEAD MELODY, PIANO MELODY, STAB, SIRENE. Um projeto novo já vem com o 808 e o tamborzão.</p></div><div><canvas data-m="5" width="168" height="168"></canvas><h3>MÁGICA de funk</h3><p>BEAT FUNK escreve o ritmo do kit, GRAVE 808 a linha de baixo, MONTAGE picota o break, VIRADA fecha o compasso. Grooves TAMBOR, BREGA, 150, MANDELA.</p></div><div><canvas data-m="6" width="168" height="168"></canvas><h3>64 efeitos ao vivo</h3><p>SEGURA, PUXA, SOBE, CORTA, ECO MC, GRAVE+, SIRENE, e os bancos DESTROI e BEAT do K-GLITCH.</p></div><div><canvas data-m="7" width="168" height="168"></canvas><h3>4 demos, em português</h3><p>BAILE, VOLT, MANDELAO e BREGA FUNK no menu PROJETOS. A tela fala português, inglês ou espanhol, e a arara no canto pisca, dança e dorme.</p></div></div>
+    <div class="feat"><div><canvas data-m="2" width="168" height="168"></canvas><h3>8 kits de baile</h3><p>VOLT, TAMBOR, 150, MANDELA, BREGA, MELODY, TUIN (sirenes, apito, tiro, o "tuin") e PERCUS (atabaques, surdo, cuíca, pandeiro, agogô…). Tudo sintetizado.</p></div><div><canvas data-m="3" width="168" height="168"></canvas><h3>6 breaks</h3><p>Tamborzão, Volt, 150, mandelão, brega e montagem, cada um fatiado em 16: o picador, rolos, avesso e tom em cada célula.</p></div><div><canvas data-m="4" width="168" height="168"></canvas><h3>Grave 808</h3><p>GRAVE 808 com glide, GRAVE TORTO, SUB, LEAD MELODY, PIANO MELODY, STAB, SIRENE. Um projeto novo já vem com o 808 e o tamborzão.</p></div><div><canvas data-m="5" width="168" height="168"></canvas><h3>MÁGICA de funk</h3><p>BEAT FUNK escreve o ritmo do kit, GRAVE 808 a linha de baixo, MONTAGE picota o break, VIRADA fecha o compasso. Grooves TAMBOR, BREGA, 150, MANDELA.</p></div><div><canvas data-m="6" width="168" height="168"></canvas><h3>64 efeitos ao vivo</h3><p>SEGURA, PUXA, SOBE, CORTA, ECO MC, GRAVE+, SIRENE, e os bancos DESTROI e BEAT.</p></div><div><canvas data-m="7" width="168" height="168"></canvas><h3>4 demos, em português</h3><p>BAILE, VOLT, MANDELAO e BREGA FUNK no menu PROJETOS. A tela fala português, inglês ou espanhol, e a arara no canto pisca, dança e dorme.</p></div></div>
   </div>
 </section>
 
@@ -331,7 +312,7 @@ body.writing .ticker div{animation-play-state:paused}
     <a href="#install">Instalar</a><a href="emulator/index.html">Emulador</a><a href="manual/index.html">Manual</a>
     <a href="samples.html">Samples</a><a href="https://github.com/saulofilho/baile-fm1">GitHub</a><a href="docs/moodboard/index.html">Mood board</a>
   </nav>
-  <p>BAILE, de saulofilho, GPL-3.0-only, sobre o KAWA de Omnipotard (com o K-GLITCH), que roda sobre Dinghy, Felucca (Leo Kuroshita, Hügelton Instruments) e SLOOP. Não é feito nem endossado pela M-VAVE. "M-VAVE" e "FM-1" pertencem aos seus donos.</p>
+  <p>BAILE, de saulofilho, GPL-3.0-only, derivado de software livre (<a href="https://github.com/saulofilho/baile-fm1/blob/main/LICENSING.md">autoria e licenças</a>). Não é feito nem endossado pela M-VAVE. "M-VAVE" e "FM-1" pertencem aos seus donos.</p>
   <noscript><p>O instalador precisa de JavaScript.</p></noscript>
 </footer>
 

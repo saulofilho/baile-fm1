@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>BAILE — emulador</title>
-<meta name="description" content="BAILE, a Brazilian funk tracker for the M-VAVE FM-1 (on KAWA by Omnipotard), running in the browser.">
+<meta name="description" content="BAILE, a Brazilian funk tracker for the M-VAVE FM-1, running in the browser.">
 <meta name="theme-color" content="#FFCF1F">
 <meta name="color-scheme" content="light">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23141210'/%3E%3Crect x='4' y='4' width='11' height='11' rx='2' fill='%23E3212B'/%3E%3Crect x='17' y='4' width='11' height='11' rx='2' fill='%23FFCF1F'/%3E%3Crect x='4' y='17' width='11' height='11' rx='2' fill='%235AAE3A'/%3E%3Crect x='17' y='17' width='11' height='11' rx='2' fill='%231F5BD6'/%3E%3C/svg%3E">
@@ -15,7 +15,7 @@
 <style>
 /* Layout: the hub's (site.css): the red hero in giant type, flat colour blocks, layered titles, the black foot. The
    FM-1 itself stays dark, as the real one: left knobs, screen, right knobs and buttons, the keybed below, and it
-   restacks on a phone, the screen first. Then the user's samples, the saved projects, the guide, the author's word. */
+   restacks on a phone, the screen first. Then the user's samples, the saved projects, the guide. */
 :root {
   --desk: #141210;
   --desk-2: #1E1A16;
@@ -63,8 +63,6 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
 .heads { padding-block: 30px; }
 .note { display: flex; gap: 12px; align-items: flex-start; margin: 0; padding: 14px 18px; background: var(--creme); border: 4px solid var(--preto); box-shadow: 8px 8px 0 var(--preto); font-weight: 700; }
 .note svg { flex: none; width: 24px; height: 24px; margin-top: 1px; }
-.tip-banner { margin: 22px 0 0; text-align: center; font-size: 15px; }
-.tip-banner a { color: inherit; font-weight: 900; text-underline-offset: 3px; }
 
 /* ---- the device */
 .device {
@@ -225,16 +223,6 @@ kbd { font: 700 12px var(--mono); background: var(--preto); color: var(--amarelo
 .guide .k1, .guide .k2, .guide .k3, .guide .k4 { background: var(--preto); border-radius: 4px; padding: 0 4px; }
 .k1 { color: var(--k1); } .k2 { color: var(--k2); } .k3 { color: var(--k3); } .k4 { color: var(--k4); }
 
-/* ---- a word from the author */
-.donate { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
-.donate > div { flex: 1 1 300px; min-width: 0; }
-.donate p { margin: 0; max-width: 70ch; }
-.donate .sig { font-size: 12.5px; margin-top: 4px; }
-.kofi { display: inline-flex; align-items: center; gap: 8px; background: var(--creme); color: var(--preto); font: 900 15px/1.2 var(--heavy); text-transform: uppercase; text-decoration: none;
-  padding: 14px 22px; border: 4px solid var(--preto); border-radius: 110px; box-shadow: 5px 5px 0 var(--preto); }
-.kofi:hover { transform: translate(2px, 2px); box-shadow: 3px 3px 0 var(--preto); }
-.kofi svg { width: 18px; height: 18px; flex: none; }
-
 @media (max-width: 940px) {
   .device { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "screen screen" "right right" "left left" "keys keys"; padding: 18px; }
   .zone-left { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); align-items: end; gap: 14px; }
@@ -321,7 +309,6 @@ kbd { font: 700 12px var(--mono); background: var(--preto); color: var(--amarelo
     <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M12 3 2.5 20h19L12 3Z"/><path d="M12 10v4.5"/><path d="M12 17.4v.1"/></svg>
     <span data-t="beta"></span>
   </p>
-  <p class="tip-banner"><span data-t="tip"></span></p>
 </div>
   <section class="panel samples sblock tu" id="samples" aria-labelledby="smp-h">
     <h2 id="smp-h" data-t="s.h"></h2>
@@ -353,17 +340,6 @@ kbd { font: 700 12px var(--mono); background: var(--preto); color: var(--amarelo
     <section><h2 data-t="g3"></h2><ul data-t="g3l"></ul></section>
   </div>
 </div>
-  <section class="donate sblock ve" aria-labelledby="don-h">
-    <div>
-      <h2 id="don-h" data-t="d.h"></h2>
-      <p data-t="d.p"></p>
-      <p class="sig" data-t="d.sig"></p>
-    </div>
-    <a class="kofi" href="https://ko-fi.com/omnipotard" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M5 8h10v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8Z"/><path d="M15 10h2.5a2.5 2.5 0 0 1 0 5H15"/><path d="M5 8a2.5 2.5 0 0 1 2.5-4.2A3 3 0 0 1 12.6 3a2.6 2.6 0 0 1 2.4 3.1V8"/><path d="M8.5 12v5.5M11.5 12v5.5"/></svg>
-      <span data-t="d.btn"></span><span class="vh" data-t="d.new"></span>
-    </a>
-  </section>
 </main>
 <footer class="sfoot">
   <a class="slogo" href="../index.html">BAILE</a>
@@ -517,10 +493,9 @@ kbd { font: 700 12px var(--mono); background: var(--preto); color: var(--amarelo
   const I18N = {
     en: {
       "h.s": "Play",
-      tag: "Funk tracker · firmware for the M-VAVE FM-1 · on KAWA by Omnipotard",
+      tag: "Funk tracker · firmware for the M-VAVE FM-1 · GPL-3.0",
       langs: "Language",
       beta: "<b>This is a beta.</b> BAILE 0.3 was installed on a real FM-1 and its test list is still open. This emulator may be ahead of the release: what is new here has not been tested on an FM-1. Read the safety section of the manual before you install it. The official firmware can always be reinstalled with M-UPGRADE; that is the risky step, so never unplug the FM-1 while it runs.",
-      tip: "BAILE is a fork of KAWA, by Omnipotard. If you enjoy it, support the author of KAWA on <a href=\"https://ko-fi.com/omnipotard\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>.",
       screen: "The FM-1's screen",
       power: "The firmware runs here as it is, compiled to WebAssembly. Turn the sound on, power up, then press any key.",
       powerBtn: "POWER ON",
@@ -538,7 +513,7 @@ kbd { font: 700 12px var(--mono); background: var(--preto); color: var(--amarelo
       "tt.K": "KNOB {n} ({c}): what it does on this page is written under it and on the bottom line of the screen.",
       "tt.0": "OCT− lowers the keyboard's octave; on the GRID it takes the pattern down to 32, then 16 steps; on PROJECTS it goes back; on SOUND, while a factory sound is shown in gold, it keeps yours; SAVE held + OCT− undoes at once (patterns and sounds).",
       "tt.1": "OCT+ raises the keyboard's octave; on the GRID it takes the pattern up to 32, then 64 steps (this pattern linked to the next one); on PROJECTS it is OK; on LIVE it opens the second bank; on SOUND, while a factory sound is shown in gold, it loads it; SAVE held + OCT+ redoes at once.",
-      "tt.2": "FX: a tap opens SENDS (drive, echo and reverb of each track), a second tap the LIVE effects, then the FILTER and the FX SEQ, then back; SELECT also turns these pages. Held from another page, a yellow bar labelled LIVE fills and LIVE shows while you hold: play the white keys for 64 live effects in four banks (OCT− / OCT+; DESTROY and BEAT come from K-GLITCH, KNOB 2 their intensity) on the master or a track. FX held and a key right away: that effect plays without waiting for the bar.",
+      "tt.2": "FX: a tap opens SENDS (drive, echo and reverb of each track), a second tap the LIVE effects, then the FILTER and the FX SEQ, then back; SELECT also turns these pages. Held from another page, a yellow bar labelled LIVE fills and LIVE shows while you hold: play the white keys for 64 live effects in four banks (OCT− / OCT+; on DESTROY and BEAT, KNOB 2 their intensity) on the master or a track. FX held and a key right away: that effect plays without waiting for the bar.",
       "tt.3": "SCL opens the scale: its root, its notes, and the lock that keeps the keys in it; press it again for MAGIC (tools on the white keys that chop the break and write a beat, a melody or a bassline in the scale), a third time for TRACKS.",
       "tt.4": "ENV opens the track's envelope; press it again (or turn SELECT) for MIX (levels and the master effect; black keys mute, ARP held + a black key solo).",
       "tt.5": "LFO opens the track's LFO; press it again (or turn SELECT) for MODULATION.",
@@ -580,7 +555,7 @@ kbd { font: 700 12px var(--mono); background: var(--preto); color: var(--amarelo
       "m.rc5": "The transfer went out of order (it was cut). Send it again.",
       "m.rcX": "The FM-1 answered an unknown code ({c}).",
       "p.h": "Saved projects",
-      "p.how": "What you save on the emulator (<b>SAVE</b>, then <b>OCT+</b>, or <kbd>Ctrl/⌘ S</kbd>) stays in this browser and comes back at power-on. Export a .kawa file to keep a copy or to move it to another computer.",
+      "p.how": "What you save on the emulator (<b>SAVE</b>, then <b>OCT+</b>, or <kbd>Ctrl/⌘ S</kbd>) stays in this browser and comes back at power-on. Export a .baile file to keep a copy or to move it to another computer.",
       "p.exp": "Export projects", "p.imp": "Import projects",
       "p.saved": "Saved in this browser at {t}.",
       "p.none": "Nothing saved yet: on the emulator, SAVE then OCT+.",
@@ -613,19 +588,13 @@ kbd { font: 700 12px var(--mono); background: var(--preto); color: var(--amarelo
            "<li><kbd>↑</kbd><kbd>↓</kbd> row · <kbd>←</kbd><kbd>→</kbd> track · <kbd>PgUp</kbd><kbd>PgDn</kbd> pattern.</li>" +
            "<li><kbd>Ctrl/⌘ Z</kbd> undo · <kbd>Ctrl/⌘ Y</kbd> or <kbd>Ctrl/⌘ Shift Z</kbd> redo · <kbd>Ctrl/⌘ S</kbd> save · <kbd>F1</kbd> or <kbd>?</kbd> held: help.</li>" +
            "<li>The mouse wheel on a knob, or drag it up and down; the arrow keys when it has the focus.</li>",
-      "d.h": "Made on KAWA",
-      "d.p": "BAILE is a fork of KAWA, a tracker for the FM-1 by Omnipotard. If you enjoy it, support who made the base.",
-      "d.sig": "saulofilho, who made BAILE",
-      "d.btn": "Support Omnipotard on Ko-fi",
-      "d.new": " (opens a new tab)",
-      foot: "BAILE is free software (GPL-3.0), a fork of KAWA (Omnipotard), built on Dinghy, Felucca and SLOOP, the open platform of the FM-1 community. The breaks are entirely synthesised. The firmware installs on the FM-1 over USB at your own risk: keep the official V15 firmware and M-UPGRADE at hand to go back."
+      foot: "BAILE is free software (GPL-3.0), derived from other free projects (<a href='https://github.com/saulofilho/baile-fm1/blob/main/LICENSING.md'>authors and licences</a>). The breaks are entirely synthesised. The firmware installs on the FM-1 over USB at your own risk: keep the official V15 firmware and M-UPGRADE at hand to go back."
     },
     pt: {
       "h.s": "Toque o",
-      tag: "Tracker de funk · firmware para o M-VAVE FM-1 · sobre o KAWA de Omnipotard",
+      tag: "Tracker de funk · firmware para o M-VAVE FM-1 · GPL-3.0",
       langs: "Idioma",
       beta: "<b>Isto é um beta.</b> O BAILE 0.3 foi instalado num FM-1 de verdade e o roteiro de testes ainda está aberto. Este emulador pode estar à frente da release: o que é novo aqui não foi testado num FM-1. Leia a parte de segurança do manual antes de instalar. O firmware oficial sempre pode ser reinstalado com o M-UPGRADE; esse é o passo arriscado, então nunca desconecte o FM-1 enquanto ele roda.",
-      tip: "O BAILE é um fork do KAWA, de Omnipotard. Se você curtir, apoie o autor do KAWA no <a href=\"https://ko-fi.com/omnipotard\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>.",
       screen: "A tela do FM-1",
       power: "O firmware roda aqui do jeito que é, compilado para WebAssembly. Ligue o som, ligue o aparelho e aperte qualquer tecla.",
       powerBtn: "LIGAR",
@@ -643,7 +612,7 @@ kbd { font: 700 12px var(--mono); background: var(--preto); color: var(--amarelo
       "tt.K": "KNOB {n} ({c}): o que ele faz nesta página está escrito embaixo dele e na linha de baixo da tela.",
       "tt.0": "OCT− desce a oitava do teclado; na GRADE leva o padrão para 32, depois 16 passos; em PROJETOS volta; em SOM, enquanto um som de fábrica aparece em dourado, mantém o seu; SAVE segurado + OCT− desfaz na hora (padrões e sons).",
       "tt.1": "OCT+ sobe a oitava do teclado; na GRADE leva o padrão para 32, depois 64 passos (este padrão ligado ao próximo); em PROJETOS é OK; no LIVE abre o banco seguinte; em SOM, enquanto um som de fábrica aparece em dourado, carrega ele; SAVE segurado + OCT+ refaz na hora.",
-      "tt.2": "FX: um toque abre os ENVIOS (drive, eco e reverb de cada faixa), outro toque os efeitos LIVE, depois o FILTRO e a SEQ FX, e volta; SELECT também vira essas páginas. Segurado de outra página, uma barra amarela LIVE enche e o LIVE aparece enquanto você segura: toque as teclas brancas para 64 efeitos ao vivo em quatro bancos (OCT− / OCT+: BAILE, PAREDAO, e DESTROI e BEAT do K-GLITCH, com o KNOB 2 de intensidade) no master ou numa faixa. FX segurado e uma tecla logo em seguida: o efeito toca sem esperar a barra.",
+      "tt.2": "FX: um toque abre os ENVIOS (drive, eco e reverb de cada faixa), outro toque os efeitos LIVE, depois o FILTRO e a SEQ FX, e volta; SELECT também vira essas páginas. Segurado de outra página, uma barra amarela LIVE enche e o LIVE aparece enquanto você segura: toque as teclas brancas para 64 efeitos ao vivo em quatro bancos (OCT− / OCT+: BAILE, PAREDAO, DESTROI e BEAT, os dois últimos com o KNOB 2 de intensidade) no master ou numa faixa. FX segurado e uma tecla logo em seguida: o efeito toca sem esperar a barra.",
       "tt.3": "SCL abre a escala: a tônica, as notas e a trava que mantém as teclas nela; aperte de novo para a MÁGICA (ferramentas nas teclas brancas: picar o break, BEAT FUNK, GRAVE 808, MONTAGE, VIRADA…), uma terceira vez para FAIXAS.",
       "tt.4": "ENV abre o envelope da faixa; aperte de novo (ou gire SELECT) para o MIX (níveis e o efeito do master; teclas pretas silenciam, ARP segurado + uma tecla preta deixa solo).",
       "tt.5": "LFO abre o LFO da faixa; aperte de novo (ou gire SELECT) para a MODULAÇÃO.",
@@ -718,19 +687,13 @@ kbd { font: 700 12px var(--mono); background: var(--preto); color: var(--amarelo
            "<li><kbd>↑</kbd><kbd>↓</kbd> linha · <kbd>←</kbd><kbd>→</kbd> faixa · <kbd>PgUp</kbd><kbd>PgDn</kbd> padrão.</li>" +
            "<li><kbd>Ctrl/⌘ Z</kbd> desfazer · <kbd>Ctrl/⌘ Y</kbd> ou <kbd>Ctrl/⌘ Shift Z</kbd> refazer · <kbd>Ctrl/⌘ S</kbd> salvar · <kbd>F1</kbd> ou <kbd>?</kbd> segurado: ajuda.</li>" +
            "<li>A roda do mouse num knob, ou arraste para cima e para baixo; as setas quando ele tem o foco.</li>",
-      "d.h": "Feito sobre o KAWA",
-      "d.p": "O BAILE é um fork do KAWA, um tracker para o FM-1 feito por Omnipotard. Se você curtir, apoie quem fez a base.",
-      "d.sig": "saulofilho, que fez o BAILE",
-      "d.btn": "Apoiar Omnipotard no Ko-fi",
-      "d.new": " (abre uma aba nova)",
-      foot: "O BAILE é software livre (GPL-3.0), um fork do KAWA (Omnipotard), construído sobre Dinghy, Felucca e SLOOP, a plataforma aberta da comunidade FM-1. Os kits e os breaks são todos sintetizados. O firmware se instala no FM-1 pelo USB por sua conta e risco: tenha à mão o firmware oficial V15 e o M-UPGRADE para voltar."
+      foot: "O BAILE é software livre (GPL-3.0), derivado de outros projetos livres (<a href='https://github.com/saulofilho/baile-fm1/blob/main/LICENSING.md'>autoria e licenças</a>). Os kits e os breaks são todos sintetizados. O firmware se instala no FM-1 pelo USB por sua conta e risco: tenha à mão o firmware oficial V15 e o M-UPGRADE para voltar."
     },
     es: {
       "h.s": "Toca",
-      tag: "Tracker de funk · firmware para el M-VAVE FM-1 · sobre KAWA de Omnipotard",
+      tag: "Tracker de funk · firmware para el M-VAVE FM-1 · GPL-3.0",
       langs: "Idioma",
       beta: "<b>Esto es una beta.</b> BAILE 0.3 se instaló en un FM-1 real y su lista de pruebas sigue abierta. Este emulador puede ir por delante de la versión publicada: lo nuevo de aquí no se ha probado en un FM-1. Lee la sección de seguridad del manual antes de instalarlo. El firmware oficial siempre se puede reinstalar con M-UPGRADE; es el paso delicado: nunca desconectes el FM-1 mientras se ejecuta.",
-      tip: "BAILE es un fork de KAWA, de Omnipotard. Si te gusta, apoya al autor de KAWA en <a href=\"https://ko-fi.com/omnipotard\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>.",
       screen: "La pantalla del FM-1",
       power: "El firmware funciona aquí tal cual, compilado a WebAssembly. Sube el sonido, enciende y luego pulsa una tecla.",
       powerBtn: "ENCENDER",
@@ -748,7 +711,7 @@ kbd { font: 700 12px var(--mono); background: var(--preto); color: var(--amarelo
       "tt.K": "KNOB {n} ({c}): lo que hace en esta página está escrito debajo y en la línea de abajo de la pantalla.",
       "tt.0": "OCT− baja la octava del teclado; en la REJILLA baja el patrón a 32 y luego a 16 pasos; en PROYECTOS vuelve atrás; en SONIDO, cuando un sonido de fábrica se muestra en dorado, conserva el tuyo; SAVE mantenido + OCT− deshace al instante (patrones y sonidos).",
       "tt.1": "OCT+ sube la octava del teclado; en la REJILLA sube el patrón a 32 y luego a 64 pasos (este patrón enlazado con el siguiente); en PROYECTOS es OK; en LIVE abre el segundo banco; en SONIDO, cuando un sonido de fábrica se muestra en dorado, lo carga; SAVE mantenido + OCT+ rehace al instante.",
-      "tt.2": "FX: un toque corto abre ENVÍOS (saturación, eco y reverb de cada pista), un segundo toque los efectos LIVE, luego el FILTRO y la SEC FX, luego atrás; SELECT también gira estas páginas. Mantenido desde otra página, se llena una barra amarilla con el nombre LIVE y LIVE se muestra mientras lo mantienes: toca las teclas blancas para 64 efectos en vivo en cuatro bancos (OCT− / OCT+; DESTRUYE y BEAT vienen de K-GLITCH, KNOB 2 su intensidad), en el master o en una pista. FX mantenido y una tecla enseguida: ese efecto suena sin esperar a la barra.",
+      "tt.2": "FX: un toque corto abre ENVÍOS (saturación, eco y reverb de cada pista), un segundo toque los efectos LIVE, luego el FILTRO y la SEC FX, luego atrás; SELECT también gira estas páginas. Mantenido desde otra página, se llena una barra amarilla con el nombre LIVE y LIVE se muestra mientras lo mantienes: toca las teclas blancas para 64 efectos en vivo en cuatro bancos (OCT− / OCT+; en ROMPE y BEAT, KNOB 2 su intensidad), en el master o en una pista. FX mantenido y una tecla enseguida: ese efecto suena sin esperar a la barra.",
       "tt.3": "SCL abre la escala: su tónica, sus notas y el bloqueo que mantiene las teclas dentro; púlsalo otra vez para la MAGIA (herramientas en las teclas blancas que trocean el break y escriben un ritmo, una melodía o un bajo en la escala), una tercera vez para PISTAS.",
       "tt.4": "ENV abre la envolvente de la pista; púlsalo otra vez (o gira SELECT) para MEZCLA (niveles y efecto master; teclas negras: silencio, ARP mantenido + tecla negra: solo).",
       "tt.5": "LFO abre el LFO de la pista; púlsalo otra vez (o gira SELECT) para la MODULACIÓN.",
@@ -790,7 +753,7 @@ kbd { font: 700 12px var(--mono); background: var(--preto); color: var(--amarelo
       "m.rc5": "La transferencia llegó desordenada (se cortó). Vuelve a enviarla.",
       "m.rcX": "El FM-1 respondió un código desconocido ({c}).",
       "p.h": "Proyectos guardados",
-      "p.how": "Lo que guardas en el emulador (<b>SAVE</b> y luego <b>OCT+</b>, o <kbd>Ctrl/⌘ S</kbd>) se queda en este navegador y vuelve al encender. Exporta un archivo .kawa para guardar una copia o pasarlo a otro ordenador.",
+      "p.how": "Lo que guardas en el emulador (<b>SAVE</b> y luego <b>OCT+</b>, o <kbd>Ctrl/⌘ S</kbd>) se queda en este navegador y vuelve al encender. Exporta un archivo .baile para guardar una copia o pasarlo a otro ordenador.",
       "p.exp": "Exportar proyectos", "p.imp": "Importar proyectos",
       "p.saved": "Guardado en este navegador a las {t}.",
       "p.none": "Nada guardado todavía: en el emulador, SAVE y luego OCT+.",
@@ -823,12 +786,7 @@ kbd { font: 700 12px var(--mono); background: var(--preto); color: var(--amarelo
            "<li><kbd>↑</kbd><kbd>↓</kbd> fila · <kbd>←</kbd><kbd>→</kbd> pista · <kbd>RePág</kbd><kbd>AvPág</kbd> patrón.</li>" +
            "<li><kbd>Ctrl/⌘ Z</kbd> deshacer · <kbd>Ctrl/⌘ Y</kbd> o <kbd>Ctrl/⌘ Mayús Z</kbd> rehacer · <kbd>Ctrl/⌘ S</kbd> guardar · <kbd>F1</kbd> o <kbd>?</kbd> mantenido: ayuda.</li>" +
            "<li>La rueda del ratón sobre un potenciómetro, o arrástralo arriba y abajo; las flechas cuando tiene el foco.</li>",
-      "d.h": "Hecho sobre KAWA",
-      "d.p": "BAILE es un fork de KAWA, un tracker para el FM-1 de Omnipotard. Si te gusta, apoya a quien hizo la base.",
-      "d.sig": "saulofilho, quien hizo BAILE",
-      "d.btn": "Apoya a Omnipotard en Ko-fi",
-      "d.new": " (abre una pestaña nueva)",
-      foot: "BAILE es software libre (GPL-3.0), un fork de KAWA (Omnipotard), construido sobre Dinghy, Felucca y SLOOP, la plataforma abierta de la comunidad FM-1. Los breaks están totalmente sintetizados. El firmware se instala en el FM-1 por USB bajo tu propio riesgo: ten a mano el firmware oficial V15 y M-UPGRADE para volver atrás."
+      foot: "BAILE es software libre (GPL-3.0), derivado de otros proyectos libres (<a href='https://github.com/saulofilho/baile-fm1/blob/main/LICENSING.md'>autoría y licencias</a>). Los breaks están totalmente sintetizados. El firmware se instala en el FM-1 por USB bajo tu propio riesgo: ten a mano el firmware oficial V15 y M-UPGRADE para volver atrás."
     }
   };
   const LANG_ID = {pt: 0, en: 1, es: 2};

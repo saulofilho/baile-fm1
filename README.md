@@ -10,7 +10,7 @@
 
 **BAILE** é um firmware livre para o **M-VAVE FM-1**, feito para **funk brasileiro**: tamborzão, Volt Mix, funk 150,
 mandelão, brega funk e montagem. É um *tracker*: cada linha é um passo, cada coluna uma faixa, e a música desce a
-tela. É um fork do [KAWA](https://github.com/Guizmoh/Kawa-Tracker-Fm1), de Omnipotard.
+tela.
 
 [Site e instalador](https://saulofilho.github.io/baile-fm1/) ·
 [Emulador](https://saulofilho.github.io/baile-fm1/emulator/) ·
@@ -191,7 +191,7 @@ chimbal fechado e aberto.
 
 - **Seis breaks** em 16 fatias: TAMBORZAO, VOLT, FUNK 150, MANDELAO, BREGA FUNK, MONTAGEM.
 - **Sons de funk:** GRAVE 808 (com soco e glide), GRAVE TORTO, SUB, LEAD MELODY, PIANO MELODY, STAB e SIRENE, além
-  dos sons de fábrica do KAWA.
+  dos outros sons de fábrica.
 - Kits e breaks são **sintetizados**, sem gravação de discos. A origem de cada parte está em
   [LICENSING.md](LICENSING.md).
 
@@ -320,7 +320,7 @@ No FM-1: página SOM, motor SAMPLE, fonte MY 1 a MY 4. Use sons que são seus ou
 
 ## Compatibilidade
 
-- **O BAILE não lê projetos nem samples do KAWA, do firmware oficial ou de qualquer outro firmware**, e eles não leem
+- **O BAILE não lê projetos nem samples do firmware oficial ou de qualquer outro firmware**, e eles não leem
   os do BAILE.
 - Aceita os dois chips de flash conhecidos do FM-1: `0x856014` e `0xB36014`. Num chip desconhecido o atualizador não
   grava nada.
@@ -387,16 +387,8 @@ Guia completo: [source/BUILDING.md](source/BUILDING.md). Plano: [PLAN.md](PLAN.m
 
 ## Créditos e licença
 
-BAILE, de saulofilho, sobre o trabalho de:
-
-- **[KAWA](https://github.com/Guizmoh/Kawa-Tracker-Fm1)** e **[K-GLITCH](https://github.com/Guizmoh/K-Glitch)**, de
-  Omnipotard: o motor, o tracker e os bancos DESTROI e BEAT.
-- **[Felucca](https://github.com/hugelton/Felucca)**, de Leo Kuroshita (Hügelton Instruments): a plataforma, o
-  atualizador e oito dos patches FM.
-- **[SLOOP](https://github.com/isod89/sloop-fm1)**, de isod89, e **[Dinghy](https://github.com/zvenson/dinghy)**, de
-  zvenson: a plataforma.
-- **msfa**, do Google e de Pascal Gauthier, via Dexed (Apache-2.0): a síntese FM.
-- As fontes Terminus, IBM Plex Mono, Atkinson Hyperlegible Mono e Press Start 2P (OFL).
+BAILE, de saulofilho, é derivado de software livre. A autoria e a licença de cada parte estão em
+[LICENSING.md](LICENSING.md).
 
 **GPL-3.0-only:** você pode usar, estudar, mudar e compartilhar, e quem receber um firmware feito daqui recebe também
 o código. Texto em [LICENSE](LICENSE), detalhes em [LICENSING.md](LICENSING.md). "M-VAVE" e "FM-1" pertencem aos seus

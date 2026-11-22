@@ -10,7 +10,7 @@
 
 **BAILE** is a free firmware for the **M-VAVE FM-1**, made for **Brazilian funk**: tamborzão, Volt Mix, funk 150,
 mandelão, brega funk and montagem. It is a *tracker*: each row is a step, each column a track, and the song runs down
-the screen. It is a fork of [KAWA](https://github.com/Guizmoh/Kawa-Tracker-Fm1), by Omnipotard.
+the screen.
 
 [Site and installer](https://saulofilho.github.io/baile-fm1/en/) ·
 [Emulator](https://saulofilho.github.io/baile-fm1/emulator/#en) ·
@@ -194,7 +194,7 @@ and open hat.
 
 - **Six breaks** in 16 slices: TAMBORZAO, VOLT, FUNK 150, MANDELAO, BREGA FUNK, MONTAGEM.
 - **Funk sounds:** 808 BASS (with punch and glide), BENT 808, SUB, MELODY LEAD, MELODY PIANO, STAB and SIREN, next to
-  KAWA's factory sounds.
+  the other factory sounds.
 - The kits and breaks are **synthesised**, with no recordings from records. Where each part comes from is in
   [LICENSING.md](LICENSING.md).
 
@@ -221,7 +221,7 @@ and open hat.
 
 ### 64 live effects
 
-Hold **FX** and play the white keys. There are four banks (OCT− and OCT+): **BAILE** and **PAREDAO**, and K-GLITCH's
+Hold **FX** and play the white keys. There are four banks (OCT− and OCT+): **BAILE**, **PAREDAO**,
 **DESTROY** and **BEAT**. Stutter, scratch, buildup, gate, reverse, tape stop, bass+, echo, siren and many more, on
 the master or on one track. With REC, the effect is recorded into the pattern.
 
@@ -323,7 +323,7 @@ On the FM-1: SOUND page, SAMPLE engine, source MY 1 to MY 4. Use sounds that are
 
 ## Compatibility
 
-- **BAILE does not read projects or samples of KAWA, of the official firmware or of any other firmware**, and they do
+- **BAILE does not read projects or samples of the official firmware or of any other firmware**, and they do
   not read BAILE's.
 - It accepts both known FM-1 flash chips: `0x856014` and `0xB36014`. On an unknown chip the updater writes nothing.
 - In the emulator, projects are kept by the browser and exported and imported as `.baile`.
@@ -389,16 +389,8 @@ Full guide: [source/BUILDING.md](source/BUILDING.md). Plan (in Portuguese): [PLA
 
 ## Credits and licence
 
-BAILE, by saulofilho, on the work of:
-
-- **[KAWA](https://github.com/Guizmoh/Kawa-Tracker-Fm1)** and **[K-GLITCH](https://github.com/Guizmoh/K-Glitch)**, by
-  Omnipotard: the engine, the tracker and the DESTROY and BEAT banks.
-- **[Felucca](https://github.com/hugelton/Felucca)**, by Leo Kuroshita (Hügelton Instruments): the platform, the
-  updater and eight of the FM patches.
-- **[SLOOP](https://github.com/isod89/sloop-fm1)**, by isod89, and **[Dinghy](https://github.com/zvenson/dinghy)**,
-  by zvenson: the platform.
-- **msfa**, by Google and Pascal Gauthier, via Dexed (Apache-2.0): the FM synthesis.
-- The fonts Terminus, IBM Plex Mono, Atkinson Hyperlegible Mono and Press Start 2P (OFL).
+BAILE, by saulofilho, is derived from free software. The author and licence of each part are in
+[LICENSING.md](LICENSING.md).
 
 **GPL-3.0-only:** you may use, study, change and share it, and whoever receives a firmware built from it receives the
 source too. Text in [LICENSE](LICENSE), details in [LICENSING.md](LICENSING.md). "M-VAVE" and "FM-1" belong to their

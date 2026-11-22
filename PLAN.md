@@ -1,8 +1,7 @@
 # BAILE — plano do firmware (nome provisório)
 
 Tracker de **funk brasileiro** para o M-VAVE FM-1: tamborzão, Volt Mix, 150 BPM, mandelão, brega funk e montagem.
-Fork do [KAWA](https://github.com/Guizmoh/Kawa-Tracker-Fm1) (Omnipotard, GPL-3.0-only), que roda na plataforma
-Felucca → SLOOP → Dinghy.
+Firmware livre (GPL-3.0-only); a autoria e a licença de cada parte estão em [LICENSING.md](LICENSING.md).
 
 **Mood board:** [`docs/moodboard/index.html`](docs/moodboard/index.html) (abra no navegador). O resumo está na seção
 [Mood](#mood) abaixo.

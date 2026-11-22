@@ -7,6 +7,12 @@ them its complete source under the same licence too. BAILE is a fork of KAWA (Om
 *Em resumo: o BAILE é software livre sob a GPL-3.0. Você pode usar, estudar, mudar e compartilhar; se der a alguém
 um firmware feito a partir dele, dê também o código-fonte.*
 
+## Notice of modification
+
+BAILE is a modified version of KAWA 0.10 by Omnipotard (<https://github.com/Guizmoh/Kawa-Tracker-Fm1>, commit
+`bc7dcf8`), changed by saulofilho from 2026-11-18 on. It is released under the GPL-3.0-only, with no warranty
+(sections 15 and 16 of `LICENSE`).
+
 ## Who made what
 
 | | |

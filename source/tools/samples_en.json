@@ -124,8 +124,8 @@
 "      <li>Without a browser: <code>python3 install/baile_samples.py put 1 kick.wav</code> does the same.</li>"
 ],
 [
-"  <p>O BAILE é software livre (GPL-3.0), um fork do KAWA de Omnipotard. Esta página não tem servidor: os seus arquivos ficam nesta aba do navegador. <a href=\"index.html\">Início</a> · <a href=\"manual/index.html\">Manual</a></p>",
-"  <p>BAILE is free software (GPL-3.0). This page has no server part: your files stay in this browser tab. <a href=\"index.html\">Home</a> · <a href=\"manual/index.html\">Manual</a></p>"
+"  <p>O BAILE é software livre (GPL-3.0), derivado de outros projetos livres (<a href=\"https://github.com/saulofilho/baile-fm1/blob/main/LICENSING.md\">autoria e licenças</a>). Esta página não tem servidor: os seus arquivos ficam nesta aba do navegador. <a href=\"index.html\">Início</a> · <a href=\"manual/index.html\">Manual</a></p>",
+"  <p>BAILE is free software (GPL-3.0), derived from other free projects (<a href=\"https://github.com/saulofilho/baile-fm1/blob/main/LICENSING.md\">authors and licences</a>). This page has no server part: your files stay in this browser tab. <a href=\"index.html\">Home</a> · <a href=\"manual/index.html\">Manual</a></p>"
 ],
 [
 "    <button type=\"button\" id=\"confirm-no\">Cancelar</button>",

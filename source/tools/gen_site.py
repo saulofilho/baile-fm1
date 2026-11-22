@@ -61,7 +61,7 @@ T = {
             "nada tirado de disco. Beta, GPL-3.0.",
     ticker1="".join(f"<span>{w}</span><i>✺</i>" for w in ["TAMBORZÃO", "VOLT MIX", "150", "MANDELÃO", "BREGA FUNK", "MONTAGEM"]),
     ticker2="".join(f"<span>{w}</span><i>✺</i>" for w in ["BOTA PRA TOCAR", "SEGURA", "PUXA", "SOBE", "GRAVE+", "SIRENE"]),
-    made_h="Feito sobre:", hall_h="Ouça", prev="Anterior", next="Próximo",
+    hall_h="Ouça", prev="Anterior", next="Próximo",
     install_h="Instalar o BAILE",
     beta="BETA 0.3 · RODA NUM FM-1 DE VERDADE",
     install_steps="<li>Ligue o FM-1 e conecte-o a este computador com um cabo USB <em>de dados</em>.</li>"
@@ -79,7 +79,7 @@ T = {
               ("6 breaks", "Tamborzão, Volt, 150, mandelão, brega e montagem, cada um fatiado em 16: o picador, rolos, avesso e tom em cada célula."),
               ("Grave 808", "GRAVE 808 com glide, GRAVE TORTO, SUB, LEAD MELODY, PIANO MELODY, STAB, SIRENE. Um projeto novo já vem com o 808 e o tamborzão."),
               ("MÁGICA de funk", "BEAT FUNK escreve o ritmo do kit, GRAVE 808 a linha de baixo, MONTAGE picota o break, VIRADA fecha o compasso. Grooves TAMBOR, BREGA, 150, MANDELA."),
-              ("64 efeitos ao vivo", "SEGURA, PUXA, SOBE, CORTA, ECO MC, GRAVE+, SIRENE, e os bancos DESTROI e BEAT do K-GLITCH."),
+              ("64 efeitos ao vivo", "SEGURA, PUXA, SOBE, CORTA, ECO MC, GRAVE+, SIRENE, e os bancos DESTROI e BEAT."),
               ("4 demos, em português", "BAILE, VOLT, MANDELAO e BREGA FUNK no menu PROJETOS. A tela fala português, inglês ou espanhol, e a arara no canto pisca, dança e dorme.")],
     emu_h="Toque no navegador", emu_p="O próprio firmware, compilado para a web: o painel do FM-1, o teclado do computador ou um controlador MIDI. Sem FM-1.",
     emu_btn="Abrir o emulador", emu_alt="A página FAIXAS do BAILE com a demo tocando",
@@ -96,8 +96,8 @@ T = {
     off_p="Não curtiu? O firmware da M-VAVE volta com a ferramenta da própria M-VAVE, o <strong>M-UPGRADE</strong>. Os seus projetos do BAILE se perdem. "
           "Leia os passos antes: <a href=\"https://github.com/saulofilho/baile-fm1#voltar-ao-firmware-oficial\">README, voltar ao firmware oficial</a>. "
           "Esta página não instala o firmware oficial.",
-    foot="BAILE, de saulofilho, GPL-3.0-only, sobre o KAWA de Omnipotard (com o K-GLITCH), que roda sobre Dinghy, Felucca (Leo Kuroshita, "
-         "Hügelton Instruments) e SLOOP. Não é feito nem endossado pela M-VAVE. \"M-VAVE\" e \"FM-1\" pertencem aos seus donos.",
+    foot='BAILE, de saulofilho, GPL-3.0-only, derivado de software livre (<a href="https://github.com/saulofilho/baile-fm1/blob/main/LICENSING.md">autoria e licenças</a>). '
+         'Não é feito nem endossado pela M-VAVE. "M-VAVE" e "FM-1" pertencem aos seus donos.',
     noscript="O instalador precisa de JavaScript.",
     dlg_h="Gravar o BAILE no FM-1?",
     dlg_resume="Este FM-1 está em modo de atualização (uma instalação anterior foi interrompida): a gravação vai ser terminada.",
@@ -136,7 +136,7 @@ T = {
             "from a record. Beta, GPL-3.0.",
     ticker1="".join(f"<span>{w}</span><i>✺</i>" for w in ["TAMBORZÃO", "VOLT MIX", "150", "MANDELÃO", "BREGA FUNK", "MONTAGEM"]),
     ticker2="".join(f"<span>{w}</span><i>✺</i>" for w in ["DROP IT", "STUTTER", "SCRATCH", "BUILD UP", "BASS+", "SIREN"]),
-    made_h="Made on:", hall_h="Listen", prev="Previous", next="Next",
+    hall_h="Listen", prev="Previous", next="Next",
     install_h="Install BAILE",
     beta="BETA 0.3 · RUNS ON A REAL FM-1",
     install_steps="<li>Switch the FM-1 on and plug it into this computer with a USB <em>data</em> cable.</li>"
@@ -154,7 +154,7 @@ T = {
               ("6 breaks", "Tamborzão, Volt, 150, mandelão, brega and montagem, each cut in 16 slices: the chopper, rolls, reverse and pitch in every cell."),
               ("The 808", "808 BASS with glide, BENT 808, SUB, MELODY LEAD, MELODY PIANO, STAB, SIREN. A new project starts with the 808 and the tamborzão."),
               ("Funk MAGIC", "BEAT FUNK writes the kit's rhythm, 808 BASS the bassline, MONTAGE cuts the break up, FILL ends the bar. Grooves TAMBOR, BREGA, 150, MANDELA."),
-              ("64 live effects", "STUTTER, SCRATCH, BUILD-UP, GATE, MC ECHO, BASS+, SIREN, and K-GLITCH's DESTROY and BEAT banks."),
+              ("64 live effects", "STUTTER, SCRATCH, BUILD-UP, GATE, MC ECHO, BASS+, SIREN, and the DESTROY and BEAT banks."),
               ("4 demos, 3 languages", "BAILE, VOLT, MANDELAO and BREGA FUNK in the PROJECTS menu. The screen speaks Portuguese, English or Spanish; the macaw in the corner blinks, dances and sleeps.")],
     emu_h="Play it in the browser", emu_p="The firmware itself, compiled for the web: the FM-1's panel, the computer keyboard or a MIDI controller. No FM-1 needed.",
     emu_btn="Open the emulator", emu_alt="BAILE's TRACKS page with the demo playing",
@@ -171,8 +171,8 @@ T = {
     off_p="Not for you? Put M-VAVE's firmware back with M-VAVE's own <strong>M-UPGRADE</strong> tool. Your BAILE projects will be lost. "
           "Read the steps first: <a href=\"https://github.com/saulofilho/baile-fm1#voltar-ao-firmware-oficial\">README, back to the official firmware</a>. "
           "This page does not install the official firmware.",
-    foot="BAILE by saulofilho, GPL-3.0-only, on KAWA by Omnipotard (with K-GLITCH), which runs on Dinghy, Felucca (Leo Kuroshita, "
-         "Hügelton Instruments) and SLOOP. Not made or endorsed by M-VAVE. \"M-VAVE\" and \"FM-1\" belong to their owners.",
+    foot='BAILE by saulofilho, GPL-3.0-only, derived from free software (<a href="https://github.com/saulofilho/baile-fm1/blob/main/LICENSING.md">authors and licences</a>). '
+         'Not made or endorsed by M-VAVE. "M-VAVE" and "FM-1" belong to their owners.',
     noscript="The installer needs JavaScript.",
     dlg_h="Write BAILE to the FM-1?",
     dlg_resume="This FM-1 is in update mode (an earlier install was cut off): the write will be finished.",
