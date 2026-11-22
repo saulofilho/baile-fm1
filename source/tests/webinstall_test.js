@@ -43,6 +43,7 @@ const PKG = new Uint8Array(fs.readFileSync(CANDIDATE || path.join(ROOT, "install
 const PRODUCT = M.productOf(PKG);                             // the simulator's own reading of the markers
 const rawIndex = L => (L < 940 ? Math.floor(L / 0x2F) * 0x30 + (L % 0x2F) : L + 20);   // logical image offset -> package offset
 
+const fm1 = o => new M.Fm1(Object.assign({ afterId: PRODUCT }, o));   // after an install it runs the package given
 const tests = [];
 const test = (name, fn) => tests.push([name, fn]);
 
@@ -55,7 +56,7 @@ function withProduct(raw, text) {                              // the same packa
  *   dev: options of the simulated FM-1 (null: none), extra: other devices, midi: options of the Web MIDI, nav: replaces it */
 async function bench(o = {}) {
     const midi = new M.MockMidi(o.midi || {});
-    const dev = o.dev === null ? null : midi.add(new M.Fm1(Object.assign({ afterId: PRODUCT }, o.dev)));
+    const dev = o.dev === null ? null : midi.add(fm1(o.dev));
     for (const d of o.extra || []) midi.add(d);
     const r = await bench.run(midi, o);
     return Object.assign(r, { midi, dev });
@@ -205,7 +206,7 @@ test("no confirm callback: nothing is ever written", async () => {
 
 test("device found in update mode: only the write is finished (and the sectors already right are skipped)", async () => {
     const midi = new M.MockMidi();
-    const dev = midi.add(new M.Fm1({ mode: "loader" }));
+    const dev = midi.add(fm1({ mode: "loader" }));
     const exp = dev.expectedApp(PKG);
     dev.flash.set(exp.subarray(0, 0x20000), M.APP_LO);                 // a third of the app was written before the cut
     const r = await bench.run(midi, {});
@@ -222,7 +223,7 @@ test("device found in update mode: only the write is finished (and the sectors a
 });
 test("cable cut mid-write: a clear error; replugged, the install resumes and finishes", async () => {
     const midi = new M.MockMidi();
-    const dev = midi.add(new M.Fm1({ cutAtSector: 100 }));
+    const dev = midi.add(fm1({ cutAtSector: 100 }));
     const first = await bench.run(midi, {});
     assert.equal(first.err && first.err.code, "lost");
     assert.equal(first.err.message, `the loader was disconnected after ${dev.stats.loaderReads} requests. Replug the USB cable and run the install again to finish`);
@@ -249,7 +250,7 @@ test("cable cut mid-write: a clear error; replugged, the install resumes and fin
 });
 test("cable cut in step 1: 'nothing was written', the old firmware is still there; replugged, a new install works", async () => {
     const midi = new M.MockMidi();
-    const dev = midi.add(new M.Fm1({ cutAtStepRead: 10 }));
+    const dev = midi.add(fm1({ cutAtStepRead: 10 }));
     const first = await bench.run(midi, {});
     assert.equal(first.err && first.err.code, "lost");
     assert.equal(first.err.message, `the FM-1 was disconnected after ${dev.stats.stepReads - 1} requests; nothing was written`);
@@ -263,7 +264,7 @@ test("cable cut in step 1: 'nothing was written', the old firmware is still ther
 });
 test("the loader stops answering mid-write: 'stopped answering', and the install can be run again", async () => {
     const midi = new M.MockMidi();
-    const dev = midi.add(new M.Fm1({ muteAtLoaderRead: 1500 }));
+    const dev = midi.add(fm1({ muteAtLoaderRead: 1500 }));
     const first = await bench.run(midi, {});
     assert.equal(first.err && first.err.code, "stopped");
     assert.equal(first.err.message, `the loader stopped answering after ${dev.stats.loaderReads - 1} requests. Replug the USB cable and run the install again to finish`);
@@ -271,7 +272,7 @@ test("the loader stops answering mid-write: 'stopped answering', and the install
 });
 test("the update loader never appears after step 1: 'did not appear' (FM-1 stays in update mode)", async () => {
     const midi = new M.MockMidi();
-    const dev = midi.add(new M.Fm1({ reenum: 60000 }));          // gone for a minute
+    const dev = midi.add(fm1({ reenum: 60000 }));          // gone for a minute
     const save = W.DELAY.wait_loader;
     W.DELAY.wait_loader = 300;
     const r = await bench.run(midi, {});
@@ -287,7 +288,7 @@ test("the FM-1 comes back with another identity: 'written, but the FM-1 reports 
 });
 test("the FM-1 does not come back after the write: 'power-cycle it'", async () => {
     const midi = new M.MockMidi();
-    const dev = midi.add(new M.Fm1({ mode: "loader" }));
+    const dev = midi.add(fm1({ mode: "loader" }));
     dev.o.reenum = 60000;
     const save = W.DELAY.wait_reboot;
     W.DELAY.wait_reboot = 300;
@@ -299,7 +300,7 @@ test("the FM-1 does not come back after the write: 'power-cycle it'", async () =
 });
 test("a device that asks outside the package: refused with the offset", async () => {
     const midi = new M.MockMidi();
-    const dev = midi.add(new M.Fm1({ mode: "loader" }));
+    const dev = midi.add(fm1({ mode: "loader" }));
     const r0 = dev.otaRead.bind(dev);
     dev.otaRead = (tok, addr, len, c) => r0(tok, addr === 0x4000 + 0x400 ? 0x7FFFFFF0 : addr, len, c);   // (a broken device)
     const r = await bench.run(midi, {});
@@ -333,7 +334,7 @@ test("a port named like an FM-1 that does not answer: not found", async () => {
 });
 test("the FM-1's port is taken by another program (open fails): not found", async () => {
     const midi = new M.MockMidi();
-    const dev = midi.add(new M.Fm1());
+    const dev = midi.add(fm1());
     dev.inPort.open = () => Promise.reject(Object.assign(new Error("busy"), { name: "InvalidAccessError" }));
     const r = await bench.run(midi, {});
     assert.equal(r.err.code, "notfound"); assert.match(r.err.message, /another app using it\?\)\n {2}MIDI inputs: FM-1$/);
@@ -341,7 +342,7 @@ test("the FM-1's port is taken by another program (open fails): not found", asyn
 });
 test("an FM-1 input with no output to pair with: not found", async () => {
     const midi = new M.MockMidi();
-    const dev = midi.add(new M.Fm1());
+    const dev = midi.add(fm1());
     dev.outPort.state = "disconnected"; midi.changed(dev.outPort);
     const r = await bench.run(midi, {});
     assert.equal(r.err.code, "notfound");
@@ -353,7 +354,7 @@ test("a port filter that matches nothing: the message names it", async () => {
 });
 test("MIDI inputs list that cannot be read: the browser's reason is shown", async () => {
     const midi = new M.MockMidi();
-    midi.add(new M.Fm1());
+    midi.add(fm1());
     const orig = midi.requestMIDIAccess.bind(midi);
     midi.requestMIDIAccess = async o => { const a = await orig(o); Object.defineProperty(a, "inputs", { get() { throw new Error("MIDI system unavailable"); } }); return a; };
     const r = await bench.run(midi, {});
@@ -376,10 +377,10 @@ test("MIDI permission refused: clear message", async () => {
 });
 test("probe (fm1_install.py --info): what the connected FM-1 runs", async () => {
     const midi = new M.MockMidi();
-    midi.add(new M.Fm1());
+    midi.add(fm1());
     assert.deepEqual(await W.probe({ nav: midi }), { id: "FM-1_015", loader: false, port: "FM-1", text: "FM-1_015  [running]  port: FM-1" });
     const m2 = new M.MockMidi();
-    m2.add(new M.Fm1({ mode: "loader" }));
+    m2.add(fm1({ mode: "loader" }));
     assert.equal((await W.probe({ nav: m2 })).text, "ota-FM-1_900  [update loader (update not finished)]  port: ota-FM-1_900");
     await assert.rejects(W.probe({ nav: new M.MockMidi() }), e => e.code === "notfound");
 });
@@ -422,7 +423,7 @@ test("pair_output: exact name, Windows numbering, the only output, else none", (
     assert.equal(W.pairOutput("A", ["B", "C"]), null);
     assert.equal(W.pairOutput("A", []), null);
 });
-test("the package of the site: newest in SHA256SUMS, its hash is the file's, fetched with relative URLs", async () => {
+if (!CANDIDATE) test("the package of the site: newest in SHA256SUMS, its hash is the file's, fetched with relative URLs", async () => {
     assert.equal(W.newestInSums(sums).name, PKGNAME);
     const files = fs.readdirSync(path.join(ROOT, "install")).filter(f => /^baile-[\d.]+\.fwsc$/.test(f)).sort((a, b) => a.localeCompare(b, "en", { numeric: true }));
     assert.equal(files[files.length - 1], PKGNAME, "the newest install/baile-*.fwsc is not the one SHA256SUMS names");

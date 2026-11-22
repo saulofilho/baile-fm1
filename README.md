@@ -2,7 +2,11 @@
 
 **Português** · [English](README.en.md)
 
-![O boot do BAILE: o mosaico de ladrilhos nas cores da arara](docs/boot.png)
+<p align="center">
+  <img src="docs/screens/pt/boot.png" width="220" height="220" alt="O boot: o mosaico">
+  <img src="docs/screens/pt/tracks.png" width="220" height="220" alt="FAIXAS: a música desce a tela">
+  <img src="docs/screens/pt/live-baile.png" width="220" height="220" alt="Banco BAILE">
+</p>
 
 **BAILE** é um firmware livre para o **M-VAVE FM-1**, feito para **funk brasileiro**: tamborzão, Volt Mix, funk 150,
 mandelão, brega funk e montagem. É um *tracker*: cada linha é um passo, cada coluna uma faixa, e a música desce a
@@ -14,10 +18,74 @@ tela. É um fork do [KAWA](https://github.com/Guizmoh/Kawa-Tracker-Fm1), de Omni
 [Importador de samples](https://saulofilho.github.io/baile-fm1/samples.html) ·
 [Releases](https://github.com/saulofilho/baile-fm1/releases)
 
-**Índice:** [estado](#estado) · [o que tem](#o-que-tem) · [primeiro tamborzão](#primeiro-tamborzão) ·
+**Índice:** [telas](#veja-na-tela) · [estado](#estado) · [o que tem](#o-que-tem) · [primeiro tamborzão](#primeiro-tamborzão) ·
 [botões](#botões) · [instalar](#instalar) · [samples](#seus-samples) · [compatibilidade](#compatibilidade) ·
 [resgate](#resgate) · [voltar ao oficial](#voltar-ao-firmware-oficial) · [compilar](#compilar-e-testar) ·
 [créditos](#créditos-e-licença)
+
+## Veja na tela
+
+Telas do firmware da 0.3 (ainda não lançada), tiradas no simulador com a demo BAILE.
+
+### Montar a batida
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/screens/pt/boot.png" width="240" height="240" alt="O boot: o mosaico"><br>O boot: o mosaico</td>
+    <td align="center"><img src="docs/screens/pt/tracks.png" width="240" height="240" alt="FAIXAS: a música desce a tela"><br>FAIXAS: a música desce a tela</td>
+    <td align="center"><img src="docs/screens/pt/grid.png" width="240" height="240" alt="GRADE: os 16 passos"><br>GRADE: os 16 passos</td>
+  </tr>
+</table>
+
+### Som
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/screens/pt/bass.png" width="240" height="240" alt="SOM: o GRAVE 808"><br>SOM: o GRAVE 808</td>
+    <td align="center"><img src="docs/screens/pt/kit.png" width="240" height="240" alt="SOM: o kit TAMBOR"><br>SOM: o kit TAMBOR</td>
+    <td align="center"><img src="docs/screens/pt/mix.png" width="240" height="240" alt="MIX: as seis faixas"><br>MIX: as seis faixas</td>
+  </tr>
+</table>
+
+### Funk
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/screens/pt/magic.png" width="240" height="240" alt="MÁGICA: escreve o funk"><br>MÁGICA: escreve o funk</td>
+    <td align="center"><img src="docs/screens/pt/groove.png" width="240" height="240" alt="GROOVE: o atraso do tamborzão"><br>GROOVE: o atraso do tamborzão</td>
+    <td align="center"><img src="docs/screens/pt/song.png" width="240" height="240" alt="MÚSICA: patterns em sequência"><br>MÚSICA: patterns em sequência</td>
+  </tr>
+</table>
+
+### Ao vivo
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/screens/pt/live-baile.png" width="240" height="240" alt="Banco BAILE"><br>Banco BAILE</td>
+    <td align="center"><img src="docs/screens/pt/live-paredao.png" width="240" height="240" alt="Banco PAREDAO"><br>Banco PAREDAO</td>
+    <td align="center"><img src="docs/screens/pt/playing.png" width="240" height="240" alt="Tocando"><br>Tocando</td>
+  </tr>
+</table>
+
+### Destruir
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/screens/pt/live-destroy.png" width="240" height="240" alt="Banco DESTROI"><br>Banco DESTROI</td>
+    <td align="center"><img src="docs/screens/pt/live-beat.png" width="240" height="240" alt="Banco BEAT"><br>Banco BEAT</td>
+    <td align="center"><img src="docs/screens/pt/projects.png" width="240" height="240" alt="PROJETOS e as demos"><br>PROJETOS e as demos</td>
+  </tr>
+</table>
+
+### Temas
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/screens/pt/options.png" width="240" height="240" alt="TERRA"><br>TERRA</td>
+    <td align="center"><img src="docs/screens/pt/theme-claro.png" width="240" height="240" alt="CLARO"><br>CLARO</td>
+    <td align="center"><img src="docs/screens/pt/theme-paredao.png" width="240" height="240" alt="PAREDAO"><br>PAREDAO</td>
+  </tr>
+</table>
 
 ## Estado
 
