@@ -1984,9 +1984,9 @@ static void draw_opt(void)
     }
     g_text(8, 85, TR("IDIOMA", "LANGUAGE", "IDIOMA"), KNOB_COL[1], T_CROP | T_BOLD);
     for (k = 0; k < LANG_N; k++) {
-        int32_t x = 8 + (int32_t)k * 76;
-        g_rrect(x, 98, 68, 16, k == lang ? KNOB_COL[1] : C_BG2);
-        g_text_c(x + 34, 98, k == 0u ? "PORTUGUES" : k == 1u ? "ENGLISH" : "ESPANOL", k == lang ? C_INK : C_TXT, T_CROP | T_BOLD);
+        int32_t x = 5 + (int32_t)k * 78;        /* (wide enough for PORTUGUES) */
+        g_rrect(x, 98, 74, 16, k == lang ? KNOB_COL[1] : C_BG2);
+        g_text_c(x + 37, 98, k == 0u ? "PORTUGUES" : k == 1u ? "ENGLISH" : "ESPANOL", k == lang ? C_INK : C_TXT, T_CROP | T_BOLD);
     }
     s[0] = 0;                                   /* the fonts, each written in itself */
     str_cat(str_cat(s, TR("FONTE: ", "FONT: ", "FUENTE: ")), FONT_NAMES[lang][g_font]);
