@@ -1230,6 +1230,7 @@ static void prj_sanitize(void)                  /* a loaded project: nothing out
         sound_t *s = &prj.snd[t];
         if (s->engine >= E_N) s->engine = E_PULSE;
         if (s->sat > 15u) s->sat = 0;           /* (0.5: the SAT send, in what 0.4 kept as padding) */
+        if (s->duck > 15u) s->duck = 0;
         for (i = 0; i < NPARAM; i++) {
             const pdesc_t *d = &PDESC[s->engine][i];
             if (d->name[0]) s->p[i] = (int8_t)clampi(s->p[i], d->lo, d->hi);

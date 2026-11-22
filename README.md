@@ -18,7 +18,7 @@ tela. É um fork do [KAWA](https://github.com/Guizmoh/Kawa-Tracker-Fm1), de Omni
 [Importador de samples](https://saulofilho.github.io/baile-fm1/samples.html) ·
 [Releases](https://github.com/saulofilho/baile-fm1/releases)
 
-**Índice:** [telas](#veja-na-tela) · [estado](#estado) · [o que tem](#o-que-tem) · [primeiro tamborzão](#primeiro-tamborzão) ·
+**Índice:** [telas](#veja-na-tela) · [estado](#estado) · [próxima versão](#próxima-versão-04) · [o que tem](#o-que-tem) · [primeiro tamborzão](#primeiro-tamborzão) ·
 [botões](#botões) · [instalar](#instalar) · [samples](#seus-samples) · [compatibilidade](#compatibilidade) ·
 [resgate](#resgate) · [voltar ao oficial](#voltar-ao-firmware-oficial) · [compilar](#compilar-e-testar) ·
 [créditos](#créditos-e-licença)
@@ -98,6 +98,44 @@ Telas do firmware da 0.3, tiradas no simulador com a demo BAILE.
 | Mudou na 0.3 | Identidade nova, interface em português sem francês, valores inteiros na linha de baixo (BPM 130), tema CLARO legível |
 
 Firmware não oficial, não feito nem endossado pela M-VAVE. Instale por sua conta e risco.
+
+## Próxima versão (0.4)
+
+**Ainda não lançada, e não testada no FM-1:** está no código do branch `som-808`. O instalador e a release continuam
+na 0.3. Cada melhoria entra aqui quando é feita.
+
+### GRAVE+ que se ouve no celular
+
+O GRAVE+ (banco PAREDAO) agora soma ao grave os **harmônicos** que o ouvido usa para reconstruir um 808 num
+alto-falante pequeno, que não toca a fundamental.
+
+| | 0.3 | 0.4 |
+| --- | --- | --- |
+| Senoide de 41 a 82 Hz, o que sobra acima de 200 Hz | −49 a −21 dB | **−21 a −12 dB** |
+| Pico do master nas 4 demos | referência | igual |
+| Apertar e soltar | estalava | **sem estalo** |
+| Peso da fundamental | referência | cerca de 2 dB menor |
+
+Músicas com GRAVE+ gravado, como a demo MANDELAO, mudam de som. O efeito pesa mais no processador enquanto está
+ligado: +18% no computador, ainda não medido no FM-1.
+
+### DUCK: o bumbo abre espaço
+
+<p align="center">
+  <img src="docs/screens/pt/sends.png" width="240" height="240" alt="ENVIOS com a coluna DUCK">
+</p>
+
+Cada faixa pode **recuar quando o bumbo bate**, e o 808 para de brigar com ele.
+
+1. **FX** uma vez: ENVIOS.
+2. Escolha a faixa do baixo com **ALGORITHM**.
+3. **KNOB 4**: DUCK de 0 a 15 (8 recua uns 5 dB, 15 uns 18 dB).
+
+- O bumbo é a **tecla 1 ou 2 de qualquer faixa de KIT**. Bumbos de break (SAMPLE) não disparam.
+- A faixa de kit não recua no próprio bumbo. Kit mudo não dispara, kit com VOL 0 dispara (bumbo fantasma).
+- Desce em 3 ms, segura 25 ms e volta em uns 90 ms. Uma batida fraca recua menos.
+- O valor é salvo no projeto. **Músicas da 0.3 abrem com DUCK 0**, e com 0 o DUCK não muda um sample. A 0.3 também
+  abre projetos salvos com DUCK, só não o aplica.
 
 ## O que tem
 
@@ -307,6 +345,7 @@ tests/run_host.sh
 | O quê | Comando, dentro de `source/` |
 | --- | --- |
 | Recursos, formato, kits, interface | `tests/run_features_test.sh`, `tests/run_format_test.sh`, `tests/run_kits_test.sh`, `tests/run_ui_test.sh` |
+| GRAVE+ e DUCK | `tests/run_bass_test.sh`, `tests/run_duck_test.sh` |
 | Stress | `sh tests/run_stress_test.sh` |
 | Breaks | `python3 tests/breaks_check.py` |
 | Emulador | `web/make_emulator.sh` (clang e lld), depois `node tests/emulator_test.js` |

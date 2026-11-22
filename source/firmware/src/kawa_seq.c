@@ -459,6 +459,7 @@ static void app_audio(int32_t *out, uint32_t n)
             track_chunk(t, mono);
             if (prj.snd[t].sat)
                 sat_chunk(mono, prj.snd[t].sat & 15u);
+            duck_chunk(t, mono);                /* (before the pan and the sends: they step back with it) */
             for (i = 0; i < CHUNK; i++) {
                 int32_t m = mono[i], a = m < 0 ? -m : m;
                 if ((uint32_t)a > pk)

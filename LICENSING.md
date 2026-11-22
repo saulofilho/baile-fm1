@@ -28,6 +28,9 @@ is not in BAILE.
 GRAVE+'s harmonics for small speakers follow the idea of K-WASUB's SUB HARMONICS (Omnipotard, GPL-3.0). The code
 (`source/firmware/src/kawa_fx.c`, `grave_one`) is BAILE's; none of K-WASUB's was copied.
 
+DUCK (a kick that pushes the bass back) was suggested by RHYTM-SEC-1's bass duck (GPL-3.0-only). The code
+(`source/firmware/src/kawa_snd.c`, `duck_chunk`) is BAILE's; none of RHYTM-SEC-1's was copied.
+
 ## Sounds
 
 Every sound of BAILE, as of KAWA, is synthesised. The breaks are made by `source/tools/gen_breaks.py` from sines, noise and

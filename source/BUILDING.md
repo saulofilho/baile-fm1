@@ -18,6 +18,7 @@ page are KAWA's). To put BAILE on an FM-1, see the README: the ready package is 
   `docker run --rm -v "$PWD":/repo -w /repo/source debian:bookworm-slim sh -c "apt-get update -qq && apt-get install -y -qq clang lld python3 && sh web/make_emulator.sh"`.
   Its version is the `VERSION` file here (CI reads the same one): set it to X.Y when releasing, to X.Y-DEV after.
   Then `node tests/emulator_test.js`: saving, export and import, the sample magic, the version.
+- `tests/run_duck_test.sh`: DUCK measured, and a project saved by 0.3 itself (`tests/fixtures/volt-0.3.baile`).
 - `tests/run_bass_test.sh`: GRAVE+ measured (harmonics over 200 Hz, peak, DC, stereo, no click).
 - Tests of BAILE's own: `tests/demo_baile.txt` (the demo, played), `tests/manual_pt.txt` (the manual's screens),
   `features_test` 10 and 11 (the magic tools of funk, the four demos).

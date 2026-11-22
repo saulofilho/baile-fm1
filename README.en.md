@@ -18,7 +18,7 @@ the screen. It is a fork of [KAWA](https://github.com/Guizmoh/Kawa-Tracker-Fm1),
 [Sample importer](https://saulofilho.github.io/baile-fm1/samples.en.html) ·
 [Releases](https://github.com/saulofilho/baile-fm1/releases)
 
-**Contents:** [screens](#see-it) · [status](#status) · [features](#features) · [first tamborzão](#a-first-tamborzão) ·
+**Contents:** [screens](#see-it) · [status](#status) · [next version](#next-version-04) · [features](#features) · [first tamborzão](#a-first-tamborzão) ·
 [buttons](#buttons) · [install](#install) · [samples](#your-samples) · [compatibility](#compatibility) ·
 [rescue](#rescue) · [back to official](#back-to-the-official-firmware) · [build](#build-and-test) ·
 [credits](#credits-and-licence)
@@ -98,6 +98,44 @@ Screens of the 0.3 firmware, taken in the simulator with the BAILE demo.
 | New in 0.3 | A new identity, no French left in the Portuguese interface, whole values on the bottom line (BPM 130), a readable CLARO theme |
 
 An unofficial firmware, not made or endorsed by M-VAVE. Install it at your own risk.
+
+## Next version (0.4)
+
+**Not released yet, and not tested on an FM-1:** it is in the source of the `som-808` branch. The installer and the
+release stay at 0.3. Each improvement is listed here as it is made.
+
+### A BASS+ you hear on a phone
+
+BASS+ (the PAREDAO bank) now adds to the lows the **harmonics** the ear uses to rebuild an 808 on a small speaker,
+which does not play the fundamental.
+
+| | 0.3 | 0.4 |
+| --- | --- | --- |
+| A 41 to 82 Hz sine, what is left over 200 Hz | −49 to −21 dB | **−21 to −12 dB** |
+| Master peak on the 4 demos | reference | the same |
+| Press and release | clicked | **no click** |
+| Weight of the fundamental | reference | about 2 dB less |
+
+Songs with BASS+ recorded in them, as the MANDELAO demo, sound different. The effect costs more CPU while it is on:
++18% on a computer, not measured on the FM-1 yet.
+
+### DUCK: the kick makes room
+
+<p align="center">
+  <img src="docs/screens/en/sends.png" width="240" height="240" alt="SENDS with the DUCK column">
+</p>
+
+Any track can **step back when the kick hits**, so the 808 stops fighting it.
+
+1. **FX** once: SENDS.
+2. Pick the bass track with **ALGORITHM**.
+3. **KNOB 4**: DUCK from 0 to 15 (8 steps back about 5 dB, 15 about 18 dB).
+
+- The kick is **key 1 or 2 of any KIT track**. Kicks inside breaks (SAMPLE) do not trigger it.
+- A kit track does not step back from its own kick. A muted kit does not trigger, a kit at VOL 0 does (a ghost kick).
+- Down in 3 ms, held 25 ms, back over about 90 ms. A soft hit steps back less.
+- The value is saved with the project. **0.3's songs open with DUCK 0**, and at 0 DUCK changes not one sample. 0.3
+  also opens projects saved with DUCK, it just does not apply it.
 
 ## Features
 
@@ -309,6 +347,7 @@ tests/run_host.sh
 | What | Command, inside `source/` |
 | --- | --- |
 | Features, format, kits, interface | `tests/run_features_test.sh`, `tests/run_format_test.sh`, `tests/run_kits_test.sh`, `tests/run_ui_test.sh` |
+| BASS+ and DUCK | `tests/run_bass_test.sh`, `tests/run_duck_test.sh` |
 | Stress | `sh tests/run_stress_test.sh` |
 | Breaks | `python3 tests/breaks_check.py` |
 | Emulator | `web/make_emulator.sh` (clang and lld), then `node tests/emulator_test.js` |

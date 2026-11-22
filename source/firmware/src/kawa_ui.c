@@ -1595,42 +1595,45 @@ static void draw_filt(void)
 
 static void draw_send(void)
 {
-    static const char *const CH[LANG_N][3] = {{"SATURA", "ECO", "REVERB"}, {"DRIVE", "ECHO", "REVERB"}, {"SATURA", "ECO", "REVERB"}};
+    static const char *const CH[LANG_N][4] = {{"SAT", "ECO", "REV", "DUCK"}, {"DRV", "ECH", "REV", "DUCK"}, {"SAT", "ECO", "REV", "DUCK"}};
+    static const char *const CN[LANG_N][4] = {{"SATURA", "ECO", "REVERB", "DUCK"}, {"DRIVE", "ECHO", "REVERB", "DUCK"}, {"SATURA", "ECO", "REVERB", "DUCK"}};
     uint32_t t, k;
     char s[16];
     if (g_vis(20, 204)) g_rect(0, 20, 240, 204, C_BG);
-    for (k = 0; k < 3u; k++)
-        g_text_c(108 + (int32_t)k * 52, 22, CH[lang][k], KNOB_COL[k], T_CROP | T_BOLD);
+    for (k = 0; k < 4u; k++)
+        g_text_c(100 + (int32_t)k * 39, 22, CH[lang][k], KNOB_COL[k], T_CROP | T_BOLD);
     for (t = 0; t < NTRK; t++) {
         int32_t y = 40 + (int32_t)t * 30;
         const int8_t *p = prj.snd[t].p;
-        uint8_t v[3];
+        uint8_t v[4];
         if (!g_vis(y, 30)) continue;
         v[0] = (uint8_t)(prj.snd[t].sat & 15u);
         v[1] = (uint8_t)clampi(p[P_ECHO], 0, 15);
         v[2] = (uint8_t)clampi(p[P_VERB], 0, 15);
+        v[3] = (uint8_t)(prj.snd[t].duck & 15u);
         if (t == trk()) { g_frame(0, y, 240, 29, C_WHITE); }
         g_rrect(3, y + 3, 76, 15, TRK_COL[t]);
         g_icon(6, y + 6, ENGINE_ICON[ENG(t)], C_INK, 1);
         trk_name(t, s);
         g_text(16, y + 3, s, C_INK, T_CROP | T_BOLD);
-        for (k = 0; k < 3u; k++) {
-            int32_t x = 84 + (int32_t)k * 52;
-            g_rrect(x, y + 3, 48, 22, C_BG2);
-            if (v[k]) g_rect(x + 2, y + 21, 44 * v[k] / 15, 3, KNOB_COL[k]);
+        for (k = 0; k < 4u; k++) {
+            int32_t x = 82 + (int32_t)k * 39;
+            g_rrect(x, y + 3, 37, 22, C_BG2);
+            if (v[k]) g_rect(x + 2, y + 21, 33 * v[k] / 15, 3, KNOB_COL[k]);
             fmt_u(s, v[k], 0);
-            g_text_c(x + 24, y + 4, v[k] ? s : "-", v[k] ? C_WHITE : C_FAINT, T_CROP | T_BOLD);
+            g_text_c(x + 18, y + 4, v[k] ? s : "-", v[k] ? C_WHITE : C_FAINT, T_CROP | T_BOLD);
         }
     }
     {
         const int8_t *p = prj.snd[trk()].p;
         fmt_u(s, prj.snd[trk()].sat, 0);
-        hint(0, CH[lang][0], "", s);
+        hint(0, CN[lang][0], "", s);
         fmt_u(s, (uint32_t)p[P_ECHO], 0);
-        hint(1, CH[lang][1], "", s);
+        hint(1, CN[lang][1], "", s);
         fmt_u(s, (uint32_t)p[P_VERB], 0);
-        hint(2, CH[lang][2], "", s);
-        hint_none(3);
+        hint(2, CN[lang][2], "", s);
+        fmt_u(s, prj.snd[trk()].duck, 0);
+        hint(3, CN[lang][3], "", s);
     }
 }
 
@@ -2083,9 +2086,9 @@ static const help_t HELP[LANG_N][PG_HELP] = {
      {{"CANCION / GROOVE", "METRONOMO", "VOLUMEN CLIC"}, {"K1-K4: TEMA IDIOMA RELOJ FUENTE", "TODO SE GUARDA", "GLO: VOLVER A LA CANCION"}},
      {{"ENVIOS/LIVE/FILTRO", "PISTA", "PATRON"}, {"FX PULSADO + BLANCAS", "OCT: 4 BANCOS  NEGRAS: MUTE", "DESTRUYE, BEAT: K2 INTENSIDAD"}}}};
 static const help_t HELP_SEND[LANG_N] = {   /* the first page of FX */
-    {{"ENVIOS / LIVE", "FAIXA", "-"}, {"K1 SATURA  K2 ECO  K3 REVERB", "0: NADA, POR FAIXA", "FX DE NOVO: EFEITOS LIVE"}},
-    {{"SENDS / LIVE", "TRACK", "-"}, {"K1 DRIVE  K2 ECHO  K3 REVERB", "0: NOTHING, PER TRACK", "FX AGAIN: THE LIVE EFFECTS"}},
-    {{"ENVIOS / LIVE", "PISTA", "-"}, {"K1 SATURA  K2 ECO  K3 REVERB", "0: NADA, POR PISTA", "FX OTRA VEZ: EFECTOS LIVE"}}};
+    {{"ENVIOS / LIVE", "FAIXA", "-"}, {"K1 SAT K2 ECO K3 REV K4 DUCK", "DUCK: O BUMBO ABRE ESPACO", "FX DE NOVO: EFEITOS LIVE"}},
+    {{"SENDS / LIVE", "TRACK", "-"}, {"K1 DRV K2 ECH K3 REV K4 DUCK", "DUCK: THE KICK MAKES ROOM", "FX AGAIN: THE LIVE EFFECTS"}},
+    {{"ENVIOS / LIVE", "PISTA", "-"}, {"K1 SAT K2 ECO K3 REV K4 DUCK", "DUCK: EL BOMBO ABRE ESPACIO", "FX OTRA VEZ: EFECTOS LIVE"}}};
 static const help_t HELP_FILT[LANG_N] = {   /* the third page of FX */
     {{"ENVIOS/LIVE/FILTRO", "-", "-"}, {"K1 TIPO K2 FREQ K3 RESO K4 MOV", "TECLAS: AFINAM  OCT: OITAVA", "FX: A SEQ FX"}},
     {{"SENDS/LIVE/FILTER", "-", "-"}, {"K1 TYPE K2 FREQ K3 RESO K4 MOVE", "KEYS: TUNE IT  OCT: OCTAVE", "FX: THE FX SEQ"}},
@@ -2676,6 +2679,10 @@ static void knob(uint32_t i, int32_t d)
         }
         else if (i == 1u) param_turn(t, P_ECHO, d);
         else if (i == 2u) param_turn(t, P_VERB, d);
+        else {
+            int32_t nd = clampi((int32_t)prj.snd[t].duck + d, 0, 15);
+            if (nd != prj.snd[t].duck) { undo_push_snd(t, 1); prj.snd[t].duck = (uint8_t)nd; touched(); }
+        }
         break;
     case PG_FX:
         if (i == 0u) { fx_bank = (uint8_t)clampi(fx_bank + d, 0, NLBANK - 1); lfx_keys = 0; kg_keys_set(0); }

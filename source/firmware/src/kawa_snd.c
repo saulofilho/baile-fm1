@@ -84,6 +84,49 @@ static int32_t crush_mask(int32_t c) { return c > 0 ? ~((1 << (2 * c)) - 1) : -1
 static int32_t lv_transpose;                    /* semitones: OCTAVE +1 / -1 */
 static uint8_t lv_uni;                          /* 1 unison, 2 unison an octave down */
 static uint8_t lv_mute;                         /* tracks silenced, bit per track */
+
+/* DUCK (BAILE): a kick (key 1 or 2 of a KIT track that is not muted, whatever its VOL: 0 is a ghost kick) pushes back
+ * every other track that has DUCK. Down in ~3 ms, held ~25 ms, back over ~90 ms (tests/duck_test.c). One envelope a
+ * track pushed back, one step a CHUNK, a straight line inside it: no click, no division. */
+#define DK_ATT 4600                             /* Q15 a chunk: 8 chunks to the full depth */
+#define DK_HOLD 69u                             /* chunks */
+#define DK_REL 8                                /* the shift: 256 chunks, ~93 ms */
+#define DK_DEPTH 1900                           /* Q15 a step of DUCK: 15 is -17.7 dB */
+static struct {
+    int32_t env, to, g;                         /* the envelope and where it goes, Q15; the cut as last applied */
+    uint32_t hold;
+} duck[NTRK];
+
+static void duck_kick(uint32_t src, uint32_t vol)
+{
+    int32_t to = (int32_t)(vol > 15u ? 15u : vol) * 32767 / 15;
+    uint32_t t;
+    if (lv_mute >> src & 1u) return;
+    for (t = 0; t < NTRK; t++)
+        if (t != src) {
+            if (to > duck[t].to) duck[t].to = to;
+            duck[t].hold = DK_HOLD;
+        }
+}
+
+static void duck_chunk(uint32_t t, int32_t *m)
+{
+    int32_t e = duck[t].env, g, g0 = duck[t].g, i, amt = prj.snd[t].duck > 15u ? 0 : prj.snd[t].duck;
+    if (e < duck[t].to) {                       /* down */
+        e += DK_ATT;
+        if (e >= duck[t].to) { e = duck[t].to; duck[t].to = 0; }
+    } else {
+        duck[t].to = 0;
+        if (duck[t].hold) duck[t].hold--;
+        else if (e) e -= (e >> DK_REL) + 1;
+    }
+    duck[t].env = e;
+    g = (e * (amt * DK_DEPTH >> 4)) >> 11;      /* the cut, Q15 (28500 at the most) */
+    duck[t].g = g;
+    if (!(g | g0)) return;                      /* not one sample touched */
+    for (i = 0; i < (int32_t)CHUNK; i++)
+        m[i] -= (int32_t)(((int64_t)m[i] * (g0 + (((g - g0) * (i + 1)) >> 4))) >> 15);
+}
 static uint8_t lv_mask = 0xFF;                  /* the tracks the live layer's pitch effects reach (the target's) */
 static uint32_t lfo_inc[11];                    /* the LFO's rates per chunk, from the tempo (kawa_seq.c) */
 
@@ -449,9 +492,10 @@ static void voice_on(uint32_t t, uint32_t note, uint32_t vol, const tricks_t *k,
             fm6_note_init(n, fp, (int32_t)note + fp[FP_TRNSP] - 24, (int32_t)(vol * 8u + 7u), 1);
             fm6_lfo_key(&fm_lfo);
         }
-    } else if (e == E_KIT)
+    } else if (e == E_KIT) {
+        if ((cell_idx(note) & 15u) < 2u) duck_kick(t, vol);
         drum_on(t, cell_idx(note) & 15u, (trick(k, FX_PITCH, &sv) ? sv : 0) + v->tb_tr + (cell_idx(note) >= 16u ? 12 : 0), trick(k, FX_CRUSH, &sv) ? sv : -1);   /* (17..32: the same drum, tuned up) */
-    else {
+    } else {
         if (nm == NM_SLICE && cell_idx(note) >= 16u) smp_extra = 12;
         smp_on(t, nm == NM_SLICE ? cell_idx(note) & 15u : note, k);
     }

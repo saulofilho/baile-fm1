@@ -25,7 +25,8 @@ typedef struct {
 typedef struct {
     uint8_t engine, preset;
     int8_t p[NPARAM];
-    uint8_t sat, pad;                           /* sat: the SAT send (FX, SENDS), 0..15 (0.4's projects: 0) */
+    uint8_t sat, duck;                          /* sat: the SAT send (FX, SENDS), 0..15 (0.4's projects: 0); duck: how
+                                                 * far it steps back from the kick, 0..15 (0.3's padding: 0) */
 } sound_t;
 typedef struct {
     uint8_t pat, rep;                           /* a song entry: the pattern, played rep times (1..16) */

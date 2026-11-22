@@ -148,6 +148,7 @@ int main(void)
         for (t = 0; t < 2u; t++) {
             prj_demo();
             loud_faders();
+            if (t) { uint32_t d; for (d = 0; d < NTRK; d++) prj.snd[d].duck = 15; }   /* (and DUCK at its most) */
             prj.mode = 1;
             lfx_target = (uint8_t)(t ? 5u : 0u);
             sq_req = 1;

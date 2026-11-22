@@ -183,6 +183,7 @@ Opcional, depois da 1.0: vocais sintéticos por formantes; modo LIVE do KAWA (la
 - [x] **Versão em inglês do site** (2026-11-21): `en/index.html` (do mesmo modelo do hub), `manual/en.html`,
   `samples.en.html` (gerado do `samples.html` com `source/tools/samples_en.json`); o emulador já tinha EN (`#en`).
   PT/EN na barra de todas as páginas.
+- [x] **Regra do autor:** cada melhoria entra nos dois READMEs no mesmo commit (2026-11-21).
 - [x] Publicar a release `v0.2` (2026-11-21).
 - [ ] GitHub › Settings › Pages › Source: **GitHub Actions** (hoje dois deploys correm a cada push).
 - [ ] Release 0.3: push do `main` e da tag `v0.3` (o autor), depois **Check again** no Hub.
@@ -195,11 +196,13 @@ Ordem pedida pelo autor em 2026-11-21, referências em `docs/REFERENCES.md`. Nad
 Cada item: teste no simulador, stress sem estouro, CPU medida e audição no FM-1.
 
 - [ ] **1. Harmônicos do 808** para alto-falante pequeno (GRAVE+). Pronto: sobe a energia de 120–500 Hz sem subir o pico.
-      *Feito no branch `som-808`, falta ouvir e medir a CPU no FM-1.* Contra a 0.3, com o efeito ligado: nas 4 demos
+      *Feito no branch `som-808`; aprovado de ouvido nos A/B pelo autor (2026-11-21); falta o FM-1.* Contra a 0.3, com o efeito ligado: nas 4 demos
       +1,0 a +1,5 dB em 120–500 Hz e pico igual; no 808 sozinho +5 a +19 dB em 200–1000 Hz, mas **pico +1,0 dB** (longe
       do clip: 9872 de 32767) e **fundamental ~2 dB menor**. Custo no computador: +18% do motor enquanto segurado.
       O estalo ao apertar e soltar (defeito da 0.3) saiu. Músicas com GRAVE+ gravado (a demo MANDELAO) mudam de som.
 - [ ] **2. Ducking:** o bumbo abaixa o baixo. Pronto: ajuste por projeto, projetos da 0.3 ainda abrem.
+      *Feito no branch `som-808`, falta ouvir e testar no FM-1.* DUCK por faixa em ENVIOS (KNOB 4), salvo no byte que
+      era folga (`sound_t.duck`): mesmo formato, compatível nos dois sentidos, idêntico byte a byte com 0.
 - [ ] **3. Grave em mono.** Pronto: abaixo de ~120 Hz esquerda = direita, os agudos continuam abertos.
 - [ ] **4. Montagem por frase, THROW e DROP ao vivo.** Os 64 efeitos estão ocupados: decidir o que sai ou onde entram.
 - [ ] **5. Modo LIVE de lançar patterns:** entra no fim do compasso, piscando até entrar.
