@@ -19,7 +19,7 @@ um firmware feito a partir dele, dê também o código-fonte.*
 
 KAWA changes the platform in two places: `platform.c` widens the flash range it may write to the project
 slots (`STORE_LO` to `STORE_HI`) and includes `source/web/wasm_host.c` for the browser build. BAILE changes it in
-three more: its own settings magic (`BAIL`), its package identity (`FM-1_971`, `source/tools/build.py`), and no ELF
+three more: its own settings magic (`BAIL`), its package identity (`FM-1_808130`; up to 0.2 `FM-1_971`, `source/tools/build.py`), and no ELF
 sections in the host build on macOS (`gfx.c`, `platform.c`). KAWA's dog (its boot picture and mascot, by Omnipotard)
 is not in BAILE.
 

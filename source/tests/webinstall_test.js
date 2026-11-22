@@ -37,8 +37,9 @@ Object.assign(W.DELAY, { open: 5, start: 20, reply: 0, loader: 20, reboot: 20, r
 
 const sums = fs.readFileSync(path.join(ROOT, "install", "SHA256SUMS"), "utf8");
 const latest = W.newestInSums(sums);                          // the package the page installs
-const PKGNAME = latest.name;
-const PKG = new Uint8Array(fs.readFileSync(path.join(ROOT, "install", PKGNAME)));
+const CANDIDATE = process.env.BAILE_PKG;                       // or a release candidate that is not in install/ yet
+const PKGNAME = CANDIDATE ? path.basename(CANDIDATE) : latest.name;
+const PKG = new Uint8Array(fs.readFileSync(CANDIDATE || path.join(ROOT, "install", PKGNAME)));
 const PRODUCT = M.productOf(PKG);                             // the simulator's own reading of the markers
 const rawIndex = L => (L < 940 ? Math.floor(L / 0x2F) * 0x30 + (L % 0x2F) : L + 20);   // logical image offset -> package offset
 
@@ -54,7 +55,7 @@ function withProduct(raw, text) {                              // the same packa
  *   dev: options of the simulated FM-1 (null: none), extra: other devices, midi: options of the Web MIDI, nav: replaces it */
 async function bench(o = {}) {
     const midi = new M.MockMidi(o.midi || {});
-    const dev = o.dev === null ? null : midi.add(new M.Fm1(o.dev || {}));
+    const dev = o.dev === null ? null : midi.add(new M.Fm1(Object.assign({ afterId: PRODUCT }, o.dev)));
     for (const d of o.extra || []) midi.add(d);
     const r = await bench.run(midi, o);
     return Object.assign(r, { midi, dev });
@@ -77,7 +78,7 @@ async function goodInstall(name, o = {}) {
     const dev = r.dev;
     assert.equal(r.err, undefined, r.err && r.err.message);
     assert.deepEqual(r.res, { done: true, id: PRODUCT });
-    assert.equal(PRODUCT, "FM-1_971");
+    assert.match(PRODUCT, /^FM-1_(971|808130)$/);     // BAILE's: 971 up to 0.2, 808130 from 0.3
     // the Python tool's sequence: start, check..., loader, write 0..100, reboot, done
     const k = kinds(r), ks = [...new Set(k)];
     assert.deepEqual(ks, ["start", "check", "loader", "write", "reboot", "done"]);
@@ -87,7 +88,7 @@ async function goodInstall(name, o = {}) {
     assert.equal(w[0], 0); assert.equal(w[w.length - 1], 100);
     assert.ok(w.slice(0, -1).every(x => x <= 99), "write % stays under 100 until the end");
     assert.ok(w.every((x, i) => i === 0 || x >= w[i - 1]), "write % never goes back");
-    assert.equal(W.STEP_TEXT.done(PRODUCT), "done: the FM-1 runs FM-1_971");
+    assert.equal(W.STEP_TEXT.done(PRODUCT), `done: the FM-1 runs ${PRODUCT}`);
     // the chip: the app area is the package's, the flash head and the user's data were never written
     assert.ok(Buffer.from(dev.appArea()).equals(Buffer.from(dev.expectedApp(PKG))), "app area differs from the package's flash.bin");
     assert.ok(dev.appChanged() && dev.untouched());
@@ -96,13 +97,13 @@ async function goodInstall(name, o = {}) {
     assert.deepEqual([dev.stats.step1Fails, dev.stats.loaderFails], [[], []]);
     assert.equal(dev.stats.stray, 0); assert.equal(dev.stats.junk, 0);
     assert.equal(dev.stats.upgrades, 2, "UPGRADE once per step");
-    assert.equal(dev.appId, "FM-1_971"); assert.equal(dev.mode, "app");
+    assert.equal(dev.appId, PRODUCT); assert.equal(dev.mode, "app");
     assert.deepEqual(dev.events.filter(e => e.startsWith("plug")), ["plug:app", "plug:loader", "plug:app"]);
     assert.deepEqual(r.busy, [true, false]);
     assert.deepEqual(r.midi.sysexAsked, r.midi.sysexAsked.map(() => true), "SysEx must be asked for");
     assert.ok(r.midi.sysexAsked.length >= 1);
     assert.equal(r.asked.length, 1); assert.equal(r.asked[0].product, PRODUCT); assert.equal(r.asked[0].resume, false);
-    assert.match(r.lines[0], /^package: FM-1_971 {2}\(baile-\d/);
+    assert.match(r.lines[0], new RegExp(`^package: ${PRODUCT} {2}\\(baile-\\d`));
     assert.equal(r.lines[1], `device:  ${o.dev && o.dev.appId || "FM-1_015"}  (FM-1)`);
     assert.equal(dev.inPort.connection, "closed"); assert.equal(dev.outPort.connection, "closed");   // no port left open
     quiet(dev);

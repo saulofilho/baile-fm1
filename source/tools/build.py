@@ -59,11 +59,10 @@ SDK_SHA256 = {
     "cfg/eq_cfg_hw.bin": "41167491bffed4651750719c973d2758adeb9021a5670d02d6a53c85ed80ea7d",
 }
 
-# Package identity (the .fwsc marker, the handshake answer): BAILE's own, FM-1_971 (free in the Hub's catalog on
-# 2026-11-17), the same for every version. KAWA, which BAILE is forked from, is FM-1_957. (As
-# The Firmware Hub asks: one identity per firmware, no other firmware uses it; the version is in the text and the file
-# name). The installers want FM-1_9NN. 0.2 to 0.6 used FM-1_95Y per version; 0.7 kept its 957 for good.
-PRODUCT = "FM-1_971"
+# Package identity (the .fwsc marker, the handshake answer): BAILE's own from 0.3 on, every version (808: the kick,
+# 130: the tamborzao's tempo). 0.1 and 0.2 were FM-1_971, which is inside zp12's range (FM-1_97[0-689]). Check a new one
+# at thefirmwarehub.com/submit/#check: no exact match is not enough. At most 20 characters (tools/fm1pkg_make.py).
+PRODUCT = "FM-1_808130"
 VERSION = None                      # APP_VER for release builds
 
 
@@ -379,7 +378,7 @@ def mmio_check():
 def main():
     global PRODUCT, VERSION
     ap = argparse.ArgumentParser()
-    ap.add_argument("--release", metavar="X.Y", help="release build: version string X.Y (the identity stays FM-1_971)")
+    ap.add_argument("--release", metavar="X.Y", help="release build: version string X.Y (the identity stays FM-1_808130)")
     ap.add_argument("--sdk", type=Path, help="JieLi AC79 SDK checkout (default: $AC79_SDK)")
     a = ap.parse_args()
     name = "baile.fwsc"

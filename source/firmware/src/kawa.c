@@ -23,7 +23,7 @@
  * Rules of the chip (docs/RULES.md): integers only, no 64-bit division, the audio interrupt short. */
 #define APP_NAME "BAILE"
 #ifndef FELUCCA_ID
-#define FELUCCA_ID "FM-1_971"                   /* BAILE's identity, also outside build.py (it passes the same) */
+#define FELUCCA_ID "FM-1_808130"                   /* BAILE's identity, also outside build.py (it passes the same) */
 #endif
 #if !defined(DINGHY_HOST) && !defined(KAWA_WASM)  /* (the host builds keep the store in memory) */
 #ifndef STORE_LO

@@ -24,7 +24,7 @@ the screen. It is a fork of [KAWA](https://github.com/Guizmoh/Kawa-Tracker-Fm1),
 | | |
 | --- | --- |
 | Released version | **0.2 beta** |
-| Identity | `FM-1_971` |
+| Identity | `FM-1_808130` from 0.3 on. 0.1 and 0.2 answer `FM-1_971` |
 | On a real FM-1 | 0.1 was installed from another firmware (`FM-1_966`), then 0.2 over it. What was and was not confirmed: [results](docs/TEST-RESULTS.md) (in Portuguese) |
 | In this repository | Heading for 0.3: tested on a computer only |
 | Defects in 0.2 | With the language set to Portuguese, the DESTROY and BEAT banks and the language's own name show in French, and a few labels are wrong. Fixed in the source, due in 0.3 |

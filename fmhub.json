@@ -7,5 +7,5 @@
   "play": "https://saulofilho.github.io/baile-fm1/emulator/",
   "image": "docs/boot.png",
   "color": "#FFCF1F",
-  "sounds": "All synthesised by the firmware (kits, breaks, factory sounds); no recording is used. The recordings on the hub page (docs/audio) are made from this firmware."
+  "sounds": "licensed: FM presets from Felucca and factory sounds from KAWA (BAILE's own kits and breaks are synthesised), GPL-3.0"
 }

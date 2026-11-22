@@ -28,7 +28,7 @@ O KAWA já tem o que o funk pede, e o GR!MM (base do GL!TCH e do COQUÍ) não te
 | Base | KAWA **0.10**, commit `bc7dcf8` (2026-11-09), remoto `upstream`. Rebase em versões novas só por decisão |
 | Gêneros da 1.0 | Funk carioca de raiz (Volt Mix / Miami bass), tamborzão, funk 150, mandelão (SP), brega funk (PE), montagem |
 | Tempo | Padrão **130 BPM**; o funk 150 e o brega funk ganham projetos de fábrica no tempo deles |
-| Identidade | `FM-1_971` (**a trocar:** em 2026-11-21 o Hub a dá como dentro da faixa do zp12; evitar `95x`, que é a série do KAWA). Magics próprios: projeto `BPRJ`, samples `BSMP`, ajustes `BAIL`, SysEx `BAIL`. Não lê saves do KAWA |
+| Identidade | `FM-1_808130` desde a 0.3 (a 0.1 e a 0.2 eram `FM-1_971`, dentro da faixa do zp12; evitar `95x`, que é a série do KAWA). Magics próprios: projeto `BPRJ`, samples `BSMP`, ajustes `BAIL`, SysEx `BAIL`. Não lê saves do KAWA |
 | Idiomas | **PT padrão**, EN e ES. O FR do KAWA sai (economiza flash; a confirmar) |
 | Som | 100 % sintetizado, como no KAWA. **Nenhuma gravação de música alheia** (sem samples de Volt Mix, de MCs, de discos). Os 4 slots de sample ficam para o usuário |
 | Voz de MC | Não haverá voz gravada. Fase opcional: "vocais" sintéticos curtos por formantes ("ô", "vai", "ai") |
@@ -180,8 +180,7 @@ Opcional, depois da 1.0: vocais sintéticos por formantes; modo LIVE do KAWA (la
 - [ ] GitHub › Settings › Pages › Source: **GitHub Actions** (hoje dois deploys correm a cada push).
 - [ ] Release 0.3 com as correções: instalar e testar no FM-1 antes da tag; `source/VERSION` = 0.3.
 - [ ] Confirmar o roteiro item por item (`docs/TEST-RESULTS.md`) e só então enviar o formulário do Hub (`docs/HUB-SUBMIT.md`).
-- [ ] Trocar a identidade antes da 0.3 (livres em 2026-11-21: `FM-1_808130`, `FM-1_971130`) e acertar a linha
-  `sounds` do `fmhub.json` (decisões do autor).
+- [x] Identidade `FM-1_808130` e linha `sounds` no formato do Hub (2026-11-21; vale no Hub com a release 0.3).
 - [ ] Som, das referências (`docs/REFERENCES.md`): harmônicos do 808, ducking do bumbo, grave em mono.
 - [ ] Opcionais: vocais de MC por formantes; um modo LIVE de lançar trechos ao vivo.
 

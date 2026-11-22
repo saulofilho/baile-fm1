@@ -5,11 +5,9 @@ formulário substitui o rascunho de e-mail que ficava aqui. Quem preenche e envi
 
 ## Antes de enviar
 
-- [ ] **Identidade.** `FM-1_971` está "In use: inside the range of zp12" no verificador do Hub. `FM-1_808130` e
-      `FM-1_971130` estavam livres em 2026-11-21. Conferir de novo no dia.
-- [ ] **`sounds` no `fmhub.json`.** O valor de hoje não está num dos formatos aceitos. É uma declaração do autor.
-      Sugestão, porque oito patches FM são da Felucca e outros sons são do KAWA:
-      `licensed: FM presets from Felucca and factory sounds from KAWA (BAILE's own kits and breaks are synthesised), GPL-3.0`
+- [x] **Identidade:** `FM-1_808130` no código (livre na regra do Hub em 2026-11-21). O ✗ do Hub só some com a
+      **release 0.3**, porque a checagem lê o pacote da release mais nova.
+- [x] **`sounds`:** no formato aceito. É a declaração do autor: conferir antes de marcar a caixa dos sons.
 - [ ] **Push**, para o emulador do link `play` e o README valerem.
 - [ ] **Release 0.3** com as correções e a identidade nova.
 - [ ] **No FM-1, com a release 0.3:** instalar a partir do **V15 oficial**; instalar a partir de **outro firmware**;

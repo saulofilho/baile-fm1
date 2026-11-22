@@ -24,7 +24,7 @@ tela. É um fork do [KAWA](https://github.com/Guizmoh/Kawa-Tracker-Fm1), de Omni
 | | |
 | --- | --- |
 | Versão publicada | **0.2 beta** |
-| Identidade | `FM-1_971` |
+| Identidade | `FM-1_808130` a partir da 0.3. A 0.1 e a 0.2 respondem `FM-1_971` |
 | No FM-1 de verdade | A 0.1 foi instalada a partir de outro firmware (`FM-1_966`) e a 0.2 por cima dela. O que foi e o que não foi confirmado: [resultados](docs/TEST-RESULTS.md) |
 | No repositório | Rumo à 0.3: só testado no computador |
 | Defeitos da 0.2 | Com o idioma em português, os bancos DESTROI e BEAT e o nome do idioma aparecem em francês, e alguns textos estão errados. Já corrigido no código, entra na 0.3 |

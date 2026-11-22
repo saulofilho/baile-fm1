@@ -62,8 +62,8 @@ embedded in the page, so `../emulator/index.html` stands alone.
   checks their SHA-256 values and stops if one differs.
 
 ```sh
-./build.sh                  # -> build/baile.fwsc, identity FM-1_971 (BAILE's, every version)
-./build.sh --release 0.1    # -> build/baile-0.1.fwsc, identity FM-1_971, version "0.1" on the screen
+./build.sh                  # -> build/baile.fwsc, identity FM-1_808130 (BAILE's, from 0.3 on)
+./build.sh --release 0.3    # -> build/baile-0.3.fwsc, identity FM-1_808130, version "0.3" on the screen
 # a release is then copied twice: install/baile-X.Y.fwsc (what the installers use, listed in install/SHA256SUMS) and baile-X.Y.fwsc
 # at the top of the repository (the file people download); source/tests/release_check.sh checks that both are the same
 ```
@@ -75,7 +75,7 @@ area ends at or below `0x93000` (all that the update loader writes), the store s
 clear of the update staging `0xE0000..0xE5000` and the settings `0xFC000`, the app cannot write the flash head
 or its own code, the loader cannot write the head, the store or the settings, and the loader's `ota.bin` stays
 within 19456 bytes (the most the stock firmware stages, for a first install from it). Every release is
-`FM-1_971`, BAILE's own identity (KAWA is `FM-1_957`). The chip has no
+`FM-1_808130` from 0.3 on (0.1 and 0.2: `FM-1_971`), BAILE's own identity (KAWA is `FM-1_957`). The chip has no
 FPU, so the code uses integers only and no 64-bit division. See Dinghy's `docs/RULES.md` for the details.
 
 The update loader (`firmware/loader/`, Felucca's) reads the package's whole `flash.bin` once and checks it
