@@ -1,14 +1,14 @@
 # Idées à prendre du Dirtywave M8 et du Polyend Tracker
 
 Ce sont des **propositions** : rien n'est appliqué tant que tu ne dis pas oui. Tu as dit oui aux n°s 1, 2, 4, 5,
-7 et 10 : ils sont dans KAWA 0.3 (marqués ✅ ci-dessous). Pour chaque idée, tu trouveras :
+7 et 10 : ils sont dans le tracker 0.3 (marqués ✅ ci-dessous). Pour chaque idée, tu trouveras :
 - ce que c'est ;
-- ce que ça apporterait à KAWA ;
+- ce que ça apporterait au tracker ;
 - ce que ça coûterait sur le FM-1, en CPU, en mémoire et en complexité.
 
-## Déjà dans KAWA (inspiré de ces machines)
+## Déjà dans le tracker (inspiré de ces machines)
 
-| Idée | M8 / Polyend | Dans KAWA |
+| Idée | M8 / Polyend | Dans le tracker |
 |---|---|---|
 | Effets par case (arpège, glissé, retrig, chance, délai, coupe…) | commandes du M8, FX de pas du Polyend | 17 « effets de case », deux par case (0.3) : ARP, GLI, VIB, ROL, BND, CHN, DLY, CUT, REV, PIT, SHP, CRU, VSL, PAN, OFS, HOP, END |
 | Performance en direct | mode Performance du Polyend | 32 effets live (FX tenu), sur le master ou une piste, enregistrables |

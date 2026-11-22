@@ -97,7 +97,7 @@ S2: DUCK em ENVIOS (KNOB 4), no byte que era folga (`sound_t.duck`): mesmo forma
 | T7 | Ícones e faders pálidos no tema CLARO | antes da 1.0 |
 | T8 | 11 valores de 7 letras cortados na linha de baixo | antes da 1.0 |
 | T9 | Manual: telas e textos do DUCK e do GRAVE+, cheat sheet (campo `cheat` do Hub) | na 0.4; cheat sheet antes da 1.0 |
-| T10 | `source/BUILDING.md` com trechos do KAWA (inglês e 100 BPM na partida, roteiros em francês) | antes da 1.0 |
+| T10 | `source/BUILDING.md` com trechos herdados (inglês e 100 BPM na partida, roteiros em francês) | antes da 1.0 |
 | T11 | `tests/run_stress_test.sh` sem permissão de execução | qualquer hora |
 | T12 | Manual em espanhol (o firmware e o emulador já falam) | a decidir |
 
@@ -121,16 +121,16 @@ Não entram em versão sem o autor aprovar. Origem em [`docs/REFERENCES.md`](doc
 - Uma tag `v*` publica na hora: só depois do candidato instalado no FM-1. Tag publicada não se move.
 - Tudo sintetizado, licença conferida antes de aproveitar código dos outros.
 
-## Por que o KAWA
+## Por que esta base
 
-O KAWA já tem o que o funk pede, e o GR!MM (base do GL!TCH e do COQUÍ) não tem:
+A base escolhida já tinha o que o funk pede, e o GR!MM (base do GL!TCH e do COQUÍ) não tem:
 
-| O funk precisa de | O KAWA já tem |
+| O funk precisa de | A base já tinha |
 | --- | --- |
 | Tamborzão picotado, montagem, "puxadas" | Breaks em 16 fatias, ferramenta HACHOIR (chop), efeitos ROLL / REV / CUT / HOP por célula |
 | Grave 808 que escorrega | Efeitos de célula GLI e BND, uma **TABLE** por trilha (pitch drops, ratchets) |
 | O "atraso" do tamborzão | **GROOVE tables**: duração por passo, não um swing só |
-| Virada de DJ ao vivo | 64 efeitos live (stutter, retrig, build-up, scratch, DESTROY e BEAT do K-GLITCH), FX sequencer |
+| Virada de DJ ao vivo | 64 efeitos live (stutter, retrig, build-up, scratch, DESTROY e BEAT), FX sequencer |
 | Paredão | Drive por trilha, sends, filtro de 11 tipos |
 | Interface em português | O sistema de idiomas (`LANG_N`, hoje FR, EN e ES) |
 
@@ -139,27 +139,27 @@ O KAWA já tem o que o funk pede, e o GR!MM (base do GL!TCH e do COQUÍ) não te
 | Tema | Decisão |
 | --- | --- |
 | Nome | **BAILE** (provisório; livre no catálogo do Hub em 2026-11-17). Alternativas: PANCADÃO, PAREDÃO, TAMBORZÃO |
-| Base | KAWA **0.10**, commit `bc7dcf8` (2026-11-09), remoto `upstream`. Rebase em versões novas só por decisão |
+| Base | A registrada em `LICENSING.md`, congelada num commit, remoto `upstream`. Rebase em versões novas só por decisão |
 | Gêneros da 1.0 | Funk carioca de raiz (Volt Mix / Miami bass), tamborzão, funk 150, mandelão (SP), brega funk (PE), montagem |
 | Tempo | Padrão **130 BPM**; o funk 150 e o brega funk ganham projetos de fábrica no tempo deles |
-| Identidade | `FM-1_808130` desde a 0.3 (a 0.1 e a 0.2 eram `FM-1_971`, dentro da faixa do zp12; evitar `95x`, que é a série do KAWA). Magics próprios: projeto `BPRJ`, samples `BSMP`, ajustes `BAIL`, SysEx `BAIL`. Não lê saves do KAWA |
-| Idiomas | **PT padrão**, EN e ES. O FR do KAWA sai (economiza flash; a confirmar) |
-| Som | 100 % sintetizado, como no KAWA. **Nenhuma gravação de música alheia** (sem samples de Volt Mix, de MCs, de discos). Os 4 slots de sample ficam para o usuário |
+| Identidade | `FM-1_808130` desde a 0.3 (a 0.1 e a 0.2 eram `FM-1_971`, dentro da faixa do zp12; evitar `95x`, que é a série da base). Magics próprios: projeto `BPRJ`, samples `BSMP`, ajustes `BAIL`, SysEx `BAIL`. Não lê saves de outros firmwares |
+| Idiomas | **PT padrão**, EN e ES. O FR da base sai (economiza flash; a confirmar) |
+| Som | 100 % sintetizado. **Nenhuma gravação de música alheia** (sem samples de Volt Mix, de MCs, de discos). Os 4 slots de sample ficam para o usuário |
 | Voz de MC | Não haverá voz gravada. Fase opcional: "vocais" sintéticos curtos por formantes ("ô", "vai", "ai") |
 | Visual | Estrutura do Byte Beats com um mosaico de ladrilhos pintados nas cores das penas da arara, sobre preto. Ver [Mood](#mood) |
-| Hardware | Testes no simulador do KAWA (`tests/run_host.sh`) e no emulador web até haver teste no FM-1. Flash `0x856014` e `0xB36014` |
+| Hardware | Testes no simulador (`tests/run_host.sh`) e no emulador web até haver teste no FM-1. Flash `0x856014` e `0xB36014` |
 | Repositório | `projetos-git/baile-fm1`, git local. Público no GitHub; trabalho no `main`, o autor faz push, merge e tags |
-| Licença | GPL-3.0-only, créditos em `LICENSING.md`: Omnipotard (KAWA e K-GLITCH), Felucca, SLOOP, Dinghy, msfa (Apache-2.0), fontes OFL |
+| Licença | GPL-3.0-only, autoria e licença de cada parte em `LICENSING.md` |
 
 ## Fases
 
 As fases da criação (0 a 7 feitas; a 8 continua no [Roteiro](#roteiro)). Histórico: nomes e números são os de então.
 
-0. **Ambiente.** Rodar os testes do KAWA intacto: `tests/run_host.sh`, `run_stress_test.sh`, `run_kits_test.sh`, o
+0. **Ambiente.** Rodar os testes da base intacta: `tests/run_host.sh`, `run_stress_test.sh`, `run_kits_test.sh`, o
    emulador (`web/make_emulator.sh`) e o pacote (`./build.sh`, toolchain JieLi + SDK AC79 em Docker, como no COQUÍ).
    Só depois mudar código.
 1. **Identidade.** `PRODUCT = "FM-1_971"` em `tools/build.py`, pacote `baile.fwsc`, `PRJ_MAGIC`/`USR_MAGIC` próprios,
-   `APP_NAME`. Temas **TERRA** (padrão) e **CLARO** no lugar de KAWA, GAME BOY e BONBON. Os 16 ladrilhos e a tela
+   `APP_NAME`. Temas **TERRA** (padrão) e **CLARO** no lugar dos três temas da base. Os 16 ladrilhos e a tela
    de boot (o mosaico acendendo) em `tools/gen_art.py`. HOME com fileiras de ladrilhos animadas e o status em kaomoji. Idioma PT em toda a UI (`kawa_data.c`, `kawa_ui.c`). README e
    `LICENSING.md` novos.
 2. **Bateria.** Os 8 kits viram kits de baile (16 peças cada, em `kawa_kits.h` e `kawa_drums.c`):
@@ -173,17 +173,17 @@ As fases da criação (0 a 7 feitas; a 8 continua no [Roteiro](#roteiro)). Hist�
    - **PERCUS** (atabaque, surdo, tamborim, agogô, cuíca, pandeiro, chocalho, caixa de guerra)
    Teste: `tests/kits_test.c` adaptado, custo por voz medido no simulador.
 3. **Breaks.** Os 6 breaks de `tools/gen_breaks.py` viram 6 batidas de funk sintetizadas, um compasso cada, fatiáveis
-   em 16: `TAMBOR`, `VOLT`, `CENT50`, `MANDELA`, `BREGA`, `MONTAG`. O gerador do KAWA tem BPM fixo (160): torná-lo
+   em 16: `TAMBOR`, `VOLT`, `CENT50`, `MANDELA`, `BREGA`, `MONTAG`. O gerador da base tem BPM fixo (160): torná-lo
    por break ou confirmar que o fatiamento cobre 130–150 sem artefato. Teste: `tests/breaks_check.py`.
 4. **Grooves e MAGIA.** Modelos de GROOVE com o balanço do tamborzão e do brega. Ferramentas de MAGIA novas: GERAR
    TAMBORZÃO, GERAR GRAVE (808 nos tempos do funk), **MONTAGEM** (recorta e reordena as fatias de um break), **VIRADA**
    (fill de fim de frase). Escalas: menor, frígio, menor harmônica (o "grave sinistro" do mandelão).
 5. **Grave e melodia.** Sons de fábrica: GRAVE 808 (com glide e drive), GRAVE TORTO, SUB, SINO, PIANO MELODY, BRASS
-   FM, "LEAD MELODY", ORQUESTRA STAB, SIRENE. Revisar os 4 patches FM próprios do KAWA (`gen_fm_patches.py`).
-   Projetos de fábrica: um por gênero da 1.0 (substitui a demo do KAWA).
+   FM, "LEAD MELODY", ORQUESTRA STAB, SIRENE. Revisar os 4 patches FM próprios da base (`gen_fm_patches.py`).
+   Projetos de fábrica: um por gênero da 1.0 (substitui a demo da base).
 6. **Efeitos live de baile.** Renomear e ajustar bancos: PUXA (scratch), CORTA (mute em batida), SEGURA (stutter),
    SOBE (build-up), GRAVE+ (sub boost), ECO MC (eco de 1/8 pontuado), SIRENE (por cima do master). Os bancos DESTROY e
-   BEAT do K-GLITCH ficam.
+   BEAT ficam.
 7. **Web.** Hub próprio (como o do COQUÍ: a cena do boot animada, cada gênero com grade e áudio do próprio firmware),
    emulador (`emulator/`), instalador no navegador (`install/webinstall.js`), importador de samples, manual e cheat
    sheet em **PT**, EN e ES.
@@ -194,36 +194,36 @@ O que era opcional (vocais por formantes, modo LIVE) virou S8 e S7 no Roteiro.
 
 ## Andamento
 
-- **2026-11-18, Fase 0 (no computador):** o simulador e os testes do KAWA rodam no macOS (`.venv` com Pillow na raiz;
+- **2026-11-18, Fase 0 (no computador):** o simulador e os testes da base rodam no macOS (`.venv` com Pillow na raiz;
   `PATH="$PWD/../.venv/bin:$PATH"` antes de `tests/run_host.sh`). Dois ajustes para o clang do macOS: sem seções ELF
   no build host (`gfx.c`, `platform.c`) e uma conta de ponteiro em `kawa_sysex.c`. Verdes: host, features, format,
   kits, ui, stress, `websamples_test.js`, `webinstall_test.js`. **Faltam:** o emulador web (precisa de `wasm-ld`:
   `brew install lld`) e o pacote do FM-1 (Docker parado; toolchain JieLi e SDK AC79 já estão na máquina).
 - **2026-11-18, Fase 1 (parte):** identidade (`FM-1_971`, `baile.fwsc`, magics próprios, ferramentas de sample
-  alinhadas; o `format_test` troca o magic dos fixtures do KAWA para seguir testando a conversão). Temas **TERRA**,
+  alinhadas; o `format_test` troca o magic dos fixtures da base para seguir testando a conversão). Temas **TERRA**,
   **CLARO** e **PAREDAO** com as penas da arara; cores das páginas. Mascote: a **arara** de headphone no lugar do
-  cachorro do KAWA (`tools/gen_art.py`). Boot: o **mosaico de ladrilhos** (`tools/gen_boot.py` → `art/boot-baile.png`)
+  cachorro da base (`tools/gen_art.py`). Boot: o **mosaico de ladrilhos** (`tools/gen_boot.py` → `art/boot-baile.png`)
   acendendo do centro para fora, "BAILE" na fonte grande (I e L acrescentados em `tools/gen_fonts.py`).
-  README (PT, com resumo em EN) e `LICENSING.md` novos; a arte do cachorro e os READMEs FR/ES do KAWA saíram.
-  **Fase 1 completa** no computador (o site, o instalador web e o manual ainda são os do KAWA: Fase 7).
-- **2026-11-18, interface em PT:** o português ocupa o lugar do francês do KAWA (`LANG_PT`, idiomas PT, EN, ES) e é
+  README (PT, com resumo em EN) e `LICENSING.md` novos; a arte do cachorro e os READMEs FR/ES da base saíram.
+  **Fase 1 completa** no computador (o site, o instalador web e o manual ainda são os da base: Fase 7).
+- **2026-11-18, interface em PT:** o português ocupa o lugar do francês da base (`LANG_PT`, idiomas PT, EN, ES) e é
   o padrão de um FM-1 novo. 731 posições de texto (518 textos), cada uma no limite de largura do texto original;
   "track" é **FAIXA**. `tools/i18n_slots.py` acha as posições e aplica `tools/i18n_pt.json` (para revisar uma
   tradução: editar o JSON, `check`, `apply`; só funciona desde a correção de 2026-11-21, abaixo). Nomes dos patches FM em `tools/gen_fm_patches.py`. Sem acentos: as
   fontes da tela são ASCII.
-- **2026-11-18, Fase 2 (kits):** os 8 kits do KAWA viraram **VOLT, TAMBOR, 150, MANDELA, BREGA, MELODY, TUIN e
+- **2026-11-18, Fase 2 (kits):** os 8 kits da base viraram **VOLT, TAMBOR, 150, MANDELA, BREGA, MELODY, TUIN e
   PERCUS** (`source/firmware/src/kawa_kits.h`), 16 peças cada, com as mesmas regras de tecla (1 bumbo, 2 segundo
   bumbo, 3 caixa, 5 e 6 chimbal; no PERCUS, atabaques, chocalho e pandeiro). Presets de kit renomeados (KIT
   TAMBORZAO, KIT MANDELAO, KIT 150 SUJO…). `kits_test` verde (sem clip, sem silêncio, nenhuma tecla igual entre
   kits); o `features_test` agora espera o bumbo do VOLT terminar (até ~1,7 s depois do STOP). **Falta ouvir:** os
   WAVs de cada kit saem em `source/build/kits/` (`kit_N.wav`, `beat_N.wav`) com `tests/run_kits_test.sh`; ajustar o
   timbre de ouvido. Os breaks e os grooves de funk são as Fases 3 e 4.
-- **2026-11-18, Fase 3 (breaks):** os 6 breaks do KAWA viraram **TAMBOR, VOLT, CENT50, MANDELA, BREGA e MONTAG**
+- **2026-11-18, Fase 3 (breaks):** os 6 breaks da base viraram **TAMBOR, VOLT, CENT50, MANDELA, BREGA e MONTAG**
   (`source/tools/gen_breaks.py` → `kawa_breaks.h`), batidas originais e sintetizadas, cada uma com o seu "estúdio"
   (sala, mesa, fita, sampler): o tamborzão com atabaques, o Volt com 808 e sub, o 150 seco num sampler de 16 kHz, o
   mandelão sujo a 9 kHz e 8 bits, o brega com swing, timbal e ride, a montagem com um som diferente a cada
   semicolcheia. `tests/breaks_check.py` ok (caixa no 2 e no 4, bumbos e caixas onde marcados, nenhum par parecido).
-  O BPM dos breaks continua 160 (o do KAWA): fatiados, eles tocam a 130–150 sem problema. Presets de sample
+  O BPM dos breaks continua 160 (o da base): fatiados, eles tocam a 130–150 sem problema. Presets de sample
   renomeados (TAMBORZAO, VOLT, FUNK 150, MANDELAO, BREGA FUNK, MONTAGEM…). `numpy` na `.venv` para o gerador.
   **Falta ouvir:** `source/build/breaks/*.wav`.
 - **2026-11-18, Fase 4 (grooves e MÁGICA):** modelos de GROOVE de funk: RETO, **TAMBOR** (6 7 5 6: o atraso da 2ª
@@ -233,31 +233,31 @@ O que era opcional (vocais por formantes, modo LIVE) virou S8 e S7 no Roteiro.
   BAIXO) põe o baixo no 0 3 6 10 14, quase sempre a tônica, com glides; **MONTAGE** (no lugar de ARPEJO) picota 2 a 4
   fragmentos de um break ou de um kit em grupos que se repetem, com avesso e tom; **VIRADA** (no lugar de RUFOS)
   acrescenta, num kit, a virada de caixa que acelera no fim do compasso. Teste novo no `features_test` (10). As
-  escalas do KAWA já têm frígia e menor harmônica: ficam.
-- **2026-11-18, Fase 5 (sons e demo):** sons de fábrica novos, depois dos do KAWA (os índices que um projeto guarda
+  escalas da base já têm frígia e menor harmônica: ficam.
+- **2026-11-18, Fase 5 (sons e demo):** sons de fábrica novos, depois dos da base (os índices que um projeto guarda
   não mudam): **GRAVE 808**, **GRAVE TORTO**, **SUB**, **LEAD MELODY**, **SIRENE**, **PIANO MELODY**, **STAB**. Um
   projeto novo já vem com o GRAVE 808 e o kit TAMBOR. A **demo** agora é "BAILE": um tamborzão em lá menor a 130,
   4 patterns (intro com o break e o piano; o tamborzão com o 808; o drop com o refrão no lead, os acordes e o break
-  picotado; a virada com o filtro fechando) numa música de 5 entradas. A demo do KAWA mora agora no
+  picotado; a virada com o filtro fechando) numa música de 5 entradas. A demo da base mora agora no
   `format_test` (que confere a conversão do save antigo). `tests/demo_baile.txt` carrega e toca a demo no
   simulador; o áudio fica em `source/build/demo/baile-demo.wav`. Ficou de fora: um projeto de fábrica por gênero
   (feito na 0.2: quatro demos, uma por estilo).
-- **2026-11-18, Fase 6 (efeitos ao vivo):** bancos **BAILE** e **PAREDAO** (DESTROI e BEAT, do K-GLITCH, ficam).
+- **2026-11-18, Fase 6 (efeitos ao vivo):** bancos **BAILE** e **PAREDAO** (DESTROI e BEAT ficam).
   Renomeados: **SEGURA** (stutter), **PUXA** (scratch), **SOBE** (build-up), **CORTA** (gate), **ECO MC** (o eco de
-  colcheia pontuada do KAWA). Novos, no lugar do ANEL e do VINIL do KAWA (`source/firmware/src/kawa_fx.c`):
+  colcheia pontuada da base). Novos, no lugar do ANEL e do VINIL da base (`source/firmware/src/kawa_fx.c`):
   **GRAVE+** (os graves abaixo de ~120 Hz em dobro, com o joelho suave) e **SIRENE** (um tom que sobe e desce de 700
   a 1300 Hz a cada batida e meia, por cima de tudo), com ícone novo. O stress test toca todos no máximo: ok. **Falta
   ouvir** o GRAVE+ e a SIRENE.
 - **2026-11-18, Fase 7 (web):** o **pacote** compila (`./build.sh`, com o Docker Desktop no macOS): `baile-0.1.fwsc`,
   `FM-1_971`, todas as checagens de tamanho, RAM e flash ok; os testes do loader passam (instalação, retomada, chip
   desconhecido). Um `strcmp` que só existia no build do computador foi trocado (a libc do firmware não tem). Os
-  pacotes do KAWA saíram de `install/`; `install/baile-0.1.fwsc` e a cópia na raiz, com `SHA256SUMS`
+  pacotes da base saíram de `install/`; `install/baile-0.1.fwsc` e a cópia na raiz, com `SHA256SUMS`
   (`release_check.sh` ok). **Instalador web** e lançadores com a identidade do BAILE (48 testes ok com o pacote
   real). **Hub** novo (`index.html`) em PT no visual do mood board: instalador, áudios da demo e dos 6 breaks
   (`docs/audio/`, AAC feito com `afconvert`), o que tem, links. **Emulador** (`emulator/index.html`) compilado num
-  contêiner Debian com clang e lld; a página em PT (padrão), EN e ES, com o crédito ao KAWA. **Manual** novo em PT
-  (`manual/index.html`) com telas do simulador (`source/tests/manual_pt.txt`); o manual, o cheat sheet e o card do
-  KAWA saíram. Importador de samples renomeado. `fmhub.json` do BAILE.
+  contêiner Debian com clang e lld; a página em PT (padrão), EN e ES, com o rodapé de licença. **Manual** novo em PT
+  (`manual/index.html`) com telas do simulador (`source/tests/manual_pt.txt`); o manual, o cheat sheet e o card da
+  base saíram. Importador de samples renomeado. `fmhub.json` do BAILE.
 - **2026-11-18, Fase 8 (começo):** a 0.1 instalada num FM-1 de verdade a partir de `FM-1_966`: "done: the FM-1 runs
   FM-1_971" (`docs/TEST-RESULTS.md`; o resto do roteiro no aparelho está por fazer).
 - **2026-11-18, o site todo no BAILE:** menu único em PT em todas as páginas, GitHub do `baile-fm1`, importador de
@@ -266,14 +266,14 @@ O que era opcional (vocais por formantes, modo LIVE) virou S8 e S7 no Roteiro.
 - **2026-11-21, 0.2: uma demo por estilo.** PROJETOS › DEMO carrega a próxima a cada vez: **BAILE** (tamborzão, 130),
   **VOLT** (Miami bass em mi menor, 128), **MANDELAO** (fá frígio, 130, GRAVE+ e DISTOR gravados) e **BREGA FUNK**
   (dó menor, 150, groove BREGA). `features_test` 11 carrega e toca as quatro. Áudio de cada uma no hub. A tag `v0.9`
-  herdada do KAWA saiu (dispararia uma release). `source/BUILDING.md` com o BAILE e as notas do macOS. A 0.1 (a
+  herdada da base saiu (dispararia uma release). `source/BUILDING.md` com o BAILE e as notas do macOS. A 0.1 (a
   instalada no aparelho) foi para `install/older/`.
 - **2026-11-21, 0.2 no aparelho:** instalada por cima da 0.1; o autor relatou "Testei tudo, ok" sobre o roteiro
   de `docs/TEST-RESULTS.md` (sem item por item). Os dois chips de flash são aceitos (`FL_CHIP_OK`). Tag `v0.2` criada; rascunho do e-mail ao
   Hub em `docs/HUB-SUBMIT.md`.
 - **2026-11-21, auditoria (corrigido no código, rumo à 0.3):** defeitos que estavam publicados como prontos.
-  **Emulador:** procurava o magic de projeto do KAWA (salvar no navegador, exportar e importar `.baile` nunca
-  funcionaram) e mandava samples com o magic do KAWA (o BAILE recusa); o site mostrava 0.10, agora a versão vem de
+  **Emulador:** procurava o magic de projeto da base (salvar no navegador, exportar e importar `.baile` nunca
+  funcionaram) e mandava samples com o magic da base (o BAILE recusa); o site mostrava 0.10, agora a versão vem de
   `source/VERSION`. **Firmware 0.2:** os bancos DESTROI e BEAT (`kawa_kg.c`) ficaram em francês, o idioma PT se chamava
   FRANCAIS, e cinco traduções saíram erradas. **`i18n_slots.py`:** o `apply` quebrava e não lia o `kawa_kg.c`; a chave
   de cada texto agora é arquivo + EN + ES + ordem. **Manual:** a DEMO pede um OCT+, não dois. Teste novo:
@@ -291,7 +291,7 @@ O que era opcional (vocais por formantes, modo LIVE) virou S8 e S7 no Roteiro.
 - **Site, 2026-11-21:** a diagramação de <https://www.lamannabakery.com/> com as cores do BAILE (hub gerado por
   `source/tools/gen_site.py` de `source/web/hub.html`; barra comum em `site.css`) e versão em inglês.
 - **2026-11-22, site (W1):** emulador e importador no desenho do hub (hero, letreiro, blocos, rodapé; o aparelho segue
-  escuro). Corrigidos no caminho: o aviso falso de "nunca testado num FM-1", as cores do KAWA na onda do importador em
+  escuro). Corrigidos no caminho: o aviso falso de "nunca testado num FM-1", as cores antigas na onda do importador em
   inglês, o seletor de espaço gigante, a barra do emulador sempre em português, o CSS velho no cache (`site.css?v=`
   pelo hash, em `gen_site.py`). Roteiro reorganizado.
 
@@ -316,7 +316,7 @@ acende e troca de símbolo no tempo**.
 - **Status em kaomoji**, pelo número de trilhas tocando: `(-_- )` PARADO, `(o_O )` ESQUENTANDO, `(⌐■_■)` NO GRAVE,
   `( ✧Д✧)` PAREDÃO.
 - **Tipografia:** título preto e pesado (Archivo Black no hub; imagem no boot), rótulos grossos em caixa alta,
-  legendas mono cinza espaçadas. No FM-1, as fontes do KAWA com acentos.
+  legendas mono cinza espaçadas. No FM-1, as fontes de tela com acentos.
 - **Hub e editor web:** fundo preto, uma faixa de mosaico animado no topo, botões em pílula, XY pads e faders com
   número grande.
 - **Regras:** cor é som; feito à mão (traço grosso, quadrados imperfeitos); símbolos geométricos, nada copiado de um
@@ -327,8 +327,8 @@ acende e troca de símbolo no tempo**.
 
 ## Riscos
 
-- **Upstream em beta.** O KAWA muda rápido (0.1 → 0.10 em semanas). Fixar o commit base e decidir cada rebase.
-- **Tamanho.** Na 0.3, o projeto do KAWA usava 33 KB dos 36 KB da sua área de store (conferir na 0.10); kits, breaks e a língua PT precisam caber
+- **Upstream em beta.** A base muda rápido (0.1 → 0.10 em semanas). Fixar o commit base e decidir cada rebase.
+- **Tamanho.** Na 0.3, o projeto da base usava 33 KB dos 36 KB da sua área de store (conferir na 0.10); kits, breaks e a língua PT precisam caber
   na flash do app (`0x93000`). O `build.py` recusa o que passa, medir a cada fase.
 - **CPU.** Kits mais longos (kick 808 de 1 s) e o drive em todas as trilhas: medir no simulador e no stress test.
 - **Direitos.** Nada de samples de discos. O "Volt Mix" do kit é uma batida sintetizada no estilo, não o sample.

@@ -28,7 +28,7 @@ Começar por 1, 2 e 3: são o som do paredão. Cada um com teste no simulador e 
 
 | Firmware | O que olhar | Arquivos | Licença |
 | --- | --- | --- | --- |
-| [K-WASUB](https://github.com/Guizmoh/K-WASUB_Firmware_for_FM1) (Omnipotard) | 808, grave, limiter, CPU | `source/firmware/src/ksub_dsp.c`, `docs/TECHNICAL-NOTES.md` | GPL-3.0 |
+| [K-WASUB](https://github.com/Guizmoh/K-WASUB_Firmware_for_FM1) | 808, grave, limiter, CPU | `source/firmware/src/ksub_dsp.c`, `docs/TECHNICAL-NOTES.md` | GPL-3.0 |
 | [TRAPSTATION OS](https://github.com/sog-maker/trapstation-os) | Máquinas de 808 com glide e accent, geradores com desfazer | `firmware/src/eng_analog.c`, `firmware/src/fx.c` | GPL-3.0-only; nome, logo e arte fora da GPL |
 | [RHYTM-SEC-1](https://github.com/hamperj/rhytm-sec-1) | Ducking, probabilidade por estilo, evolução | `rhytmsec1/perf/db_engine.c`, `styles.h` | GPL-3.0-only; derivado de PERF-1, HYP-1 e AMB-1 |
 | [CHOPPAH](https://github.com/profikid/fm1-break-choppah) | Picotar, gerador por frase, efeito por fatia | `app/dsp/brk.h`, `app/dsp/kick.c` | MPL-2.0, arquivo por arquivo |
@@ -39,7 +39,7 @@ Começar por 1, 2 e 3: são o som do paredão. Cada um com teste no simulador e 
 | [FMLarynx](https://github.com/ejtb76/FMLarynx) | Formantes em inteiros | `app/app.c` | GPL-3.0-only; base MPL-2.0 |
 | [MONK-1](https://github.com/charlesvestal/fm1-monk) | Voz por grãos | `firmware/src/dsp/monk.c` | MIT (MonkSynth) e GPL-3.0-only |
 
-O KAWA não tinha commits novos depois da nossa base (`bc7dcf8`) na data da pesquisa.
+A base do BAILE não tinha commits novos depois do nosso commit de origem, na data da pesquisa.
 
 ## Antes de aproveitar código
 

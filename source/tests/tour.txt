@@ -1,4 +1,4 @@
-# a tour of KAWA: boot, the demo playing, the pages, live effects (ids: see tests/host.c)
+# a tour of the tracker: boot, the demo playing, the pages, live effects (ids: see tests/host.c)
 300 shot 01-boot
 1700 shot 02-pistes
 1800 btn 12

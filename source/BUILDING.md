@@ -2,8 +2,7 @@
 
 [README](../README.md)
 
-Everything here is for changing BAILE itself (a fork of KAWA, by Omnipotard: the build, the tests and most of this
-page are KAWA's). To put BAILE on an FM-1, see the README: the ready package is in
+Everything here is for changing BAILE itself (the build and the tests; who wrote each part: [LICENSING.md](../LICENSING.md)). To put BAILE on an FM-1, see the README: the ready package is in
 [`../install/`](../install/). Run every command below from this `source/` folder.
 
 ## BAILE on macOS
@@ -79,7 +78,7 @@ area ends at or below `0x93000` (all that the update loader writes), the store s
 clear of the update staging `0xE0000..0xE5000` and the settings `0xFC000`, the app cannot write the flash head
 or its own code, the loader cannot write the head, the store or the settings, and the loader's `ota.bin` stays
 within 19456 bytes (the most the stock firmware stages, for a first install from it). Every release is
-`FM-1_808130` from 0.3 on (0.1 and 0.2: `FM-1_971`), BAILE's own identity (KAWA is `FM-1_957`). The chip has no
+`FM-1_808130` from 0.3 on (0.1 and 0.2: `FM-1_971`), BAILE's own identity. The chip has no
 FPU, so the code uses integers only and no 64-bit division. See Dinghy's `docs/RULES.md` for the details.
 
 The update loader (`firmware/loader/`, Felucca's) reads the package's whole `flash.bin` once and checks it
@@ -157,17 +156,17 @@ CRC16 and the same verdict for every damaged package.
 
 ## The project format
 
-A project is format 5 (KAWA 0.3's, and still 0.5's): 32 patterns of 32 rows of six cells of 5 bytes (the note; the
+A project is format 5 (introduced by the engine's 0.3, unchanged in its 0.5): 32 patterns of 32 rows of six cells of 5 bytes (the note; the
 volume on 4 bits and two tricks on 6 bits each; their two values) and the LIVE lane, the six sounds and the FM patch, the
 song, then a table per track (16 steps of 4 bytes, its speed, length, loop), a sample edit per track (start,
 end, 16 slices in 65536ths of the sound, the gain, reverse) and the groove: 33,072 bytes with its CRC-32, in a
-36 KB slot. A format-4 project (KAWA 0.2: cells of 4 bytes, none of the rest) is converted in place when it
+36 KB slot. A format-4 project (the engine's 0.2: cells of 4 bytes, none of the rest) is converted in place when it
 loads (`prj_from_v4` in `kawa_edit.c`: from the last pattern and the last cell, so nothing not yet read is
 written over) and keeps playing as it did; `tests/run_format_test.sh` checks it with projects written by
 0.2's own code (`tests/fixtures/`), a damaged one, and a format-5 one with every field, byte for byte.
 Everything that comes from a slot goes through `prj_sanitize` before the audio interrupt sees it.
 
-KAWA 0.5 stays in format 5: it only gives a meaning to two bytes that 0.4 left as padding, so the size and the
+The engine's 0.5 stays in format 5: it only gives a meaning to two bytes that 0.4 left as padding, so the size and the
 slot do not change. `sound_t.sat` is the SAT send of a sound (the drive of the SENDS page, 0..15; a 0.4 project
 has 0 there), and `pat_t.pad[0]` is the link of a 64-step pattern: 1 means it goes on into the next pattern (32 +
 32 steps, played as one in the loop and in the song). `prj_sanitize` sets an out-of-range `sat` back to 0 and keeps
